@@ -16,6 +16,7 @@
         "subsystem": "applications",
         "components": [
           { "component": "camera_sample_app", "features":[] },
+          { "component": "camera_sample_ai", "features":[] },
           { "component": "camera_screensaver_app", "features":[] }
         ]
       },
