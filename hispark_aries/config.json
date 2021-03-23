@@ -13,12 +13,6 @@
         ]
       },
       {
-        "subsystem": "applications",
-        "components": [
-          { "component": "camera_sample_app", "features":[] }
-        ]
-      },
-      {
         "subsystem": "hiviewdfx",
         "components": [
           { "component": "hilog", "features":[] }
