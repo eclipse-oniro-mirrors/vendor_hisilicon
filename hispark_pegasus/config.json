@@ -34,7 +34,13 @@
       {
         "subsystem": "security",
         "components": [
-          { "component": "hichainsdk", "features":[] }
+          { "component": "hichainsdk", "features":[] },
+          { "component": "huks", "features":
+            [
+              "disable_huks_binary = false",
+              "disable_authenticate = false"
+            ]
+          }
         ]
       },
       {
