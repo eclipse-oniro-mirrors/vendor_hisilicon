@@ -146,7 +146,7 @@
         ]
       },
       {
-        "subsystem": "pms",
+        "subsystem": "powermgr",
         "components": [
           { "component": "powermgr_lite", "features":[ "enable_screensaver = true" ] }
         ]
