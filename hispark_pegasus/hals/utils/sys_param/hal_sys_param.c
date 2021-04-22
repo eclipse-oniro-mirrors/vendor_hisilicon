@@ -14,9 +14,6 @@
  */
 
 #include "hal_sys_param.h"
-#include <securec.h>
-
-#define PROPERTY_MAX_LENGTH 2048
 
 static const char OHOS_DEVICE_TYPE[] = {"****"};
 static const char OHOS_DISPLAY_VERSION[] = {"OpenHarmony 1.0.1"};
@@ -100,55 +97,29 @@ const char* HalGetDisplayVersion(void)
     return OHOS_DISPLAY_VERSION;
 }
 
-static const char* GetProperty(const char* propertyInfo, const size_t propertySize, const char** propertyHolder)
-{
-    if (*propertyHolder != NULL) {
-        return *propertyHolder;
-    }
-    if ((propertySize == 0) || (propertySize > PROPERTY_MAX_LENGTH)) {
-        return EMPTY_STR;
-    }
-    char* prop = (char*)malloc(propertySize);
-    if (prop == NULL) {
-        return EMPTY_STR;
-    }
-    if (strcpy_s(prop, propertySize, propertyInfo) != 0) {
-        free(prop);
-        prop = NULL;
-        return EMPTY_STR;
-    }
-    *propertyHolder = prop;
-    return *propertyHolder;
-}
-
 const char* HalGetIncrementalVersion(void)
 {
-    static const char* incrementalVersion = NULL;
-    return GetProperty(INCREMENTAL_VERSION, strlen(INCREMENTAL_VERSION) + 1, &incrementalVersion);
+    return INCREMENTAL_VERSION;
 }
 
 const char* HalGetBuildType(void)
 {
-    static const char* buildType = NULL;
-    return GetProperty(BUILD_TYPE, strlen(BUILD_TYPE) + 1, &buildType);
+    return BUILD_TYPE;
 }
 
 const char* HalGetBuildUser(void)
 {
-    static const char* buildUser = NULL;
-    return GetProperty(BUILD_USER, strlen(BUILD_USER) + 1, &buildUser);
+    return BUILD_USER;
 }
 
 const char* HalGetBuildHost(void)
 {
-    static const char* buildHost = NULL;
-    return GetProperty(BUILD_HOST, strlen(BUILD_HOST) + 1, &buildHost);
+    return BUILD_HOST;
 }
 
 const char* HalGetBuildTime(void)
 {
-    static const char* buildTime = NULL;
-    return GetProperty(BUILD_TIME, strlen(BUILD_TIME) + 1, &buildTime);
+    return BUILD_TIME;
 }
 
 int HalGetFirstApiVersion(void)
