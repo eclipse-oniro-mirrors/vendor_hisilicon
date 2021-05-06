@@ -16,8 +16,13 @@ shared_library("hal_sysparam") {
   cflags = [ "-Wall" ]
   include_dirs = [
     "//base/startup/syspara_lite/hals",
-    "//utils/native/lite/include",
-    "//third_party/bounds_checking_function/include",
   ]
-  public_deps = [ "//third_party/bounds_checking_function:libsec_shared" ]
+  defines = [
+      "INCREMENTAL_VERSION=\"${ohos_version}\"",
+      "BUILD_TYPE=\"${ohos_build_type}\"",
+      "BUILD_USER=\"${ohos_build_user}\"",
+      "BUILD_TIME=\"${ohos_build_time}\"",
+      "BUILD_HOST=\"${ohos_build_host}\"",
+      "BUILD_ROOTHASH=\"${ohos_build_roothash}\"",
+    ]
 }

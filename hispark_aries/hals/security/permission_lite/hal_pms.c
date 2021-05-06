@@ -94,14 +94,13 @@ static int GenerateOriginalDevUdid(unsigned char *ori, int size)
         goto EXIT;
     }
     // Get sn number
-    char *sn = GetSerial();
+    const char *sn = GetSerial();
     if (sn == NULL) {
         goto EXIT;
     }
     // Get emmc id
     unsigned char *cid = GetCId();
     if (cid == NULL) {
-        free(sn);
         goto EXIT;
     }
     if (mbedtls_md_update(&mdCtx, sn, strlen(sn)) != 0) {
@@ -116,7 +115,6 @@ static int GenerateOriginalDevUdid(unsigned char *ori, int size)
     result = PERM_ERRORCODE_SUCCESS;
 
 FREE_EXIT:
-    free(sn);
     free(cid);
 
 EXIT:

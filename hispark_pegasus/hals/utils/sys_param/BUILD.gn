@@ -15,6 +15,13 @@ static_library("hal_sysparam") {
   sources = [ "hal_sys_param.c" ]
   include_dirs = [
     "//base/startup/syspara_lite/hals",
-    "//utils/native/lite/include",
   ]
+  defines = [
+      "INCREMENTAL_VERSION=\"${ohos_version}\"",
+      "BUILD_TYPE=\"${ohos_build_type}\"",
+      "BUILD_USER=\"${ohos_build_user}\"",
+      "BUILD_TIME=\"${ohos_build_time}\"",
+      "BUILD_HOST=\"${ohos_build_host}\"",
+      "BUILD_ROOTHASH=\"${ohos_build_roothash}\"",
+    ]
 }
