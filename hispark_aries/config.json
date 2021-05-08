@@ -76,6 +76,7 @@
       {
         "subsystem": "drivers",
         "components": [
+          { "component": "drivers_framework", "features":[] },
           { "component": "adapter_uhdf", "features":[] },
           { "component": "peripheral_display", "features":[] },
           { "component": "peripheral_input", "features":[] },
