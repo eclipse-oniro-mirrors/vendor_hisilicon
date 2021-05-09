@@ -28,7 +28,7 @@
       {
         "subsystem": "distributed_schedule",
         "components": [
-          { "component": "system_ability_manager", "features":[] }
+          { "component": "samgr_lite", "features":[] }
         ]
       },
       {
@@ -46,22 +46,22 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "bootstrap", "features":[] },
-          { "component": "syspara", "features":[] }
+          { "component": "bootstrap_lite", "features":[] },
+          { "component": "syspara_lite", "features":[] }
         ]
       },
       {
         "subsystem": "communication",
         "components": [
-          { "component": "wlan", "features":[] },
-          { "component": "soft_bus", "features":[] },
+          { "component": "wifi_lite", "features":[] },
+          { "component": "softbus_lite", "features":[] },
           { "component": "wifi_aware", "features":[]}
         ]
       },
       {
         "subsystem": "update",
         "components": [
-          { "component": "hota", "features":[] }
+          { "component": "ota_lite", "features":[] }
         ]
       },
       {

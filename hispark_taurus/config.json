@@ -9,13 +9,14 @@
       {
         "subsystem": "aafwk",
         "components": [
-          { "component": "ability", "features":[ "enable_ohos_appexecfwk_feature_ability = true" ] }
+          { "component": "aafwk_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = true" ] }
         ]
       },
       {
         "subsystem": "applications",
         "components": [
           { "component": "camera_sample_app", "features":[] },
+          { "component": "camera_sample_ai", "features":[] },
           { "component": "camera_screensaver_app", "features":[] }
         ]
       },
@@ -28,9 +29,9 @@
       {
         "subsystem": "distributed_schedule",
         "components": [
-          { "component": "system_ability_manager", "features":[] },
-          { "component": "foundation", "features":[] },
-          { "component": "distributed_schedule", "features":[] }
+          { "component": "samgr_lite", "features":[] },
+          { "component": "safwk_lite", "features":[] },
+          { "component": "dmsfwk_lite", "features":[] }
         ]
       },
       {
@@ -38,7 +39,7 @@
         "components": [
           { "component": "hichainsdk", "features":[] },
           { "component": "permission", "features":[] },
-          { "component": "app_verify", "features":[] }
+          { "component": "appverify", "features":[] }
         ]
       },
       {
@@ -66,10 +67,10 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "syspara", "features":[] },
-          { "component": "bootstrap", "features":[] },
-          { "component": "init", "features":[] },
-          { "component": "appspawn", "features":[] }
+          { "component": "syspara_lite", "features":[] },
+          { "component": "bootstrap_lite", "features":[] },
+          { "component": "init_lite", "features":[] },
+          { "component": "appspawn_lite", "features":[] }
         ]
       },
       {
@@ -81,8 +82,8 @@
       {
         "subsystem": "communication",
         "components": [
-          { "component": "ipc", "features":[] },
-          { "component": "soft_bus", "features":[] },
+          { "component": "ipc_lite", "features":[] },
+          { "component": "softbus_lite", "features":[] },
           { "component": "wpa_supplicant", "features":[] }
         ]
       },
@@ -105,14 +106,14 @@
       {
         "subsystem": "appexecfwk",
         "components": [
-          { "component": "bundle_mgr", "features":[] }
+          { "component": "appexecfwk_lite", "features":[] }
         ]
       },
       {
         "subsystem": "global",
         "components": [
-          { "component": "global_resource_manager", "features":[] },
-          { "component": "global_i18n_kits", "features":[] }
+          { "component": "resmgr_lite", "features":[] },
+          { "component": "i18n_lite", "features":[] }
         ]
       },
       {
@@ -145,9 +146,9 @@
         ]
       },
       {
-        "subsystem": "pms",
+        "subsystem": "powermgr",
         "components": [
-          { "component": "powermanageservice", "features":[ "enable_screensaver = true" ] }
+          { "component": "powermgr_lite", "features":[ "enable_screensaver = true" ] }
         ]
       }
     ],
