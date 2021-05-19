@@ -79,6 +79,12 @@
         ]
       },
       {
+        "subsystem": "distributeddatamgr",
+        "components": [
+          { "component": "dbm_kv_store", "features":[] }
+        ]
+      },
+      {
         "subsystem": "vendor",
         "components": [
           { "component": "hi3861_sdk", "target": "//device/hisilicon/hispark_pegasus/sdk_liteos:wifiiot_sdk", "features":[] }
