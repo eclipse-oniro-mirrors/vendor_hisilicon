@@ -252,7 +252,7 @@
                     preload = 0;
                     permission = 0660;
                     moduleName = "HDF_INPUT_MANAGER";
-                    serviceName = "input_dev_manager";
+                    serviceName = "hdf_input_host";
                     deviceMatchAttr = "";
                 }
             }
@@ -263,7 +263,7 @@
                     preload = 0;
                     permission = 0660;
                     moduleName = "HDF_TOUCH";
-                    serviceName = "event1";
+                    serviceName = "hdf_input_event1";
                     deviceMatchAttr = "touch_device1";
                 }
             }
@@ -278,60 +278,16 @@
                     serviceName = "hdf_touch_gt911_service";
                     deviceMatchAttr = "zsj_gt911_5p5";
                 }
-/*
-                device1 :: deviceNode {
-                    policy = 0;
-                    priority = 140;
-                    preload = 0;
-                    permission = 0660;
-                    moduleName = "HDF_TOUCH_GT911";
-                    serviceName = "hdf_touch_gt911_service";
-                    deviceMatchAttr = "zsj_gt911_4p0";
-                }
-
-                device2 :: deviceNode {
-                    policy = 0;
-                    priority = 150;
-                    preload = 0;
-                    permission = 0660;
-                    moduleName = "HDF_TOUCH_GT911";
-                    serviceName = "hdf_touch_gt911_service";
-                    deviceMatchAttr = "tg_gt911_7p0";
-                }
-                device0 :: deviceNode {
-                    policy = 0;
-                    priority = 130;
-                    preload = 0;
-                    permission = 0660;
-                    moduleName = "HDF_TOUCH_FT6336";
-                    serviceName = "hdf_touch_ft6336_service";
-                    deviceMatchAttr = "st_ft6336_2p35";
-                }
-*/
             }
             device_hdf_hid :: device {
                 device0 :: deviceNode {
                     policy = 2;
-                    priority = 140;
-                    preload = 2;
-                    permission = 0660;
-                    moduleName = "HDF_HID";
-                    serviceName = "event2";
-                }
-            }
-/*
-            device_hdf_key :: device {
-                device0 :: deviceNode {
-                    policy = 2;
-                    priority = 130;
+                    priority = 200;
                     preload = 0;
                     permission = 0660;
-                    moduleName = "HDF_KEY";
-                    serviceName = "hdf_key_service0";
-                    deviceMatchAttr = "key_device0";
+                    moduleName = "HDF_HID";
                 }
             }
-*/
         }
 
         network :: host {
