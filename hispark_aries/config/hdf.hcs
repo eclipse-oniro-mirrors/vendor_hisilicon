@@ -3,7 +3,7 @@
 #include "../../../../device/hisilicon/hispark_aries/sdk_liteos/config/uart/uart_config.hcs"
 #include "../../../../device/hisilicon/hispark_aries/sdk_liteos/config/watchdog/watchdog_config.hcs"
 #include "../../../../device/hisilicon/hispark_aries/sdk_liteos/config/usb/usb_config.hcs"
-#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/config/sdio/sdio_config.hcs"
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/config/mmc/mmc_config.hcs"
 #include "../../../../device/hisilicon/hispark_aries/sdk_liteos/config/rtc/rtc_config.hcs"
 #include "../../../../device/hisilicon/hispark_aries/sdk_liteos/config/spi/spi_config.hcs"
 
