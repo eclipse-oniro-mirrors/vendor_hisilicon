@@ -155,7 +155,7 @@
                 }
                 device2 :: deviceNode {
                     policy = 1;
-                    priority = 10;
+                    priority = 30;
                     permission = 0644;
                     moduleName = "hi3516_mmc_driver";
                     serviceName = "HDF_PLATFORM_MMC_2";
