@@ -1,0 +1,141 @@
+{
+    "product_name": "ipcamera_hispark_taurus_linux",
+    "ohos_version": "OpenHarmony 1.0",
+    "device_company": "hisilicon",
+    "board": "hispark_taurus",
+    "kernel_type": "linux",
+    "kernel_version": "4.19",
+    "subsystems": [
+      {
+        "subsystem": "ace",
+        "components": [
+          { "component": "ace_engine_lite", "features":[ "" ] }
+        ]
+      },
+      {
+        "subsystem": "distributed_schedule",
+        "components": [
+          { "component": "samgr_lite", "features":[] },
+          { "component": "safwk_lite", "features":[] },
+          { "component": "dmsfwk_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hilog", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "security",
+        "components": [
+          { "component": "permission", "features":[] },
+          { "component": "dm-verity", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "multimedia",
+        "components": [
+          { "component": "media_service", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "bootstrap_lite", "features":[] },
+          { "component": "syspara_lite", "features":[] },
+          { "component": "init_lite", "features":[] },
+          { "component": "appspawn_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "kernel",
+        "components": [
+          { "component": "linux_4_1_9", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "communication",
+        "components": [
+          { "component": "softbus_lite", "features":[] },
+          { "component": "wpa_supplicant", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "utils",
+        "components": [
+          { "component": "kv_store", "features":[] },
+          { "component": "os_dump", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "vendor",
+        "components": [
+        ]
+      },
+      {
+        "subsystem": "update",
+        "components": [
+          { "component": "ota_lite", "features": [] },
+          { "component": "dupdate", "features": ["enable_timertask = true"] }
+        ]
+      },
+      {
+        "subsystem": "drivers",
+        "components": [
+        ]
+      },
+      {
+        "subsystem": "graphic",
+        "components": [
+          { "component": "graphic_utils", "features":[] },
+          { "component": "graphic_hals", "features":[] },
+          { "component": "ui", "features":[ "enable_graphic_font = true" ] },
+          { "component": "surface", "features":[] },
+          { "component": "wms", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "aafwk",
+        "components": [
+          { "component": "aafwk_lite", "features":[ "enable_ohos_appexecfwk_feature_aafwk_lite = true" ] }
+        ]
+      },
+      {
+        "subsystem": "appexecfwk",
+        "components": [
+          { "component": "appexecfwk_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "powermgr",
+        "components": [
+          { "component": "powermgr_lite", "features":[ "enable_screensaver = true" ] }
+        ]
+      },
+      {
+        "subsystem": "applications",
+        "components": [
+          { "component": "camera_sample_app", "features":[] },
+          { "component": "camera_screensaver_app", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "global",
+        "components": [
+          { "component": "global_cust", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "test",
+        "components": [
+          { "component": "developer_test", "features":[] },
+          { "component": "xts_acts", "features":[] },
+          { "component": "xts_tools", "features":[] }
+        ]
+      }
+    ],
+    "vendor_adapter_dir": "//device/hisilicon/hardware",
+    "third_party_dir": "//third_party",
+    "product_adapter_dir": "//vendor/hisilicon/hispark_taurus_linux/hals"
+  }
