@@ -1,0 +1,122 @@
+-
+  fs_dir_name: rootfs
+  fs_dirs:
+    -
+      source_dir: bin
+      target_dir: bin
+      ignore_files:
+        - Test.bin
+        - TestSuite.bin
+        - query.bin
+        - cve
+        - checksum
+      is_strip: TRUE
+    -
+      source_dir: libs
+      target_dir: lib
+      ignore_files:
+        - .a
+      is_strip: TRUE
+      dir_mode: 755
+      file_mode: 644
+    -
+      source_dir: usr/lib
+      target_dir: usr/lib
+      ignore_files:
+        - .a
+      is_strip: TRUE
+      dir_mode: 755
+      file_mode: 644
+    -
+      source_dir: config
+      target_dir: etc
+    -
+      source_dir: system
+      target_dir: system
+    -
+      target_dir: dev # "/dev" directory is mandatory for Linux init.
+    -
+      source_dir: sbin
+      target_dir: sbin
+    -
+      source_dir: usr/bin
+      target_dir: usr/bin
+    -
+      source_dir: usr/sbin
+      target_dir: usr/sbin
+    -
+      target_dir: proc
+    -
+      target_dir: mnt
+    -
+      target_dir: opt
+    -
+      target_dir: tmp
+    -
+      target_dir: var
+    -
+      target_dir: sys
+    -
+      source_dir: etc
+      target_dir: etc
+    -
+      source_dir: vendor
+      target_dir: vendor
+    -
+      target_dir: storage
+    -
+      source_dir: sdk_linux/src_tmp/ko
+      target_dir: ko
+      dir_mode: 755
+      file_mode: 755
+
+  fs_filemode:
+    -
+      file_dir: lib/ld-uClibc-0.9.33.2.so
+      file_mode: 555
+    -
+      file_dir: lib/ld-2.24.so
+      file_mode: 555
+    -
+      file_dir: etc/init.cfg
+      file_mode: 400
+  fs_symlink:
+    -
+      source: libc.so
+      link_name: ${fs_dir}/lib/ld-musl-arm.so.1
+    -
+      source: mksh
+      link_name: ${fs_dir}/bin/sh
+    -
+      source: ./
+      link_name: ${fs_dir}/usr/lib/a7_softfp_neon-vfpv4
+    -
+      source: mksh
+      link_name: ${fs_dir}/bin/shell
+  fs_make_cmd:
+    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4
+-
+  fs_dir_name: userfs
+  fs_dirs:
+    -
+      source_dir: storage/etc
+      target_dir: etc
+    -
+      source_dir: data
+      target_dir: data
+  fs_make_cmd:
+    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4
+-
+  fs_attr:
+    dmverity_enable:
+      fs_dir_name: systemfs
+      fs_make_cmd:
+      - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4
+-
+  fs_attr:
+    dmverity_enable:
+      fs_dir_name: systemhashfs
+      fs_make_cmd:
+      - ${root_path}/build/lite/make_rootfs/dmverity_linux.sh ${out_path} veritysetup
+      - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 6
+      - ${root_path}/build/lite/make_rootfs/dmverity_linux.sh ${out_path} addS82ohos

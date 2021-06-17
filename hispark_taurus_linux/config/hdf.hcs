@@ -1,0 +1,20 @@
+#include "../../../../device/hisilicon/hi3516dv300/config/gpio/gpio_config.hcs"
+#include "../../../../device/hisilicon/hi3516dv300/config/i2c/i2c_config_linux.hcs"
+#include "../../../../device/hisilicon/hi3516dv300/config/watchdog/watchdog_config_linux.hcs"
+#include "../../../../device/hisilicon/hi3516dv300/config/pwm/pwm_config_linux.hcs"
+#include "../../../../device/hisilicon/hi3516dv300/config/uart/uart_config_linux.hcs"
+#include "../../../../device/hisilicon/hi3516dv300/config/mmc/sdio_config_linux.hcs"
+#include "../../../../device/hisilicon/hi3516dv300/config/mmc/emmc_config_linux.hcs"
+#include "../../../../device/hisilicon/hi3516dv300/config/spi/spi_config_linux.hcs"
+
+
+#include "device_info/device_info.hcs"
+#include "lcd/lcd_config.hcs"
+#include "input/input_config.hcs"
+#include "wifi/wlan_platform.hcs"
+#include "wifi/wlan_chip_hi3881.hcs"
+#include "sensor/sensor_config.hcs"
+
+root {
+    module = "hisilicon,hi35xx_chip";
+}
