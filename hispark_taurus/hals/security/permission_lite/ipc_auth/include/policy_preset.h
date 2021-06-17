@@ -204,16 +204,26 @@ FeaturePolicy aiFeature[] = {
     },
 };
 
-FeaturePolicy PowerFeature[] = {
+FeaturePolicy powermgrFeature[] = {
     {
-        "power_feature",
+        "screensaver",
         {
             {
                 .type=RANGE,
                 .uidMin=0,
                 .uidMax=1000,
             },
-        }
+        },
+    },
+    {
+        "runninglock",
+        {
+            {
+                .type=RANGE,
+                .uidMin=0,
+                .uidMax=__INT_MAX__,
+            },
+        },
     },
 };
 
@@ -241,7 +251,7 @@ static PolicySetting g_presetPolicies[] = {
     {"bundle_daemon", bdsFeature, 1},
     {"sensor_service", sensorFeature, 1},
     {"ai_service", aiFeature, 1},
-    {"power_service", PowerFeature, 1},
+    {"powermgr", powermgrFeature, 2},
     {"timertask_srv", timertaskFeature, 1}
 };
 
