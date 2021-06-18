@@ -76,8 +76,7 @@
       {
         "subsystem": "update",
         "components": [
-          { "component": "ota_lite", "features": [] },
-          { "component": "dupdate", "features": ["enable_timertask = true"] }
+          { "component": "ota_lite", "features": [] }
         ]
       },
       {
