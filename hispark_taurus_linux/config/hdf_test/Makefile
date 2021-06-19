@@ -11,24 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifneq ($(findstring $(shell uname),Linux),)
-HCGEN_PATH := linux-x86/bin/hc-gen
-else
-HCGEN_PATH := win-x86/bin/hc-gen.exe
-endif
-
 ifeq ($(LOCAL_HCS_ROOT),)
-LOCAL_HCS_ROOT := $(PRODUCT_PATH)
+  LOCAL_HCS_ROOT := $(PRODUCT_PATH)
 endif
 
-SOURCE_ROOT:=$(abspath ../../../../)
+SOURCE_ROOT:=$(abspath ../../../../../)
 
-HC_GEN := hc-gen
-BUILD_IN_HC_GEN := $(SOURCE_ROOT)/prebuilts/build-tools/$(HCGEN_PATH)
-ifneq ($(wildcard $(BUILD_IN_HC_GEN)),)
-HC_GEN := $(BUILD_IN_HC_GEN)
-endif
-
+HC_GEN_DIR := $(abspath $(SOURCE_ROOT)/drivers/framework/tools/hc-gen)
+HC_GEN := $(HC_GEN_DIR)/build/hc-gen
 LOCAL_HCS_ROOT := $(abspath $(dir $(realpath $(lastword $(MAKEFILE_LIST)))))
 
 HCS_DIR := $(LOCAL_HCS_ROOT)
@@ -46,14 +36,17 @@ $(obj)/$(HCS_OBJ): $(CONFIG_GEN_HEX_SRC)
 	$(Q)$(CC) $(c_flags) -c -o $@ $<
 	$(Q)rm -f $<
 
-$(CONFIG_GEN_HEX_SRC):  $(LOCAL_HCS_ROOT)/%_hcs_hex.c: $(HCS_DIR)/%.hcs
+$(CONFIG_GEN_HEX_SRC):  $(LOCAL_HCS_ROOT)/%_hcs_hex.c: $(HCS_DIR)/%.hcs | $(HC_GEN)
 	$(Q)echo gen hdf built-in config
 	$(Q)if [ ! -d $(dir $@) ]; then mkdir -p $(dir $@); fi
 	$(Q)$(HC_GEN) $(HCB_FLAGS) -o $(subst _hex.c,,$(@)) $<
 
-$(CONFIG_GEN_SRCS): $(CONFIG_OUT_DIR)%.c: $(HCS_DIR)/%.hcs
+$(CONFIG_GEN_SRCS): $(CONFIG_OUT_DIR)%.c: $(HCS_DIR)/%.hcs | $(HC_GEN)
 	$(Q)echo gen hdf driver config
 	$(Q)if [ ! -d $(dir $@) ]; then mkdir -p $(dir $@); fi
 	$(Q)$(HC_GEN) -t -o $@ $<
+
+$(HC_GEN):
+	$(HIDE)make -C $(HC_GEN_DIR)
 
 obj-$(CONFIG_DRIVERS_HDF) += $(HCS_OBJ)
