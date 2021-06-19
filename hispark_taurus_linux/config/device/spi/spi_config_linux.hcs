@@ -15,14 +15,14 @@ root {
             }
 
             controller_0x120c1000 :: spi_controller {
-                busNum = 1;
                 match_attr = "hisilicon_hi35xx_spi_1";
+                busNum = 1;
                 numCs = 2;
             }
 
             controller_0x120c2000 :: spi_controller {
-                busNum = 2;
                 match_attr = "hisilicon_hi35xx_spi_2";
+                busNum = 2;
                 numCs = 1;
             }
         }
