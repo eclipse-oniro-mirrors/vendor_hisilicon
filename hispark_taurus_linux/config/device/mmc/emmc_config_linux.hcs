@@ -6,6 +6,7 @@ root {
                 hostId = 0;
                 devType = 0;
             }
+
             controller_0x00 :: emmc_controller {
                 match_attr = "hisilicon_hi35xx_emmc_0";
             }
