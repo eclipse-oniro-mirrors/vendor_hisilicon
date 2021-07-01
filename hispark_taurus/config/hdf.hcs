@@ -15,6 +15,8 @@
 #include "lcd/lcd_config.hcs"
 #include "input/input_config.hcs"
 #include "sensor/sensor_config.hcs"
+#include "vibrator/vibrator_config.hcs"
+#include "vibrator/linear_vibrator_config.hcs"
 
 root {
     module = "hisilicon,hi35xx_chip";
