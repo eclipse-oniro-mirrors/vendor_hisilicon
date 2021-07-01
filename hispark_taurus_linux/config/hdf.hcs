@@ -13,6 +13,8 @@
 #include "wifi/wlan_platform.hcs"
 #include "wifi/wlan_chip_hi3881.hcs"
 #include "sensor/sensor_config.hcs"
+#include "vibrator/vibrator_config.hcs"
+#include "vibrator/linear_vibrator_config.hcs"
 
 root {
     module = "hisilicon,hi35xx_chip";

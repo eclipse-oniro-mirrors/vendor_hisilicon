@@ -328,8 +328,33 @@
                     preload = 2;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_ACCEL";
-                    serviceName = "sensor_accel";
+                    serviceName = "hdf_sensor_accel";
                     deviceMatchAttr = "hdf_sensor_accel_driver";
+                }
+            }
+        }
+        vibrator :: host {
+            hostName = "vibrator_host";
+            device_vibrator :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_VIBRATOR";
+                    serviceName = "hdf_misc_vibrator";
+                    deviceMatchAttr = "hdf_vibrator_driver";
+                }
+            }
+            device_linear_vibrator :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 105;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_LINEAR_VIBRATOR";
+                    serviceName = "hdf_misc_linear_vibrator";
+                    deviceMatchAttr = "hdf_linear_vibrator_driver";
                 }
             }
         }
