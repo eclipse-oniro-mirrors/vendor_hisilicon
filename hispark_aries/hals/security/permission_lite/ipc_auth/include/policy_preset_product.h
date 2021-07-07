@@ -18,7 +18,7 @@
 
 #include "policy_define.h"
 
-
+#define POLICY_PRODUCT 0 //if config g_productPolicies,modify as 1
 static PolicySetting g_productPolicies[] = {
 
 };
