@@ -23,7 +23,8 @@
         "components": [
           { "component": "hilog_lite", "features":[] },
           { "component": "hievent_lite", "features":[] },
-          { "component": "blackbox", "features":[] }
+          { "component": "blackbox", "features":[] },
+          { "component": "hidumper_mini", "features":[] }
         ]
       },
       {
