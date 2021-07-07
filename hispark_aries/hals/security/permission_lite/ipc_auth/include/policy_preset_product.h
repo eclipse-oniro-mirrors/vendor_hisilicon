@@ -23,6 +23,6 @@ static PolicySetting g_productPolicies[] = {
 
 };
 
-static int g_productPolicySize = sizeof(g_presetPolicies) / sizeof(PolicySetting);
+static int g_productPolicySize = sizeof(g_productPolicies) / sizeof(PolicySetting);
 
 #endif // POLICY_PERSET_PRODUCT_H
