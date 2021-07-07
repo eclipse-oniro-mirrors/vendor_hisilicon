@@ -18,11 +18,11 @@
 
 #include "policy_define.h"
 
-
+#define POLICY_PRODUCT 0 //if config g_productPolicies,modify as 1
 static PolicySetting g_productPolicies[] = {
 
 };
 
-static int g_productPolicySize = sizeof(g_presetPolicies) / sizeof(PolicySetting);
+static int g_productPolicySize = sizeof(g_productPolicies) / sizeof(PolicySetting);
 
 #endif // POLICY_PERSET_PRODUCT_H
