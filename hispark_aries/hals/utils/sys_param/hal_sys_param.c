@@ -26,7 +26,6 @@ static const char OHOS_SOFTWARE_MODEL[] = {"****"};
 static const char OHOS_HARDWARE_MODEL[] = {"****"};
 static const char OHOS_HARDWARE_PROFILE[] = {"aout:true,display:true"};
 static const char OHOS_BOOTLOADER_VERSION[] = {"bootloader"};
-static const char OHOS_SECURITY_PATCH_TAG[] = {"2020-09-01"};
 static const char OHOS_ABI_LIST[] = {"****"};
 static const char OHOS_SERIAL[] = {"1234567890"};  // provided by OEM.
 
@@ -167,19 +166,6 @@ char* HalGetBootloaderVersion(void)
         return NULL;
     }
     if (strcpy_s(value, strlen(OHOS_BOOTLOADER_VERSION) + 1, OHOS_BOOTLOADER_VERSION) != 0) {
-        free(value);
-        return NULL;
-    }
-    return value;
-}
-
-char* HalGetSecurityPatchTag(void)
-{
-    char* value = (char*)malloc(strlen(OHOS_SECURITY_PATCH_TAG) + 1);
-    if (value == NULL) {
-        return NULL;
-    }
-    if (strcpy_s(value, strlen(OHOS_SECURITY_PATCH_TAG) + 1, OHOS_SECURITY_PATCH_TAG) != 0) {
         free(value);
         return NULL;
     }
