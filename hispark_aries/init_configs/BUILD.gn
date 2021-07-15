@@ -15,3 +15,8 @@ copy("init_configs") {
   sources = [ "init_liteos_a_3518ev300.cfg" ]
   outputs = [ "$root_out_dir/config/init.cfg" ]
 }
+
+copy("init_configs_mksh") {
+  sources = [ "init_liteos_a_3518ev300_mksh.cfg" ]
+  outputs = [ "$root_out_dir/config/init_mksh.cfg" ]
+}

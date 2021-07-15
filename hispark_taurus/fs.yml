@@ -1,4 +1,91 @@
 -
+  fs_dir_name: mksh_rootfs
+  fs_dirs:
+    -
+      source_dir: bin
+      target_dir: bin
+      ignore_files:
+        - Test.bin
+        - TestSuite.bin
+        - query.bin
+        - cve
+        - checksum
+      is_strip: TRUE
+      dir_mode: 555
+      file_mode: 555
+    -
+      source_dir: libs
+      target_dir: lib
+      ignore_files:
+        - .a
+      is_strip: TRUE
+      dir_mode: 555
+      file_mode: 555
+    -
+      source_dir: usr/lib
+      target_dir: usr/lib
+      ignore_files:
+        - .a
+      is_strip: TRUE
+      dir_mode: 555
+      file_mode: 555
+    -
+      source_dir: usr/bin
+      target_dir: usr/bin
+      is_strip: TRUE
+      dir_mode: 555
+      file_mode: 555
+    -
+      source_dir: vendor
+      target_dir: vendor
+      dir_mode: 555
+      file_mode: 444
+    -
+      source_dir: config
+      target_dir: etc
+      ignore_files:
+        - init.cfg
+      dir_mode: 555
+      file_mode: 444
+    -
+      source_dir: system
+      target_dir: system
+      dir_mode: 555
+      file_mode: 444
+    -
+      source_dir: etc
+      target_dir: etc
+      dir_mode: 555
+      file_mode: 444
+    -
+      source_dir: obj/foundation/distributedschedule/samgr_lite/config
+      target_dir: etc
+      dir_mode: 555
+      file_mode: 444
+    -
+      target_dir: system/external
+    -
+      target_dir: proc
+    -
+      target_dir: dev
+  fs_filemode:
+    -
+      file_dir: "etc/init.cfg"
+      file_mode: 400
+    -
+      file_dir: "bin/init"
+      file_mode: 500
+    -
+      file_dir: "bin/mksh"
+      file_mode: 500
+  fs_make_cmd:
+    - chmod 777 ${fs_dir}/etc
+    - chmod 777 ${fs_dir}/etc/init_mksh.cfg
+    - mv ${fs_dir}/etc/init_mksh.cfg ${fs_dir}/etc/init.cfg
+    - chmod 400 ${fs_dir}/etc/init.cfg
+    - chmod 555 ${fs_dir}/etc
+    - ${root_path}/build/lite/make_rootfs/rootfsimg_liteos.sh ${fs_dir} vfat
+-
   fs_dir_name: rootfs
   fs_dirs:
     -
@@ -43,6 +130,8 @@
     -
       source_dir: config
       target_dir: etc
+      ignore_files:
+        - init_mksh.cfg
       dir_mode: 555
       file_mode: 444
     -
