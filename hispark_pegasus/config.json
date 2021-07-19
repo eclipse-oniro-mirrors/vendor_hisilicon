@@ -40,7 +40,11 @@
           { "component": "huks", "features":
             [
               "disable_huks_binary = false",
-              "disable_authenticate = false"
+              "disable_authenticate = false",
+              "huks_use_lite_storage = true",
+              "huks_use_hardware_root_key = true",
+              "huks_config_file = \"hks_config_lite.h\"",
+              "huks_mbedtls_path = \"//device/hisilicon/hispark_pegasus/sdk_liteos/third_party/mbedtls/include/\""
             ]
           }
         ]
