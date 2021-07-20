@@ -68,6 +68,10 @@
       target_dir: proc
     -
       target_dir: dev
+    -
+      target_dir: storage
+    -
+      target_dir: userdata
   fs_filemode:
     -
       file_dir: "etc/init.cfg"
