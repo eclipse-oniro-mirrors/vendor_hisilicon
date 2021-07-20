@@ -339,7 +339,7 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_VIBRATOR";
                     serviceName = "hdf_misc_vibrator";
@@ -350,7 +350,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 105;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_LINEAR_VIBRATOR";
                     serviceName = "hdf_misc_linear_vibrator";
