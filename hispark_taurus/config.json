@@ -128,7 +128,6 @@
       {
         "subsystem": "vendor",
         "components": [
-          { "component": "hi3516dv300_init", "features":[] },
           { "component": "hardware", "features":[] },
           { "component": "middleware", "features":[] }
         ]

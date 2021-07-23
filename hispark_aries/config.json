@@ -107,7 +107,6 @@
         "subsystem": "vendor",
         "components": [
           { "component": "middleware", "features":[] },
-          { "component": "hi3518ev300_init", "features":[] },
           { "component": "hardware", "features":[] }
         ]
       },
