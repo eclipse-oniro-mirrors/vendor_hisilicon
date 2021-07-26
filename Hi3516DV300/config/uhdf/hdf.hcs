@@ -1,0 +1,7 @@
+#include "device_info.hcs"
+#include "usb_pnp_device.hcs"
+#include "usb_cdcacm.hcs"
+
+root {
+    module = "default";
+}

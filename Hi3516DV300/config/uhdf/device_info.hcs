@@ -1,0 +1,132 @@
+ root {
+    device_info {
+        match_attr = "hdf_manager";
+        template host {
+            hostName = "";
+            priority = 100;
+            template device {
+                template deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "";
+                    serviceName = "";
+                    deviceMatchAttr = "";
+                }
+            }
+        }
+        platform :: host {
+            hostName = "sample_host";
+            priority = 50;
+            sample_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libsample_driver.z.so";
+                    serviceName = "sample_driver_service";
+                }
+            }
+        }
+        usbfnMaster :: host {
+            hostName = "usbfnMaster_host";
+            priority = 50;
+            usbfn_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 80;
+                    preload = 2;
+                    moduleName = "libusbfn_master.z.so";
+                    serviceName = "usbfn_master";
+                    deviceMatchAttr = "usbfn_master_driver";
+                }
+            }
+            ecm_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 81;
+                    moduleName = "libusbfn_cdcecm.z.so";
+                    serviceName = "usbfn_cdcecm";
+                    deviceMatchAttr = "usbfn_cdcecm_driver";
+                }
+            }
+            acm_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libusbfn_cdcacm.z.so";
+                    serviceName = "usbfn_cdcacm";
+                    deviceMatchAttr = "usbfn_cdcacm_driver";
+                }
+            }
+        }
+        power :: host {
+            hostName = "power_host";
+            priority = 50;
+            battery_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libbatteryd.z.so";
+                    serviceName = "batteryd";
+                }
+            }
+        }
+        wlan :: host {
+            hostName = "wifi_host";
+            priority = 50;
+            wifi_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libwifi_hdi_device.z.so";
+                    serviceName = "wlan_hal_service";
+                }
+            }
+        }
+        audio :: host {
+            hostName = "audio_hdi_server_host";
+            priority = 50;
+            audio_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libaudio_hdi_adapter_server.z.so";
+                    serviceName = "audio_hdi_service";
+                }
+            }
+        }
+        hdi_server :: host {
+            hostName = "camera_host";
+            priority = 50;
+            camera_device :: device {
+                 device0 :: deviceNode {
+                     policy = 2;
+                     priority = 100;
+                     moduleName = "libcamera_hdi_impl.z.so";
+                     serviceName = "camera_service";
+                 }
+             }
+	        display_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 120;
+                    moduleName = "libhdi_display_layer_service.z.so";
+                    serviceName = "hdi_display_layer_service";
+                }
+            }
+        }
+        input_hal :: host {
+            hostName = "input_user_host";
+            priority = 50;
+            input_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 150;
+                    moduleName = "libhdf_input_hotplug.z.so";
+                    serviceName = "input_service";
+                }
+            }
+        }
+    }
+}

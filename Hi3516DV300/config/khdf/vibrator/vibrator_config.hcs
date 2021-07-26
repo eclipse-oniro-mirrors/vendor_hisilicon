@@ -1,0 +1,16 @@
+root {
+    vibratorConfig {
+        boardConfig {
+            match_attr = "hdf_vibrator_driver";
+            vibratorAttr {
+                /* 0:rotor 1:linear */
+                deviceType = 1;
+                supportPreset = 1;
+            }
+            vibratorHapticConfig {
+                vibrator_haptic_default_time = [1, 0, 600, 800, 600, 1100, 0]; // time seq
+                vibrator_haptic_default_effect = [0, 0, 3, 800, 1]; // build-in effect
+            }
+        }
+    }
+}
