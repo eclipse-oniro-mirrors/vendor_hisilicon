@@ -6,6 +6,7 @@ root {
             bus_num  = 2;
             dev_addr = 0x0;
             reg_addr = 0;
+            reg_len = 1;
             buf_size = 7;
         }
     }
