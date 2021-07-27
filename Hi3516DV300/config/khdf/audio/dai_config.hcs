@@ -1,0 +1,12 @@
+root {
+    platfrom {
+        template dai_controller {
+            match_attr = "";
+            serviceName = "";
+        }
+        controller_0x120c1020 :: dai_controller {
+            match_attr = "hdf_dai_driver";
+            serviceName = "dai_service";
+        }
+    }
+}
