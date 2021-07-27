@@ -40,6 +40,15 @@ root {
                     deviceMatchAttr = "I2C_TEST";
                     serviceName = "I2C_TEST";
                 }
+                adc_tester :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_ADC_TEST";
+                    deviceMatchAttr = "ADC_TEST";
+                    serviceName = "ADC_TEST";
+                }
                 watchdog_tester :: deviceNode {
                     policy = 1;
                     priority = 105;
