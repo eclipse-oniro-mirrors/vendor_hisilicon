@@ -58,7 +58,7 @@
       {
         "subsystem": "communication",
         "components": [
-          { "component": "softbus_lite", "features":[] },
+          { "component": "dsoftbus", "features":[] },
           { "component": "wpa_supplicant", "features":[] }
         ]
       },
