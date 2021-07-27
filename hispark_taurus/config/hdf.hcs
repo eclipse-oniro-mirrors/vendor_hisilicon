@@ -1,4 +1,5 @@
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/config/i2c/i2c_config.hcs"
+#include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/config/adc/adc_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/config/gpio/gpio_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/config/uart/uart_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/config/mmc/mmc_config.hcs"
