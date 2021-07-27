@@ -100,6 +100,23 @@
                     deviceMatchAttr = "hisilicon_hi35xx_i2c";
                 }
             }
+            device_adc :: device {
+                device0 :: deviceNode {
+                    policy = 0;
+                    priority = 50;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_ADC_MANAGER";
+                    serviceName = "HDF_PLATFORM_ADC_MANAGER";
+                }
+                device1 :: deviceNode {
+                    policy = 0;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "hi35xx_adc_driver";
+                    serviceName = "HI35XX_ADC_DRIVER";
+                    deviceMatchAttr = "hisilicon_hi35xx_adc";
+                }
+            }
             device_dmac :: device {
                 device0 :: deviceNode {
                     policy = 1;
