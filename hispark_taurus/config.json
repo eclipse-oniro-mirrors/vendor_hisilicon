@@ -40,7 +40,8 @@
         "components": [
           { "component": "hichainsdk", "features":[] },
           { "component": "permission", "features":[] },
-          { "component": "appverify", "features":[] }
+          { "component": "appverify", "features":[] },
+          { "component": "deviceauth_lite", "features":[] }
         ]
       },
       {
