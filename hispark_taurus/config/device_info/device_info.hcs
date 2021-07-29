@@ -310,6 +310,26 @@
                     serviceName = "hisi";
                 }
             }
+            device_eth :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_ETHERNET";
+                    deviceMatchAttr = "hdf_eth_driver";
+                    serviceName = "hdf_ethernet";
+                }
+            }
+            device_eth_chips :: device {
+                device0 :: deviceNode {
+                    policy = 0;
+                    preload = 0;
+                    moduleName = "HDF_ETHERNET_CHIPS";
+                    deviceMatchAttr = "hdf_eth_chips_hisi";
+                    serviceName = "hisi_eth";
+                }
+            }
         }
         sensor :: host {
             hostName = "sensor_host";

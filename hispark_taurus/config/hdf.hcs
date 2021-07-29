@@ -12,6 +12,7 @@
 #include "device_info/device_info.hcs"
 #include "wifi/wlan_platform.hcs"
 #include "wifi/wlan_chip_hi3881.hcs"
+#include "ethernet/eth_config.hcs"
 #include "lcd/lcd_config.hcs"
 #include "input/input_config.hcs"
 #include "sensor/sensor_config.hcs"
