@@ -163,7 +163,7 @@
             device_hdf_disp :: device {
                 device0 :: deviceNode {
                     policy = 2;
-                    priority = 200;
+                    priority = 140;
                     permission = 0660;
                     moduleName = "HDF_DISP";
                     serviceName = "hdf_disp";
@@ -172,7 +172,7 @@
             device_hi35xx_disp :: device {
                 device0 :: deviceNode {
                     policy = 0;
-                    priority = 199;
+                    priority = 120;
                     moduleName = "HI351XX_DISP";
                 }
             }
@@ -180,21 +180,8 @@
                 device0 :: deviceNode {
                     policy = 0;
                     priority = 100;
-                    preload = 2;
-                    moduleName = "LITE_LCDKIT";
-                    deviceMatchAttr = "hdf_lcdkit_driver";
-                }
-                device1 :: deviceNode {
-                    policy = 0;
-                    priority = 100;
                     preload = 0;
                     moduleName = "LCD_ICN9700";
-                }
-                device2 :: deviceNode {
-                    policy = 0;
-                    priority = 100;
-                    preload = 2;
-                    moduleName = "LCD_ST7789";
                 }
             }
         }
