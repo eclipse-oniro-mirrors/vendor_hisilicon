@@ -12,13 +12,7 @@
         - checksum
       is_strip: TRUE
     -
-      source_dir: libs
       target_dir: lib
-      ignore_files:
-        - .a
-      is_strip: TRUE
-      dir_mode: 755
-      file_mode: 644
     -
       source_dir: usr/lib
       target_dir: usr/lib
@@ -82,7 +76,7 @@
       file_mode: 400
   fs_symlink:
     -
-      source: libc.so
+      source: /usr/lib/libc.so
       link_name: ${fs_dir}/lib/ld-musl-arm.so.1
     -
       source: mksh
