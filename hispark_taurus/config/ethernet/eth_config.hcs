@@ -1,0 +1,27 @@
+root {
+    module = "ethernet";
+    eth_config {
+        match_attr = "hdf_eth_driver";
+        ethList {
+            device0 {
+                deviceInstId = 0;           /* Ethernet device ID */
+                isSetDefault = 1;           /* Not Default(0); Default(1) */
+                driverName = "hieth-sf";
+                hwXmitq = 12;
+                qSize = 24;
+                port = 0;                   /* UP_PORT(0); DOWN_PORT(1) */
+                MAC {
+                    regBase = 0x10010000;
+                    irqVector = 64;
+                    mdioFrqDiv = 2;
+                    txBusy = 0;
+                    iobase = 0x88010000;    /* virtual io addr */
+                    regOffSize = 0x2000;
+                }
+                PHY {
+                    phyMode = 1;            /* PHY_INTERFACE_MODE_MII(0); PHY_INTERFACE_MODE_RMII(1) */
+                }
+            }
+        }
+    }
+}
