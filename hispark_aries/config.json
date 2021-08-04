@@ -23,8 +23,7 @@
         "subsystem": "distributed_schedule",
         "components": [
           { "component": "samgr_lite", "features":[] },
-          { "component": "safwk_lite", "features":[] },
-          { "component": "dmsfwk_lite", "features":[] }
+          { "component": "safwk_lite", "features":[] }
         ]
       },
       {
@@ -76,7 +75,6 @@
         "subsystem": "communication",
         "components": [
           { "component": "ipc_lite", "features":[] },
-          { "component": "dsoftbus", "features":[] },
           { "component": "wpa_supplicant", "features":[] }
         ]
       },
