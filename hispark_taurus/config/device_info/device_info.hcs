@@ -390,5 +390,122 @@
         media :: host {
 
         }
+        usbfnMaster :: host {
+            hostName = "usbfnMaster_host";
+            usbfnMaster_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "usbfn_master";
+                    serviceName = "usbfn_master";
+                    deviceMatchAttr = "usbfn_master_driver";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "usbfn_cdcacm";
+                    serviceName = "usbfn_cdcacm";
+                }
+                device2 :: deviceNode {
+                    policy = 2;
+                    priority = 120;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "usbfn_cdcecm";
+                    serviceName = "usbfn_cdcecm";
+                }
+            }
+        }
+        usb_pnp_lite :: host {
+            hostName = "usb_pnp_lite_host";
+            device_usb_pnp_lite :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_USB_PNP_NOTIFY";
+                    serviceName = "hdf_usb_pnp_notify_service";
+                    deviceMatchAttr = "hdf_usb_pnp_notify_config";
+                }
+            }
+            device_usb_pnp_manager_lite :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 150;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_USB_PNP_MANAGER";
+                    serviceName = "hdf_usb_pnp_manager_service";
+                    deviceMatchAttr = "hdf_usb_pnp_manager_config";
+                }
+            }
+        }
+        usb_test_pnp_lite :: host {
+            hostName = "usb_test_pnp_lite_host";
+            device_usb_test_pnp_lite :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 160;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "usbhost_acm";
+                    serviceName = "usbhost_acm_pnp_service";
+                }
+            }
+            device_usb_raw_pnp_lite :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 160;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "usbhost_acm_rawapi";
+                    serviceName = "usbhost_acm_rawapi_service";
+                }
+            }
+            device_usb_net_pnp_lite :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 160;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "usbhost_ecm";
+                    serviceName = "usbhost_ecm_pnp_service";
+                }
+            }
+        }
+        usb_speed_lite :: host {
+            hostName = "usb_speed_lite_host";
+            usb_speed_lite_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 200;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "usb_sdkapispeed";
+                    serviceName = "usb_sdkapispeed_service";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 200;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "usb_rawapispeed";
+                    serviceName = "usb_rawapispeed_service";
+                }
+                device2 :: deviceNode {
+                    policy = 2;
+                    priority = 200;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "usb_nosdkspeed";
+                    serviceName = "usb_nosdkspeed_service";
+                }
+            }
+        }
     }
 }

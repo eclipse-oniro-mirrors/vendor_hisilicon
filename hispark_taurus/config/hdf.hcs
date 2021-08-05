@@ -19,6 +19,8 @@
 #include "sensor/sensor_config.hcs"
 #include "vibrator/vibrator_config.hcs"
 #include "vibrator/linear_vibrator_config.hcs"
+#include "usb/usb_device.hcs"
+#include "usb/usb_pnp_device.hcs"
 
 root {
     module = "hisilicon,hi35xx_chip";
