@@ -29,17 +29,8 @@
 
 import("//drivers/adapter/khdf/liteos/hdf.gni")
 
-module_switch = defined(LOSCFG_DRIVERS_HDF) && !defined(LOSCFG_DRIVERS_HDF_TEST)
-module_name = "hdf_config"
+module_switch = defined(LOSCFG_DRIVERS_HDF_TEST)
+module_name = "hdf_test_config"
 hdf_driver(module_name) {
-  hcs_sources = [ "hdf.hcs" ]
-}
-
-group("config") {
-  public_deps = [ ":$module_name" ]
-  deps = [ "hdf_test" ]
-}
-
-config("public") {
-  configs = [ "hdf_test:public" ]
+  hcs_sources = [ "hdf_test.hcs" ]
 }
