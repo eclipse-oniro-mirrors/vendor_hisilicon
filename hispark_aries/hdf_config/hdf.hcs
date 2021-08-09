@@ -1,0 +1,16 @@
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/hdf_config/i2c/i2c_config.hcs"
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/hdf_config/gpio/gpio_config.hcs"
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/hdf_config/uart/uart_config.hcs"
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/hdf_config/watchdog/watchdog_config.hcs"
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/hdf_config/usb/usb_config.hcs"
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/hdf_config/mmc/mmc_config.hcs"
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/hdf_config/rtc/rtc_config.hcs"
+#include "../../../../device/hisilicon/hispark_aries/sdk_liteos/hdf_config/spi/spi_config.hcs"
+
+#include "device_info/device_info.hcs"
+#include "wifi/wlan_platform.hcs"
+#include "wifi/wlan_chip_hi3881.hcs"
+
+root {
+    module = "hisilicon,hi35xx_chip";
+}
