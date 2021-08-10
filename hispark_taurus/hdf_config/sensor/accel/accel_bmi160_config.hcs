@@ -7,7 +7,7 @@ root {
             vendorName = "borsh_bmi160"; // max string length is 16 bytes
             sensorTypeId = 1; // enum SensorTypeTag
             sensorId = 1; // user define sensor id
-            power = 230;
+            power = 850;
         }
         sensorBusConfig :: sensorBusInfo {
             busType = 0; // 0:i2c 1:spi
