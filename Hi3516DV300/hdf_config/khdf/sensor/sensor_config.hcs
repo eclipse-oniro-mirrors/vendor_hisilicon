@@ -1,1 +1,2 @@
-#include "accel/bmi160_config.hcs"
+#include "accel/accel_bmi160_config.hcs"
+#include "gyro/gyro_bmi160_config.hcs"
