@@ -142,7 +142,6 @@
         ]
       }
     ],
-    "vendor_adapter_dir": "//device/hisilicon/hardware",
     "third_party_dir": "//third_party",
     "product_adapter_dir": "//vendor/hisilicon/hispark_taurus_linux/hals"
   }
