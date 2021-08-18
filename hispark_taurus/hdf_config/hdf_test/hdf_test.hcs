@@ -2,6 +2,7 @@
 #include "hdf_test_manager/device_info.hcs"
 #include "gpio_test_config.hcs"
 #include "i2c_test_config.hcs"
+#include "i2s_test_config.hcs"
 #include "adc_test_config.hcs"
 #include "spi_test_config.hcs"
 #include "uart_test_config.hcs"

@@ -21,6 +21,17 @@ root {
                     serviceName = "sample_service";
                 }
             }
+            device_platform_i2s_test :: device {
+                i2s_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_I2S_TEST";
+                    deviceMatchAttr = "I2S_TEST";
+                    serviceName = "I2S_TEST";
+                }
+            }
             device_platform_test :: device {
                 gpio_tester :: deviceNode {
                     policy = 1;
@@ -39,15 +50,6 @@ root {
                     moduleName = "PLATFORM_I2C_TEST";
                     deviceMatchAttr = "I2C_TEST";
                     serviceName = "I2C_TEST";
-                }
-		i2s_tester :: deviceNode {
-                    policy = 2;
-                    priority = 101;
-                    preload = 0;
-                    permission = 0644;
-                    moduleName = "PLATFORM_I2S_TEST";
-                    deviceMatchAttr = "I2S_TEST";
-                    serviceName = "I2S_TEST";
                 }
                 adc_tester :: deviceNode {
                     policy = 2;
