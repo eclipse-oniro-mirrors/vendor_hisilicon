@@ -415,4 +415,16 @@ root {
 	    powerOffSeq = [0, 5, 0, 5]; /* type: 0--gpio 1--regulator, number, opt, delay */
         }
     }
+
+    backlightConfig {
+        pwmBacklightConfig {
+            match_attr = "pwm_bl_dev";
+            pwmDevNum = 1;
+            pwmMaxPeroid = 100000;
+            backlightDevName = "hdf_pwm";
+            minBrightness = 0;
+            defBrightness = 127;
+            maxBrightness = 255;
+        }
+    }
 }
