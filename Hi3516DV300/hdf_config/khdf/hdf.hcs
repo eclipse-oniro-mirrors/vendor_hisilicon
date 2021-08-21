@@ -17,6 +17,7 @@
 #include "audio/dsp_config.hcs"
 #include "vibrator/vibrator_config.hcs"
 #include "vibrator/linear_vibrator_config.hcs"
+#include "lcd/lcd_config.hcs"
 
 root {
     module = "hisilicon,hi35xx_chip";
