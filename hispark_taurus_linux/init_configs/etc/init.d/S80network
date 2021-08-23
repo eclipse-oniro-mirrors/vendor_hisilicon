@@ -8,24 +8,6 @@ hostname=
 netdev=
 autoconf=
 
-for ipinfo in `cat /proc/cmdline`
-do
-	case "$ipinfo" in
-	ip=*)
-		for var in  ipaddr bootp gateway netmask hostname netdev autoconf
-		do
-			eval read $var
-		done << EOF
-		`echo "$ipinfo" | sed "s/:/\n/g" | sed "s/^[ 	]*$/-/g"`
-EOF
-		ipaddr=`echo "$ipaddr" | cut -d = -f 2`
-		[ x$ipaddr == x ] && ipaddr=x
-		;;
-	esac
-done
-
-[ -z "$ipaddr" ] && exit 0
-
 echo "      IP: $ipaddr"
 echo "   BOOTP: $bootp"
 echo " GATEWAY: $gateway"
@@ -44,5 +26,6 @@ else
 	[ x$gateway != x- ] && route add default gw $gateway
 fi
 
-ifconfig lo 127.0.0.1
+ifconfig lo 127.0.0.1 up
+ifconfig wlan0 up
 
