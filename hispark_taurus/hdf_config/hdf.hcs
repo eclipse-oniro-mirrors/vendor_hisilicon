@@ -9,7 +9,7 @@
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/spi/spi_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/pwm/pwm_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/dmac/dmac_config.hcs"
-#include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/config/i2s/i2s_config.hcs"
+#include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/i2s/i2s_config.hcs"
 
 #include "device_info/device_info.hcs"
 #include "wifi/wlan_platform.hcs"
