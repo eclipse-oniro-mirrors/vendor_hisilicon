@@ -310,6 +310,17 @@
                     deviceMatchAttr = "hdf_sensor_gyro_driver";
                 }
             }
+            device_sensor_barometer :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_BAROMETER";
+                    serviceName = "hdf_sensor_barometer";
+                    deviceMatchAttr = "hdf_sensor_barometer_driver";
+                }
+            } 
         }
         usb_pnp_linux :: host {
             hostName = "usb_pnp_linux_host";
