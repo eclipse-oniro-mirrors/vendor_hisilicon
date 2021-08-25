@@ -147,7 +147,7 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 200;
-                    moduleName = "libcodec_service.z.so";
+                    moduleName = "libcodec_server.z.so";
                     serviceName = "codec_hdi_service";
                 }
             }
