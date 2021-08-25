@@ -314,7 +314,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 110;
-                    preload = 0;
+                    preload = 2;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_BAROMETER";
                     serviceName = "hdf_sensor_barometer";
