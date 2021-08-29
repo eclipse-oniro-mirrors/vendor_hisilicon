@@ -320,7 +320,7 @@
                     serviceName = "hdf_sensor_barometer";
                     deviceMatchAttr = "hdf_sensor_barometer_driver";
                 }
-            } 
+            }
             device_sensor_hall :: device {
                 device0 :: deviceNode {
                     policy = 1;
