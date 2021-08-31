@@ -140,5 +140,17 @@
                 }
             }
         }
+        codec :: host {
+            hostName = "codec_host";
+            priority = 50;
+            codec_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 200;
+                    moduleName = "libcodec_server.z.so";
+                    serviceName = "codec_hdi_service";
+                }
+            }
+        }
     }
 }
