@@ -387,6 +387,17 @@
                     deviceMatchAttr = "hdf_sensor_accel_driver";
                 }
             }
+            device_sensor_bmi160 :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 120;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_ACCEL_BMI160";
+                    serviceName = "hdf_accel_bmi160";
+                    deviceMatchAttr = "hdf_sensor_accel_bmi160_driver";
+                }
+            }
             device_sensor_gyro :: device {
                 device0 :: deviceNode {
                     policy = 1;
