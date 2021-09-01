@@ -419,7 +419,18 @@
                     serviceName = "hdf_sensor_barometer";
                     deviceMatchAttr = "hdf_sensor_barometer_driver";
                 }
-            }             
+            }
+            device_sensor_hall :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 110;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_HALL";
+                    serviceName = "hdf_sensor_hall";
+                    deviceMatchAttr = "hdf_sensor_hall_driver";
+                }
+            }
         }
         vibrator :: host {
             hostName = "vibrator_host";

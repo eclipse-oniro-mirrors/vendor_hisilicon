@@ -1,3 +1,4 @@
 #include "accel/accel_bmi160_config.hcs"
 #include "gyro/gyro_bmi160_config.hcs"
 #include "barometer/barometer_bmp180_config.hcs"
+#include "hall/hall_ak8789_config.hcs"
