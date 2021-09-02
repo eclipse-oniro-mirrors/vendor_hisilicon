@@ -110,6 +110,16 @@
                     deviceMatchAttr = "hisilicon_hi35xx_spi_1";
                 }
             }
+            device_mtd:: device {
+                device0 :: deviceNode {
+                    policy = 0;
+                    priority = 20;
+                    permission = 0644;
+                    moduleName = "hifmc100_driver";
+                    serviceName = "HDF_PLATFORM_MTD_0";
+                    deviceMatchAttr = "hifmc100_config";
+                }
+            }
             device_mmc:: device {
                 device0 :: deviceNode {
                     policy = 2;
