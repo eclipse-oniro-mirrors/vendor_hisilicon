@@ -55,6 +55,8 @@
     -
       target_dir: var
     -
+      target_dir: userdata
+    -
       target_dir: sys
     -
       source_dir: etc
@@ -106,6 +108,10 @@
       target_dir: data
   fs_make_cmd:
     - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4
+-
+  fs_dir_name: userdata
+  fs_make_cmd:
+    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 1024
 -
   fs_attr:
     dmverity_enable:
