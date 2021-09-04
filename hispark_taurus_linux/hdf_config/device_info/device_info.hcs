@@ -382,6 +382,17 @@
                     deviceMatchAttr = "hdf_sensor_hall_driver";
                 }
             }
+            device_sensor_ak8789 :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 120;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_HALL_AK8789";
+                    serviceName = "hdf_hall_ak8789";
+                    deviceMatchAttr = "hdf_sensor_hall_ak8789_driver";
+                }
+            }
         }
         vibrator :: host {
             hostName = "vibrator_host";
