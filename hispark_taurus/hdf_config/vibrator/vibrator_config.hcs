@@ -8,7 +8,7 @@ root {
                 supportPreset = 1;
             }
             vibratorHapticConfig {
-                haptic_clock_time = [1, 600, 600, 200, 600]; // time seq
+                haptic_clock_timer = [1, 600, 600, 200, 600]; // time seq
                 haptic_default_effect = [0, 0, 3, 800, 1]; // build-in effect
             }
         }
