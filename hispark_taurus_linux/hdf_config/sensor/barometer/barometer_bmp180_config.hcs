@@ -1,7 +1,7 @@
 #include "../sensor_common.hcs"
 root {
         barometer_bmp180_chip_config : sensorConfig {
-            match_attr = "hdf_sensor_barometer_driver";
+            match_attr = "hdf_sensor_barometer_bmp180_driver";
             sensorInfo :: sensorDeviceInfo {
                 sensorName = "barometer";
                 vendorName = "borsh_bmp180"; // max string length is 16 bytes
