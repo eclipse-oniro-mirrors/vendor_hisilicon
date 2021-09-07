@@ -251,6 +251,16 @@
                     moduleName = "HDF_HID";
                 }
             }
+            device_hdf_encoder :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 200;
+                    preload = 0;
+                    permission = 0660;
+                    moduleName = "HDF_ENCODER";
+                    deviceMatchAttr = "EC11";
+                }
+            }
         }
 
         network :: host {
