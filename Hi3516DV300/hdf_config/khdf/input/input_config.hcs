@@ -171,7 +171,7 @@ root {
             keyInfoList {
                 key1 {
                     match_attr = "key_device0";
-                    /* 0:touch 1:key 2:keyboard 3:mouse 4:button 5:crown 6:encoder */
+                    /* 0:touch 1:key 2:keyboard 3:mouse 4:button 5:crown 34:encoder */
                     inputType = 1;
                     keyName = "power";
                     gpioNum = 1;
@@ -192,6 +192,15 @@ root {
                     irqFlag = 1;
                     debounceTime = 80;
                 }
+            }
+        }
+        encoderConfig {
+            encoder1 {
+                match_attr = "EC11";
+                inputType = 34;
+                gpioClk = 29;
+                gpioDT  = 30;
+                gpioSW  = 31;
             }
         }
     }
