@@ -426,6 +426,17 @@
                     deviceMatchAttr = "hdf_sensor_magnetic_lsm303_driver";
                 }
             }
+            device_sensor_proximity :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 110;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_PROXIMITY";
+                    serviceName = "hdf_sensor_proximity";
+                    deviceMatchAttr = "hdf_sensor_proximity_driver";
+                }
+            }
         }
         vibrator :: host {
             hostName = "vibrator_host";
