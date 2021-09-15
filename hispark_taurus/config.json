@@ -28,7 +28,7 @@
         ]
       },
       {
-        "subsystem": "distributed_schedule",
+        "subsystem": "distributedschedule",
         "components": [
           { "component": "samgr_lite", "features":[] },
           { "component": "safwk_lite", "features":[] },
@@ -79,7 +79,7 @@
         ]
       },
       {
-        "subsystem": "update",
+        "subsystem": "updater",
         "components": [
           { "component": "ota_lite", "features":[] }
         ]
@@ -105,7 +105,7 @@
         ]
       },
       {
-        "subsystem": "drivers",
+        "subsystem": "hdf",
         "components": [
           { "component": "drivers_framework", "features":[] },
           { "component": "adapter_uhdf", "features":[] },
@@ -138,7 +138,7 @@
         ]
       },
       {
-        "subsystem": "test",
+        "subsystem": "xts",
         "components": [
           { "component": "developer_test", "features":[] },
           { "component": "xts_acts", "features":[] },
