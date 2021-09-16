@@ -140,7 +140,13 @@
           { "component": "xts_acts", "features":[] },
           { "component": "xts_tools", "features":[] }
         ]
-      }
+      },
+      {
+        "subsystem": "distributedhardware",
+        "components": [
+          { "component": "devicemanager_lite", "features":[] }
+        ]
+      }	  
     ],
     "third_party_dir": "//third_party",
     "product_adapter_dir": "//vendor/hisilicon/hispark_taurus_linux/hals"
