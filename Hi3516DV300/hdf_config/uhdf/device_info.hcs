@@ -152,5 +152,17 @@
                 }
             }
         }
+        riladapter :: host {
+            hostName = "riladapter_host";
+            priority = 50;
+            riladapter_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libhril_hdf.z.so";
+                    serviceName = "cellular_radio1";
+                }
+            }
+        }
     }
 }
