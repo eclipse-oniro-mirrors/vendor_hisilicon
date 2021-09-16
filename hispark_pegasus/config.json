@@ -28,7 +28,7 @@
         ]
       },
       {
-        "subsystem": "distributed_schedule",
+        "subsystem": "distributedschedule",
         "components": [
           { "component": "samgr_lite", "features":[] }
         ]
@@ -65,7 +65,7 @@
         ]
       },
       {
-        "subsystem": "update",
+        "subsystem": "updater",
         "components": [
           { "component": "ota_lite", "features":[] }
         ]
@@ -91,7 +91,7 @@
         ]
       },
       {
-       "subsystem": "test",
+       "subsystem": "xts",
        "components": [
          { "component": "xts_acts", "features":[] },
          { "component": "xts_tools", "features":[] }
