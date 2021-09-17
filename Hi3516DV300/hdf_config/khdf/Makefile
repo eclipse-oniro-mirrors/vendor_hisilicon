@@ -15,12 +15,12 @@
 ifeq ($(LOCAL_HCS_ROOT),)
   LOCAL_HCS_ROOT := $(PRODUCT_PATH)
 endif
-
-SOURCE_ROOT:=$(abspath ../../../../../)
+CURRENT_DIR := $(abspath $(dir $(realpath $(lastword $(MAKEFILE_LIST)))))
+SOURCE_ROOT := $(abspath $(CURRENT_DIR)/../../../../../)
 
 HC_GEN_DIR := $(abspath $(SOURCE_ROOT)/drivers/framework/tools/hc-gen)
 HC_GEN := $(HC_GEN_DIR)/build/hc-gen
-LOCAL_HCS_ROOT := $(abspath $(dir $(realpath $(lastword $(MAKEFILE_LIST)))))
+LOCAL_HCS_ROOT := $(CURRENT_DIR)
 
 HCS_DIR := $(LOCAL_HCS_ROOT)
 
