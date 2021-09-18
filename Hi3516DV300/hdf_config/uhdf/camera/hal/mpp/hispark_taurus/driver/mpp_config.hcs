@@ -22,13 +22,31 @@ root {
                 blk_count          = 7;
             }
             pool2 {
-                image_width        = 1280;
-                image_height       = 720;
+                image_width        = 1920;
+                image_height       = 1080;
                 pix_format         = 26;
                 data_bitwidth      = 0;
                 compress_mode      = 0;
                 default_align      = 8;
-                blk_count          = 12;
+                blk_count          = 7;
+            }
+            pool3 {
+                image_width        = 1280;
+                image_height       = 960;
+                pix_format         = 26;
+                data_bitwidth      = 0;
+                compress_mode      = 0;
+                default_align      = 8;
+                blk_count          = 7;
+            }
+            pool4 {
+                image_width        = 640;
+                image_height       = 480;
+                pix_format         = 26;
+                data_bitwidth      = 0;
+                compress_mode      = 0;
+                default_align      = 8;
+                blk_count          = 7;
             }
         }
         vcapDev {
@@ -162,7 +180,7 @@ root {
             vport1 {
                 enable             = 1;
                 res_width          = 1280;
-                res_height         = 720;
+                res_height         = 960;
                 src_framerate      = 30;
                 dst_framerate      = 30;
                 video_format       = 0;

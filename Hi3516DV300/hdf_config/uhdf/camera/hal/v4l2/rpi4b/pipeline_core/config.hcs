@@ -22,8 +22,8 @@ root {
     }
     normal_privew :: pipeline_spec {
         name = "normal_preview";
-        source :: node_spec {
-            name = "source#0";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
@@ -42,15 +42,15 @@ root {
             in_port_0 :: port_spec {
                 name = "in0";
                 peer_port_name = "out0";
-                peer_port_node_name = "source#0";
+                peer_port_node_name = "v4l2_source#0";
                 direction = 0;
             }
         }
     }
     normal_snapshot :: pipeline_spec {
         name = "normal_snapshot";
-        source :: node_spec {
-            name = "source#0";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
@@ -66,15 +66,15 @@ root {
             in_port_0 :: port_spec {
                 name = "in0";
                 peer_port_name = "out0";
-                peer_port_node_name = "source#0";
+                peer_port_node_name = "v4l2_source#0";
                 direction = 0;
             }
         }
     }
     normal_preview_snapshot :: pipeline_spec {
         name = "normal_preview_snapshot";
-        source :: node_spec {
-            name = "source#0";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
@@ -89,7 +89,7 @@ root {
             in_port_0 :: port_spec {
                 name = "in0";
                 peer_port_name = "out0";
-                peer_port_node_name = "source#0";
+                peer_port_node_name = "v4l2_source#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
@@ -130,8 +130,8 @@ root {
     }
     normal_preview_video :: pipeline_spec {
         name = "normal_preview_video";
-        source :: node_spec {
-            name = "source#0";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
@@ -146,7 +146,7 @@ root {
             in_port_0 :: port_spec {
                 name = "in0";
                 peer_port_name = "out0";
-                peer_port_node_name = "source#0";
+                peer_port_node_name = "v4l2_source#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
@@ -202,8 +202,8 @@ root {
                 buffer_count = 8;
             }
         }
-        source :: node_spec {
-            name = "source#0";
+        v4l2_source :: node_spec {
+            name = "v4l2_source#0";
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
@@ -218,7 +218,7 @@ root {
             in_port_0 :: port_spec {
                 name = "in0";
                 peer_port_name = "out0";
-                peer_port_node_name = "source#0";
+                peer_port_node_name = "v4l2_source#0";
                 direction = 0;
             }
             in_port_1 :: port_spec {
