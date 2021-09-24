@@ -146,6 +146,12 @@
         "components": [
           { "component": "devicemanager_lite", "features":[] }
         ]
+      },
+      {
+        "subsystem": "distributeddatamgr",
+        "components": [
+          { "component": "objectstore", "features":[] }
+        ]
       }	  
     ],
     "third_party_dir": "//third_party",
