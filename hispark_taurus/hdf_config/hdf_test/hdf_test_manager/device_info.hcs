@@ -32,9 +32,9 @@ root {
                     serviceName = "I2S_TEST";
                 }
             }
-            device_platform_test :: device {
+            device_platform_gpio_test :: device {
                 gpio_tester :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 101;
                     preload = 0;
                     permission = 0644;
@@ -42,6 +42,8 @@ root {
                     deviceMatchAttr = "GPIO_TEST";
                     serviceName = "GPIO_TEST";
                 }
+            }
+            device_platform_test :: device {
                 i2c_tester :: deviceNode {
                     policy = 2;
                     priority = 101;
