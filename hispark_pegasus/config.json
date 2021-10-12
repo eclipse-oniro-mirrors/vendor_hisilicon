@@ -37,6 +37,7 @@
         "subsystem": "security",
         "components": [
           { "component": "hichainsdk", "features":[] },
+          { "component": "deviceauth_lite", "features":[] },
           { "component": "huks", "features":
             [
               "disable_huks_binary = false",
