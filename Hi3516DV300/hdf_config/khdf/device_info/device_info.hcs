@@ -21,6 +21,13 @@
             priority = 50;
             device_gpio :: device {
                 device0 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_GPIO_MANAGER";
+                    serviceName = "HDF_PLATFORM_GPIO_MANAGER";
+                }
+                device1 :: deviceNode {
                     policy = 0;
                     priority = 10;
                     permission = 0644;
