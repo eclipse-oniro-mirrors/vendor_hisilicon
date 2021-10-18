@@ -106,6 +106,14 @@ root {
                     deviceMatchAttr = "PLATFORM_MIPI_DSI_TEST";
                     serviceName = "PLATFORM_MIPI_DSI_TEST";
                 }
+                mipi_csi_tester :: deviceNode {
+                    policy = 1;
+                    priority = 101;
+                    preload = 0;
+                    moduleName = "PLATFORM_MIPI_CSI_TEST";
+                    deviceMatchAttr = "PLATFORM_MIPI_CSI_TEST";
+                    serviceName = "PLATFORM_MIPI_CSI_TEST";
+                }
                 emmc_tester :: deviceNode {
                     policy = 1;
                     priority = 100;
