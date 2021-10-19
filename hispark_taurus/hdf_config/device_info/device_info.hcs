@@ -223,6 +223,15 @@
                     serviceName = "HDF_MIPI_TX";
                 }
             }
+            device_mipi_csi:: device {
+                device0 :: deviceNode {
+                    policy = 0;
+                    priority = 160;
+                    permission = 0644;
+                    moduleName = "HDF_MIPI_CSI";
+                    serviceName = "HDF_MIPI_CSI";
+                }
+            }
             device_hisi_sdk:: device {
                 device0 :: deviceNode {
                     policy = 1;

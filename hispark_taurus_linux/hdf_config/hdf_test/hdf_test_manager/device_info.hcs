@@ -94,6 +94,15 @@ root {
                     serviceName = "PLATFORM_MIPI_DSI_TEST";
                     deviceMatchAttr = "PLATFORM_MIPI_DSI_TEST";
                 }
+                mipi_csi_test :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_MIPI_CSI_TEST";
+                    serviceName = "PLATFORM_MIPI_CSI_TEST";
+                    deviceMatchAttr = "PLATFORM_MIPI_CSI_TEST";
+                }
                 uart_tester :: deviceNode {
                     policy = 1;
                     priority = 100;
