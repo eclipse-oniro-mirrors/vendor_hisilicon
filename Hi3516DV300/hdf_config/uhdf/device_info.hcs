@@ -119,15 +119,17 @@
                      serviceName = "camera_service";
                  }
              }
-	        display_device :: device {
+
+	    display_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 120;
-                    moduleName = "libhdi_display_layer_service.z.so";
-                    serviceName = "hdi_display_layer_service";
+                    moduleName = "libhdi_video_layer_service.z.so";
+                    serviceName = "hdi_video_layer_service";
                 }
             }
         }
+
         input_hal :: host {
             hostName = "input_user_host";
             priority = 50;
@@ -140,6 +142,20 @@
                 }
             }
         }
+
+        display_gralloc :: host {
+            hostName = "display_gralloc_host";
+            priority = 40;
+            input_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 160;
+                    moduleName = "libhdi_display_gralloc_stub.z.so";
+                    serviceName = "hdi_display_gralloc_service";
+                }
+            }
+        }
+
         codec :: host {
             hostName = "codec_host";
             priority = 50;
