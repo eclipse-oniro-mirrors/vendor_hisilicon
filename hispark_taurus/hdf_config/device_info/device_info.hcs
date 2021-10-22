@@ -228,8 +228,8 @@
                     policy = 0;
                     priority = 160;
                     permission = 0644;
-                    moduleName = "HDF_MIPI_CSI";
-                    serviceName = "HDF_MIPI_CSI";
+                    moduleName = "HDF_MIPI_RX";
+                    serviceName = "HDF_MIPI_RX";
                 }
             }
             device_hisi_sdk:: device {

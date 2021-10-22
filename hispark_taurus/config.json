@@ -41,7 +41,12 @@
           { "component": "hichainsdk", "features":[] },
           { "component": "permission", "features":[] },
           { "component": "appverify", "features":[] },
-          { "component": "deviceauth_lite", "features":[] }
+          { "component": "deviceauth_lite", "features":[] },
+          { "component": "huks", "features":
+            [
+              "huks_config_file = \"hks_config_small.h\""
+            ]
+          }
         ]
       },
       {
