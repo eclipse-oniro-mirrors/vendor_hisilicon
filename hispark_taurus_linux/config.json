@@ -140,7 +140,13 @@
           { "component": "xts_acts", "features":[] },
           { "component": "xts_tools", "features":[] }
         ]
-      }
+      },
+      {
+        "subsystem": "distributeddatamgr",
+        "components": [
+          { "component": "objectstore", "features":[] }
+        ]
+      }	 
     ],
     "vendor_adapter_dir": "//device/hisilicon/hardware",
     "third_party_dir": "//third_party",
