@@ -13,7 +13,17 @@
  * limitations under the License.
  */
 
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+
 #include "hal_sys_param.h"
+
+#define STR_MAX  65
 
 static const char OHOS_DEVICE_TYPE[] = {"****"};
 static const char OHOS_DISPLAY_VERSION[] = {"OpenHarmony 1.0.1"};
@@ -28,6 +38,7 @@ static const char OHOS_HARDWARE_PROFILE[] = {"aout:true,display:true"};
 static const char OHOS_BOOTLOADER_VERSION[] = {"bootloader"};
 static const char OHOS_ABI_LIST[] = {"****"};
 static const char OHOS_SERIAL[] = {"1234567890"};  // provided by OEM.
+static const char SN_FILE[] = {"/sys/block/mmcblk0/device/cid"};
 static const int OHOS_FIRST_API_VERSION = 1;
 
 static const char EMPTY_STR[] = {""};
@@ -79,7 +90,21 @@ const char* HalGetHardwareProfile(void)
 
 const char* HalGetSerial(void)
 {
-    return OHOS_SERIAL;
+    static char str[STR_MAX] = {0};
+    if (strlen(str) > 0) {
+        return str;
+    }
+    int fd = open(SN_FILE, O_RDONLY, S_IRUSR | S_IWUSR);
+    if (fd < 0) {
+        return OHOS_SERIAL;
+    }
+    int ret = read(fd, str, STR_MAX - 1);
+    if (ret <= 0) {
+        close(fd);
+        return OHOS_SERIAL;
+    }
+    close(fd);
+    return str;
 }
 
 const char* HalGetBootloaderVersion(void)
