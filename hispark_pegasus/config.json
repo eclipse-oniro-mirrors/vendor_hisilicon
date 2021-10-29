@@ -4,6 +4,7 @@
     "device_company": "hisilicon",
     "board": "hispark_pegasus",
     "kernel_type": "liteos_m",
+    "kernel_is_prebuilt": true,
     "kernel_version": "",
     "subsystems": [
       {
