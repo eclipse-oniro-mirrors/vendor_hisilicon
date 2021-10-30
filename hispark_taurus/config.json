@@ -114,7 +114,8 @@
           { "component": "peripheral_sensor", "features":[] },
           { "component": "peripheral_wlan", "features":[] },
           { "component": "peripheral_misc", "features":[] },
-          { "component": "peripheral_usb", "features":[] }
+          { "component": "peripheral_usb", "features":[] },
+          { "component": "peripheral_camera", "features":[] }
         ]
       },
       {
