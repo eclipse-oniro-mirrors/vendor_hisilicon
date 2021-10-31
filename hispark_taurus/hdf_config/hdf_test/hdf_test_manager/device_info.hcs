@@ -142,6 +142,25 @@ root {
                     deviceMatchAttr = "ADC_TEST";
                 }
             }
+            device_platform_i3c_test :: device {
+                i3c_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 56;
+                    permission = 0644;
+                    moduleName = "virtual_i3c_driver";
+                    serviceName = "VIRTUAL_I3C_DRIVER";
+                    deviceMatchAttr = "virtual_i3c";
+                }
+                i3c_tester :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_I3C_TEST";
+                    deviceMatchAttr = "I3C_TEST";
+                    serviceName = "I3C_TEST";
+                }
+            }
             device_platform_watchdog_test :: device {
                 watchdog_tester :: deviceNode {
                     policy = 1;

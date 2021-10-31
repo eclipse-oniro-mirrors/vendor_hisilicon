@@ -1,0 +1,36 @@
+root {
+    platform {
+        i3c_config {
+            match_attr = "virtual_i3c";
+            template i3c_controller {
+                busId = 0;
+                busMode = 0x0;   // 0x0:pure; 0x1:mixed fast; 0x2:mixed limited; 0x3: mixed slow;
+                IrqNum = 20;
+                i3cMaxRate = 12900000;
+                i3cRate = 12500000;
+                i2cFmRate = 1000000;
+                i2cFmPlusRate = 400000; 
+            }
+            controller_0 :: i3c_controller {
+                busId = 18;
+                IrqNum = 20;
+            }
+            controller_1 :: i3c_controller {
+                busId = 19;
+                IrqNum = 21;
+            }
+        }
+    }
+	module = "i3c";
+    i3c_test_config {
+        i3c_controller_tester {
+            match_attr = "I3C_TEST";
+            busId = 18;
+            devAddr = 0x3f;
+            regAddr = 0xd0;
+            regLen = 2;
+            bufSize = 7;
+
+        }
+    }
+}
