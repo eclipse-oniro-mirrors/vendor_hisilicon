@@ -466,6 +466,17 @@
                     deviceMatchAttr = "hdf_sensor_proximity_driver";
                 }
             }
+            device_sensor_apds9960 :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 120;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_PROXIMITY_APDS9960";
+                    serviceName = "hdf_proximity_apds9960";
+                    deviceMatchAttr = "hdf_sensor_proximity_adps9960_driver";
+                }
+            }
         }
         vibrator :: host {
             hostName = "vibrator_host";
