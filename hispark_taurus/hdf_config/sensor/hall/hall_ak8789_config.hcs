@@ -11,16 +11,13 @@ root {
         }
         sensorBusConfig :: sensorBusInfo {
             busType = 2; // 0:i2c 1:spi 2:gpio
-            busNum = 0;
+            gpioIrq1 = 24;
+            gpioIrq2 = 25;
         }
         sensorIdAttr :: sensorIdInfo {
             chipName = "ak8789";
             chipIdRegister = 0;
             chipIdValue = 0;
-        }
-        hallPinConfig {
-            NorthPolarityGpio = 24;
-            SouthPolarityGpio = 25;
         }
     }
 }
