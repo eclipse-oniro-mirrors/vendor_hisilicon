@@ -52,7 +52,7 @@ root {
                     0x2000,  0x2000,  16,   16,   0x0,    0x7,    0x7,    0,    0,  //"Render Channel Mode"
                     0x1000,  0x1000,  16,   16,   0x0,    0x7,    0x7,    0,    0   //"Captrue Channel Mode"
                 ];
-
+                
                 controlsConfig = [
                     /*
                         "Master Playback Volume",
@@ -109,7 +109,7 @@ root {
                     15,    7,     0,      0x1,    0,     0,     4,     1, //SPKR
                     0,     8,     0,      0x1,    0,     0,     0,     0  //MIC
                 ];
-
+                
                 /*array index, iface, enable*/
                 sapmConfig = [
                     0,    5,    1,

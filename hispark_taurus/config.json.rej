@@ -1,0 +1,10 @@
+--- hispark_taurus/config.json
++++ hispark_taurus/config.json
+@@ -114,6 +114,7 @@
+           { "component": "peripheral_sensor", "features":[] },
+           { "component": "peripheral_wlan", "features":[] },
+           { "component": "peripheral_misc", "features":[] },
++          { "component": "peripheral_audio", "features":[] },
+           { "component": "peripheral_usb", "features":[] }
+         ]
+       },

@@ -556,6 +556,113 @@
         media :: host {
 
         }
+        audio :: host {
+            hostName = "audio_host";
+            priority = 60;
+            device_dai0 :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 50;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "DAI_HI3516";
+                    serviceName = "dai_service";
+                    deviceMatchAttr = "hdf_dai_driver";
+                }
+            }
+            device_codec :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 50;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "CODEC_HI3516";
+                    serviceName = "codec_service_0";
+                    deviceMatchAttr = "hdf_codec_driver";
+                }
+            }
+            device_codec_ex :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 50;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "CODEC_TFA9879";
+                    serviceName = "codec_service_1";
+                    deviceMatchAttr = "hdf_codec_driver_ex";
+                }
+            }
+            device_dsp :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 50;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "DSP";
+                    serviceName = "dsp_service_0";
+                    deviceMatchAttr = "hdf_dsp_driver";
+                }
+            }
+            device_dma :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 50;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "DMA_HI3516";
+                    serviceName = "dma_service_0";
+                    deviceMatchAttr = "hdf_dma_driver";
+                }
+            }
+            device_audio :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 60;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "HDF_AUDIO";
+                    deviceMatchAttr = "hdf_audio_driver_0";
+                    serviceName = "hdf_audio_codec_dev0";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 60;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "HDF_AUDIO";
+                    deviceMatchAttr = "hdf_audio_driver_1";
+                    serviceName = "hdf_audio_smartpa_dev0";
+                }
+            }
+            device_stream :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 80;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "HDF_AUDIO_STREAM";
+                    serviceName = "hdf_audio_render";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 80;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "HDF_AUDIO_STREAM";
+                    serviceName = "hdf_audio_capture";
+                }
+            }
+            device_control :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 80;
+                    preload = 0;
+                    permission = 0666;
+                    moduleName = "HDF_AUDIO_CONTROL";
+                    serviceName = "hdf_audio_control";
+                }
+            }
+        }
         usbfnMaster :: host {
             hostName = "usbfnMaster_host";
             usbfnMaster_device :: device {

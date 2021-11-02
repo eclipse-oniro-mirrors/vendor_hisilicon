@@ -22,6 +22,11 @@
 #include "vibrator/linear_vibrator_config.hcs"
 #include "usb/usb_device.hcs"
 #include "usb/usb_pnp_device.hcs"
+#include "audio/audio_config.hcs"
+#include "audio/codec_config.hcs"
+#include "audio/dai_config.hcs"
+#include "audio/dma_config.hcs"
+#include "audio/dsp_config.hcs"
 
 root {
     module = "hisilicon,hi35xx_chip";
