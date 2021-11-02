@@ -31,7 +31,12 @@
         "components": [
           { "component": "permission", "features":[] },
           { "component": "dm-verity", "features":[] },
-          { "component": "deviceauth_lite", "features":[] }
+          { "component": "deviceauth_lite", "features":[] },
+          { "component": "huks", "features":
+            [
+              "huks_config_file = \"hks_config_small.h\""
+            ]
+          }
         ]
       },
       {
@@ -152,7 +157,7 @@
         "components": [
           { "component": "objectstore", "features":[] }
         ]
-      }	  
+      }
     ],
     "third_party_dir": "//third_party",
     "product_adapter_dir": "//vendor/hisilicon/hispark_taurus_linux/hals"
