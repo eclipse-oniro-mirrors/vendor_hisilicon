@@ -4,6 +4,7 @@
 #include "i2c_test_config.hcs"
 #include "i2s_test_config.hcs"
 #include "adc_test_config.hcs"
+#include "i3c_test_config.hcs"
 #include "spi_test_config.hcs"
 #include "uart_test_config.hcs"
 #include "hdf_config_test.hcs"

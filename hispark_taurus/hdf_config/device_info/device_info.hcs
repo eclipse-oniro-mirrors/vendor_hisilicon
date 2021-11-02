@@ -124,6 +124,15 @@
                     deviceMatchAttr = "hisilicon_hi35xx_adc";
                 }
             }
+            device_i3c :: device {
+                device0 :: deviceNode {
+                    policy = 0;
+                    priority = 52;
+                    permission = 0644;
+                    serviceName = "HDF_PLATFORM_I3C_MANAGER";
+                    moduleName = "HDF_PLATFORM_I3C_MANAGER";
+                }
+            }
             device_dmac :: device {
                 device0 :: deviceNode {
                     policy = 1;
