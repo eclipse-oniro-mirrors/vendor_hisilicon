@@ -1,6 +1,6 @@
 #include "../sensor_common.hcs"
 root {
-    accel_bmi160_chip_config : sensorConfig {
+    proximity_apds9960_chip_config : sensorConfig {
         match_attr = "hdf_sensor_proximity_adps9960_driver";
         sensorInfo :: sensorDeviceInfo {
             sensorName = "proximity";
