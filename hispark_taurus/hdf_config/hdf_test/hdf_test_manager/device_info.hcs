@@ -65,6 +65,17 @@ root {
                     deviceMatchAttr = "GPIO_TEST";
                 }
             }
+            device_platform_pin_test :: device {
+                pin_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PIN_TEST";
+                    deviceMatchAttr = "PIN_TEST";
+                    serviceName = "PIN_TEST";
+                }
+            }
             device_platform_mipi_dsi_test :: device {
                 mipi_dsi_tester :: deviceNode {
                     policy = 1;

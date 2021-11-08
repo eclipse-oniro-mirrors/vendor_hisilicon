@@ -1,6 +1,7 @@
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/i2c/i2c_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/adc/adc_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/gpio/gpio_config.hcs"
+#include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/pin/pin_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/uart/uart_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/mmc/mmc_config.hcs"
 #include "../../../../device/hisilicon/hispark_taurus/sdk_liteos/hdf_config/watchdog/watchdog_config.hcs"
