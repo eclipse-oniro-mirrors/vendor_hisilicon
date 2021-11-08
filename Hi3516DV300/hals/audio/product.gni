@@ -1,0 +1,5 @@
+# Copyright (c) Huawei Technologies Co., Ltd. 2021. All rights reserved.
+
+#If set enable_audio_alsa_mode flag is true, the tinyalsa will be built; if set flag is false, the version will not support tinyalsa.
+enable_audio_alsa_mode = false
+
