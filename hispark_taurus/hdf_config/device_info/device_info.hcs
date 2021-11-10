@@ -45,6 +45,16 @@
                     deviceMatchAttr = "hisilicon_hi35xx_watchdog_0";
                 }
             }
+            device_regulator :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 50;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_REGULATOR_MANAGER";
+                    serviceName = "HDF_PLATFORM_REGULATOR_MANAGER";
+                    deviceMatchAttr = "hdf_platform_regulator_manager";
+                }
+            }
             device_rtc :: device {
                 device0 :: deviceNode {
                     policy = 1;

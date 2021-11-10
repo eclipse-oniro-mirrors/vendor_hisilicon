@@ -192,6 +192,25 @@ root {
                     moduleName = "HDF_SENSOR_TEST_DRIVER";
                 }
             }
+	    device_platform_regulator_test :: device {
+                regulator_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "virtual_regulator_driver";
+                    serviceName = "VIRTUAL_REGULATOR_DRIVER";
+                    deviceMatchAttr = "virtual_regulator";
+                }
+                regulator_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_REGULATOR_TEST";
+                    serviceName = "REGULATOR_TEST";
+                    deviceMatchAttr = "REGULATOR_TEST";
+                }
+            }
         }
     }
 }
