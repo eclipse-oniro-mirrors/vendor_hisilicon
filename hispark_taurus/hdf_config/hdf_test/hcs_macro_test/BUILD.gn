@@ -35,4 +35,3 @@ hdf_driver(module_name) {
   sources = [ "//drivers/framework/test/unittest/utils/hcs_parser/unittest/hcs_macro_cases.c" ]
   outputs = [ "$target_gen_dir/hdf_macro_test.h" ]
 }
-

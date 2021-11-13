@@ -39,6 +39,6 @@ group("hdf_config") {
   public_deps = [ ":$module_name" ]
   deps = [
     "hdf_test",
-    "hdf_test/hcs_macro_test"
+    "hdf_test/hcs_macro_test",
   ]
 }
