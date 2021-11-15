@@ -1,0 +1,10 @@
+{
+    "subsystem": "device_ipcamera_hispark_taurus",
+    "parts": {
+        "device_ipcamera_hispark_taurus": {
+            "module_list": [
+                "//vendor/hisilicon/hispark_taurus:hispark_taurus"
+            ]
+        }
+    }
+}
