@@ -37,5 +37,8 @@ hdf_driver(module_name) {
 
 group("hdf_config") {
   public_deps = [ ":$module_name" ]
-  deps = [ "hdf_test" ]
+  deps = [
+    "hdf_test",
+    "hdf_test/hcs_macro_test",
+  ]
 }
