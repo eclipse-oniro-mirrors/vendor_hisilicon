@@ -7,12 +7,11 @@ endif
 MODULE_NAME := hdf_test_macro
 LOCAL_HCS_ROOT := $(shell pwd)
 
-HC_GEN_DIR = $(abspath $(LITEOSTOPDIR)/../../drivers/framework/tools/hc-gen)
-HC_GEN = $(HC_GEN_DIR)/build/hc-gen
+HDF_FRAMWORK_ROOT = $(abspath $(LITEOSTOPDIR)/../../drivers/framework)
+HC_GEN_DIR = $(HDF_FRAMWORK_ROOT)/tools/hc-gen
+HC_GEN = $(OUT)/hc_gen_build/hc-gen
 
-
-
-HDF_FRAMWORK_TEST_ROOT = $(abspath $(LITEOSTOPDIR)/../../drivers/framework/test/unittest/utils/hcs_parser/unittest)
+HDF_FRAMWORK_TEST_ROOT = $(HDF_FRAMWORK_ROOT)/test/unittest/utils/hcs_parser/unittest
 HCS_MACRO_OBJ := hcs_macro_cases.o
 HCS_MACRO_SRC := $(HDF_FRAMWORK_TEST_ROOT)/hcs_macro_cases.c
 HCS_DEP := $(HDF_FRAMWORK_TEST_ROOT)/hdf_macro_test.h
@@ -31,7 +30,7 @@ $(HCS_DEP): $(HC_GEN)
 	$(Q)$(HC_GEN) -m -o $(HCS_MACRO_FILE) $(HCS_FILE)
 
 $(HC_GEN):
-	$(HIDE)make -C $(HC_GEN_DIR)
+	$(HIDE)make -j -C $(HC_GEN_DIR) BUILD_DIR=$(dir $@)
 
 $(OUT)/lib/lib$(MODULE_NAME).a: $(HCS_MACRO_OBJ)
 	$(HIDE)$(AR) $(ARFLAGS) $@ $^
