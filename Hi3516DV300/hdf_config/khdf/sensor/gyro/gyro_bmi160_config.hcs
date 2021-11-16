@@ -1,7 +1,7 @@
 #include "../sensor_common.hcs"
 root {
     gyro_bmi160_chip_config : sensorConfig {
-        match_attr = "hdf_sensor_gyro_driver";
+        match_attr = "hdf_sensor_gyro_bmi160_driver";
         sensorInfo :: sensorDeviceInfo {
             sensorName = "gyroscope";
             vendorName = "borsh_bmi160"; // max string length is 16 bytes

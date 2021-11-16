@@ -381,12 +381,23 @@
             device_sensor_gyro :: device {
                 device0 :: deviceNode {
                     policy = 1;
-                    priority = 120;
+                    priority = 110;
                     preload = 2;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_GYRO";
                     serviceName = "hdf_sensor_gyro";
                     deviceMatchAttr = "hdf_sensor_gyro_driver";
+                }
+            }
+            device_sensor_gyro_bmi160 :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 120;
+                    preload = 2;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_GYRO_BMI160";
+                    serviceName = "hdf_gyro_bmi160";
+                    deviceMatchAttr = "hdf_sensor_gyro_bmi160_driver";
                 }
             }
             device_sensor_barometer :: device {
