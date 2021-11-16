@@ -1,5 +1,7 @@
 {
     "product_name": "ipcamera_hispark_aries",
+    "type": "small",
+    "version": "3.0",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "hisilicon",
     "board": "hispark_aries",

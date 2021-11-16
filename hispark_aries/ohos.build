@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "product_ipcamera_hispark_aries": {
+      "module_list": [
+        "//vendor/hisilicon/hispark_aries:hispark_aries"
+      ]
+    }
+  },
+  "subsystem": "product_ipcamera_hispark_aries"
+}
