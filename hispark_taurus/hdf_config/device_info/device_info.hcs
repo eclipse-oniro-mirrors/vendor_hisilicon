@@ -383,10 +383,7 @@
                     serviceName = "hdf_input_event1";
                     deviceMatchAttr = "touch_device1";
                 }
-            }
-
-            device_touch_chip :: device {
-                device0 :: deviceNode {
+                device1 :: deviceNode {
                     policy = 0;
                     priority = 130;
                     preload = 0;
