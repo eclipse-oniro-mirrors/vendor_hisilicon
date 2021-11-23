@@ -13,6 +13,7 @@ root {
             busType = 2; // 0:i2c 1:spi 2:gpio
             gpioIrq1 = 24;
             gpioIrq2 = 25;
+            delayedTime = 100;
         }
         sensorIdAttr :: sensorIdInfo {
             chipName = "ak8789";
