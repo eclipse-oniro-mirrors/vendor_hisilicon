@@ -15,7 +15,7 @@ root {
                 device1 :: deviceNode {
                     policy = 2;
                     priority = 10;
-                    preload = 0;
+                    preload = 2;
                     permission = 0644;
                     moduleName = "sample_driver";
                     serviceName = "sample_service";

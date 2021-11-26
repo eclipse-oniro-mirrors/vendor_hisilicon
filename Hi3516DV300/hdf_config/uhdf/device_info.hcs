@@ -23,14 +23,23 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
+                    preload = 2;
                     moduleName = "libsample_driver.z.so";
                     serviceName = "sample_driver_service";
                 }
             }
         }
         usbfnMaster :: host {
-            hostName = "usbfnMaster_host";
+            hostName = "usb_host";
             priority = 50;
+            usb_pnp_manager_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 70;
+                    moduleName = "libusb_pnp_manager.z.so";
+                    serviceName = "usb_pnp_manager";
+                }
+            }
             usbfn_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
