@@ -19,5 +19,8 @@ root {
             chipIdRegister = 0;
             chipIdValue = 0;
         }
+        hallDelayedConfig {
+            delayedTime = 100;
+        }
     }
 }
