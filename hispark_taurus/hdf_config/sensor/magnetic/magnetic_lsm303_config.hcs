@@ -20,6 +20,23 @@ root {
             chipIdRegister = 0x0a;
             chipIdValue = 0x48;
         }
+        sensorDirection {
+            direction = 0; // chip direction range of value:0-7
+            /* <sign> 1:negative  0:positive
+               <map> 0:AXIS_X  1:AXIS_Y  2:AXIS_Z
+            */
+            /* sign[AXIS_X], sign[AXIS_Y], sign[AXIS_Z], map[AXIS_X], map[AXIS_Y], map[AXIS_Z] */
+            convert = [
+                0, 0, 0, 0, 1, 2,
+                1, 0, 0, 1, 0, 2,
+                0, 0, 1, 0, 1, 2,
+                0, 1, 0, 1, 0, 2,
+                1, 0, 1, 0, 1, 2,
+                0, 0, 1, 1, 0, 2,
+                0, 1, 1, 0, 1, 2,
+                1, 1, 1, 1, 0, 2
+            ];
+        }
         sensorRegConfig {
             /*  regAddr: register address
                 value: config register value
