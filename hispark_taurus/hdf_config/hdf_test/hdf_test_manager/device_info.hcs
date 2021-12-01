@@ -172,6 +172,25 @@ root {
                     serviceName = "I3C_TEST";
                 }
             }
+            device_platform_dac_test :: device {
+                dac_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 56;
+                    permission = 0644;
+                    moduleName = "virtual_dac_driver";
+                    serviceName = "VIRTUAL_DAC_DRIVER";
+                    deviceMatchAttr = "virtual_dac";
+                }
+                dac_tester :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_DAC_TEST";
+                    deviceMatchAttr = "DAC_TEST";
+                    serviceName = "DAC_TEST";
+                }
+            }
             device_platform_watchdog_test :: device {
                 watchdog_tester :: deviceNode {
                     policy = 1;
