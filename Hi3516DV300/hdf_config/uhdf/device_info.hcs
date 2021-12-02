@@ -29,6 +29,18 @@
                 }
             }
         }
+        usb :: host {
+            hostName = "usb_host";
+            priority = 50;
+            usb_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libusbd.z.so";
+                    serviceName = "usbd";
+                }
+            }
+        }
         usbfnMaster :: host {
             hostName = "usb_host";
             priority = 50;
@@ -44,7 +56,6 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 80;
-                    preload = 2;
                     moduleName = "libusbfn_master.z.so";
                     serviceName = "usbfn_master";
                     deviceMatchAttr = "usbfn_master_driver";
