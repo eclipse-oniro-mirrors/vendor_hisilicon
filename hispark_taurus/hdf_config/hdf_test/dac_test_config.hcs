@@ -1,0 +1,27 @@
+root {
+    platform {
+        dac_config {
+            match_attr = "virtual_dac";    
+            template dac_device {
+                deviceNum = 0;
+                validChannel = 0x1;
+                rate = 20000;
+            }
+            device_0 :: dac_device {
+                deviceNum = 0;
+                validChannel = 0x2;
+            }
+        }
+    }
+    module = "dac";
+    dac_config {
+        dac_device_tester {
+            match_attr = "DAC_TEST";
+            devNum = 0;
+            channel = 1;
+            maxChannel = 1;
+            dataWidth = 10;
+            rate = 20000;
+        }
+    }
+}

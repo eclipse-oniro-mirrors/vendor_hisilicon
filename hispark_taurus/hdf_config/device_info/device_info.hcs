@@ -185,6 +185,15 @@
                     deviceMatchAttr = "hisilicon_hi35xx_adc";
                 }
             }
+            device_dac :: device {
+                device0 :: deviceNode {
+                    policy = 0;
+                    priority = 52;
+                    permission = 0644;
+                    serviceName = "HDF_PLATFORM_DAC_MANAGER";
+                    moduleName = "HDF_PLATFORM_DAC_MANAGER";
+                }
+            }
             device_i3c :: device {
                 device0 :: deviceNode {
                     policy = 0;
