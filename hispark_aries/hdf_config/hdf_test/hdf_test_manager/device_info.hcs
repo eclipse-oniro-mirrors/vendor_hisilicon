@@ -20,6 +20,14 @@ root {
                     moduleName = "sample_driver";
                     serviceName = "sample_service";
                 }
+                device2 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "pm_test_driver";
+                    serviceName = "pm_test_service";
+                }
             }
             device_platform_test :: device {
                 gpio_tester :: deviceNode {
