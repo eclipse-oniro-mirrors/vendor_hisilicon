@@ -42,7 +42,7 @@
             }
         }
         usbfnMaster :: host {
-            hostName = "usb_host";
+            hostName = "usbfnMaster_host";
             priority = 50;
             usb_pnp_manager_device :: device {
                 device0 :: deviceNode {
