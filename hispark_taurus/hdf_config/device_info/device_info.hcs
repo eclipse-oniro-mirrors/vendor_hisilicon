@@ -472,7 +472,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 110;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_ACCEL";
                     serviceName = "hdf_sensor_accel";
@@ -483,7 +483,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 120;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_ACCEL_BMI160";
                     serviceName = "hdf_accel_bmi160";
@@ -494,7 +494,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 110;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_ALS";
                     serviceName = "hdf_sensor_als";
@@ -505,7 +505,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 120;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_ALS_BH1745";
                     serviceName = "hdf_als_bh1745";
@@ -516,7 +516,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 110;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_GYRO";
                     serviceName = "hdf_sensor_gyro";
@@ -527,7 +527,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 120;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_GYRO_BMI160";
                     serviceName = "hdf_gyro_bmi160";
@@ -538,7 +538,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 110;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_BAROMETER";
                     serviceName = "hdf_sensor_barometer";
@@ -549,7 +549,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 120;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_BAROMETER_BMP180";
                     serviceName = "hdf_barometer_bmp180";
@@ -582,7 +582,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 110;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_MAGNETIC";
                     serviceName = "hdf_sensor_magnetic";
@@ -593,7 +593,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 120;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_MAGNETIC_LSM303";
                     serviceName = "hdf_magnetic_lsm303";
@@ -604,7 +604,7 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 110;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_PROXIMITY";
                     serviceName = "hdf_sensor_proximity";
@@ -615,11 +615,22 @@
                 device0 :: deviceNode {
                     policy = 1;
                     priority = 120;
-                    preload = 2;
+                    preload = 0;
                     permission = 0664;
                     moduleName = "HDF_SENSOR_PROXIMITY_APDS9960";
                     serviceName = "hdf_proximity_apds9960";
                     deviceMatchAttr = "hdf_sensor_proximity_adps9960_driver";
+                }
+            }
+            device_sensor_gravity :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 130;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_GRAVITY";
+                    serviceName = "hdf_sensor_gravity";
+                    deviceMatchAttr = "hdf_sensor_gravity_driver";
                 }
             }
         }
