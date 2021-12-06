@@ -39,7 +39,6 @@ root {
                 enableSeqConfig = [
                     0x00,    0x00, 0xff,   0,     0,       0,       0,        0,     0,    0,
                 ];
-                ];
                 disableSeqConfig = [
                     0xE0,    0xb6, 0xff,   1,     5,       2,       0,        0,     0,    0
                 ];
