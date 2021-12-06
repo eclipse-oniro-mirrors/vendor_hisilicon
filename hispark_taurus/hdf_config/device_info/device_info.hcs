@@ -470,7 +470,7 @@
             }
             device_sensor_accel :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 110;
                     preload = 0;
                     permission = 0664;
@@ -481,7 +481,7 @@
             }
             device_sensor_bmi160 :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 120;
                     preload = 0;
                     permission = 0664;
@@ -492,7 +492,7 @@
             }
             device_sensor_als :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 110;
                     preload = 0;
                     permission = 0664;
@@ -503,7 +503,7 @@
             }
             device_sensor_bh1745 :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 120;
                     preload = 0;
                     permission = 0664;
@@ -514,7 +514,7 @@
             }
             device_sensor_gyro :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 110;
                     preload = 0;
                     permission = 0664;
@@ -525,7 +525,7 @@
             }
             device_sensor_gyro_bmi160 :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 120;
                     preload = 0;
                     permission = 0664;
@@ -536,7 +536,7 @@
             }
             device_sensor_barometer :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 110;
                     preload = 0;
                     permission = 0664;
@@ -547,7 +547,7 @@
             }
             device_sensor_bmp180 :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 120;
                     preload = 0;
                     permission = 0664;
@@ -580,7 +580,7 @@
             }
             device_sensor_magnetic :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 110;
                     preload = 0;
                     permission = 0664;
@@ -591,7 +591,7 @@
             }
             device_sensor_lsm303 :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 120;
                     preload = 0;
                     permission = 0664;
@@ -602,7 +602,7 @@
             }
             device_sensor_proximity :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 110;
                     preload = 0;
                     permission = 0664;
@@ -613,7 +613,7 @@
             }
             device_sensor_apds9960 :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 120;
                     preload = 0;
                     permission = 0664;
@@ -624,7 +624,7 @@
             }
             device_sensor_gravity :: device {
                 device0 :: deviceNode {
-                    policy = 2;
+                    policy = 1;
                     priority = 130;
                     preload = 0;
                     permission = 0664;
