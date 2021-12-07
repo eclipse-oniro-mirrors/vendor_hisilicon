@@ -200,5 +200,17 @@
                 }
             }
         }
+        hdf_sensor_hdi :: host { 
+            hostName = "hdf_sensor_hdi_host"; 
+            priority = 50; 
+            hdf_sensor_hdi_device :: device { 
+                device0 :: deviceNode { 
+                    policy = 2; 
+                    priority = 100; 
+                    moduleName = "libsensor_stub.z.so"; 
+                    serviceName = "sensor_interface_service"; 
+                    } 
+            } 
+        }
     }
 }
