@@ -101,7 +101,11 @@
       {
        "subsystem": "xts",
        "components": [
-         { "component": "xts_acts", "features":[] },
+         { "component": "xts_acts", "features":
+          [
+            "enable_ohos_test_xts_acts_use_thirdparty_lwip = false"
+          ]
+         },
          { "component": "xts_tools", "features":[] }
         ]
       }
