@@ -207,7 +207,7 @@
                 device0 :: deviceNode { 
                     policy = 2; 
                     priority = 100; 
-                    moduleName = "libsensor_stub.z.so"; 
+                    moduleName = "libsensor_driver.z.so"; 
                     serviceName = "sensor_interface_service"; 
                     } 
             } 
