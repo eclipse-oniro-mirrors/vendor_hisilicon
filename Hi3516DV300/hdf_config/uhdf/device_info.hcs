@@ -200,10 +200,10 @@
                 }
             }
         }
-        hdf_sensor_hdi :: host { 
-            hostName = "hdf_sensor_hdi_host"; 
+        sensor_dal :: host { 
+            hostName = "sensor_dal_host"; 
             priority = 50; 
-            hdf_sensor_hdi_device :: device { 
+            sensor_dal_device :: device { 
                 device0 :: deviceNode { 
                     policy = 2; 
                     priority = 100; 
