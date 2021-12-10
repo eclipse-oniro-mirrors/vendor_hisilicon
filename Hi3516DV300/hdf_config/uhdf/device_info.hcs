@@ -200,5 +200,17 @@
                 }
             }
         }
+        sensor_dal :: host { 
+            hostName = "sensor_dal_host"; 
+            priority = 50; 
+            sensor_dal_device :: device { 
+                device0 :: deviceNode { 
+                    policy = 2; 
+                    priority = 100; 
+                    moduleName = "libsensor_driver.z.so"; 
+                    serviceName = "sensor_interface_service"; 
+                    } 
+            } 
+        }
     }
 }
