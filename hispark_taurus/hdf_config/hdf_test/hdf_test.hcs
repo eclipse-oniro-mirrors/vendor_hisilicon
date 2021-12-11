@@ -12,5 +12,6 @@
 #include "hdf_config_test.hcs"
 #include "sdio_test_config.hcs"
 #include "emmc_test_config.hcs"
+#include "pcie_test_config.hcs"
 #include "pwm_test_config.hcs"
 #include "regulator_test_config.hcs"

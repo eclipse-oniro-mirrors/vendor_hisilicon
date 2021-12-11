@@ -150,6 +150,26 @@ root {
                     deviceMatchAttr = "EMMC_TEST";
                 }
             }
+            device_platform_pcie_test :: device {
+				pcie_virtual :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PCIE_VIRTUAL";
+                    serviceName = "HDF_PLATFORM_PCIE_0";
+                    deviceMatchAttr = "PCIE_VIRTUAL";
+                }
+                pcie_tester :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PCIE_TEST";
+                    serviceName = "PCIE_TEST";
+                    deviceMatchAttr = "PCIE_TEST";
+                }
+            }
             device_platform_adc_test :: device {
                 adc_tester :: deviceNode {
                     policy = 2;
