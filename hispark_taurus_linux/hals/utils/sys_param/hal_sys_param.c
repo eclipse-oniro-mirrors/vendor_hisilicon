@@ -88,6 +88,7 @@ const char* HalGetHardwareProfile(void)
 
 const char* HalGetSerial(void)
 {
+    char strOrigin[STR_MAX] = {0};
     static char str[STR_MAX] = {0};
     if (strlen(str) > 0) {
         return str;
@@ -96,12 +97,20 @@ const char* HalGetSerial(void)
     if (fd < 0) {
         return OHOS_SERIAL;
     }
-    int ret = read(fd, str, STR_MAX - 1);
+    int ret = read(fd, strOrigin, STR_MAX - 1);
     if (ret <= 0) {
         close(fd);
         return OHOS_SERIAL;
     }
     close(fd);
+    int j = 0;
+    for (int i = 0; strOrigin[i] != '\0' && i < STR_MAX; i++) {
+        if ((strOrigin[i] <= '9' && strOrigin[i] >= '0') || (strOrigin[i] <= 'f' && strOrigin[i] >= 'a')) {
+            str[j] = strOrigin[i];
+            j++;
+        }
+    }
+    str[j] = '\0';
     return str;
 }
 
