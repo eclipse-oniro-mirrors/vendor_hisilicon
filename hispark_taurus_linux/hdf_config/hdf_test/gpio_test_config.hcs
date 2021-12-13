@@ -5,6 +5,7 @@ root {
             match_attr = "GPIO_TEST";
             gpio = 83;
             gpioIrq = 83;
+            testUserApi = 1;
         }
     }
 }
