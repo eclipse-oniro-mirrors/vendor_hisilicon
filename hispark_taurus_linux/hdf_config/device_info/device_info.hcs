@@ -193,6 +193,23 @@
                    serviceName = "HDF_MIPI_TX";
                }
            }
+            device_regulator :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 50;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_REGULATOR_MANAGER";
+                    serviceName = "HDF_PLATFORM_REGULATOR_MANAGER";
+                    deviceMatchAttr = "hdf_platform_regulator_manager";
+                }
+				device1 :: deviceNode {
+                    policy = 0;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "linux_regulator_adapter";
+                    deviceMatchAttr = "linux_regulator_adapter";
+                }
+            }
 /*           device_hisi_sdk:: device {
                device0 :: deviceNode {
                    policy = 1;

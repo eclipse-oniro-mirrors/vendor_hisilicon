@@ -139,6 +139,17 @@ root {
                     deviceMatchAttr = "PLATFORM_MIPI_CSI_TEST";
                 }
             }
+            device_platform_regulator_test :: device {
+                regulator_tester :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_REGULATOR_TEST";
+                    serviceName = "REGULATOR_TEST";
+                    deviceMatchAttr = "REGULATOR_TEST";
+                }
+            }
             device_sensor_test :: device {
                 sensor_tester :: deviceNode {
                     policy = 0;

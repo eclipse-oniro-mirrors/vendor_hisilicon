@@ -1,0 +1,16 @@
+root {
+    module = "regulator";
+    regulator_test_config {
+        regulator_controller_tester {
+            match_attr = "REGULATOR_TEST";
+            name = "regulator_adapter_1";
+			devName = "regulator_adapter_consumer01";     /* regulator map of dev_name */
+			supplyName = "vir-voltage-reg-hdf-adp";        /* regulator map of supply name */
+			mode = 1;
+			minUv = 2000;
+			maxUv = 3000;
+			minUa = 2000;
+			maxUa = 3000;
+        }
+    }
+}

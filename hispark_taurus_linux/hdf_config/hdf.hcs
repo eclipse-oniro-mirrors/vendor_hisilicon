@@ -6,6 +6,7 @@
 #include "device/mmc/sdio_config_linux.hcs"
 #include "device/mmc/emmc_config_linux.hcs"
 #include "device/spi/spi_config_linux.hcs"
+#include "device/regulator/regulator_config_linux.hcs"
 
 #include "device_info/device_info.hcs"
 #include "lcd/lcd_config.hcs"
