@@ -58,7 +58,7 @@ HDF_FRAMWORK_TEST_ROOT = $(abspath $(SOURCE_ROOT)/drivers/framework/test/unittes
 HCS_MACRO_OBJ := hcs_macro_cases.o
 HCS_MACRO_SRC := $(HDF_FRAMWORK_TEST_ROOT)/hcs_macro_cases.c
 HCS_DEP := $(HDF_FRAMWORK_TEST_ROOT)/hdf_macro_test.h
-HCS_MACRO_FILE := $(subst .h,, $(HCS_DEP))
+HCS_MACRO_GEN_FILE := $(HDF_FRAMWORK_TEST_ROOT)/hdf_macro_test
 HCS_FILE := $(HCS_DIR)/hdf.hcs
 
 $(obj)/$(HCS_OBJ): $(CONFIG_GEN_HEX_SRC)
@@ -83,7 +83,7 @@ $(obj)/$(HCS_MACRO_OBJ): $(HCS_MACRO_SRC) $(HCS_DEP)
 
 $(HCS_DEP): $(HC_GEN)
 	$(Q)echo gen hdf built-in config macro
-	$(Q)$(HC_GEN) -m -o $(HCS_MACRO_FILE) $(HCS_FILE)
+	$(Q)$(HC_GEN) -m -o $(HCS_MACRO_GEN_FILE) $(HCS_FILE)
 
 obj-$(CONFIG_DRIVERS_HDF) += $(HCS_OBJ) \
                              $(HCS_MACRO_OBJ)
