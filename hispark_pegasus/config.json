@@ -48,7 +48,7 @@
               "huks_use_lite_storage = true",
               "huks_use_hardware_root_key = true",
               "huks_config_file = \"hks_config_lite.h\"",
-              "huks_mbedtls_path = \"//device/hisilicon/hispark_pegasus/sdk_liteos/third_party/mbedtls/include/\""
+              "huks_mbedtls_path = \"//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party/mbedtls/include/\""
             ]
           }
         ]
@@ -99,7 +99,7 @@
       {
         "subsystem": "vendor",
         "components": [
-          { "component": "hi3861_sdk", "target": "//device/hisilicon/hispark_pegasus/sdk_liteos:wifiiot_sdk", "features":[] }
+          { "component": "hi3861_sdk", "target": "//device/soc/hisilicon/hi3861v100/sdk_liteos:wifiiot_sdk", "features":[] }
         ]
       },
       {
@@ -114,6 +114,6 @@
         ]
       }
     ],
-    "third_party_dir": "//device/hisilicon/hispark_pegasus/sdk_liteos/third_party",
+    "third_party_dir": "//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party",
     "product_adapter_dir": "//vendor/hisilicon/hispark_pegasus/hals"
   }
