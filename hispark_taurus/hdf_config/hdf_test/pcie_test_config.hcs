@@ -4,14 +4,14 @@ root {
             template pcie_controller {
                 match_attr = "";
                 busNum = 0;
-				vendorId = 0x01;
-				devId = 0x02;
+                vendorId = 0x01;
+                devId = 0x02;
             }
             controller_0x10100000 :: pcie_controller {
                 match_attr = "PCIE_VIRTUAL";
                 busNum = 0;
-				vendorId = 0x01;
-				devId = 0x02;
+                vendorId = 0x01;
+                devId = 0x02;
             }
         }
     }
