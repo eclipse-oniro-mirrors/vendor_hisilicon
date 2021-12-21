@@ -1,0 +1,41 @@
+root {
+    platform {
+        regulator_config {
+		/* hdf regulator node is a consumer node of linux regulator node */
+			match_attr = "linux_regulator_adapter";
+			template regulator_controller {
+			    device_num = 1;
+				name = "";
+			    devName = "regulator_adapter_consumer01";          /* regulator map of dev_name */
+				supplyName = "";    /* regulator map of supply name */
+				mode = 1;     /* voltage:1; current:2 */
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d0000 :: regulator_controller {
+			    device_num = 1;
+			    name = "regulator_adapter_1";
+				devName = "regulator_adapter_consumer01";     /* regulator map of dev_name */
+				supplyName = "virtual-regulator-hdf-adapter";        /* regulator map of supply name */
+				mode = 1;
+				minUv = 1000;
+				maxUv = 50000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d0001 :: regulator_controller {
+			    device_num = 1;
+			    name = "regulator_adapter_2";
+				devName = "regulator_adapter_consumer01";     /* regulator map of dev_name */
+				supplyName = "virtual2-regulator-hdf-adapter";        /* regulator map of supply name */
+				mode = 2;
+				minUv = 0;
+				maxUv = 0;
+				minUa = 1000;
+				maxUa = 50000;
+			}
+        }
+    }
+}

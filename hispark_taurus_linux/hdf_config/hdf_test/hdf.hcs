@@ -8,6 +8,7 @@
 #include "sdio_test_config.hcs"
 #include "emmc_test_config.hcs"
 #include "uart_test_config.hcs"
+#include "regulator_test_config.hcs"
 
 root {
     module = "hisilicon,hi35xx_chip";
