@@ -67,7 +67,7 @@
     -
       target_dir: storage
     -
-      source_dir: sdk_linux/src_tmp/ko
+      source_dir: sdk_linux/src_tmp/out/ko
       target_dir: ko
       dir_mode: 755
       file_mode: 755
