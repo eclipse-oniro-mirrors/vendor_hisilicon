@@ -230,6 +230,17 @@ root {
                     deviceMatchAttr = "WATCHDOG_TEST";
                 }
             }
+            device_platform_timer_test :: device {
+                timer_tester :: deviceNode {
+                    policy = 1;
+                    priority = 105;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_TIMER_TEST";
+                    serviceName = "TIMER_TEST";
+                    deviceMatchAttr = "TIMER_TEST";
+                }
+            }
             device_platform_mipi_csi_test :: device {
                 mipi_csi_tester :: deviceNode {
                     policy = 1;

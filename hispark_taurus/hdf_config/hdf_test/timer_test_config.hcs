@@ -1,0 +1,11 @@
+root {
+    module = "timer";
+    timer_test_config {
+        timer_controller_tester {
+            match_attr = "TIMER_TEST";
+            number = 0;
+            useconds = 20000;
+            isPeriod = 1;
+        }
+    }
+}

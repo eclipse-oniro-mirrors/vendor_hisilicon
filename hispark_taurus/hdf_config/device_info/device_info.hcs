@@ -213,6 +213,24 @@
                     deviceMatchAttr = "hisilicon_hi35xx_dmac_0";
                 }
             }
+            device_timer :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 50;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_TIMER_MANAGER";
+                    serviceName = "HDF_PLATFORM_TIMER_MANAGER";
+                    deviceMatchAttr = "hdf_platform_timer_manager";
+                }
+                device1 :: deviceNode {
+                    policy = 0;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "hi35xx_timer_driver";
+                    serviceName = "HI35XX_TIMER_DRIVER";
+                    deviceMatchAttr = "hisilicon_hi35xx_timer";
+                }
+            }
 	    device_i2s :: device {
                 device0 :: deviceNode {
                     policy = 1;
