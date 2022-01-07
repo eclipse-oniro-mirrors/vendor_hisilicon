@@ -11,6 +11,7 @@
 #include "../../../../device/soc/hisilicon/hi3516dv300/sdk_liteos/hdf_config/pwm/pwm_config.hcs"
 #include "../../../../device/soc/hisilicon/hi3516dv300/sdk_liteos/hdf_config/dmac/dmac_config.hcs"
 #include "../../../../device/soc/hisilicon/hi3516dv300/sdk_liteos/hdf_config/i2s/i2s_config.hcs"
+#include "../../../../device/soc/hisilicon/hi3516dv300/sdk_liteos/hdf_config/timer/timer_config.hcs"
 
 #include "device_info/device_info.hcs"
 #include "wifi/wlan_platform.hcs"
