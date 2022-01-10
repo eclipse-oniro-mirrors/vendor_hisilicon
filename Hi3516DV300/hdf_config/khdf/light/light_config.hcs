@@ -1,0 +1,31 @@
+root {
+    LightConfig {
+        boardConfig {
+            match_attr = "hdf_light_driver";
+            lightAttr {
+                battery {
+                    lightName = "battery";
+                    lightType = 1;
+                    busType = 0; // 0:gpio 1: PWM
+                    busRNum = 31;
+                    busGNum = 30;
+                    busBNum = 29;
+                    lightBrightness = 0XFFFF0000;
+                    onTime = 50; // ms
+                    offTime = 50; // ms
+                }
+                notifications {
+                    lightName = "notifications";
+                    lightType = 2;
+                    busType = 0;
+                    busRNum = 31;
+                    busGNum = 30;
+                    busBNum = 29;
+                    lightBrightness = 0XFFFF0000;
+                    onTime = 50; // ms
+                    offTime = 50; // ms
+                }
+            }
+        }
+    }
+}
