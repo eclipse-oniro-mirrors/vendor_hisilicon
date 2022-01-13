@@ -1,0 +1,314 @@
+{
+    "product_name": "watchos",
+    "version": "3.0",
+    "type": "standard",
+    "ohos_version": "OpenHarmony 3.0",
+    "device_company": "hisilicon",
+    "board": "hi3516dv300",
+    "device_build_path":"device/board/hisilicon/hispark_taurus/linux",
+    "kernel_type": "linux",
+    "kernel_version": "4.19",
+    "target_cpu":"arm",
+    "enable_ramdisk": true,
+    "subsystems": [
+      {
+        "subsystem": "ace",
+        "components": [
+          { "component": "ace_engine_standard", "features":[ "" ] },
+		  { "component": "napi", "features":[ "" ] }
+        ]
+      },
+      {
+        "subsystem": "distributedschedule",
+        "components": [
+          { "component": "samgr_standard", "features":[] },
+          { "component": "safwk", "features":[] },
+          { "component": "dmsfwk_standard", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hiviewdfx_hilog_native", "features":[] },
+		  { "component": "hilog_native", "features":[] },
+		  { "component": "hilog_service", "features":[] },
+		  { "component": "hisysevent_native", "features":[] },
+		  { "component": "hiappevent_native", "features":[] },
+		  { "component": "hiappevent_js", "features":[] },
+		  { "component": "hiview", "features":[] },
+		  { "component": "faultloggerd", "features":[] },
+		  { "component": "hitrace_native", "features":[] },
+		  { "component": "hicollie_native", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "security",
+        "components": [
+          { "component": "appverify", "features":[] },
+          { "component": "huks", "features":[] },
+          { "component": "deviceauth_standard", "features":[] },
+          { "component": "dataclassification", "features":[] },
+		  { "component": "selinux", "features":[] },
+		  { "component": "permission_standard", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "multimedia",
+        "components": [
+          { "component": "multimedia_histreamer", "features":[] },
+		  { "component": "multimedia_media_standard", "features":[] },
+		  { "component": "multimedia_audio_standard", "features":[] },
+		  { "component": "multimedia_image_standard", "features":[] },
+                  { "component": "multimedia_camera_standard", "features":[] },
+		  { "component": "multimedia_media_library_standard", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "startup_l2", "features":[] },
+          { "component": "appspawn", "features":[] },
+          { "component": "init", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "kernel",
+        "components": [
+          { "component": "linux_hi3516dv300", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "communication",
+        "components": [
+          { "component": "ipc", "features":[] },
+          { "component": "ipc_js", "features":[] },
+          { "component": "net_manager", "features":[] },
+          { "component": "netmanager_standard", "features":[] },
+          { "component": "netstack", "features":[] },
+          { "component": "dsoftbus_standard", "features":[] },
+          { "component": "wifi_standard", "features":[] },
+          { "component": "wifi_native_js", "features":[] },
+          { "component": "bluetooth_native_js", "features":[] }			  
+        ]
+      },
+      {
+        "subsystem": "utils",
+        "components": [
+          { "component": "utils_base", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "vendor",
+        "components": [
+        ]
+      },
+      {
+        "subsystem": "updater",
+        "components": [
+          { "component": "updater", "features": [] }
+        ]
+      },
+      {
+        "subsystem": "hdf",
+        "components": [
+          { "component": "hdf", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "graphic",
+        "components": [
+          { "component": "graphic_standard", "features":[] }
+        ]
+      },	
+{
+        "subsystem": "aafwk",
+        "components": [
+          { "component": "aafwk_standard", "features":[ ] }
+        ]
+      },
+      {
+        "subsystem": "appexecfwk",
+        "components": [
+          { "component": "eventhandler", "features":[] },
+		  { "component": "appexecfwk_standard", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "powermgr",
+        "components": [
+          { "component": "power_manager_native", "features":[ ] },
+		  { "component": "battery_manager_native", "features":[ ] },
+		  { "component": "display_manager_native", "features":[ ] }
+        ]
+      },
+      {
+        "subsystem": "applications",
+        "components": [
+          { "component": "prebuilt_hap", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "global",
+        "components": [
+          { "component": "i18n_standard", "features":[] },
+		  { "component": "resmgr_standard", "features":[] },
+		  { "component": "systemres", "features":[] },
+		  { "component": "cust_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "xts",
+        "components": [
+          { "component": "phone_tests", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributedhardware",
+        "components": [
+          { "component": "device_manager_base", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributeddatamgr",
+        "components": [
+          { "component": "native_appdatamgr", "features":[] },
+		  { "component": "distributeddatamgr", "features":[] },
+		  { "component": "appdatamgr_jskits", "features":[] },
+		  { "component": "distributedfilejs", "features":[] },
+		  { "component": "storage_standard", "features":[] },
+		  { "component": "e2fsprogs", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "telephony",
+        "components": [
+          { "component": "core_service", "features":[] },
+		  { "component": "ril_adapter", "features":[] },
+		  { "component": "data_storage", "features":[] },
+		  { "component": "state_registry", "features":[] },
+		  { "component": "cellular_call", "features":[] },
+		  { "component": "cellular_data", "features":[] },
+		  { "component": "sms_mms", "features":[] },
+		  { "component": "call_manager", "features":[] }
+        ]
+      },  
+      {
+        "subsystem": "account",
+        "components": [
+          { "component": "app_account_standard", "features":[] },
+		  { "component": "os_account_standard", "features":[] }
+        ]
+      },	
+      {
+        "subsystem": "common",
+        "components": [
+          { "component": "common", "features":["common_feature_verify = true"]}
+        ]
+      },
+      {
+        "subsystem": "developertest",
+        "components": [
+          { "component": "developertest", "features":[]}
+        ]
+      },		  
+      {
+        "subsystem": "hisilicon_products",
+        "components": [
+          { "component": "hisilicon_products", "features":[]}
+        ]
+      },	
+      {
+        "subsystem": "notification",
+        "components": [
+          { "component": "ces_standard", "features":[]},
+		  { "component": "ans_standard", "features":[]}
+        ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "bytrace_standard", "features":[]},
+		  { "component": "hdc_standard", "features":[]},
+		  { "component": "profiler", "features":[]},
+		  { "component": "hiperf", "features":[]}
+        ]
+      },
+      {
+        "subsystem": "sensors",
+        "components": [
+          { "component": "miscdevice", "features":[]},
+		  { "component": "sensor", "features":[]},
+		  { "component": "start", "features":[]}
+        ]
+      },	
+      {
+        "subsystem": "miscservices",
+        "components": [
+          { "component": "time_native", "features":[]},
+		  { "component": "inputmethod_native", "features":[]}
+        ]
+      },
+      {
+        "subsystem": "ccruntime",
+        "components": [
+          { "component": "jsapi_sys", "features":[]},
+		  { "component": "jsapi_api", "features":[]},
+          { "component": "jsapi_util", "features":[]},
+		  { "component": "jsapi_worker", "features":[]}	  
+        ]
+      },
+	  {
+        "subsystem": "ark",
+        "components": [
+          { "component": "ark", "features":[]},
+		  { "component": "ark_js_runtime", "features":[]},
+		  { "component": "ark_ts2abc", "features":[]}
+        ]
+      },
+      {
+        "subsystem": "multimodalinput",
+        "components": [
+          { "component": "multimodalinput_base", "features":[]}
+        ]
+      },		  
+      {
+        "subsystem": "usb",
+        "components": [
+          { "component": "usb_manager_native", "features":[]}
+        ]
+      },
+      {
+        "subsystem": "deviceprofile",
+        "components": [
+          { "component": "device_profile_core", "features":[]}
+        ]
+      },		  
+      {
+        "subsystem": "storage_manager",
+        "components": [
+          { "component": "storage_standard", "features":[]}
+        ]
+      },	
+      {
+        "subsystem": "window",
+        "components": [
+          { "component": "window_manager", "features":[]}
+        ]
+      },
+      {
+        "subsystem": "settingsnapi",
+        "components": [
+          { "component": "settings_standard", "features":[]}
+        ]
+      },
+  	  
+      {
+        "subsystem": "wpa_supplicant-2.9",
+        "components": [
+          { "component": "wpa_supplicant-2.9", "features":[]}
+        ]
+      }	  
+    ],
+    "third_party_dir": "//third_party",
+    "product_adapter_dir": "//vendor/hisilicon/watchos/hals"
+  }
