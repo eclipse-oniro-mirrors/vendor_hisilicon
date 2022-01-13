@@ -6,7 +6,7 @@
     "device_company": "hisilicon",
     "board": "hispark_taurus",
     "kernel_type": "linux",
-    "kernel_version": "4.19",
+    "kernel_version": "5.10",
     "subsystems": [
       {
         "subsystem": "ace",
@@ -59,7 +59,7 @@
       {
         "subsystem": "kernel",
         "components": [
-          { "component": "linux_4_1_9", "features":[] }
+          { "component": "linux", "features":[] }
         ]
       },
       {
