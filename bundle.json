@@ -1,0 +1,55 @@
+{
+    "name": "@ohos/vendor_hisilicon",
+    "version": "",
+    "description": "Provides development boards with the code as well as the scripts used for compilation and building framework adaptation and solutions.",
+    "homePage": "https://gitee.com/openharmony",
+    "license": "Apache V2",
+    "repository": "https://gitee.com/openharmony/vendor_hisilicon",
+    "domain": "os",
+    "language": "",
+    "publishAs": "code-segment",
+    "private": false,
+    "scripts": {},
+    "tags": [
+        "vendor"
+    ],
+    "keywords": [
+        "vendor",
+        "hisilicon"
+    ],
+    "envs": [],
+    "dirs": [],
+    "author": {
+        "name": "",
+        "email": "",
+        "url": ""
+    },
+    "contributors": [
+        {
+            "name": "",
+            "email": "",
+            "url": ""
+        }
+    ],
+    "segment": {
+        "destPath": "vendor/hisilicon"
+    },
+    "component": {
+        "name": "vendor_hisilicon",
+        "subsystem": "",
+        "syscap": [],
+        "features": [],
+        "adapted_system_type": [],
+        "rom": "",
+        "ram": "",
+        "deps": {
+            "components": [],
+            "third_party": []
+        },
+        "build": {
+            "sub_component": [],
+            "inner_kits": [],
+            "test": []
+        }
+    }
+}
