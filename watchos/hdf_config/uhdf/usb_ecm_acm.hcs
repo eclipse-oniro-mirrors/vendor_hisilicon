@@ -1,0 +1,421 @@
+root {
+    module = "master";
+    master_config {
+        match_attr = "usbfn_master_driver";
+        use_hcs = 1;
+        udc_name = "100e0000.hidwc3_0";
+        usb_dev_desc = "UsbDeviceDescriptor";
+        usb_dev_string = "UsbDeviceStrings";
+        usb_configuration = "UsbConfigs";
+        UsbDeviceDescriptor {
+            bLength = 18;
+            bDescriptorType = 0x01;
+            bcdUSB = 0x0200;
+            bDeviceClass = 0;
+            bDeviceSubClass = 0;
+            bDeviceProtocol = 0;
+            bMaxPacketSize0 = 0x40;
+            idVendor = 0x12D1;
+            idProduct = 0x5000;
+            bcdDevice = 0x0223;
+            manufacturer = 0;
+            product = 1;
+            serialnumber = 2;
+            numConfigurations = 1;
+        }
+        UsbDeviceStrings {
+            stringTabList = ["string_1"];
+            string_1 {
+                language = 0x0409;
+                stringList = ["str_1", "str_2","str_3", "str_4"];
+                str_1 {
+                    id = 0;
+                    str =  "HISILICON";
+                }
+                str_2 {
+                    id = 1;
+                    str = "HDC Device";
+                }
+                str_3 {
+                    id = 2;
+                    str =  "0123456789POPLAR";
+                }
+                str_4 {
+                    id = 3;
+                    str = "hdc";
+                }
+            }
+        }
+        UsbConfigs {
+            configList = ["config_1"];
+            config_1  {
+                configurationValue = 1;
+                iConfiguration = 3;
+                attributes = 0xC0;
+                maxPower = 500;
+                functionList = ["func_ecm", "func_acm"];
+                func_ecm {
+                    funcName = "f_generic.e";
+                    stringTabList = ["fnString_1"];
+                    fnString_1 {
+                        language  = 0x0409;
+                        stringList = ["str_1", "str_2", "str_3", "str_4"];
+                        str_1 {
+                            id = 0;
+                            str = "CDC Ethernet Control Model (ECM)";
+                        }
+                        str_2 {
+                            id = 1;
+                            str = "0ac75ae91c79";
+                        }
+                        str_3 {
+                            id = 2;
+                            str = "CDC Ethernet Data";
+                        }
+                        str_4 {
+                            id = 3;
+                            str = "CDC ECM";
+                        }
+                    }
+                    fsDescList = ["assoc_interface", "ControlInterface", "cdc_header",
+                        "cdc_union", "cdc_ether", "FsNotify_endpoint", "DataNopInterface",
+                        "DataInterface", "FsIn_endpoint", "FsOut_endpoint"];
+                    assoc_interface {
+                        bLength = 0x08;
+                        bDescriptorType = 0x0B;
+                        bFirstInterface = 0x00;
+                        bInterfaceCount = 0x02;
+                        bFunctionClass = 0x02;
+                        bFunctionSubClass = 0x06;
+                        bFunctionProtocol = 0x00;
+                        iFunction = 0x04;
+                    }
+                    ControlInterface {
+                        bLength = 0x09;
+                        bDescriptorType = 0x04;
+                        bInterfaceNumber = 0x00;
+                        bAlternateSetting = 0x00;
+                        bNumEndpoints = 0x01;
+                        bInterfaceClass = 0x02;
+                        bInterfaceSubClass = 0x06;
+                        bInterfaceProtocol = 0x00;
+                        iInterface = 0x1;
+                    }
+                    cdc_header {
+                        bLength = 0x05;
+                        bDescriptorType = 0x24;
+                        desc_data = [0x05, 0x24, 0x00, 0x10, 0x01];
+                    }
+                    cdc_union {
+                        bLength = 0x05;
+                        bDescriptorType = 0x24;
+                        desc_data = [0x05, 0x24, 0x06, 0x00, 0x01];
+                    }
+                    cdc_ether {
+                        bLength = 0x0D;
+                        bDescriptorType = 0x24;
+                        desc_data = [0x0D, 0x24, 0x0F, 0x06, 0x00, 0x00, 0x00, 0x00,
+                                     0xEA, 0x05, 0x00, 0x00, 0x00];
+                    }
+                    DataNopInterface {
+                        bLength = 0x09;
+                        bDescriptorType = 0x04;
+                        bInterfaceNumber = 0x01;
+                        bAlternateSetting = 0x00;
+                        bNumEndpoints = 0x00;
+                        bInterfaceClass = 0x0A;
+                        bInterfaceSubClass = 0x00;
+                        bInterfaceProtocol = 0x06;
+                        iInterface = 0x00;
+                    }
+                    DataInterface {
+                        bLength = 0x09;
+                        bDescriptorType = 0x04;
+                        bInterfaceNumber = 0x01;
+                        bAlternateSetting = 0x01;
+                        bNumEndpoints = 0x02;
+                        bInterfaceClass = 0x0A;
+                        bInterfaceSubClass = 0x00;
+                        bInterfaceProtocol = 0x06;
+                        iInterface = 0x03;
+                    }
+                    FsNotify_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x81;
+                        bmAttributes = 0x03;
+                        wMaxPacketSize = 16;
+                        bInterval = 32;
+                    }
+                    FsIn_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x82;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 0;
+                        bInterval = 0;
+                    }
+                    FsOut_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x3;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 0;
+                        bInterval = 0;
+                    }
+                    hsDescList = ["assoc_interface", "ControlInterface", "cdc_header",
+                        "cdc_union", "cdc_ether", "HsNotify_endpoint", "DataNopInterface",
+                        "DataInterface", "HsIn_endpoint", "HsOut_endpoint"];
+                    HsNotify_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x81;
+                        bmAttributes = 0x03;
+                        wMaxPacketSize = 16;
+                        bInterval = 9;
+                    }
+                    HsIn_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x82;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 512;
+                        bInterval = 0;
+                    }
+                    HsOut_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x3;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 512;
+                        bInterval = 0;
+                    }
+                    ssDescList = ["assoc_interface", "ControlInterface", "cdc_header",
+                        "cdc_union", "cdc_ether", "SsNotify_endpoint", "ss_ep_comp_0",
+                        "DataNopInterface", "DataInterface", "SsIn_endpoint",
+                        "ss_ep_comp", "SsOut_endpoint", "ss_ep_comp"];
+                    SsNotify_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x81;
+                        bmAttributes = 0x03;
+                        wMaxPacketSize = 16;
+                        bInterval = 9;
+                    }
+                    ss_ep_comp_0 {
+                        bLength = 0x06;
+                        bDescriptorType = 0x30;
+                        bMaxBurst = 0x00;
+                        bmAttributes = 0x00;
+                        wBytesPerInterval = 16;
+                    }
+                    ss_ep_comp {
+                        bLength = 0x06;
+                        bDescriptorType = 0x30;
+                        bMaxBurst = 0x00;
+                        bmAttributes = 0x00;
+                        wBytesPerInterval = 0x00;
+                    }
+                    SsIn_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x82;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 1024;
+                        bInterval = 0;
+                    }
+                    SsOut_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x3;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 1024;
+                        bInterval = 0;
+                    }
+                }
+                func_acm {
+                    funcName = "f_generic.a";
+                    stringTabList = ["fnString_1"];
+                    fnString_1 {
+                        language  = 0x0409;
+                        stringList = ["str_1", "str_2", "str_3"];
+                        str_1 {
+                            id = 0;
+                            str =  "CDC Abstract Control Model (ACM)";
+                        }
+                        str_2 {
+                            id = 1;
+                            str = "CDC ACM Data";
+                        }
+                        str_3 {
+                            id = 2;
+                            str = "CDC Serial";
+                        }
+                    }
+                    fsDescList = ["assoc_interface", "ControlInterface", "cdc_header",
+                        "cdc_call_mgmt", "cdc_acm", "cdc_union", "FsNotify_endpoint",
+                        "DataInterface", "FsIn_endpoint", "FsOut_endpoint"];
+                    assoc_interface {
+                        bLength = 0x08;
+                        bDescriptorType = 0x0B;
+                        bFirstInterface = 0x02;
+                        bInterfaceCount = 0x02;
+                        bFunctionClass = 0x02;
+                        bFunctionSubClass = 0x02;
+                        bFunctionProtocol = 0x01;
+                        iFunction = 0x03;
+                    }
+                    ControlInterface {
+                        bLength = 0x09;
+                        bDescriptorType = 0x04;
+                        bInterfaceNumber = 0x02;
+                        bAlternateSetting = 0x00;
+                        bNumEndpoints = 0x01;
+                        bInterfaceClass = 0x02;
+                        bInterfaceSubClass = 0x02;
+                        bInterfaceProtocol = 0x01;
+                        iInterface = 0x01;
+                    }
+                    cdc_header {
+                        bLength = 0x05;
+                        bDescriptorType = 0x24;
+                        desc_data = [0x05, 0x24, 0x00, 0x10, 0x01];
+                    }
+                    cdc_call_mgmt {
+                        bLength = 0x05;
+                        bDescriptorType = 0x24;
+                        desc_data = [0x05, 0x24, 0x01, 0x00, 0x01];
+                    }
+                    cdc_acm {
+                        bLength = 0x04;
+                        bDescriptorType = 0x24;
+                        desc_data = [0x04, 0x24, 0x02, 0x02];
+                    }
+                    cdc_union {
+                        bLength = 0x05;
+                        bDescriptorType = 0x24;
+                        desc_data = [0x05, 0x24, 0x06, 0x02, 0x03];
+                    }
+                    FsNotify_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x81;
+                        bmAttributes = 0x03;
+                        wMaxPacketSize = 10;
+                        bInterval = 32;
+                    }
+                    DataInterface {
+                        bLength = 0x09;
+                        bDescriptorType = 0x04;
+                        bInterfaceNumber = 0x03;
+                        bAlternateSetting = 0x00;
+                        bNumEndpoints = 0x02;
+                        bInterfaceClass = 0x0A;
+                        bInterfaceSubClass = 0x00;
+                        bInterfaceProtocol = 0x02;
+                        iInterface = 0x02;
+                    }
+                    FsIn_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x82;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 0;
+                        bInterval = 0;
+                    }
+                    FsOut_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x3;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 0;
+                        bInterval = 0;
+                    }
+                    hsDescList = ["assoc_interface", "ControlInterface", "cdc_header",
+                        "cdc_call_mgmt", "cdc_acm", "cdc_union", "HsNotify_endpoint",
+                        "DataInterface", "HsIn_endpoint", "HsOut_endpoint"];
+                    HsNotify_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x81;
+                        bmAttributes = 0x03;
+                        wMaxPacketSize = 10;
+                        bInterval = 9;
+                    }
+                    HsIn_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x82;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 512;
+                        bInterval = 0;
+                    }
+                    HsOut_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x3;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 512;
+                        bInterval = 0;
+                    }
+                    ssDescList = ["assoc_interface", "ControlInterface", "cdc_header",
+                        "cdc_call_mgmt", "cdc_acm", "cdc_union", "HsNotify_endpoint",
+                        "ss_ep_comp", "DataInterface", "SsIn_endpoint",
+                        "ss_ep_comp","SsOut_endpoint","ss_ep_comp"];
+                    ss_ep_comp {
+                        bLength = 0x06;
+                        bDescriptorType = 0x30;
+                        bMaxBurst = 0x00;
+                        bmAttributes = 0x00;
+                        wBytesPerInterval = 0x00;
+                    }
+                    SsIn_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x82;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 1024;
+                        bInterval = 0;
+                    }
+                    SsOut_endpoint {
+                        bLength = 0x07;
+                        bDescriptorType = 0x05;
+                        bEndpointAddress = 0x3;
+                        bmAttributes = 0x02;
+                        wMaxPacketSize = 1024;
+                        bInterval = 0;
+                    }
+                }
+            }
+        }
+        custom_prop {
+            propTable = ["propList_1", "propList_2"];
+            propList_1 {
+                configNum = 1;
+                interfaceNum = 2;
+                propList = ["prop_1", "prop_2"];
+                prop_1 {
+                    name = "testx";
+                    value = "xxxxxx";
+                }
+                prop_2 {
+                    name = "testy";
+                    value = "yyyyyy";
+                }
+            }
+            propList_2 {
+                configNum = 1;
+                interfaceNum = 3;
+                propList = ["prop_1", "prop_2"];
+                prop_1 {
+                    name = "testm";
+                    value = "mmmmm";
+                }
+                prop_2 {
+                    name = "testn";
+                    value = "nnnnn";
+                }
+            }
+        }
+    }
+}

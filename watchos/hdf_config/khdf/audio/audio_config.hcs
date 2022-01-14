@@ -1,0 +1,36 @@
+root {
+    platfrom {
+        template card_controller {
+            match_attr = "";
+            serviceName = "";
+            codecName = "";
+            platformName = "";
+            cpuDaiName = "";
+            codecDaiName = "";
+            accessoryName = "";
+            accessoryDaiName = "";
+            dspName = "";
+            dspDaiName = "";
+        }
+        controller_0x120c1000 :: card_controller {
+            match_attr = "hdf_audio_driver_0";
+            serviceName = "hdf_audio_codec_dev0";
+            codecName = "codec_service_0";
+            platformName = "dma_service_0";
+            cpuDaiName = "dai_service";
+            codecDaiName = "codec_dai";
+            dspName = "dsp_service_0";
+            dspDaiName = "dsp_dai";
+        }
+        controller_0x120c1001 :: card_controller {
+            match_attr = "hdf_audio_driver_1";
+            serviceName = "hdf_audio_smartpa_dev0";
+            accessoryName = "codec_service_1";
+            platformName = "dma_service_0";
+            cpuDaiName = "dai_service";
+            accessoryDaiName = "accessory_dai";
+            dspName = "dsp_service_0";
+            dspDaiName = "dsp_dai";
+        }
+    }
+}

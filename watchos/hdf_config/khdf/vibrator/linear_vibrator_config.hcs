@@ -1,0 +1,14 @@
+root {
+    linearVibratorConfig {
+        boardConfig {
+            match_attr = "hdf_linear_vibrator_driver";
+            vibratorChipConfig {
+                busType = 1; // 0:i2c 1:gpio
+                gpioNum = 31;
+                startReg = 0;
+                stopReg = 0;
+                startMask = 0;
+            }
+        }
+    }
+}
