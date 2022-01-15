@@ -4,7 +4,7 @@ root {
         algo1 {
             name = "example";
             description = "example algorithm";
-            path = "/system/lib/libcamera_ipp_algo_example.z.so";
+            path = "libcamera_ipp_algo_example.z.so";
             mode = "IPP_ALGO_MODE_NORMAL";
         }
     }
