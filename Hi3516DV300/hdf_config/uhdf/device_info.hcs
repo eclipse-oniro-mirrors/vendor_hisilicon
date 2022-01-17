@@ -224,5 +224,17 @@
                 }
             }
         }
+        light_dal :: host {
+            hostName = "light_dal_host";
+            priority = 50;
+            light_dal_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "liblight_driver.z.so";
+                    serviceName = "light_interface_service";
+                }
+            }
+        }
     }
 }
