@@ -91,6 +91,14 @@
                     serviceName = "batteryd";
                 }
             }
+            thermal_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libthermal_driver.z.so";
+                    serviceName = "thermal_interface_service";
+                }
+            }
         }
         wlan :: host {
             hostName = "wifi_host";
