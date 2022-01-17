@@ -57,7 +57,8 @@
           { "component": "camera_lite", "features":[] },
           { "component": "media_lite", "features":[] },
           { "component": "audio_manager_lite", "features":[] },
-          { "component": "media_service", "features":[] }
+          { "component": "media_service", "features":[] },
+          { "component": "histreamer", "features":[ "multimedia_histreamer_enable_plugin_hdi_adapter = true"] }
         ]
       },
       {
