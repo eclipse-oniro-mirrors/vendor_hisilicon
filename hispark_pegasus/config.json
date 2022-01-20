@@ -1,6 +1,6 @@
 {
     "product_name": "wifiiot_hispark_pegasus",
-    "type": "small",
+    "type": "mini",
     "version": "3.0",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "hisilicon",
