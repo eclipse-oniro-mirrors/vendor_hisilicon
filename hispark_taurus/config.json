@@ -1,7 +1,7 @@
 {
     "product_name": "ipcamera_hispark_taurus",
     "version": "3.0",
-    "type": "mini",
+    "type": "small",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "hisilicon",
     "board": "hispark_taurus",
