@@ -83,6 +83,14 @@
         power :: host {
             hostName = "power_host";
             priority = 50;
+            power_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libpower_driver.z.so";
+                    serviceName = "power_interface_service";
+                }
+            }
             battery_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
