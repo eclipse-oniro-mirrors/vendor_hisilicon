@@ -95,8 +95,8 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libbatteryd.z.so";
-                    serviceName = "batteryd";
+                    moduleName = "libbattery_driver.z.so";
+                    serviceName = "battery_interface_service";
                 }
             }
             thermal_device :: device {
