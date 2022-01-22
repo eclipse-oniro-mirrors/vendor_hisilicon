@@ -920,5 +920,19 @@
                 }
             }
         }
+        light :: host {
+            hostName = "light_host";
+            device_light :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_LIGHT";
+                    serviceName = "hdf_light";
+                    deviceMatchAttr = "hdf_light_driver";
+                }
+            }
+        }
     }
 }
