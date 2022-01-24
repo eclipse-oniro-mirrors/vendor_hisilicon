@@ -25,8 +25,8 @@
       {
         "subsystem": "hiviewdfx",
         "components": [
-          { "component": "hilog", "features":[] },
-          { "component": "hidumper", "features":[] }
+          { "component": "hilog_featured_lite", "features":[] },
+          { "component": "hidumper_lite", "features":[] }
         ]
       },
       {
