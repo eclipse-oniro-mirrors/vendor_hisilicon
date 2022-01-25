@@ -48,6 +48,8 @@
           { "component": "huks", "features":[] },
           { "component": "deviceauth_standard", "features":[] },
           { "component": "dataclassification", "features":[] },
+		  { "component": "device_security_level", "features":[] },
+		  { "component": "access_token", "features":[] },
 		  { "component": "selinux", "features":[] },
 		  { "component": "permission_standard", "features":[] }
         ]
@@ -83,7 +85,8 @@
           { "component": "ipc", "features":[] },
           { "component": "ipc_js", "features":[] },
           { "component": "net_manager", "features":[] },
-          { "component": "netmanager_standard", "features":[] },
+          { "component": "netmanager_base", "features":[] },
+		  { "component": "netmanager_ext", "features":[] },
           { "component": "netstack", "features":[] },
           { "component": "dsoftbus_standard", "features":[] },
           { "component": "wifi_standard", "features":[] },
@@ -94,6 +97,7 @@
       {
         "subsystem": "utils",
         "components": [
+		  { "component": "utils_memory", "features":[] },	
           { "component": "utils_base", "features":[] }
         ]
       },
@@ -111,7 +115,19 @@
       {
         "subsystem": "hdf",
         "components": [
-          { "component": "hdf", "features":[] }
+          { "component": "device_driver_framework", "features":[] },
+          { "component": "bluetooth_device_driver", "features":[] },
+          { "component": "input_device_driver", "features":[] },
+          { "component": "display_device_driver", "features":[] },
+		  { "component": "thermal_device_driver", "features":[] },
+          { "component": "wlan_device_driver", "features":[] },
+          { "component": "sensor_device_driver", "features":[] },
+          { "component": "audio_device_driver", "features":[] },
+          { "component": "usb_device_driver", "features":[] },
+          { "component": "camera_device_driver", "features":[] },
+          { "component": "vibrator_device_driver", "features":[] },
+          { "component": "light_device_driver", "features":[] },		  
+          { "component": "codec_device_driver", "features":[] }		
         ]
       },
       {
@@ -123,14 +139,20 @@
 {
         "subsystem": "aafwk",
         "components": [
-          { "component": "aafwk_standard", "features":[ ] }
+          { "component": "ability_runtime", "features":[ ] },
+		  { "component": "ability_tools", "features":[ ] },
+		  { "component": "zidl", "features":[ ] },
+		  { "component": "form_runtime", "features":[ ] }
         ]
       },
       {
         "subsystem": "appexecfwk",
         "components": [
           { "component": "eventhandler", "features":[] },
-		  { "component": "appexecfwk_standard", "features":[] }
+		  { "component": "appexecfwk_standard", "features":[] },
+		  { "component": "bundle_framework", "features":[] },
+		  { "component": "bundle_tool", "features":[] },
+		  { "component": "distributed_bundle_framework", "features":[] }
         ]
       },
       {
@@ -138,8 +160,9 @@
         "components": [
           { "component": "power_manager_native", "features":[ ] },
 		  { "component": "battery_manager_native", "features":[ ] },
-		  { "component": "display_manager_native", "features":[ ] },
-		  { "component": "thermal_manager_native", "features":[ ] }
+		  { "component": "battery_statistics_native", "features":[ ] },
+		  { "component": "thermal_manager_native", "features":[ ] },
+		  { "component": "display_manager_native", "features":[ ] }
         ]
       },
       {
@@ -177,6 +200,7 @@
 		  { "component": "appdatamgr_jskits", "features":[] },
 		  { "component": "distributedfilejs", "features":[] },
 		  { "component": "storage_standard", "features":[] },
+		  { "component": "distributeddataobject", "features":[] },
 		  { "component": "e2fsprogs", "features":[] }
         ]
       },
@@ -196,7 +220,6 @@
       {
         "subsystem": "account",
         "components": [
-          { "component": "app_account_standard", "features":[] },
 		  { "component": "os_account_standard", "features":[] }
         ]
       },	
@@ -285,7 +308,7 @@
         ]
       },		  
       {
-        "subsystem": "storage_manager",
+        "subsystem": "filemanagement",
         "components": [
           { "component": "storage_standard", "features":[]}
         ]
