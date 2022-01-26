@@ -232,7 +232,7 @@ root {
             }
             device_platform_timer_test :: device {
                 timer_tester :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 105;
                     preload = 0;
                     permission = 0644;
