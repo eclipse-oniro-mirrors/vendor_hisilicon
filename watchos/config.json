@@ -61,7 +61,7 @@
 		  { "component": "multimedia_media_standard", "features":[] },
 		  { "component": "multimedia_audio_standard", "features":[] },
 		  { "component": "multimedia_image_standard", "features":[] },
-                  { "component": "multimedia_camera_standard", "features":[] },
+          { "component": "multimedia_camera_standard", "features":[] },
 		  { "component": "multimedia_media_library_standard", "features":[] }
         ]
       },
@@ -76,7 +76,7 @@
       {
         "subsystem": "kernel",
         "components": [
-          { "component": "linux_hi3516dv300", "features":[] }
+          { "component": "linux", "features":[] }
         ]
       },
       {
@@ -127,7 +127,9 @@
           { "component": "camera_device_driver", "features":[] },
           { "component": "vibrator_device_driver", "features":[] },
           { "component": "light_device_driver", "features":[] },		  
-          { "component": "codec_device_driver", "features":[] }		
+          { "component": "codec_device_driver", "features":[] },
+          { "component": "power_device_driver", "features":[] },		  
+          { "component": "battery_device_driver", "features":[] }		  
         ]
       },
       {
@@ -197,7 +199,6 @@
         "components": [
           { "component": "native_appdatamgr", "features":[] },
 		  { "component": "distributeddatamgr", "features":[] },
-		  { "component": "appdatamgr_jskits", "features":[] },
 		  { "component": "distributedfilejs", "features":[] },
 		  { "component": "storage_standard", "features":[] },
 		  { "component": "distributeddataobject", "features":[] },
@@ -273,7 +274,7 @@
         ]
       },
       {
-        "subsystem": "ccruntime",
+        "subsystem": "compileruntime",
         "components": [
           { "component": "jsapi_sys", "features":[]},
 		  { "component": "jsapi_api", "features":[]},
@@ -281,6 +282,17 @@
 		  { "component": "jsapi_worker", "features":[]}	  
         ]
       },
+      {
+        "subsystem": "useriam",
+        "components": [
+          { "component": "auth_executor_mgr", "features":[]},
+		  { "component": "pin_auth", "features":[]},
+          { "component": "user_auth", "features":[]},
+		  { "component": "faceauth", "features":[]},
+          { "component": "useriam_common", "features":[]},		  	  
+		  { "component": "user_idm", "features":[]}	  
+        ]
+      },	    
 	  {
         "subsystem": "ark",
         "components": [
@@ -298,7 +310,7 @@
       {
         "subsystem": "usb",
         "components": [
-          { "component": "usb_manager_native", "features":[]}
+          { "component": "usb_manager", "features":[]}
         ]
       },
       {
@@ -310,7 +322,9 @@
       {
         "subsystem": "filemanagement",
         "components": [
-          { "component": "storage_standard", "features":[]}
+          { "component": "storage_standard", "features":[]},
+		  { "component": "dfs_service", "features":[]},
+		  { "component": "user_file_service", "features":[]}
         ]
       },	
       {
