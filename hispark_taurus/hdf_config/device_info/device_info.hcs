@@ -170,7 +170,7 @@
             }
             device_adc :: device {
                 device0 :: deviceNode {
-                    policy = 0;
+                    policy = 2;
                     priority = 50;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_ADC_MANAGER";
