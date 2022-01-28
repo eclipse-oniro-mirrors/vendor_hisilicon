@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <emmc_if.h>
 #include "hal_sys_param.h"
+#include "securec.h"
 
 #define STR_MAX 65
 #define CID_LENGTH 16
@@ -47,7 +48,6 @@ static const char OHOS_BOOTLOADER_VERSION[] = {"bootloader"};
 static const char OHOS_ABI_LIST[] = {"****"};
 static const char OHOS_SERIAL[] = {"1234567890"};  // provided by OEM.
 static const int OHOS_FIRST_API_VERSION = 1;
-static const char EMPTY_STR[] = {""};
 
 const char* HalGetDeviceType(void)
 {
