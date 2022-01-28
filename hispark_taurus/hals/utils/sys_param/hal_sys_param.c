@@ -12,15 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "hal_sys_param.h"
+
+#include <emmc_if.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#include <emmc_if.h>
-#include "hal_sys_param.h"
+
 #include "securec.h"
 
 #define STR_MAX 65
