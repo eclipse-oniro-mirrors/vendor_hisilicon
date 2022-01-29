@@ -322,7 +322,7 @@
       {
         "subsystem": "filemanagement",
         "components": [
-          { "component": "storage_standard", "features":[]},
+          { "component": "storage_service", "features":[]},
           { "component": "dfs_service", "features":[]},
           { "component": "user_file_service", "features":[]}
         ]
