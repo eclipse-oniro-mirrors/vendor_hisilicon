@@ -187,7 +187,7 @@
             }
             device_dac :: device {
                 device0 :: deviceNode {
-                    policy = 3;
+                    policy = 2;
                     priority = 52;
                     permission = 0644;
                     serviceName = "HDF_PLATFORM_DAC_MANAGER";
