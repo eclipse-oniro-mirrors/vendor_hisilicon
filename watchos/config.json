@@ -15,7 +15,7 @@
         "subsystem": "ace",
         "components": [
           { "component": "ace_engine_standard", "features":[ "" ] },
-		  { "component": "napi", "features":[ "" ] }
+          { "component": "napi", "features":[ "" ] }
         ]
       },
       {
@@ -30,15 +30,15 @@
         "subsystem": "hiviewdfx",
         "components": [
           { "component": "hiviewdfx_hilog_native", "features":[] },
-		  { "component": "hilog_native", "features":[] },
-		  { "component": "hilog_service", "features":[] },
-		  { "component": "hisysevent_native", "features":[] },
-		  { "component": "hiappevent_native", "features":[] },
-		  { "component": "hiappevent_js", "features":[] },
-		  { "component": "hiview", "features":[] },
-		  { "component": "faultloggerd", "features":[] },
-		  { "component": "hitrace_native", "features":[] },
-		  { "component": "hicollie_native", "features":[] }
+          { "component": "hilog_native", "features":[] },
+          { "component": "hilog_service", "features":[] },
+          { "component": "hisysevent_native", "features":[] },
+          { "component": "hiappevent_native", "features":[] },
+          { "component": "hiappevent_js", "features":[] },
+          { "component": "hiview", "features":[] },
+          { "component": "faultloggerd", "features":[] },
+          { "component": "hitrace_native", "features":[] },
+          { "component": "hicollie_native", "features":[] }
         ]
       },
       {
@@ -48,19 +48,21 @@
           { "component": "huks", "features":[] },
           { "component": "deviceauth_standard", "features":[] },
           { "component": "dataclassification", "features":[] },
-		  { "component": "selinux", "features":[] },
-		  { "component": "permission_standard", "features":[] }
+          { "component": "device_security_level", "features":[] },
+          { "component": "access_token", "features":[] },
+          { "component": "selinux", "features":[] },
+          { "component": "permission_standard", "features":[] }
         ]
       },
       {
         "subsystem": "multimedia",
         "components": [
           { "component": "multimedia_histreamer", "features":[] },
-		  { "component": "multimedia_media_standard", "features":[] },
-		  { "component": "multimedia_audio_standard", "features":[] },
-		  { "component": "multimedia_image_standard", "features":[] },
-                  { "component": "multimedia_camera_standard", "features":[] },
-		  { "component": "multimedia_media_library_standard", "features":[] }
+          { "component": "multimedia_media_standard", "features":[] },
+          { "component": "multimedia_audio_standard", "features":[] },
+          { "component": "multimedia_image_standard", "features":[] },
+          { "component": "multimedia_camera_standard", "features":[] },
+          { "component": "multimedia_media_library_standard", "features":[] }
         ]
       },
       {
@@ -74,7 +76,7 @@
       {
         "subsystem": "kernel",
         "components": [
-          { "component": "linux_hi3516dv300", "features":[] }
+          { "component": "linux", "features":[] }
         ]
       },
       {
@@ -83,17 +85,19 @@
           { "component": "ipc", "features":[] },
           { "component": "ipc_js", "features":[] },
           { "component": "net_manager", "features":[] },
-          { "component": "netmanager_standard", "features":[] },
+          { "component": "netmanager_base", "features":[] },
+          { "component": "netmanager_ext", "features":[] },
           { "component": "netstack", "features":[] },
           { "component": "dsoftbus_standard", "features":[] },
           { "component": "wifi_standard", "features":[] },
           { "component": "wifi_native_js", "features":[] },
-          { "component": "bluetooth_native_js", "features":[] }			  
+          { "component": "bluetooth_native_js", "features":[] }
         ]
       },
       {
         "subsystem": "utils",
         "components": [
+          { "component": "utils_memory", "features":[] },
           { "component": "utils_base", "features":[] }
         ]
       },
@@ -111,7 +115,21 @@
       {
         "subsystem": "hdf",
         "components": [
-          { "component": "hdf", "features":[] }
+          { "component": "device_driver_framework", "features":[] },
+          { "component": "bluetooth_device_driver", "features":[] },
+          { "component": "input_device_driver", "features":[] },
+          { "component": "display_device_driver", "features":[] },
+          { "component": "thermal_device_driver", "features":[] },
+          { "component": "wlan_device_driver", "features":[] },
+          { "component": "sensor_device_driver", "features":[] },
+          { "component": "audio_device_driver", "features":[] },
+          { "component": "usb_device_driver", "features":[] },
+          { "component": "camera_device_driver", "features":[] },
+          { "component": "vibrator_device_driver", "features":[] },
+          { "component": "light_device_driver", "features":[] },
+          { "component": "codec_device_driver", "features":[] },
+          { "component": "power_device_driver", "features":[] },
+          { "component": "battery_device_driver", "features":[] }
         ]
       },
       {
@@ -119,27 +137,34 @@
         "components": [
           { "component": "graphic_standard", "features":[] }
         ]
-      },	
+      },
 {
         "subsystem": "aafwk",
         "components": [
-          { "component": "aafwk_standard", "features":[ ] }
+          { "component": "ability_runtime", "features":[ ] },
+          { "component": "ability_tools", "features":[ ] },
+          { "component": "zidl", "features":[ ] },
+          { "component": "form_runtime", "features":[ ] }
         ]
       },
       {
         "subsystem": "appexecfwk",
         "components": [
           { "component": "eventhandler", "features":[] },
-		  { "component": "appexecfwk_standard", "features":[] }
+          { "component": "appexecfwk_standard", "features":[] },
+          { "component": "bundle_framework", "features":[] },
+          { "component": "bundle_tool", "features":[] },
+          { "component": "distributed_bundle_framework", "features":[] }
         ]
       },
       {
         "subsystem": "powermgr",
         "components": [
           { "component": "power_manager_native", "features":[ ] },
-		  { "component": "battery_manager_native", "features":[ ] },
-		  { "component": "display_manager_native", "features":[ ] },
-		  { "component": "thermal_manager_native", "features":[ ] }
+          { "component": "battery_manager_native", "features":[ ] },
+          { "component": "battery_statistics_native", "features":[ ] },
+          { "component": "thermal_manager_native", "features":[ ] },
+          { "component": "display_manager_native", "features":[ ] }
         ]
       },
       {
@@ -152,9 +177,9 @@
         "subsystem": "global",
         "components": [
           { "component": "i18n_standard", "features":[] },
-		  { "component": "resmgr_standard", "features":[] },
-		  { "component": "systemres", "features":[] },
-		  { "component": "cust_lite", "features":[] }
+          { "component": "resmgr_standard", "features":[] },
+          { "component": "systemres", "features":[] },
+          { "component": "cust_lite", "features":[] }
         ]
       },
       {
@@ -173,33 +198,32 @@
         "subsystem": "distributeddatamgr",
         "components": [
           { "component": "native_appdatamgr", "features":[] },
-		  { "component": "distributeddatamgr", "features":[] },
-		  { "component": "appdatamgr_jskits", "features":[] },
-		  { "component": "distributedfilejs", "features":[] },
-		  { "component": "storage_standard", "features":[] },
-		  { "component": "e2fsprogs", "features":[] }
+          { "component": "distributeddatamgr", "features":[] },
+          { "component": "distributedfilejs", "features":[] },
+          { "component": "storage_standard", "features":[] },
+          { "component": "distributeddataobject", "features":[] },
+          { "component": "e2fsprogs", "features":[] }
         ]
       },
       {
         "subsystem": "telephony",
         "components": [
           { "component": "core_service", "features":[] },
-		  { "component": "ril_adapter", "features":[] },
-		  { "component": "data_storage", "features":[] },
-		  { "component": "state_registry", "features":[] },
-		  { "component": "cellular_call", "features":[] },
-		  { "component": "cellular_data", "features":[] },
-		  { "component": "sms_mms", "features":[] },
-		  { "component": "call_manager", "features":[] }
+          { "component": "ril_adapter", "features":[] },
+          { "component": "data_storage", "features":[] },
+          { "component": "state_registry", "features":[] },
+          { "component": "cellular_call", "features":[] },
+          { "component": "cellular_data", "features":[] },
+          { "component": "sms_mms", "features":[] },
+          { "component": "call_manager", "features":[] }
         ]
       },  
       {
         "subsystem": "account",
         "components": [
-          { "component": "app_account_standard", "features":[] },
-		  { "component": "os_account_standard", "features":[] }
+          { "component": "os_account_standard", "features":[] }
         ]
-      },	
+      },
       {
         "subsystem": "common",
         "components": [
@@ -211,59 +235,70 @@
         "components": [
           { "component": "developertest", "features":[]}
         ]
-      },		  
+      },
       {
         "subsystem": "hisilicon_products",
         "components": [
           { "component": "hisilicon_products", "features":[]}
         ]
-      },	
+      },
       {
         "subsystem": "notification",
         "components": [
           { "component": "ces_standard", "features":[]},
-		  { "component": "ans_standard", "features":[]}
+          { "component": "ans_standard", "features":[]}
         ]
       },
       {
         "subsystem": "developtools",
         "components": [
           { "component": "bytrace_standard", "features":[]},
-		  { "component": "hdc_standard", "features":[]},
-		  { "component": "profiler", "features":[]},
-		  { "component": "hiperf", "features":[]}
+          { "component": "hdc_standard", "features":[]},
+          { "component": "profiler", "features":[]},
+          { "component": "hiperf", "features":[]}
         ]
       },
       {
         "subsystem": "sensors",
         "components": [
           { "component": "miscdevice", "features":[]},
-		  { "component": "sensor", "features":[]},
-		  { "component": "start", "features":[]}
+          { "component": "sensor", "features":[]},
+          { "component": "start", "features":[]}
         ]
-      },	
+      },
       {
         "subsystem": "miscservices",
         "components": [
           { "component": "time_native", "features":[]},
-		  { "component": "inputmethod_native", "features":[]}
+          { "component": "inputmethod_native", "features":[]}
         ]
       },
       {
-        "subsystem": "ccruntime",
+        "subsystem": "compileruntime",
         "components": [
           { "component": "jsapi_sys", "features":[]},
-		  { "component": "jsapi_api", "features":[]},
+          { "component": "jsapi_api", "features":[]},
           { "component": "jsapi_util", "features":[]},
-		  { "component": "jsapi_worker", "features":[]}	  
+          { "component": "jsapi_worker", "features":[]}	  
         ]
       },
-	  {
+      {
+        "subsystem": "useriam",
+        "components": [
+          { "component": "auth_executor_mgr", "features":[]},
+          { "component": "pin_auth", "features":[]},
+          { "component": "user_auth", "features":[]},
+          { "component": "faceauth", "features":[]},
+          { "component": "useriam_common", "features":[]},
+          { "component": "user_idm", "features":[]}	  
+        ]
+      },
+      {
         "subsystem": "ark",
         "components": [
           { "component": "ark", "features":[]},
-		  { "component": "ark_js_runtime", "features":[]},
-		  { "component": "ark_ts2abc", "features":[]}
+          { "component": "ark_js_runtime", "features":[]},
+          { "component": "ark_ts2abc", "features":[]}
         ]
       },
       {
@@ -271,11 +306,11 @@
         "components": [
           { "component": "multimodalinput_base", "features":[]}
         ]
-      },		  
+      },
       {
         "subsystem": "usb",
         "components": [
-          { "component": "usb_manager_native", "features":[]}
+          { "component": "usb_manager", "features":[]}
         ]
       },
       {
@@ -283,13 +318,15 @@
         "components": [
           { "component": "device_profile_core", "features":[]}
         ]
-      },		  
+      },
       {
-        "subsystem": "storage_manager",
+        "subsystem": "filemanagement",
         "components": [
-          { "component": "storage_standard", "features":[]}
+          { "component": "storage_service", "features":[]},
+          { "component": "dfs_service", "features":[]},
+          { "component": "user_file_service", "features":[]}
         ]
-      },	
+      },
       {
         "subsystem": "window",
         "components": [
@@ -302,13 +339,13 @@
           { "component": "settings_standard", "features":[]}
         ]
       },
-  	  
+      
       {
         "subsystem": "wpa_supplicant-2.9",
         "components": [
           { "component": "wpa_supplicant-2.9", "features":[]}
         ]
-      }	  
+      }
     ],
     "third_party_dir": "//third_party",
     "product_adapter_dir": "//vendor/hisilicon/watchos/hals"
