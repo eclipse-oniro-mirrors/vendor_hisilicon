@@ -15,4 +15,5 @@
 #include "pcie_test_config.hcs"
 #include "pwm_test_config.hcs"
 #include "regulator_test_config.hcs"
+#include "rtc_test_config.hcs"
 #include "timer_test_config.hcs"

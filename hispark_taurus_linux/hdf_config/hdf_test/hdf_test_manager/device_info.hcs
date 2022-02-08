@@ -150,6 +150,17 @@ root {
                     deviceMatchAttr = "REGULATOR_TEST";
                 }
             }
+            device_platform_rtc_test :: device {
+                rtc_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_RTC_TEST";
+                    serviceName = "RTC_TEST";
+                    deviceMatchAttr = "RTC_TEST";
+                }
+            }
             device_sensor_test :: device {
                 sensor_tester :: deviceNode {
                     policy = 0;
