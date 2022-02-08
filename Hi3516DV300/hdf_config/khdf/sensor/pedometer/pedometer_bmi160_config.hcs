@@ -4,7 +4,7 @@ root {
         match_attr = "hdf_sensor_pedometer_bmi160_driver";
         sensorInfo :: sensorDeviceInfo {
             sensorName = "pedometer";
-            vendorName = "st_bmi160"; // max string length is 16 bytes
+            vendorName = "borsh_bmi160"; // max string length is 16 bytes
             sensorTypeId = 266; // enum SensorTypeTag
             sensorId = 266; // user define sensor id
             power = 120;
