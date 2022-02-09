@@ -97,7 +97,7 @@ root {
             }
             device_platform_uart_test :: device {
                 uart_test :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 100;
                     preload = 0;
                     permission = 0644;
