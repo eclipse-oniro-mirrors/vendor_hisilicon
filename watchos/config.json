@@ -35,6 +35,7 @@
           { "component": "hisysevent_native", "features":[] },
           { "component": "hiappevent_native", "features":[] },
           { "component": "hiappevent_js", "features":[] },
+          { "component": "hichecker_native", "features":[] },
           { "component": "hiview", "features":[] },
           { "component": "faultloggerd", "features":[] },
           { "component": "hitrace_native", "features":[] },
@@ -90,7 +91,6 @@
           { "component": "netstack", "features":[] },
           { "component": "dsoftbus_standard", "features":[] },
           { "component": "wifi_standard", "features":[] },
-          { "component": "wifi_native_js", "features":[] },
           { "component": "bluetooth_native_js", "features":[] }
         ]
       },
@@ -141,6 +141,7 @@
 {
         "subsystem": "aafwk",
         "components": [
+          { "component": "ability_base", "features":[ ] },
           { "component": "ability_runtime", "features":[ ] },
           { "component": "ability_tools", "features":[ ] },
           { "component": "zidl", "features":[ ] },
