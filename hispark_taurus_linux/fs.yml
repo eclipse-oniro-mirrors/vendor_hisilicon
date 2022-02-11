@@ -2,6 +2,9 @@
   fs_dir_name: rootfs
   fs_dirs:
     -
+      source_dir: ${root_path}/out/preloader/${product_name}/system
+      target_dir: system
+    -
       source_dir: bin
       target_dir: bin
       ignore_files:

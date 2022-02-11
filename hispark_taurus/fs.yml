@@ -2,6 +2,11 @@
   fs_dir_name: mksh_rootfs
   fs_dirs:
     -
+      source_dir: ${root_path}/out/preloader/${product_name}/system
+      target_dir: system
+      dir_mode: 555
+      file_mode: 444
+    -
       source_dir: bin
       target_dir: bin
       ignore_files:
@@ -92,6 +97,11 @@
 -
   fs_dir_name: rootfs
   fs_dirs:
+    -
+      source_dir: ${root_path}/out/preloader/${product_name}/system
+      target_dir: system
+      dir_mode: 555
+      file_mode: 444
     -
       source_dir: bin
       target_dir: bin
