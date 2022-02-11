@@ -145,7 +145,8 @@
           { "component": "ability_runtime", "features":[ ] },
           { "component": "ability_tools", "features":[ ] },
           { "component": "zidl", "features":[ ] },
-          { "component": "form_runtime", "features":[ ] }
+          { "component": "form_runtime", "features":[ ] },
+          { "component": "ability_base", "features":[ ] }
         ]
       },
       {
