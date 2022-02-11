@@ -37,7 +37,7 @@
             }
             device_watchdog :: device {
                 device0 :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 20;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_WATCHDOG";
@@ -122,7 +122,7 @@
 */
             device_spi :: device {
                 device0 :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 60;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_SPI";
@@ -130,7 +130,7 @@
                     deviceMatchAttr = "hisilicon_hi35xx_spi_0";
                 }
                 device1 :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 60;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_SPI";
@@ -138,7 +138,7 @@
                     deviceMatchAttr = "hisilicon_hi35xx_spi_1";
                 }
                 device2 :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 60;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_SPI";
@@ -168,7 +168,7 @@
             }
             device_pwm :: device {
                 device0 :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 80;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_PWM";
@@ -176,7 +176,7 @@
                     deviceMatchAttr = "hisilicon_hi35xx_pwm_0";
                }
                device1 :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 80;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_PWM";

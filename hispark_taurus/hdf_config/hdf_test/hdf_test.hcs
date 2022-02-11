@@ -17,3 +17,4 @@
 #include "regulator_test_config.hcs"
 #include "rtc_test_config.hcs"
 #include "timer_test_config.hcs"
+#include "watchdog_test_config.hcs"

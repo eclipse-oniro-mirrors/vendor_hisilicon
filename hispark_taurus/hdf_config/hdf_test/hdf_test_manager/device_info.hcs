@@ -53,7 +53,7 @@ root {
             }
             device_platform_spi_test :: device {
                 spi_test :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 100;
                     preload = 0;
                     permission = 0644;
@@ -130,7 +130,7 @@ root {
             }
             device_platform_pwm_test :: device {
                 pwm_test :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 110;
                     preload = 0;
                     permission = 0644;
@@ -232,7 +232,7 @@ root {
             }
             device_platform_watchdog_test :: device {
                 watchdog_tester :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 105;
                     preload = 0;
                     permission = 0644;
