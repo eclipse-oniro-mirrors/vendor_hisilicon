@@ -108,7 +108,7 @@
             }
             device_rtc :: device {
                 device0 :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 30;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_RTC";
@@ -118,7 +118,7 @@
             }
             device_uart :: device {
                 device0 :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 40;
                     permission = 0644;
                     moduleName = "HDF_PLATFORM_UART";

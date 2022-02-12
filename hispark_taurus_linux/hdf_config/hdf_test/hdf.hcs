@@ -9,6 +9,7 @@
 #include "emmc_test_config.hcs"
 #include "uart_test_config.hcs"
 #include "regulator_test_config.hcs"
+#include "rtc_test_config.hcs"
 #include "watchdog_test_config.hcs"
 
 root {
