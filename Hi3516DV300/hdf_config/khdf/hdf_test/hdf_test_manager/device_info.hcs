@@ -28,6 +28,14 @@ root {
                     moduleName = "pm_test_driver";
                     serviceName = "pm_test_service";
                 }
+                device3 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    preload = 2;
+                    permission = 0644;
+                    moduleName = "hdf_test_helper";
+                    serviceName = "hdf_test_helper";
+                }
             }
             device_platform_test :: device {
                 gpio_tester :: deviceNode {

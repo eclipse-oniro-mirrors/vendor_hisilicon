@@ -16,6 +16,19 @@
                 }
             }
         }
+        base :: host {
+            hostName = "base_host";
+            priority = 50;
+            device_support :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    permission = 0644;
+                    moduleName = "HDF_KEVENT";
+                    serviceName = "hdf_kevent";
+                }
+            }
+        }
         platform :: host {
             hostName = "platform_host";
             priority = 50;
