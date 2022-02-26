@@ -12,3 +12,4 @@
 # limitations under the License.
 
 enable_HDF_NL80211 = true
+enable_HDF_UTRK = false
