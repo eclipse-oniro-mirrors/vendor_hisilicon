@@ -33,7 +33,7 @@
         "components": [
           { "component": "permission", "features":[] },
           { "component": "dm-verity", "features":[] },
-          { "component": "deviceauth_lite", "features":[] },
+          { "component": "deviceauth_standard", "features":[] },
           { "component": "huks", "features":
             [
               "huks_config_file = \"hks_config_small.h\""
