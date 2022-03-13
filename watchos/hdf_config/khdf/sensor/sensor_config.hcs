@@ -6,3 +6,4 @@
 #include "magnetic/magnetic_lsm303_config.hcs"
 #include "proximity/proximity_apds9960_config.hcs"
 #include "accel/gravity_config.hcs"
+#include "pedometer/pedometer_bmi160_config.hcs"

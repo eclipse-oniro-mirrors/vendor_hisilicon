@@ -1,8 +1,8 @@
 diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 2f7a32b77..b055611ab 100644
+index ceaf87c4d..ea05aa4b4 100644
 --- a/arch/arm/Kconfig
 +++ b/arch/arm/Kconfig
-@@ -321,7 +321,7 @@ config ARCH_MULTIPLATFORM
+@@ -322,7 +322,7 @@ config ARCH_MULTIPLATFORM
  	select ARCH_SELECT_MEMORY_MODEL
  	select ARM_HAS_SG_CHAIN
  	select ARM_PATCH_PHYS_VIRT
@@ -11,7 +11,7 @@ index 2f7a32b77..b055611ab 100644
  	select TIMER_OF
  	select COMMON_CLK
  	select GENERIC_CLOCKEVENTS
-@@ -649,6 +649,8 @@ source "arch/arm/mach-highbank/Kconfig"
+@@ -650,6 +650,8 @@ source "arch/arm/mach-highbank/Kconfig"
  
  source "arch/arm/mach-hisi/Kconfig"
  
@@ -388,7 +388,7 @@ index 000000000..bbe67651e
 +};
 diff --git a/arch/arm/boot/dts/hi3516dv300.dtsi b/arch/arm/boot/dts/hi3516dv300.dtsi
 new file mode 100644
-index 000000000..85a6c5c14
+index 000000000..c58f5b1ad
 --- /dev/null
 +++ b/arch/arm/boot/dts/hi3516dv300.dtsi
 @@ -0,0 +1,906 @@
@@ -10813,10 +10813,10 @@ index 2134cbd54..6f078fedb 100644
  	/*
 diff --git a/arch/arm/mach-hibvt/Kconfig b/arch/arm/mach-hibvt/Kconfig
 new file mode 100644
-index 000000000..9c8c76981
+index 000000000..89bedcb95
 --- /dev/null
 +++ b/arch/arm/mach-hibvt/Kconfig
-@@ -0,0 +1,258 @@
+@@ -0,0 +1,269 @@
 +config ARCH_HISI_BVT
 +	bool "Hisilicon BVT SoC Support"
 +	select ARM_AMBA
@@ -11074,13 +11074,24 @@ index 000000000..9c8c76981
 +
 +endmenu
 +
++if ARCH_HI3516DV300
++
++config BLACKBOX_HI3516DV300
++	bool "Support BlackBox saving fault logs with pstore for hi3516dv300"
++	depends on PSTORE_BLACKBOX
++	depends on BLACKBOX_STORAGE_BY_PSTORE_BLK
++	help
++		Save fault logs with pstore for Hi3516DV300 when oops or panic occurs.
++
++endif
++
 +endif
 diff --git a/arch/arm/mach-hibvt/Makefile b/arch/arm/mach-hibvt/Makefile
 new file mode 100644
-index 000000000..ec3243ec9
+index 000000000..8c4802fd1
 --- /dev/null
 +++ b/arch/arm/mach-hibvt/Makefile
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,34 @@
 +#
 +# Makefile for Hisilicon processors family
 +#
@@ -11108,6 +11119,13 @@ index 000000000..ec3243ec9
 +
 +
 +obj-$(CONFIG_SMP)	+= platsmp.o
++
++ifdef CONFIG_BLACKBOX_HI3516DV300
++
++obj-$(CONFIG_BLACKBOX_STORAGE_BY_PSTORE_BLK) += system_adapter.o
++obj-$(CONFIG_BLACKBOX_STORAGE_BY_MEMORY) += system_adapter_by_memory.o
++
++endif
 diff --git a/arch/arm/mach-hibvt/Makefile.boot b/arch/arm/mach-hibvt/Makefile.boot
 new file mode 100644
 index 000000000..8c8b30077
@@ -11436,6 +11454,697 @@ index 000000000..a73be20b1
 +	return 0;
 +}
 +
+diff --git a/arch/arm/mach-hibvt/system_adapter.c b/arch/arm/mach-hibvt/system_adapter.c
+new file mode 100644
+index 000000000..58fe574b3
+--- /dev/null
++++ b/arch/arm/mach-hibvt/system_adapter.c
+@@ -0,0 +1,340 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2021 Huawei Technologies Co., Ltd. All rights reserved.
++ */
++
++#include <asm/cacheflush.h>
++#include <linux/blackbox.h>
++#include <linux/kmsg_dump.h>
++#include <linux/semaphore.h>
++#include <linux/slab.h>
++#include <linux/module.h>
++#include <linux/stacktrace.h>
++#include <linux/reboot.h>
++#include <linux/vmalloc.h>
++#include <linux/ctype.h>
++#include <linux/blackbox_common.h>
++#include <linux/blackbox_storage.h>
++
++/* ---- local macroes ---- */
++#define BOOTLOADER_LOG_NAME       "fastboot_log"
++#define KERNEL_LOG_NAME           "last_kmsg"
++#define SIZE_1K                   1024
++#define KERNEL_LOG_MAX_SIZE               \
++	round_up((0x80000 + sizeof(struct fault_log_info)), SIZE_1K)
++#define CALLSTACK_MAX_ENTRIES     20
++
++/* ---- local prototypes ---- */
++
++/* ---- local function prototypes ---- */
++static int save_kmsg_from_buffer(const char *log_dir,
++				const char *file_name, int clean_buf);
++static void dump(const char *log_dir, struct error_info *info);
++static void reset(struct error_info *info);
++static int get_last_log_info(struct error_info *info);
++static int save_last_log(const char *log_dir, struct error_info *info);
++static int bbox_reboot_notify(struct notifier_block *nb,
++					unsigned long code, void *unused);
++static int bbox_task_panic(struct notifier_block *this,
++					unsigned long event, void *ptr);
++
++/* ---- local variables ---- */
++static char *kernel_log;
++static DEFINE_SEMAPHORE(kmsg_sem);
++static struct notifier_block bbox_reboot_nb = {
++	.notifier_call = bbox_reboot_notify,
++};
++
++static struct notifier_block bbox_panic_block = {
++	.notifier_call = bbox_task_panic,
++};
++
++/* ---- function definitions ---- */
++static void dump_stacktrace(char *pbuf, size_t buf_size, bool is_panic)
++{
++	int i;
++	size_t stack_len = 0;
++	size_t com_len = 0;
++	unsigned long entries[CALLSTACK_MAX_ENTRIES];
++	unsigned int nr_entries;
++	char tmp_buf[ERROR_DESC_MAX_LEN];
++	bool find_panic = false;
++
++	if (unlikely(!pbuf || !buf_size))
++		return;
++
++	memset(pbuf, 0, buf_size);
++	memset(tmp_buf, 0, sizeof(tmp_buf));
++	nr_entries = stack_trace_save(entries, ARRAY_SIZE(entries), 0);
++	com_len = scnprintf(pbuf, buf_size, "Comm:%s,CPU:%d,Stack:",
++						current->comm, raw_smp_processor_id());
++	for (i = 0; i < nr_entries; i++) {
++		if (stack_len >= sizeof(tmp_buf)) {
++			tmp_buf[sizeof(tmp_buf) - 1] = '\0';
++			break;
++		}
++		stack_len += scnprintf(tmp_buf + stack_len, sizeof(tmp_buf) - stack_len,
++				"%pS-", (void *)entries[i]);
++		if (!find_panic && is_panic) {
++			if (strncmp(tmp_buf, "panic", strlen("panic")) == 0)
++				find_panic = true;
++			else
++				(void)memset(tmp_buf, 0, sizeof(tmp_buf));
++		}
++	}
++	if (com_len >= buf_size)
++		return;
++	stack_len = min(buf_size - com_len, strlen(tmp_buf));
++	memcpy(pbuf + com_len, tmp_buf, stack_len);
++	*(pbuf + buf_size - 1) = '\0';
++}
++
++static int save_kmsg_from_buffer(const char *log_dir,
++				const char *file_name, int clean_buf)
++{
++	int ret = -1;
++	char path[PATH_MAX_LEN];
++	struct fault_log_info *pinfo = NULL;
++
++	if (unlikely(!log_dir || !file_name)) {
++		bbox_print_err("log_dir: %p, file_name: %p!\n", log_dir, file_name);
++		return -EINVAL;
++	}
++
++	memset(path, 0, sizeof(path));
++	(void)scnprintf(path, sizeof(path) - 1, "%s/%s", log_dir, file_name);
++	down(&kmsg_sem);
++	if (kernel_log) {
++		pinfo = (struct fault_log_info *)kernel_log;
++		ret = full_write_file(path, kernel_log + sizeof(*pinfo),
++					min(KERNEL_LOG_MAX_SIZE - sizeof(*pinfo),
++						(size_t)pinfo->len), 0);
++		if (clean_buf)
++			memset(kernel_log, 0, KERNEL_LOG_MAX_SIZE);
++	} else {
++		bbox_print_err("kernel_log: %p!\n", kernel_log);
++	}
++	up(&kmsg_sem);
++	if (ret == 0)
++		change_own(path, AID_ROOT, AID_SYSTEM);
++
++	return ret;
++}
++
++static void dump(const char *log_dir, struct error_info *info)
++{
++	if (unlikely(!log_dir || !info)) {
++		bbox_print_err("log_dir: %p, info: %p!\n", log_dir, info);
++		return;
++	}
++
++	if (!strcmp(info->event, EVENT_PANIC) ||
++		!strcmp(info->event, EVENT_SYSREBOOT) ||
++		!strcmp(info->event, EVENT_POWEROFF)) {
++		struct fault_log_info *pinfo = (struct fault_log_info *)kernel_log;
++
++		if (down_trylock(&kmsg_sem) != 0) {
++			bbox_print_err("down_trylock failed!\n");
++			return;
++		}
++
++		if (kernel_log) {
++			memcpy(pinfo->flag, LOG_FLAG, strlen(LOG_FLAG));
++			memcpy(&pinfo->info, info, sizeof(*info));
++
++#if  __BITS_PER_LONG == 64
++			__flush_dcache_area(kernel_log, KERNEL_LOG_MAX_SIZE);
++#else
++			__cpuc_flush_dcache_area(kernel_log, KERNEL_LOG_MAX_SIZE);
++#endif
++		}
++
++		up(&kmsg_sem);
++	} else {
++		bbox_print_info("module [%s] starts saving log for event [%s]!\n",
++				info->module, info->event);
++		save_kmsg_from_buffer(log_dir, KERNEL_LOG_NAME, 0);
++		bbox_print_info("module [%s] ends saving log for event [%s]!\n",
++				info->module, info->event);
++	}
++}
++
++static void reset(struct error_info *info)
++{
++	if (unlikely(!info)) {
++		bbox_print_err("info: %p!\n", info);
++		return;
++	}
++
++	if (!strcmp(info->event, EVENT_PANIC))
++		emergency_restart();
++}
++
++static int get_last_log_info(struct error_info *info)
++{
++	struct fault_log_info *pinfo = (struct fault_log_info *)kernel_log;
++	int log_size = KERNEL_LOG_MAX_SIZE;
++	unsigned int i = 0;
++
++	if (unlikely(!info || !kernel_log))
++		return -EINVAL;
++
++	if (storage_lastword->get_log((void *)kernel_log, log_size) < 0) {
++		bbox_print_err("Get last log from strorage failed!\n");
++		return -ENOENT;
++	}
++
++	down(&kmsg_sem);
++	if (!memcmp(pinfo->flag, LOG_FLAG, strlen(LOG_FLAG))) {
++		memcpy(info, &pinfo->info, sizeof(*info));
++		for (i = 0; i < strlen((*info).event); i++)
++			(*info).event[i] = toupper((*info).event[i]);
++
++		if (strncmp((*info).module, "PSTORE", strlen("PSTORE")) == 0)
++			memcpy((*info).module, MODULE_SYSTEM, sizeof((*info).module));
++
++		up(&kmsg_sem);
++		return 0;
++	}
++	up(&kmsg_sem);
++	bbox_print_info("There's no valid fault log!\n");
++
++	return -ENOMSG;
++}
++
++static int save_last_log(const char *log_dir, struct error_info *info)
++{
++	int ret = -1;
++
++	if (unlikely(!log_dir || !info)) {
++		bbox_print_err("log_dir: %p, info: %p!\n", log_dir, info);
++		return -EINVAL;
++	}
++
++	ret = save_kmsg_from_buffer(log_dir, KERNEL_LOG_NAME, 1);
++	bbox_print_info("save last fault log %s!\n",
++			ret ? "failed" : "successfully");
++
++	return ret;
++}
++
++static int bbox_reboot_notify(struct notifier_block *nb,
++					unsigned long code, void *unused)
++{
++	char error_desc[ERROR_DESC_MAX_LEN];
++
++	/* notify blackbox to do dump */
++	memset(error_desc, 0, sizeof(error_desc));
++	dump_stacktrace(error_desc, sizeof(error_desc), false);
++	kmsg_dump(KMSG_DUMP_UNDEF);
++
++	switch (code) {
++	case SYS_RESTART:
++		bbox_notify_error(EVENT_SYSREBOOT, MODULE_SYSTEM, error_desc, 1);
++		break;
++	case SYS_POWER_OFF:
++		bbox_notify_error(EVENT_POWEROFF, MODULE_SYSTEM, error_desc, 0);
++		break;
++	default:
++		bbox_print_err("Invalid event code: %lu!\n", code);
++		break;
++	}
++
++	return NOTIFY_DONE;
++}
++
++static int bbox_task_panic(struct notifier_block *this,
++				unsigned long event, void *ptr)
++{
++	char error_desc[ERROR_DESC_MAX_LEN];
++
++	/* notify blackbox to do dump */
++	kmsg_dump(KMSG_DUMP_OOPS);
++	memset(error_desc, 0, sizeof(error_desc));
++	bbox_notify_error(EVENT_PANIC, MODULE_SYSTEM, error_desc, 1);
++
++	return NOTIFY_DONE;
++}
++
++#ifdef CONFIG_BLACKBOX_TEST
++static void test_bbox(void)
++{
++	struct module_ops ops = {
++		.module = "TEST",
++		.dump = NULL,
++		.reset = NULL,
++		.get_last_log_info = NULL,
++		.save_last_log = NULL,
++	};
++
++	if (bbox_register_module_ops(&ops) != 0) {
++		bbox_print_err("bbox_register_module_ops failed!\n");
++		return -EINVAL;
++	}
++	kmsg_dump(KMSG_DUMP_OOPS);
++	bbox_notify_error("EVENT_TEST", "TEST", "Test bbox_notify_error", 0);
++
++}
++#endif
++
++static int __init blackbox_init(void)
++{
++	int ret = -1;
++	struct kmsg_dumper *dumper = NULL;
++	struct module_ops ops = {
++		.module = MODULE_SYSTEM,
++		.dump = dump,
++		.reset = reset,
++		.get_last_log_info = get_last_log_info,
++		.save_last_log = save_last_log,
++	};
++
++	if (bbox_register_module_ops(&ops) != 0) {
++		bbox_print_err("bbox_register_module_ops failed!\n");
++		return -EINVAL;
++	}
++
++	/* allocate buffer for kmsg */
++	kernel_log = kmalloc(KERNEL_LOG_MAX_SIZE, GFP_KERNEL);
++	if (!kernel_log)
++		goto __err;
++
++	bbox_print_info("kernel_log: %p for blackbox!\n", kernel_log);
++
++	/* register kdumper */
++	dumper = vmalloc(sizeof(*dumper));
++	if (!dumper)
++		goto __err;
++
++	memset(dumper, 0, sizeof(*dumper));
++	dumper->max_reason = KMSG_DUMP_MAX;
++	dumper->dump = storage_lastword->blackbox_dump;
++	ret = kmsg_dump_register(dumper);
++	if (ret != 0) {
++		bbox_print_err("kmsg_dump_register failed!\n");
++		goto __err;
++	}
++	atomic_notifier_chain_register(&panic_notifier_list, &bbox_panic_block);
++
++	register_reboot_notifier(&bbox_reboot_nb);
++#ifdef CONFIG_BLACKBOX_TEST
++	test_bbox();
++#endif
++	return 0;
++
++__err:
++	kfree(kernel_log);
++	kernel_log = NULL;
++
++	if (dumper) {
++		vfree(dumper);
++		dumper = NULL;
++	}
++
++	return ret;
++}
++
++postcore_initcall(blackbox_init);
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("Blackbox for system");
++MODULE_AUTHOR("OHOS hi3516dv300");
+diff --git a/arch/arm/mach-hibvt/system_adapter_by_memory.c b/arch/arm/mach-hibvt/system_adapter_by_memory.c
+new file mode 100644
+index 000000000..92a680a9e
+--- /dev/null
++++ b/arch/arm/mach-hibvt/system_adapter_by_memory.c
+@@ -0,0 +1,339 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2021 Huawei Technologies Co., Ltd. All rights reserved.
++ */
++
++#include <asm/cacheflush.h>
++#include <linux/blackbox.h>
++#include <linux/kmsg_dump.h>
++#include <linux/semaphore.h>
++#include <linux/slab.h>
++#include <linux/module.h>
++#include <linux/stacktrace.h>
++#include <linux/reboot.h>
++#include <linux/vmalloc.h>
++#include <linux/ctype.h>
++#include <linux/blackbox_common.h>
++#include <linux/blackbox_storage.h>
++
++/* ---- local macroes ---- */
++#define BOOTLOADER_LOG_NAME       "fastboot_log"
++#define KERNEL_LOG_NAME           "last_kmsg"
++#define SIZE_1K                   1024
++#define KERNEL_LOG_MAX_SIZE               \
++	round_up((0x80000 + sizeof(struct fault_log_info)), SIZE_1K)
++#define CALLSTACK_MAX_ENTRIES     20
++
++/* ---- local prototypes ---- */
++
++/* ---- local function prototypes ---- */
++static int save_kmsg_from_buffer(const char *log_dir,
++				const char *file_name, int clean_buf);
++static void dump(const char *log_dir, struct error_info *info);
++static void reset(struct error_info *info);
++static int get_last_log_info(struct error_info *info);
++static int save_last_log(const char *log_dir, struct error_info *info);
++static int bbox_reboot_notify(struct notifier_block *nb,
++					unsigned long code, void *unused);
++static int bbox_task_panic(struct notifier_block *this,
++					unsigned long event, void *ptr);
++
++/* ---- local variables ---- */
++static char *kernel_log;
++static DEFINE_SEMAPHORE(kmsg_sem);
++static struct notifier_block bbox_reboot_nb = {
++	.notifier_call = bbox_reboot_notify,
++};
++
++static struct notifier_block bbox_panic_block = {
++	.notifier_call = bbox_task_panic,
++};
++
++/* ---- function definitions ---- */
++static void dump_stacktrace(char *pbuf, size_t buf_size, bool is_panic)
++{
++	int i;
++	size_t stack_len = 0;
++	size_t com_len = 0;
++	unsigned long entries[CALLSTACK_MAX_ENTRIES];
++	unsigned int nr_entries;
++	char tmp_buf[ERROR_DESC_MAX_LEN];
++	bool find_panic = false;
++
++	if (unlikely(!pbuf || !buf_size))
++		return;
++
++	memset(pbuf, 0, buf_size);
++	memset(tmp_buf, 0, sizeof(tmp_buf));
++	nr_entries = stack_trace_save(entries, ARRAY_SIZE(entries), 0);
++	com_len = scnprintf(pbuf, buf_size, "Comm:%s,CPU:%d,Stack:",
++						current->comm, raw_smp_processor_id());
++	for (i = 0; i < nr_entries; i++) {
++		if (stack_len >= sizeof(tmp_buf)) {
++			tmp_buf[sizeof(tmp_buf) - 1] = '\0';
++			break;
++		}
++		stack_len += scnprintf(tmp_buf + stack_len, sizeof(tmp_buf) - stack_len,
++				"%pS-", (void *)entries[i]);
++		if (!find_panic && is_panic) {
++			if (strncmp(tmp_buf, "panic", strlen("panic")) == 0)
++				find_panic = true;
++			else
++				(void)memset(tmp_buf, 0, sizeof(tmp_buf));
++		}
++	}
++	if (com_len >= buf_size)
++		return;
++	stack_len = min(buf_size - com_len, strlen(tmp_buf));
++	memcpy(pbuf + com_len, tmp_buf, stack_len);
++	*(pbuf + buf_size - 1) = '\0';
++}
++
++static int save_kmsg_from_buffer(const char *log_dir,
++				const char *file_name, int clean_buf)
++{
++	int ret = -1;
++	char path[PATH_MAX_LEN];
++	struct fault_log_info *pinfo = NULL;
++
++	if (unlikely(!log_dir || !file_name)) {
++		bbox_print_err("log_dir: %p, file_name: %p!\n", log_dir, file_name);
++		return -EINVAL;
++	}
++
++	memset(path, 0, sizeof(path));
++	(void)scnprintf(path, sizeof(path) - 1, "%s/%s", log_dir, file_name);
++	down(&kmsg_sem);
++	if (kernel_log) {
++		pinfo = (struct fault_log_info *)kernel_log;
++		ret = full_write_file(path, kernel_log + sizeof(*pinfo),
++					min(KERNEL_LOG_MAX_SIZE - sizeof(*pinfo),
++						(size_t)pinfo->len), 0);
++		if (clean_buf)
++			memset(kernel_log, 0, KERNEL_LOG_MAX_SIZE);
++	} else {
++		bbox_print_err("kernel_log: %p!\n", kernel_log);
++	}
++	up(&kmsg_sem);
++	if (ret == 0)
++		change_own(path, AID_ROOT, AID_SYSTEM);
++
++	return ret;
++}
++
++static void dump(const char *log_dir, struct error_info *info)
++{
++	if (unlikely(!log_dir || !info)) {
++		bbox_print_err("log_dir: %p, info: %p!\n", log_dir, info);
++		return;
++	}
++
++	if (!strcmp(info->event, EVENT_PANIC) ||
++		!strcmp(info->event, EVENT_SYSREBOOT) ||
++		!strcmp(info->event, EVENT_POWEROFF)) {
++		struct fault_log_info *pinfo = (struct fault_log_info *)kernel_log;
++
++		if (down_trylock(&kmsg_sem) != 0) {
++			bbox_print_err("down_trylock failed!\n");
++			return;
++		}
++
++		if (kernel_log) {
++			memcpy(pinfo->flag, LOG_FLAG, strlen(LOG_FLAG));
++			memcpy(&pinfo->info, info, sizeof(*info));
++
++#if  __BITS_PER_LONG == 64
++			__flush_dcache_area(kernel_log, KERNEL_LOG_MAX_SIZE);
++#else
++			__cpuc_flush_dcache_area(kernel_log, KERNEL_LOG_MAX_SIZE);
++#endif
++		}
++
++		up(&kmsg_sem);
++	} else {
++		bbox_print_info("module [%s] starts saving log for event [%s]!\n",
++				info->module, info->event);
++		save_kmsg_from_buffer(log_dir, KERNEL_LOG_NAME, 0);
++		bbox_print_info("module [%s] ends saving log for event [%s]!\n",
++				info->module, info->event);
++	}
++}
++
++static void reset(struct error_info *info)
++{
++	if (unlikely(!info)) {
++		bbox_print_err("info: %p!\n", info);
++		return;
++	}
++
++	if (!strcmp(info->event, EVENT_PANIC))
++		emergency_restart();
++}
++
++static int get_last_log_info(struct error_info *info)
++{
++	struct fault_log_info *pinfo = (struct fault_log_info *)kernel_log;
++	int log_size = KERNEL_LOG_MAX_SIZE;
++
++	if (unlikely(!info || !kernel_log))
++		return -EINVAL;
++
++	if (storage_lastword->get_log((void *)kernel_log, log_size) < 0) {
++		bbox_print_err("Get last log from strorage failed!\n");
++		return -ENOENT;
++	}
++
++	down(&kmsg_sem);
++	if (!memcmp(pinfo->flag, LOG_FLAG, strlen(LOG_FLAG))) {
++		memcpy(info, &pinfo->info, sizeof(*info));
++
++		up(&kmsg_sem);
++		return 0;
++	}
++	up(&kmsg_sem);
++	bbox_print_info("There's no valid fault log!\n");
++
++	return -ENOMSG;
++}
++
++static int save_last_log(const char *log_dir, struct error_info *info)
++{
++	int ret = -1;
++
++	if (unlikely(!log_dir || !info)) {
++		bbox_print_err("log_dir: %p, info: %p!\n", log_dir, info);
++		return -EINVAL;
++	}
++
++	ret = save_kmsg_from_buffer(log_dir, KERNEL_LOG_NAME, 1);
++	bbox_print_info("save last fault log %s!\n",
++			ret ? "failed" : "successfully");
++
++	return ret;
++}
++
++static int bbox_reboot_notify(struct notifier_block *nb,
++					unsigned long code, void *unused)
++{
++	char error_desc[ERROR_DESC_MAX_LEN];
++
++	/* notify blackbox to do dump */
++	memset(error_desc, 0, sizeof(error_desc));
++	dump_stacktrace(error_desc, sizeof(error_desc), false);
++	kmsg_dump(KMSG_DUMP_UNDEF);
++
++	switch (code) {
++	case SYS_RESTART:
++		bbox_notify_error(EVENT_SYSREBOOT, MODULE_SYSTEM, error_desc, 1);
++		break;
++	case SYS_POWER_OFF:
++		bbox_notify_error(EVENT_POWEROFF, MODULE_SYSTEM, error_desc, 0);
++		break;
++	default:
++		bbox_print_err("Invalid event code: %lu!\n", code);
++		break;
++	}
++
++	return NOTIFY_DONE;
++}
++
++static int bbox_task_panic(struct notifier_block *this,
++				unsigned long event, void *ptr)
++{
++	char error_desc[ERROR_DESC_MAX_LEN];
++
++	/* notify blackbox to do dump */
++	kmsg_dump(KMSG_DUMP_OOPS);
++	memset(error_desc, 0, sizeof(error_desc));
++	bbox_notify_error(EVENT_PANIC, MODULE_SYSTEM, error_desc, 1);
++
++	return NOTIFY_DONE;
++}
++
++#ifdef CONFIG_BLACKBOX_TEST
++static void test_bbox(void)
++{
++	struct module_ops ops = {
++		.module = "TEST",
++		.dump = NULL,
++		.reset = NULL,
++		.get_last_log_info = NULL,
++		.save_last_log = NULL,
++	};
++
++	if (bbox_register_module_ops(&ops) != 0) {
++		bbox_print_err("bbox_register_module_ops failed!\n");
++		return -EINVAL;
++	}
++	kmsg_dump(KMSG_DUMP_OOPS);
++	bbox_notify_error("EVENT_TEST", "TEST", "Test bbox_notify_error", 0);
++
++}
++#endif
++
++static int __init blackbox_init(void)
++{
++	int ret = -1;
++	struct kmsg_dumper *dumper = NULL;
++	struct module_ops ops = {
++		.module = MODULE_SYSTEM,
++		.dump = dump,
++		.reset = reset,
++		.get_last_log_info = get_last_log_info,
++		.save_last_log = save_last_log,
++	};
++
++	if (bbox_register_module_ops(&ops) != 0) {
++		bbox_print_err("bbox_register_module_ops failed!\n");
++		return -EINVAL;
++	}
++
++	/* allocate buffer for kmsg */
++	kernel_log = kmalloc(KERNEL_LOG_MAX_SIZE, GFP_KERNEL);
++	if (!kernel_log)
++		goto __err;
++
++	bbox_print_info("kernel_log: %p for blackbox!\n", kernel_log);
++
++	if (storage_lastword->storage_log(kernel_log, KERNEL_LOG_MAX_SIZE) < 0) {
++		bbox_print_err("storage_log failed!\n");
++		goto __err;
++	}
++
++	/* register kdumper */
++	dumper = vmalloc(sizeof(*dumper));
++	if (!dumper)
++		goto __err;
++
++	memset(dumper, 0, sizeof(*dumper));
++	dumper->max_reason = KMSG_DUMP_MAX;
++	dumper->dump = storage_lastword->blackbox_dump;
++	ret = kmsg_dump_register(dumper);
++	if (ret != 0) {
++		bbox_print_err("kmsg_dump_register failed!\n");
++		goto __err;
++	}
++	atomic_notifier_chain_register(&panic_notifier_list, &bbox_panic_block);
++
++	register_reboot_notifier(&bbox_reboot_nb);
++#ifdef CONFIG_BLACKBOX_TEST
++	test_bbox();
++#endif
++	return 0;
++
++__err:
++	kfree(kernel_log);
++	kernel_log = NULL;
++
++	if (dumper) {
++		vfree(dumper);
++		dumper = NULL;
++	}
++
++	return ret;
++}
++
++postcore_initcall(blackbox_init);
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("Blackbox for system");
++MODULE_AUTHOR("OHOS");
 diff --git a/arch/arm/mm/dma-mapping.c b/arch/arm/mm/dma-mapping.c
 index c4b8df2ad..374737bd5 100644
 --- a/arch/arm/mm/dma-mapping.c
@@ -11632,10 +12341,10 @@ index c0a7f0d90..a5ca33ad8 100644
  
  static void __init zone_sizes_init(unsigned long min, unsigned long max)
 diff --git a/drivers/Kconfig b/drivers/Kconfig
-index dcecc9f6e..c05679732 100644
+index 826b2b19d..96840663d 100644
 --- a/drivers/Kconfig
 +++ b/drivers/Kconfig
-@@ -237,4 +237,12 @@ source "drivers/counter/Kconfig"
+@@ -239,4 +239,12 @@ source "drivers/counter/Kconfig"
  source "drivers/most/Kconfig"
  
  source "drivers/accesstokenid/Kconfig"
@@ -11649,10 +12358,10 @@ index dcecc9f6e..c05679732 100644
 +source "drivers/hi_vdmav100/Kconfig"
  endmenu
 diff --git a/drivers/Makefile b/drivers/Makefile
-index 576228037..e204f8baa 100644
+index ecc494918..46d604b46 100644
 --- a/drivers/Makefile
 +++ b/drivers/Makefile
-@@ -190,3 +190,7 @@ obj-$(CONFIG_INTERCONNECT)	+= interconnect/
+@@ -193,3 +193,7 @@ obj-$(CONFIG_INTERCONNECT)	+= interconnect/
  obj-$(CONFIG_COUNTER)		+= counter/
  obj-$(CONFIG_MOST)		+= most/
  obj-$(CONFIG_ACCESS_TOKENID)	+= accesstokenid/
@@ -11661,10 +12370,10 @@ index 576228037..e204f8baa 100644
 +obj-$(CONFIG_ARCH_HISI_BVT)    += hisilicon/
 +obj-$(CONFIG_HI_VDMA_V100)     += hi_vdmav100/
 diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index 2a3952925..a324b85ee 100644
+index 3604f0df6..2108d6686 100644
 --- a/drivers/android/binder.c
 +++ b/drivers/android/binder.c
-@@ -2945,7 +2945,7 @@ static void binder_transaction(struct binder_proc *proc,
+@@ -2966,7 +2966,7 @@ static void binder_transaction(struct binder_proc *proc,
  				return_error = BR_FAILED_REPLY;
  				return_error_param = -EINVAL;
  				return_error_line = __LINE__;
@@ -12062,7 +12771,7 @@ index 000000000..5103658a4
 +#endif
 +#endif /* _HISI_SATA_DBG_H */
 diff --git a/drivers/ata/libahci.c b/drivers/ata/libahci.c
-index fec2e9754..68c87b25c 100644
+index fec2e9754..bff99aebd 100644
 --- a/drivers/ata/libahci.c
 +++ b/drivers/ata/libahci.c
 @@ -31,6 +31,7 @@
@@ -13971,7 +14680,7 @@ index 000000000..b2c857a41
 +CLOCKSOURCE_OF_DECLARE(hisp804, "hisilicon,hisp804", hisp804_timer_init);
 \ No newline at end of file
 diff --git a/drivers/dma/Kconfig b/drivers/dma/Kconfig
-index f28bb2334..fbdc52bac 100644
+index 08013345d..96107fbef 100644
 --- a/drivers/dma/Kconfig
 +++ b/drivers/dma/Kconfig
 @@ -328,6 +328,20 @@ config K3_DMA
@@ -15693,7 +16402,7 @@ index 000000000..ffc8564a8
 +
 diff --git a/drivers/gpu/drm/hisilicon/hismart/Makefile b/drivers/gpu/drm/hisilicon/hismart/Makefile
 new file mode 100644
-index 000000000..7e611dd84
+index 000000000..e89172f24
 --- /dev/null
 +++ b/drivers/gpu/drm/hisilicon/hismart/Makefile
 @@ -0,0 +1,27 @@
@@ -16570,7 +17279,7 @@ index 000000000..897f7838f
 +    {DRM_HAL_TIMING_FMT_4096X2160P_30, {297000, 4096, 4184, 4272, 4400, 0, 2160, 2168, 2178, 2250, 0}},
 +    {DRM_HAL_TIMING_FMT_4096X2160P_50, {594000, 4096, 5064, 5152, 5280, 0, 2160, 2168, 2178, 2250, 0}},
 +    {DRM_HAL_TIMING_FMT_4096X2160P_60, {594000, 4096, 4184, 4272, 4400, 0, 2160, 2168, 2178, 2250, 0}},
-+    {DRM_HAL_TIMING_FMT_USER, {155493, 240, 528, 560, 620, 0, 240, 963, 968, 974, 0}},
++    {DRM_HAL_TIMING_FMT_USER, {155493, 400, 528, 560, 620, 0, 400, 963, 968, 974, 0}},
 +};
 +
 +enum drm_hal_timing_fmt hi_adp_crtc_timing_translate(struct drm_hal_timing *timing)
@@ -17097,8 +17806,8 @@ index 000000000..1902f1e8f
 +#include "drm_hal_mipitx.h"
 +#include "drm_hal_display.h"
 +
-+#define MIPI_PHYSICAL_WIDTH 30
-+#define MIPI_PHYSICAL_HEIGHT 30
++#define MIPI_PHYSICAL_WIDTH 60
++#define MIPI_PHYSICAL_HEIGHT 120
 +#define BRIGHTNESS_MAX       255
 +#define DEFAULT_BRIGHTNESS   255
 +
@@ -17125,11 +17834,11 @@ index 000000000..1902f1e8f
 +
 +static struct drm_display_mode default_mode = {
 +    .clock = 155493, /* 155493 khz */
-+    .hdisplay = 240, /* 240 width */
++    .hdisplay = 400, /* 400 width */
 +    .hsync_start = 480 + 48, /* 480 48 alg data */
 +    .hsync_end = 480 + 48 + 32, /* 480 48 32 alg data */
 +    .htotal = 480 + 48 + 32 + 60, /* 480 48 32 60 alg data */
-+    .vdisplay = 240, /* 240 height */
++    .vdisplay = 400, /* 400 height */
 +    .vsync_start = 960 + 3, /* 960 3 alg data */
 +    .vsync_end = 960 + 3 + 5, /* 960 3 5 alg data */
 +    .vtotal = 960 + 3 + 5 + 6, /* 960 3  5 6 alg data */
@@ -24120,10 +24829,10 @@ index 000000000..4c7cd494a
 +MODULE_DESCRIPTION("HISILICON BVT I2C Bus driver");
 +MODULE_LICENSE("GPL v2");
 diff --git a/drivers/i2c/i2c-dev.c b/drivers/i2c/i2c-dev.c
-index 6ef38a8ee..6d5ac0628 100644
+index f358120d5..0693b4917 100644
 --- a/drivers/i2c/i2c-dev.c
 +++ b/drivers/i2c/i2c-dev.c
-@@ -231,7 +231,42 @@ static int i2cdev_check_addr(struct i2c_adapter *adapter, unsigned int addr)
+@@ -232,7 +232,42 @@ static int i2cdev_check_addr(struct i2c_adapter *adapter, unsigned int addr)
  
  	return result;
  }
@@ -24166,7 +24875,7 @@ index 6ef38a8ee..6d5ac0628 100644
  static noinline int i2cdev_ioctl_rdwr(struct i2c_client *client,
  		unsigned nmsgs, struct i2c_msg *msgs)
  {
-@@ -484,6 +519,24 @@ static long i2cdev_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+@@ -485,6 +520,24 @@ static long i2cdev_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
  		 */
  		client->adapter->timeout = msecs_to_jiffies(arg * 10);
  		break;
@@ -24192,10 +24901,10 @@ index 6ef38a8ee..6d5ac0628 100644
  		/* NOTE:  returning a fault code here could cause trouble
  		 * in buggy userspace code.  Some old kernel bugs returned
 diff --git a/drivers/irqchip/irq-gic.c b/drivers/irqchip/irq-gic.c
-index 6053245a4..7534882d0 100644
+index 176f5f064..24dd82c4b 100644
 --- a/drivers/irqchip/irq-gic.c
 +++ b/drivers/irqchip/irq-gic.c
-@@ -116,6 +116,24 @@ static DEFINE_RAW_SPINLOCK(cpu_map_lock);
+@@ -118,6 +118,24 @@ static DEFINE_STATIC_KEY_FALSE(needs_rmw_access);
  static u8 gic_cpu_map[NR_GIC_CPU_IF] __read_mostly;
  
  static DEFINE_STATIC_KEY_TRUE(supports_deactivate_key);
@@ -24220,7 +24929,7 @@ index 6053245a4..7534882d0 100644
  
  static struct gic_chip_data gic_data[CONFIG_ARM_GIC_MAX_NR] __read_mostly;
  
-@@ -331,6 +349,29 @@ static int gic_retrigger(struct irq_data *data)
+@@ -333,6 +351,29 @@ static int gic_retrigger(struct irq_data *data)
  	return !gic_irq_set_irqchip_state(data, IRQCHIP_STATE_PENDING, true);
  }
  
@@ -24250,7 +24959,7 @@ index 6053245a4..7534882d0 100644
  static void __exception_irq_entry gic_handle_irq(struct pt_regs *regs)
  {
  	u32 irqstat, irqnr;
-@@ -466,7 +507,31 @@ static void gic_cpu_if_up(struct gic_chip_data *gic)
+@@ -468,7 +509,31 @@ static void gic_cpu_if_up(struct gic_chip_data *gic)
  	writel_relaxed(bypass | mode | GICC_ENABLE, cpu_base + GIC_CPU_CTRL);
  }
  
@@ -24282,7 +24991,7 @@ index 6053245a4..7534882d0 100644
  static void gic_dist_init(struct gic_chip_data *gic)
  {
  	unsigned int i;
-@@ -489,6 +554,7 @@ static void gic_dist_init(struct gic_chip_data *gic)
+@@ -491,6 +556,7 @@ static void gic_dist_init(struct gic_chip_data *gic)
  
  	writel_relaxed(GICD_ENABLE, base + GIC_DIST_CTRL);
  }
@@ -24290,7 +24999,7 @@ index 6053245a4..7534882d0 100644
  
  static int gic_cpu_init(struct gic_chip_data *gic)
  {
-@@ -1137,6 +1203,9 @@ static int gic_init_bases(struct gic_chip_data *gic,
+@@ -1161,6 +1227,9 @@ static int gic_init_bases(struct gic_chip_data *gic,
  {
  	int gic_irqs, ret;
  
@@ -24300,7 +25009,7 @@ index 6053245a4..7534882d0 100644
  	if (IS_ENABLED(CONFIG_GIC_NON_BANKED) && gic->percpu_offset) {
  		/* Frankein-GIC without banked registers... */
  		unsigned int cpu;
-@@ -1208,7 +1277,25 @@ static int gic_init_bases(struct gic_chip_data *gic,
+@@ -1232,7 +1301,25 @@ static int gic_init_bases(struct gic_chip_data *gic,
  		goto error;
  	}
  
@@ -24530,7 +25239,7 @@ index 000000000..7aa23e56d
 +MODULE_LICENSE("GPL v2");
 +MODULE_DESCRIPTION("HiSilicon Flash Memory Controller Driver");
 diff --git a/drivers/mmc/core/block.c b/drivers/mmc/core/block.c
-index 87bac9920..bbf420a68 100644
+index 94caee49d..c69c59dcb 100644
 --- a/drivers/mmc/core/block.c
 +++ b/drivers/mmc/core/block.c
 @@ -448,7 +448,7 @@ static int card_busy_detect(struct mmc_card *card, unsigned int timeout_ms,
@@ -24792,7 +25501,7 @@ index 451c25fc2..e7ec6250e 100644
 +
 +obj-$(CONFIG_HIMCI)	+= himci/
 diff --git a/drivers/mmc/host/cqhci.c b/drivers/mmc/host/cqhci.c
-index 7ba4f714106f..f5614efa4a47 100644
+index 7ba4f7141..f5614efa4 100644
 --- a/drivers/mmc/host/cqhci.c
 +++ b/drivers/mmc/host/cqhci.c
 @@ -46,6 +46,11 @@ static inline u8 *get_link_desc(struct cqhci_host *cq_host, u8 tag)
@@ -29718,7 +30427,7 @@ index 000000000..19cea6dc5
 +
 +#endif /* _DRIVERS_MMC_SDHCI_HISI_H */
 diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
-index 6cdadbb3a..94311a914 100644
+index 07d131fac..49ee7d99b 100644
 --- a/drivers/mmc/host/sdhci.c
 +++ b/drivers/mmc/host/sdhci.c
 @@ -261,7 +261,7 @@ static void sdhci_set_default_irqs(struct sdhci_host *host)
@@ -29897,7 +30606,7 @@ index 6cdadbb3a..94311a914 100644
  		if (sg_cnt <= 0) {
  			/*
  			 * This only happens when someone fed
-@@ -1632,7 +1738,7 @@ static bool sdhci_send_command(struct sdhci_host *host, struct mmc_command *cmd)
+@@ -1633,7 +1739,7 @@ static bool sdhci_send_command(struct sdhci_host *host, struct mmc_command *cmd)
  			sdhci_prepare_data(host, cmd);
  	}
  
@@ -29906,7 +30615,7 @@ index 6cdadbb3a..94311a914 100644
  
  	sdhci_set_transfer_mode(host, cmd);
  
-@@ -1677,7 +1783,7 @@ static bool sdhci_send_command(struct sdhci_host *host, struct mmc_command *cmd)
+@@ -1678,7 +1784,7 @@ static bool sdhci_send_command(struct sdhci_host *host, struct mmc_command *cmd)
  	if (host->use_external_dma)
  		sdhci_external_dma_pre_transfer(host, cmd);
  
@@ -29915,7 +30624,7 @@ index 6cdadbb3a..94311a914 100644
  
  	return true;
  }
-@@ -1754,6 +1860,14 @@ static void sdhci_read_rsp_136(struct sdhci_host *host, struct mmc_command *cmd)
+@@ -1755,6 +1861,14 @@ static void sdhci_read_rsp_136(struct sdhci_host *host, struct mmc_command *cmd)
  	}
  }
  
@@ -29930,7 +30639,7 @@ index 6cdadbb3a..94311a914 100644
  static void sdhci_finish_command(struct sdhci_host *host)
  {
  	struct mmc_command *cmd = host->cmd;
-@@ -1766,6 +1880,12 @@ static void sdhci_finish_command(struct sdhci_host *host)
+@@ -1767,6 +1881,12 @@ static void sdhci_finish_command(struct sdhci_host *host)
  		} else {
  			cmd->resp[0] = sdhci_readl(host, SDHCI_RESPONSE);
  		}
@@ -29943,7 +30652,7 @@ index 6cdadbb3a..94311a914 100644
  	}
  
  	if (cmd->mrq->cap_cmd_during_tfr && cmd == cmd->mrq->cmd)
-@@ -2060,6 +2180,12 @@ void sdhci_set_power_noreg(struct sdhci_host *host, unsigned char mode,
+@@ -2067,6 +2187,12 @@ void sdhci_set_power_noreg(struct sdhci_host *host, unsigned char mode,
  		sdhci_writeb(host, 0, SDHCI_POWER_CONTROL);
  		if (host->quirks2 & SDHCI_QUIRK2_CARD_ON_NEEDS_BUS_ON)
  			sdhci_runtime_pm_bus_off(host);
@@ -29956,7 +30665,7 @@ index 6cdadbb3a..94311a914 100644
  	} else {
  		/*
  		 * Spec says that we should clear the power reg before setting
-@@ -2381,7 +2507,9 @@ void sdhci_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
+@@ -2388,7 +2514,9 @@ void sdhci_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
  		}
  
  		/* Re-enable SD Clock */
@@ -29967,7 +30676,7 @@ index 6cdadbb3a..94311a914 100644
  	} else
  		sdhci_writeb(host, ctrl, SDHCI_HOST_CONTROL);
  
-@@ -2522,6 +2650,9 @@ int sdhci_start_signal_voltage_switch(struct mmc_host *mmc,
+@@ -2529,6 +2657,9 @@ int sdhci_start_signal_voltage_switch(struct mmc_host *mmc,
  	u16 ctrl;
  	int ret;
  
@@ -29977,7 +30686,7 @@ index 6cdadbb3a..94311a914 100644
  	/*
  	 * Signal Voltage Switching is only applicable for Host Controllers
  	 * v3.00 and above.
-@@ -2959,6 +3090,34 @@ static void sdhci_card_event(struct mmc_host *mmc)
+@@ -2966,6 +3097,34 @@ static void sdhci_card_event(struct mmc_host *mmc)
  	spin_unlock_irqrestore(&host->lock, flags);
  }
  
@@ -30012,7 +30721,7 @@ index 6cdadbb3a..94311a914 100644
  static const struct mmc_host_ops sdhci_ops = {
  	.request	= sdhci_request,
  	.post_req	= sdhci_post_req,
-@@ -2974,6 +3133,7 @@ static const struct mmc_host_ops sdhci_ops = {
+@@ -2981,6 +3140,7 @@ static const struct mmc_host_ops sdhci_ops = {
  	.execute_tuning			= sdhci_execute_tuning,
  	.card_event			= sdhci_card_event,
  	.card_busy	= sdhci_card_busy,
@@ -30020,7 +30729,7 @@ index 6cdadbb3a..94311a914 100644
  };
  
  /*****************************************************************************\
-@@ -3032,6 +3192,9 @@ static bool sdhci_request_done(struct sdhci_host *host)
+@@ -3039,6 +3199,9 @@ static bool sdhci_request_done(struct sdhci_host *host)
  		host->pending_reset = false;
  	}
  
@@ -30030,7 +30739,7 @@ index 6cdadbb3a..94311a914 100644
  	/*
  	 * Always unmap the data buffers if they were mapped by
  	 * sdhci_prepare_data() whenever we finish with a request.
-@@ -3174,6 +3337,24 @@ static void sdhci_timeout_data_timer(struct timer_list *t)
+@@ -3181,6 +3344,24 @@ static void sdhci_timeout_data_timer(struct timer_list *t)
   *                                                                           *
  \*****************************************************************************/
  
@@ -30055,7 +30764,7 @@ index 6cdadbb3a..94311a914 100644
  static void sdhci_cmd_irq(struct sdhci_host *host, u32 intmask, u32 *intmask_p)
  {
  	/* Handle auto-CMD12 error */
-@@ -3199,18 +3380,21 @@ static void sdhci_cmd_irq(struct sdhci_host *host, u32 intmask, u32 *intmask_p)
+@@ -3206,18 +3387,21 @@ static void sdhci_cmd_irq(struct sdhci_host *host, u32 intmask, u32 *intmask_p)
  		 */
  		if (host->pending_reset)
  			return;
@@ -30081,7 +30790,7 @@ index 6cdadbb3a..94311a914 100644
  
  		/* Treat data command CRC error the same as data CRC error */
  		if (host->cmd->data &&
-@@ -3435,6 +3619,9 @@ static irqreturn_t sdhci_irq(int irq, void *dev_id)
+@@ -3442,6 +3626,9 @@ static irqreturn_t sdhci_irq(int irq, void *dev_id)
  	do {
  		DBG("IRQ status 0x%08x\n", intmask);
  
@@ -30091,7 +30800,7 @@ index 6cdadbb3a..94311a914 100644
  		if (host->ops->irq) {
  			intmask = host->ops->irq(host, intmask);
  			if (!intmask)
-@@ -3794,10 +3981,11 @@ void sdhci_cqe_enable(struct mmc_host *mmc)
+@@ -3801,10 +3988,11 @@ void sdhci_cqe_enable(struct mmc_host *mmc)
  {
  	struct sdhci_host *host = mmc_priv(mmc);
  	unsigned long flags;
@@ -30105,7 +30814,7 @@ index 6cdadbb3a..94311a914 100644
  	ctrl = sdhci_readb(host, SDHCI_HOST_CONTROL);
  	ctrl &= ~SDHCI_CTRL_DMA_MASK;
  	/*
-@@ -3815,7 +4003,7 @@ void sdhci_cqe_enable(struct mmc_host *mmc)
+@@ -3822,7 +4010,7 @@ void sdhci_cqe_enable(struct mmc_host *mmc)
  
  	sdhci_writew(host, SDHCI_MAKE_BLKSZ(host->sdma_boundary, 512),
  		     SDHCI_BLOCK_SIZE);
@@ -30114,7 +30823,7 @@ index 6cdadbb3a..94311a914 100644
  	/* Set maximum timeout */
  	sdhci_set_timeout(host, NULL);
  
-@@ -4092,6 +4280,72 @@ static void sdhci_allocate_bounce_buffer(struct sdhci_host *host)
+@@ -4099,6 +4287,72 @@ static void sdhci_allocate_bounce_buffer(struct sdhci_host *host)
  		mmc_hostname(mmc), max_blocks, bounce_size);
  }
  
@@ -30187,7 +30896,7 @@ index 6cdadbb3a..94311a914 100644
  static inline bool sdhci_can_64bit_dma(struct sdhci_host *host)
  {
  	/*
-@@ -4173,6 +4427,8 @@ int sdhci_setup_host(struct sdhci_host *host)
+@@ -4180,6 +4434,8 @@ int sdhci_setup_host(struct sdhci_host *host)
  		host->flags &= ~SDHCI_USE_ADMA;
  	}
  
@@ -30196,7 +30905,7 @@ index 6cdadbb3a..94311a914 100644
  	if (sdhci_can_64bit_dma(host))
  		host->flags |= SDHCI_USE_64_BIT_DMA;
  
-@@ -4251,6 +4507,7 @@ int sdhci_setup_host(struct sdhci_host *host)
+@@ -4258,6 +4514,7 @@ int sdhci_setup_host(struct sdhci_host *host)
  			host->adma_table = buf + host->align_buffer_sz;
  			host->adma_addr = dma + host->align_buffer_sz;
  		}
@@ -30204,7 +30913,7 @@ index 6cdadbb3a..94311a914 100644
  	}
  
  	/*
-@@ -4499,7 +4756,6 @@ int sdhci_setup_host(struct sdhci_host *host)
+@@ -4506,7 +4763,6 @@ int sdhci_setup_host(struct sdhci_host *host)
  	if (!max_current_caps && !IS_ERR(mmc->supply.vmmc)) {
  		int curr = regulator_get_current_limit(mmc->supply.vmmc);
  		if (curr > 0) {
@@ -30212,7 +30921,7 @@ index 6cdadbb3a..94311a914 100644
  			/* convert to SDHCI_MAX_CURRENT format */
  			curr = curr/1000;  /* convert to mA */
  			curr = curr/SDHCI_MAX_CURRENT_MULTIPLIER;
-@@ -4652,6 +4908,8 @@ int sdhci_setup_host(struct sdhci_host *host)
+@@ -4659,6 +4915,8 @@ int sdhci_setup_host(struct sdhci_host *host)
  	host->adma_table = NULL;
  	host->align_buffer = NULL;
  
@@ -30221,7 +30930,7 @@ index 6cdadbb3a..94311a914 100644
  	return ret;
  }
  EXPORT_SYMBOL_GPL(sdhci_setup_host);
-@@ -4673,6 +4931,8 @@ void sdhci_cleanup_host(struct sdhci_host *host)
+@@ -4680,6 +4938,8 @@ void sdhci_cleanup_host(struct sdhci_host *host)
  
  	host->adma_table = NULL;
  	host->align_buffer = NULL;
@@ -30230,7 +30939,7 @@ index 6cdadbb3a..94311a914 100644
  }
  EXPORT_SYMBOL_GPL(sdhci_cleanup_host);
  
-@@ -4722,6 +4982,7 @@ int __sdhci_add_host(struct sdhci_host *host)
+@@ -4729,6 +4989,7 @@ int __sdhci_add_host(struct sdhci_host *host)
  
  	pr_info("%s: SDHCI controller on %s [%s] using %s\n",
  		mmc_hostname(mmc), host->hw_name, dev_name(mmc_dev(mmc)),
@@ -30238,7 +30947,7 @@ index 6cdadbb3a..94311a914 100644
  		host->use_external_dma ? "External DMA" :
  		(host->flags & SDHCI_USE_ADMA) ?
  		(host->flags & SDHCI_USE_64_BIT_DMA) ? "ADMA 64-bit" : "ADMA" :
-@@ -4787,6 +5048,8 @@ void sdhci_remove_host(struct sdhci_host *host, int dead)
+@@ -4794,6 +5055,8 @@ void sdhci_remove_host(struct sdhci_host *host, int dead)
  
  	sdhci_disable_card_detection(host);
  
@@ -30247,7 +30956,7 @@ index 6cdadbb3a..94311a914 100644
  	mmc_remove_host(mmc);
  
  	sdhci_led_unregister(host);
-@@ -4796,7 +5059,6 @@ void sdhci_remove_host(struct sdhci_host *host, int dead)
+@@ -4803,7 +5066,6 @@ void sdhci_remove_host(struct sdhci_host *host, int dead)
  
  	sdhci_writel(host, 0, SDHCI_INT_ENABLE);
  	sdhci_writel(host, 0, SDHCI_SIGNAL_ENABLE);
@@ -30255,7 +30964,7 @@ index 6cdadbb3a..94311a914 100644
  
  	del_timer_sync(&host->timer);
  	del_timer_sync(&host->data_timer);
-@@ -4816,6 +5078,8 @@ void sdhci_remove_host(struct sdhci_host *host, int dead)
+@@ -4823,6 +5085,8 @@ void sdhci_remove_host(struct sdhci_host *host, int dead)
  
  	host->adma_table = NULL;
  	host->align_buffer = NULL;
@@ -39566,7 +40275,7 @@ index 000000000..9c5f0af09
 +
 +#endif /* End of __MATCH_TABLE_H__ */
 diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
-index 1f0d542d5..3ff778c71 100644
+index 1f0d542d5..e2f2d86e3 100644
 --- a/drivers/mtd/nand/raw/nand_base.c
 +++ b/drivers/mtd/nand/raw/nand_base.c
 @@ -44,6 +44,7 @@
@@ -49029,12 +49738,12 @@ index 000000000..5eefc01e5
 +
 +#endif /* __MDIO_HISI_GEMAC_H__ */
 diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
-index 28ddaad72..0c53683fc 100644
+index db7866b6f..413159372 100644
 --- a/drivers/net/phy/phy.c
 +++ b/drivers/net/phy/phy.c
-@@ -313,6 +313,28 @@ int phy_ethtool_ksettings_set(struct phy_device *phydev,
+@@ -260,6 +260,28 @@ static void phy_sanitize_settings(struct phy_device *phydev)
+ 	}
  }
- EXPORT_SYMBOL(phy_ethtool_ksettings_set);
  
 +int phy_ethtool_gset(struct phy_device *phydev, struct ethtool_cmd *cmd)
 +{
@@ -49090,10 +49799,10 @@ index b4879306b..cb7b1635c 100644
  	phy_modify_paged_changed(phydev, 0xa43, RTL8211F_PHYCR1, val, val);
  
 diff --git a/drivers/net/wireless/realtek/rtl8xxxu/rtl8xxxu_core.c b/drivers/net/wireless/realtek/rtl8xxxu/rtl8xxxu_core.c
-index 5cd7ef362..321396344 100644
+index 0d374a294..9f2151377 100644
 --- a/drivers/net/wireless/realtek/rtl8xxxu/rtl8xxxu_core.c
 +++ b/drivers/net/wireless/realtek/rtl8xxxu/rtl8xxxu_core.c
-@@ -5795,6 +5795,7 @@ static int rtl8xxxu_submit_int_urb(struct ieee80211_hw *hw)
+@@ -5806,6 +5806,7 @@ static int rtl8xxxu_submit_int_urb(struct ieee80211_hw *hw)
  	ret = usb_submit_urb(urb, GFP_KERNEL);
  	if (ret) {
  		usb_unanchor_urb(urb);
@@ -52076,10 +52785,10 @@ index c2a236f2e..fa3951a03 100644
 -endif
 +#endif
 diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
-index 33e4ecd6c..8dd36dd18 100644
+index 54cf5ec8f..a1de70bd3 100644
 --- a/drivers/rtc/Kconfig
 +++ b/drivers/rtc/Kconfig
-@@ -943,6 +943,14 @@ comment "Platform RTC drivers"
+@@ -944,6 +944,14 @@ comment "Platform RTC drivers"
  # <asm/mc146818rtc.h> defining CMOS_READ/CMOS_WRITE, and a
  # global rtc_lock ... it's not yet just another platform_device.
  
@@ -52897,10 +53606,10 @@ index 24927cf48..ccf04e4f1 100644
  
  	err = ufshcd_init(hba, mmio_base, irq);
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 854c96e63..f590a52fc 100644
+index 3139d9df6..fc0b43268 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -6230,6 +6230,40 @@ static irqreturn_t ufshcd_intr(int irq, void *__hba)
+@@ -6231,6 +6231,40 @@ static irqreturn_t ufshcd_intr(int irq, void *__hba)
  	return retval;
  }
  
@@ -52941,7 +53650,7 @@ index 854c96e63..f590a52fc 100644
  static int ufshcd_clear_tm_cmd(struct ufs_hba *hba, int tag)
  {
  	int err = 0;
-@@ -6828,6 +6862,10 @@ static int ufshcd_host_reset_and_restore(struct ufs_hba *hba)
+@@ -6829,6 +6863,10 @@ static int ufshcd_host_reset_and_restore(struct ufs_hba *hba)
  	int err;
  	unsigned long flags;
  
@@ -52952,7 +53661,7 @@ index 854c96e63..f590a52fc 100644
  	/*
  	 * Stop the host controller and complete the requests
  	 * cleared by h/w
-@@ -6843,6 +6881,8 @@ static int ufshcd_host_reset_and_restore(struct ufs_hba *hba)
+@@ -6844,6 +6882,8 @@ static int ufshcd_host_reset_and_restore(struct ufs_hba *hba)
  	/* scale up clocks to max frequency before full reinitialization */
  	ufshcd_set_clk_freq(hba, true);
  
@@ -52961,7 +53670,7 @@ index 854c96e63..f590a52fc 100644
  	err = ufshcd_hba_enable(hba);
  	if (err)
  		goto out;
-@@ -7267,6 +7307,7 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
+@@ -7268,6 +7308,7 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
  	dev_info->wspecversion = desc_buf[DEVICE_DESC_PARAM_SPEC_VER] << 8 |
  				      desc_buf[DEVICE_DESC_PARAM_SPEC_VER + 1];
  
@@ -52969,7 +53678,7 @@ index 854c96e63..f590a52fc 100644
  	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
  
  	err = ufshcd_read_string_desc(hba, model_index,
-@@ -7830,6 +7871,138 @@ static const struct attribute_group *ufshcd_driver_groups[] = {
+@@ -7831,6 +7872,138 @@ static const struct attribute_group *ufshcd_driver_groups[] = {
  	NULL,
  };
  
@@ -53108,7 +53817,7 @@ index 854c96e63..f590a52fc 100644
  static struct ufs_hba_variant_params ufs_hba_vps = {
  	.hba_enable_delay_us		= 1000,
  	.wb_flush_threshold		= UFS_WB_BUF_REMAIN_PERCENT(40),
-@@ -8539,6 +8712,10 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+@@ -8540,6 +8713,10 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
  	enum ufs_dev_pwr_mode req_dev_pwr_mode;
  	enum uic_link_state req_link_state;
  
@@ -53119,7 +53828,7 @@ index 854c96e63..f590a52fc 100644
  	hba->pm_op_in_progress = 1;
  	if (!ufshcd_is_shutdown_pm(pm_op)) {
  		pm_lvl = ufshcd_is_runtime_pm(pm_op) ?
-@@ -9016,6 +9193,9 @@ void ufshcd_remove(struct ufs_hba *hba)
+@@ -9017,6 +9194,9 @@ void ufshcd_remove(struct ufs_hba *hba)
  	ufshcd_exit_clk_gating(hba);
  	if (ufshcd_is_clkscaling_supported(hba))
  		device_remove_file(hba->dev, &hba->clk_scaling.enable_attr);
@@ -53129,7 +53838,7 @@ index 854c96e63..f590a52fc 100644
  	ufshcd_hba_exit(hba);
  }
  EXPORT_SYMBOL_GPL(ufshcd_remove);
-@@ -9184,6 +9364,14 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
+@@ -9185,6 +9365,14 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
  	INIT_WORK(&hba->eh_work, ufshcd_err_handler);
  	INIT_WORK(&hba->eeh_work, ufshcd_exception_event_handler);
  
@@ -53144,7 +53853,7 @@ index 854c96e63..f590a52fc 100644
  	/* Initialize UIC command mutex */
  	mutex_init(&hba->uic_cmd_mutex);
  
-@@ -9292,7 +9480,37 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
+@@ -9293,7 +9481,37 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
  	 */
  	ufshcd_set_ufs_dev_active(hba);
  
@@ -53701,7 +54410,7 @@ index 95a9bae72..ad951a1a1 100644
  		ret = -ENODEV;
  		goto fail;
 diff --git a/drivers/usb/core/notify.c b/drivers/usb/core/notify.c
-index e6143663778f..b507a25ce115 100644
+index e61436637..b507a25ce 100644
 --- a/drivers/usb/core/notify.c
 +++ b/drivers/usb/core/notify.c
 @@ -66,3 +66,11 @@ void usb_notify_remove_bus(struct usb_bus *ubus)
@@ -53734,7 +54443,7 @@ index ae86da0dc..9abca9a8a 100644
  	dwc3-y				+= trace.o
  endif
 diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index bfb72902f..f630a768f 100644
+index 1580d51ae..1219a6487 100644
 --- a/drivers/usb/dwc3/core.c
 +++ b/drivers/usb/dwc3/core.c
 @@ -37,9 +37,25 @@
@@ -53763,7 +54472,7 @@ index bfb72902f..f630a768f 100644
  /**
   * dwc3_get_dr_mode - Validates and sets dr_mode
   * @dwc: pointer to our context structure
-@@ -1298,7 +1314,8 @@ static void dwc3_get_properties(struct dwc3 *dwc)
+@@ -1294,7 +1310,8 @@ static void dwc3_get_properties(struct dwc3 *dwc)
  	 */
  	hird_threshold = 12;
  
@@ -53773,7 +54482,7 @@ index bfb72902f..f630a768f 100644
  	dwc->dr_mode = usb_get_dr_mode(dev);
  	dwc->hsphy_mode = of_usb_get_phy_mode(dev->of_node);
  
-@@ -1334,6 +1351,9 @@ static void dwc3_get_properties(struct dwc3 *dwc)
+@@ -1330,6 +1347,9 @@ static void dwc3_get_properties(struct dwc3 *dwc)
  	device_property_read_u8(dev, "snps,tx-max-burst-prd",
  				&tx_max_burst_prd);
  
@@ -53783,7 +54492,7 @@ index bfb72902f..f630a768f 100644
  	dwc->disable_scramble_quirk = device_property_read_bool(dev,
  				"snps,disable_scramble_quirk");
  	dwc->u2exit_lfps_quirk = device_property_read_bool(dev,
-@@ -1371,6 +1391,16 @@ static void dwc3_get_properties(struct dwc3 *dwc)
+@@ -1367,6 +1387,16 @@ static void dwc3_get_properties(struct dwc3 *dwc)
  	dwc->parkmode_disable_ss_quirk = device_property_read_bool(dev,
  				"snps,parkmode-disable-ss-quirk");
  
@@ -53800,7 +54509,7 @@ index bfb72902f..f630a768f 100644
  	dwc->tx_de_emphasis_quirk = device_property_read_bool(dev,
  				"snps,tx_de_emphasis_quirk");
  	device_property_read_u8(dev, "snps,tx_de_emphasis",
-@@ -1554,6 +1584,10 @@ static int dwc3_probe(struct platform_device *pdev)
+@@ -1550,6 +1580,10 @@ static int dwc3_probe(struct platform_device *pdev)
  	platform_set_drvdata(pdev, dwc);
  	dwc3_cache_hwparams(dwc);
  
@@ -53811,7 +54520,7 @@ index bfb72902f..f630a768f 100644
  	spin_lock_init(&dwc->lock);
  	mutex_init(&dwc->mutex);
  
-@@ -1589,6 +1623,8 @@ static int dwc3_probe(struct platform_device *pdev)
+@@ -1585,6 +1619,8 @@ static int dwc3_probe(struct platform_device *pdev)
  		goto err4;
  	}
  
@@ -53820,7 +54529,7 @@ index bfb72902f..f630a768f 100644
  	dwc3_check_params(dwc);
  	dwc3_debugfs_init(dwc);
  
-@@ -1656,6 +1692,10 @@ static int dwc3_remove(struct platform_device *pdev)
+@@ -1652,6 +1688,10 @@ static int dwc3_remove(struct platform_device *pdev)
  	dwc3_free_event_buffers(dwc);
  	dwc3_free_scratch_buffers(dwc);
  
@@ -54522,7 +55231,7 @@ index 3cd294264..edf3f9b59 100644
 diff --git a/drivers/usb/dwc3/gadget.c b/drivers/usb/dwc3/gadget.c
 old mode 100644
 new mode 100755
-index b75fe568096f..c0f71fd32c77
+index b75fe5680..bec11c742
 --- a/drivers/usb/dwc3/gadget.c
 +++ b/drivers/usb/dwc3/gadget.c
 @@ -27,6 +27,8 @@
@@ -54984,7 +55693,7 @@ index 000000000..7425e0eb9
 +	return 0;
 +}
 diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
-index 7f963bb1c..c8fd04657 100644
+index 8bec0cbf8..db79eab52 100644
 --- a/drivers/usb/gadget/composite.c
 +++ b/drivers/usb/gadget/composite.c
 @@ -705,8 +705,7 @@ static int bos_desc(struct usb_composite_dev *cdev)
@@ -56444,7 +57153,7 @@ index fbd438e9b..64431a1a9 100644
  
  struct vfio_iova {
 diff --git a/fs/9p/vfs_inode.c b/fs/9p/vfs_inode.c
-index ae0c38ad1..bf3b0950a 100644
+index 0791480bf..5a195dd31 100644
 --- a/fs/9p/vfs_inode.c
 +++ b/fs/9p/vfs_inode.c
 @@ -999,6 +999,7 @@ v9fs_vfs_getattr(const struct path *path, struct kstat *stat,
@@ -56478,7 +57187,7 @@ index ae0c38ad1..bf3b0950a 100644
  	p9stat_free(st);
  	kfree(st);
 diff --git a/fs/9p/vfs_inode_dotl.c b/fs/9p/vfs_inode_dotl.c
-index 0028eccb6..a227a76d5 100644
+index 72b67d810..74629e0a7 100644
 --- a/fs/9p/vfs_inode_dotl.c
 +++ b/fs/9p/vfs_inode_dotl.c
 @@ -459,6 +459,7 @@ v9fs_vfs_getattr_dotl(const struct path *path, struct kstat *stat,
@@ -57386,7 +58095,7 @@ index 5e91d578f..01116b8ea 100644
  #define JFFS2_RUBINMIPS_DISABLED /* RUBINs will be used only */
  #define JFFS2_DYNRUBIN_DISABLED  /*	   for decompression */
 diff --git a/fs/ubifs/file.c b/fs/ubifs/file.c
-index b77d1637b..413f11034 100644
+index df46f2d3f..b38ea130b 100644
 --- a/fs/ubifs/file.c
 +++ b/fs/ubifs/file.c
 @@ -1493,6 +1493,9 @@ static int ubifs_releasepage(struct page *page, gfp_t unused_gfp_flags)
@@ -57398,7 +58107,7 @@ index b77d1637b..413f11034 100644
 +#endif
  	ubifs_assert(c, PagePrivate(page));
  	ubifs_assert(c, 0);
- 	ClearPagePrivate(page);
+ 	detach_page_private(page);
 diff --git a/include/dt-bindings/clock/hi3516dv300-clock.h b/include/dt-bindings/clock/hi3516dv300-clock.h
 new file mode 100644
 index 000000000..408c9b09d
@@ -57506,10 +58215,10 @@ index 000000000..408c9b09d
 +
 +#endif  /* __DTS_HI3516DV300_CLOCK_H */
 diff --git a/include/linux/blkdev.h b/include/linux/blkdev.h
-index 542471b76..5a4c1cc8d 100644
+index 31febd3e1..0fa3ac740 100644
 --- a/include/linux/blkdev.h
 +++ b/include/linux/blkdev.h
-@@ -1381,7 +1381,11 @@ static inline bool bdev_is_partition(struct block_device *bdev)
+@@ -1384,7 +1384,11 @@ static inline bool bdev_is_partition(struct block_device *bdev)
  enum blk_default_limits {
  	BLK_MAX_SEGMENTS	= 128,
  	BLK_SAFE_MAX_SECTORS	= 255,
@@ -58525,7 +59234,7 @@ index 08725a262..45c717bc1 100644
  			       struct ethtool_link_ksettings *cmd);
  int phy_ethtool_ksettings_set(struct phy_device *phydev,
 diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-index 2d01b2bbb..00dbb9429 100644
+index acbf1875a..f4573b855 100644
 --- a/include/linux/skbuff.h
 +++ b/include/linux/skbuff.h
 @@ -521,6 +521,7 @@ struct skb_shared_info {
@@ -58537,7 +59246,7 @@ index 2d01b2bbb..00dbb9429 100644
  	/*
  	 * Warning : all fields before dataref are cleared in __alloc_skb()
 diff --git a/include/linux/sunrpc/xprt.h b/include/linux/sunrpc/xprt.h
-index cad1fa2b6..e936f167a 100644
+index e7b997d6f..8bec8c190 100644
 --- a/include/linux/sunrpc/xprt.h
 +++ b/include/linux/sunrpc/xprt.h
 @@ -156,6 +156,7 @@ struct rpc_xprt_ops {
@@ -58562,7 +59271,7 @@ index a14797760..2c35430e2 100644
  #endif /*  __ASSEMBLY__ */
  #endif /* _LINUX_TYPES_H */
 diff --git a/include/linux/usb.h b/include/linux/usb.h
-index d6a41841b93e..de3232ee5bf2 100644
+index d6a41841b..de3232ee5 100644
 --- a/include/linux/usb.h
 +++ b/include/linux/usb.h
 @@ -2019,8 +2019,11 @@ static inline int usb_translate_errors(int error_code)
@@ -58747,10 +59456,10 @@ index bfdae12cd..2d33002e9 100644
  #endif /* __LINUX_USB_VIDEO_H */
  
 diff --git a/init/main.c b/init/main.c
-index dd26a42e8..053b794d5 100644
+index 63cdf49f7..4263c0bb3 100644
 --- a/init/main.c
 +++ b/init/main.c
-@@ -840,6 +840,34 @@ static void __init mm_init(void)
+@@ -842,6 +842,34 @@ static void __init mm_init(void)
  	pti_init();
  }
  
@@ -58785,7 +59494,7 @@ index dd26a42e8..053b794d5 100644
  void __init __weak arch_call_rest_init(void)
  {
  	rest_init();
-@@ -893,6 +921,10 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
+@@ -895,6 +923,10 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
  		parse_args("Setting extra init args", extra_init_args,
  			   NULL, 0, -1, -1, NULL, set_init_arg);
  
@@ -58870,7 +59579,7 @@ index 16b95ff12..90f379978 100644
  static struct page *cma_alloc_aligned(struct cma *cma, size_t size, gfp_t gfp)
  {
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index d0df95346..1a171eca5 100644
+index 85351a12c..e9e070a36 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -1475,7 +1475,7 @@ static int syslog_print(char __user *buf, int size)
@@ -58906,10 +59615,10 @@ index 153162669..6382b3b6b 100644
  };
 +EXPORT_SYMBOL(init_mm);
 diff --git a/mm/madvise.c b/mm/madvise.c
-index 24abc79f8..8a139fcbd 100644
+index 23b48a004..2e09438d6 100644
 --- a/mm/madvise.c
 +++ b/mm/madvise.c
-@@ -29,6 +29,7 @@
+@@ -30,6 +30,7 @@
  #include <linux/swapops.h>
  #include <linux/shmem_fs.h>
  #include <linux/mmu_notifier.h>
@@ -59051,10 +59760,10 @@ index f98801428..1a565eaad 100644
  /**
   * get_vm_area - reserve a contiguous kernel virtual area
 diff --git a/net/bluetooth/hci_event.c b/net/bluetooth/hci_event.c
-index e59ae24a8..5ec67b630 100644
+index 9f52145bb..6baf1f429 100644
 --- a/net/bluetooth/hci_event.c
 +++ b/net/bluetooth/hci_event.c
-@@ -5547,7 +5547,8 @@ static void process_adv_report(struct hci_dev *hdev, u8 type, bdaddr_t *bdaddr,
+@@ -5593,7 +5593,8 @@ static void process_adv_report(struct hci_dev *hdev, u8 type, bdaddr_t *bdaddr,
  		/* If the report will trigger a SCAN_REQ store it for
  		 * later merging.
  		 */
@@ -59261,4 +59970,3 @@ index 6fad54c7e..9d1302bb8 100755
  ################################################################################
  # Tests on route add and replace
  
-

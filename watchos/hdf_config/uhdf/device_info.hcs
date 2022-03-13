@@ -83,12 +83,28 @@
         power :: host {
             hostName = "power_host";
             priority = 50;
+            power_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libpower_driver.z.so";
+                    serviceName = "power_interface_service";
+                }
+            }
             battery_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libbatteryd.z.so";
-                    serviceName = "batteryd";
+                    moduleName = "libbattery_driver.z.so";
+                    serviceName = "battery_interface_service";
+                }
+            }
+            thermal_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libthermal_driver.z.so";
+                    serviceName = "thermal_interface_service";
                 }
             }
         }
@@ -123,7 +139,7 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libaudio_hdi_adapter_server.z.so";
+                    moduleName = "libhdi_audio_server.z.so";
                     serviceName = "audio_hdi_service";
                 }
             }
@@ -209,8 +225,32 @@
                     priority = 100; 
                     moduleName = "libsensor_driver.z.so"; 
                     serviceName = "sensor_interface_service"; 
-                    } 
+                } 
             } 
+        }
+        vibrator_dal :: host {
+            hostName = "vibrator_dal_host";
+            priority = 50;
+            vibrator_dal_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libvibrator_driver.z.so";
+                    serviceName = "vibrator_interface_service";
+                }
+            }
+        }
+        light_dal :: host {
+            hostName = "light_dal_host";
+            priority = 50;
+            light_dal_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "liblight_driver.z.so";
+                    serviceName = "light_interface_service";
+                }
+            }
         }
     }
 }
