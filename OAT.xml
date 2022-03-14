@@ -55,6 +55,7 @@
 		<policyitem type="copyright" name="Huawei Technologies Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="华为技术有限公司版权声明"/>
 		<policyitem type="copyright" name="Huawei Device Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="华为终端有限公司版权声明"/>
 		<policyitem type="copyright" name="Hisilicon (Shanghai) Technologies Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="小海思开发代码"/>
+		<policyitem type="copyright" name="Copyright (c) 2022 HiSilicon (Shanghai) Technologies CO., LIMITED." path=".*" desc="HiSilicon copyright"/>
             </policy>
         </policylist>
 
