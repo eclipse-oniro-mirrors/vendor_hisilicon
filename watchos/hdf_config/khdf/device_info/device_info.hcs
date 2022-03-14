@@ -16,6 +16,19 @@
                 }
             }
         }
+        base :: host {
+            hostName = "base_host";
+            priority = 50;
+            device_support :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    permission = 0644;
+                    moduleName = "HDF_KEVENT";
+                    serviceName = "hdf_kevent";
+                }
+            }
+        }
         platform :: host {
             hostName = "platform_host";
             priority = 50;
@@ -470,6 +483,28 @@
                     deviceMatchAttr = "hdf_sensor_gravity_driver";
                 }
             }
+            device_sensor_pedometer :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_PEDOMETER";
+                    serviceName = "hdf_sensor_pedometer";
+                    deviceMatchAttr = "hdf_sensor_pedometer_driver";
+                }
+            }
+            device_sensor_pedometer_bmi160 :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 120;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_PEDOMETER_BMI160";
+                    serviceName = "hdf_pedometer_bmi160";
+                    deviceMatchAttr = "hdf_sensor_pedometer_bmi160_driver";
+                }
+            }
         }
         usb_pnp_linux :: host {
             hostName = "usb_pnp_linux_host";
@@ -627,6 +662,20 @@
                     permission = 0664;
                     moduleName = "HDF_DSOFTBUS";
                     serviceName = "hdf_dsoftbus";
+                }
+            }
+        }
+        light :: host {
+            hostName = "light_host";
+            device_light :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_LIGHT";
+                    serviceName = "hdf_light";
+                    deviceMatchAttr = "hdf_light_driver";
                 }
             }
         }

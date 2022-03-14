@@ -1,0 +1,18 @@
+root {
+    lightConfig {
+        boardConfig {
+            match_attr = "hdf_light_driver";
+            lightAttr {
+                light01 {
+                    lightType = [1, 2];
+                    busRNum = 31;
+                    busGNum = 30;
+                    busBNum = 29;
+                    lightBrightness = 0X80000000;
+                    onTime = 50;
+                    offTime = 50;
+                }
+            }
+        }
+    }
+}

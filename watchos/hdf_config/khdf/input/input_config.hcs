@@ -7,8 +7,8 @@ root {
                     inputAttr {
                         /* 0:touch 1:key 2:keyboard 3:mouse 4:button 5:crown 6:encoder */
                         inputType = 0;
-                        solutionX = 240;
-                        solutionY = 240;
+                        solutionX = 400;
+                        solutionY = 400;
                         devName = "main_touch";
                     }
 
