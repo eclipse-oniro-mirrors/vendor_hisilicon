@@ -31,7 +31,7 @@
       {
         "subsystem": "security",
         "components": [
-          { "component": "hichainsdk", "features":[] },
+          { "component": "deviceauth_standard", "features":[] },
           { "component": "permission", "features":[] },
           { "component": "appverify", "features":[] },
           { "component": "huks", "features":
