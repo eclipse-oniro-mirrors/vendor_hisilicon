@@ -32,7 +32,7 @@
         "subsystem": "security",
         "components": [
           { "component": "deviceauth_standard", "features":[] },
-          { "component": "permission", "features":[] },
+          { "component": "permission_lite", "features":[] },
           { "component": "appverify", "features":[] },
           { "component": "huks", "features":
             [
