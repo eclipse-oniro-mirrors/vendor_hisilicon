@@ -145,7 +145,7 @@
             }
         }
         hdi_server :: host {
-            hostName = "camera_host";
+            hostName = "camera_mpp_host";
             priority = 50;
             camera_device :: device {
                  device0 :: deviceNode {
