@@ -1,8 +1,10 @@
 # 腾讯云的微信小程序开发及Hi3861板端互联
 ## 硬件环境搭建
-  -    硬件要求：Hi3861V100核心板、扩展板；硬件搭建如下图所示。
+-    硬件要求：Hi3861V100核心板、扩展板；硬件搭建如下图所示。
+-    [Hi3861V100核心板参考：HiSpark_WiFi_IoT智能开发套件_原理图硬件资料\原理图\HiSpark_WiFi-IoT_Hi3861_CH340G_VER.B.pdf](http://gitee.com/hihope_iot/embedded-race-hisilicon-track-2022/blob/master/%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%96%99/README.md)
+-    [扩展板参考：HiSpark_WiFi_IoT智能开发套件_原理图硬件资料\原理图\HiSpark_WiFi-IoT_Hi3861_CH340G_VER.B.pdf](http://gitee.com/hihope_iot/embedded-race-hisilicon-track-2022/blob/master/%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%96%99/README.md)
 
-
+![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/260.jpg)
 
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍
@@ -188,6 +190,6 @@ https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/getstart.h
 -   5.烧录
     -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择burn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。
     -    注意:一定要断开MQTT工具的连接。
-    -    微信小程序上选择已连接Wifi,跳过配网->云端互联->看到设备互联界面->点击刷新按钮，运行结果出现如下图代表成功。
+    -    微信小程序上选择已连接Wifi,跳过配网->云端互联->看到设备互联界面->点击刷新按钮，运行结果出现如下图代表成功，点击照明，主板灯会亮。
 
-![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8762.png)
+    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8762.png)
