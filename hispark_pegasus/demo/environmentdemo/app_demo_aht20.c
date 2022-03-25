@@ -186,8 +186,14 @@ void *AppDemoAht20(char *param)
             /* on hold master mode */
             status = Aht20Write(AHT_DEVICE_TEST_CMD, AHT_DEVICE_PARAM_HIGH_BYTE,
                                 AHT_DEVICE_PARAM_LOW_BYTE); // tempwerature
+            if (status != IOT_SUCCESS) {
+                printf("get tempwerature data error!\r\n");
+            }
             hi_udelay(AHT_DELAY_100MS); // 100ms等待测量完成
             status = Aht20Read(AHT_REG_ARRAY_LEN, AHT_TEMPERATURE);
+            if (status != IOT_SUCCESS) {
+                printf("get tempwerature data error!\r\n");
+            }
             status = Aht20Read(AHT_REG_ARRAY_LEN, AHT_HUMIDITY);
             if (status != IOT_SUCCESS) {
                 printf("get humidity data error!\r\n");

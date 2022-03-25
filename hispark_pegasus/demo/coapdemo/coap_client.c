@@ -116,7 +116,6 @@ int CoapClientSendMsg(char* dst)
             printf("[%s][%d] new client session failed\n", __FUNCTION__, __LINE__);
             return -1;
         }
-        session->sock.pcb = g_cliCtx->endpoint->sock.pcb;
         session->sock.pcb = g_cliCtx->endpoint;
         SESSIONS_ADD(g_cliCtx->endpoint->sessions, session);
     }

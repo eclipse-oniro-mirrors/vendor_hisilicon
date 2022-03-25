@@ -164,11 +164,9 @@ static void PrintLinkedInfo(WifiLinkedInfo* info)
 
     static char macAddress[32] = {0};
     unsigned char* mac = info->bssid;
-    ret = snprintf_s(macAddress, sizeof(macAddress),  sizeof(macAddress), "%02X:%02X:%02X:%02X:%02X:%02X",
-        mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]); /* 0, 1, 2, 3, 4, 5: mac address */
-    if (ret > 0) {
-        printf("bssid: %s, rssi: %d, connState: %d, reason: %d, ssid: %s\r\n",
-            macAddress, info->rssi, info->connState, info->disconnectedReason, info->ssid);
+    if (snprintf_s(macAddress, sizeof(macAddress) + 1, sizeof(macAddress), "%02X:%02X:%02X:%02X:%02X:%02X",
+        mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]) < 0) { /* macµØÖ·´Ó0,1,2,3,4,5Î» */
+            return;
     }
 }
 

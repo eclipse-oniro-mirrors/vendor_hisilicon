@@ -206,7 +206,7 @@ void* HistreamingOpen(void)
         HistreamingClose(link);
         return NULL;
     }
-
+    wifiIot = 0;
     if (link->open(link) != 0) {
         HistreamingClose(link);
         return NULL;

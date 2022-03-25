@@ -22,7 +22,7 @@
 #include "iot_gpio_ex.h"
 #include "app_demo_config.h"
 
-#define NDEF_FILE_LEN (1024)
+#define NDEF_FILE_LEN (256)
 #define TASK_SLEEP_10MS (10)
 #define TASK_SLEEP_1MS (1)
 #define FIFO_LC_CMD (2)
