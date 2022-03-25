@@ -30,12 +30,6 @@ static cJSON *FormateProflleValue(IoTProfileKV *kv)
         case EN_IOT_DATATYPE_LONG:
             ret = cJSON_CreateNumber((double)(*(long *)kv->value));
             break;
-        case EN_IOT_DATATYPE_FLOAT:
-            ret = cJSON_CreateNumber((double)(*(float *)kv->value));
-            break;
-        case EN_IOT_DATATYPE_DOUBLE:
-            ret = cJSON_CreateNumber((*(double *)kv->value));
-            break;
         case EN_IOT_DATATYPE_STRING:
             ret = cJSON_CreateString((const char *)kv->value);
             break;

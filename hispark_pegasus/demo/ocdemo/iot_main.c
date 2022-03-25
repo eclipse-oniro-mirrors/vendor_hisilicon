@@ -250,16 +250,14 @@ static hi_void MainEntryProcess(hi_void)
         return;
     }
     userID = CONFIG_DEVICE_ID;
-    if (CONFIG_DEVICE_PWD != NULL) {
-        userPwd = hi_malloc(0, CN_HMAC_PWD_LEN);
-        if (userPwd == NULL) {
-            hi_free(0, clientID);
-            return;
-        }
-        (void)HmacGeneratePwd((const unsigned char *)CONFIG_DEVICE_PWD, strlen(CONFIG_DEVICE_PWD),
+    userPwd = hi_malloc(0, CN_HMAC_PWD_LEN);
+    if (userPwd == NULL) {
+        hi_free(0, clientID);
+        return;
+    }
+    (void)HmacGeneratePwd((const unsigned char *)CONFIG_DEVICE_PWD, strlen(CONFIG_DEVICE_PWD),
                               (const unsigned char *)CN_EVENT_TIME, strlen(CN_EVENT_TIME),
                               (unsigned char *)userPwd, CN_HMAC_PWD_LEN);
-    }
 
     conn_opts.keepAliveInterval = CN_KEEPALIVE_TIME;
     conn_opts.cleansession = CN_CLEANSESSION;
@@ -285,14 +283,10 @@ static hi_void *MainEntry(hi_void *arg)
 
 int IoTMain(void)
 {
-    hi_u32 ret;
+    hi_u32 ret = 0;
     hi_task_attr attr = {0};
 
     g_ioTAppCb.queueID = osMessageQueueNew(CN_QUEUE_MSGNUM, CN_QUEUE_MSGSIZE, NULL);
-    if (ret != HI_ERR_SUCCESS) {
-        IOT_LOG_ERROR("Create the msg queue Failed\r\n");
-    }
-
     attr.stack_size = CN_TASK_STACKSIZE;
     attr.task_prio = CN_TASK_PRIOR;
     attr.task_name = CN_TASK_NAME;
