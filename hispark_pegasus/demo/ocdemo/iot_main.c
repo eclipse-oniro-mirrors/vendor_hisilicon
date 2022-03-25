@@ -237,7 +237,7 @@ static hi_void MainEntryProcess(hi_void)
     char *userID = NULL;
     char *userPwd = NULL;
 
-    MQTTClient client;
+    MQTTClient client = NULL;
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
     // make the clientID userID userPwd
     clientID = hi_malloc(0, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1);
