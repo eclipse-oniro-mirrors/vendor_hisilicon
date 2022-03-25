@@ -110,7 +110,6 @@ static cJSON *MakeService(IoTProfileService_t *serviceInfo)
         return root;
     }
     cJSON_AddItemToObjectCS(root, CN_PROFILE_SERVICE_KEY_PROPERTIIES, properties);
-    properties = NULL;
     // < add the event time (optional) to the root
     if (serviceInfo->eventTime != NULL) {
         eventTime = cJSON_CreateString(serviceInfo->eventTime);
@@ -124,6 +123,7 @@ static cJSON *MakeService(IoTProfileService_t *serviceInfo)
         cJSON_AddItemToObjectCS(root, CN_PROFILE_SERVICE_KEY_EVENTTIME, eventTime);
     }
     // < OK, now we return it
+    cJSON_Delete(properties);
     return root;
 }
 
