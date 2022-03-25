@@ -248,8 +248,8 @@ static hi_void MainEntryProcess(hi_void)
     if (clientID == NULL) {
         return;
     }
-    ret = snprintf_s(clientID, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + CN_QUEUE_MSGNUM,
-                     strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1,
+    ret = snprintf_s(clientID, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) +
+                     CN_QUEUE_MSGNUM, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1,
                      CN_CLIENTID_FMT, CONFIG_DEVICE_ID, CN_EVENT_TIME);
     if (ret < 0) {
         printf("string is mull\r\n");

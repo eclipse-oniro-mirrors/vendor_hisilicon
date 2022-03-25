@@ -248,9 +248,9 @@ static hi_void MainEntryProcess(hi_void)
     if (clientID == NULL) {
         return;
     }
-    ret = snprintf_s(clientID, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1,
-        strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1,
-        CN_CLIENTID_FMT, CONFIG_DEVICE_ID, CN_EVENT_TIME);
+    ret = snprintf_s(clientID, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) +
+                     CN_QUEUE_MSGNUM, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1,
+                     CN_CLIENTID_FMT, CONFIG_DEVICE_ID, CN_EVENT_TIME);
     if (ret < 0) {
         printf("string is null\r\n");
     }
@@ -273,7 +273,6 @@ static hi_void MainEntryProcess(hi_void)
     conn_opts.MQTTVersion = MQTTVERSION_3_1_1;
     // wait for the wifi connect ok
     IOT_LOG_DEBUG("IOTSERVER:%s\r\n", CN_IOT_SERVER);
-    IOT_LOG_DEBUG("CLIENTID:%s USERID:%s USERPWD:%s\r\n", clientID, userID, userPwd == NULL ? "NULL" : userPwd);
     MqttProcess(client, clientID, userPwd, conn_opts, subQos);
     return;
 }

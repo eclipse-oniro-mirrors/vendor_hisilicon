@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 // < this demo make the wifi to connect to the specified AP
 #include <unistd.h>
 #include <hi_wifi_api.h>
