@@ -41,10 +41,9 @@ static void PrintStationInfo(const StationInfo* info)
     }
     static char macAddress[32] = {0};
     unsigned char* mac = info->macAddress;
-    len = snprintf_s(macAddress, sizeof(macAddress), sizeof(macAddress), "%02X:%02X:%02X:%02X:%02X:%02X",
-        mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]); /* 打印mac地址从0,1,2,3,4,5位的值 */
-    if (len > 0) {
-        printf(" PrintStationInfo: mac=%s, reason=%d.\r\n", macAddress, info->disconnectedReason);
+    if (snprintf_s(macAddress, sizeof(macAddress) + 1, sizeof(macAddress), "%02X:%02X:%02X:%02X:%02X:%02X",
+        mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]) < 0) { /* mac地址从0,1,2,3,4,5位 */
+            return;
     }
 }
 

@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #include <hi_stdlib.h>
 #include <math.h>
 #include <hi_time.h>

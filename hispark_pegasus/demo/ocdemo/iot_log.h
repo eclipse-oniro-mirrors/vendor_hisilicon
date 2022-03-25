@@ -18,7 +18,6 @@
 
 #include <stdio.h>
 
-
 /*
  * @brief:this defines for the log module, and
  * IOT_LOG_TRACE/IOT_LOG_DEBUG will not participate the compile in the release version

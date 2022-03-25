@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #include <stdio.h>
 #include <unistd.h>
 #include <iot_pwm.h>

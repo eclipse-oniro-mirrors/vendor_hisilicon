@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #include <unistd.h>
 #include <hi_gpio.h>
 #include <hi_io.h>

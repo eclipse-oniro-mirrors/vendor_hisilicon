@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #ifndef APP_AHT20_H
 #define APP_AHT20_H
 

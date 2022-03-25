@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 /**
  * @file iot_gpio_ex.h
  *

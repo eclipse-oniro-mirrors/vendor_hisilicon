@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #ifndef APP_DEMO_MULTI_SAMPLE_H
 #define APP_DEMO_MULTI_SAMPLE_H
 

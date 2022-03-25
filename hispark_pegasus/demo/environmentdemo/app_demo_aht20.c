@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #include <hi_mux.h>
 #include <hi_time.h>
 #include <string.h>
