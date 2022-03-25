@@ -256,8 +256,8 @@ static hi_void MainEntryProcess(hi_void)
         return;
     }
     (void)HmacGeneratePwd((const unsigned char *)CONFIG_DEVICE_PWD, strlen(CONFIG_DEVICE_PWD),
-                              (const unsigned char *)CN_EVENT_TIME, strlen(CN_EVENT_TIME),
-                              (unsigned char *)userPwd, CN_HMAC_PWD_LEN);
+                          (const unsigned char *)CN_EVENT_TIME, strlen(CN_EVENT_TIME),
+                          (unsigned char *)userPwd, CN_HMAC_PWD_LEN);
 
     conn_opts.keepAliveInterval = CN_KEEPALIVE_TIME;
     conn_opts.cleansession = CN_CLEANSESSION;
