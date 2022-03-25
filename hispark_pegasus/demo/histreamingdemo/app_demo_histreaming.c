@@ -206,7 +206,6 @@ void* HistreamingOpen(void)
         HistreamingClose(link);
         return NULL;
     }
-    wifiIot = 0;
     if (link->open(link) != 0) {
         HistreamingClose(link);
         return NULL;
@@ -216,6 +215,7 @@ void* HistreamingOpen(void)
 #ifdef HISTREAMING_TASK
     hi_task_delete(g_histreamingDemoTaskId);
 #endif
+    hi_free(0, wifiIot);
     return (void*)link;
 }
 
