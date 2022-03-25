@@ -283,12 +283,13 @@ static hi_void *MainEntry(hi_void *arg)
 
 int IoTMain(void)
 {
+    hi_u32 ret;
     hi_task_attr attr = {0};
     g_ioTAppCb.queueID = osMessageQueueNew(CN_QUEUE_MSGNUM, CN_QUEUE_MSGSIZE, NULL);
     attr.stack_size = CN_TASK_STACKSIZE;
     attr.task_prio = CN_TASK_PRIOR;
     attr.task_name = CN_TASK_NAME;
-    hi_u32 ret = hi_task_create(&g_ioTAppCb.iotTaskID, &attr, MainEntry, NULL);
+    ret = hi_task_create(&g_ioTAppCb.iotTaskID, &attr, MainEntry, NULL);
     if (ret != HI_ERR_SUCCESS) {
         IOT_LOG_ERROR("Create the Main Entry Failed\r\n");
     }
