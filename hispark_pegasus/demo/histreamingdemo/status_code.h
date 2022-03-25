@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef _STATUSCODE_H__
-#define _STATUSCODE_H__
+#ifndef STATUSCODE_H
+#define STATUSCODE_H
 
 #include "status_code.h"
 typedef enum StatusCode {

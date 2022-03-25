@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef __APP_DEMO_GET_MAC_ADDR_H_
-#define __APP_DEMO_GET_MAC_ADDR_H_
+#ifndef APP_DEMO_GET_MAC_ADDR_H
+#define APP_DEMO_GET_MAC_ADDR_H
 
 #include <hi_types_base.h>
 

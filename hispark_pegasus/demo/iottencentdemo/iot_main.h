@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef IOT_MAIN_H_
-#define IOT_MAIN_H_
+#ifndef IOT_MAIN_H
+#define IOT_MAIN_H
 
 typedef void  (*fnMsgCallBack)(int qos, const char *topic, const char *payload);
 

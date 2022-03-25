@@ -40,7 +40,7 @@ vendor_hisilicon/hispark_pegasus/demo/helloworldDemo
     
     lite_component("app") {
         features = [
-            "helloworlddemo:helloword",
+            "helloworlddemo:helloworld",
         ]
     }
     ```

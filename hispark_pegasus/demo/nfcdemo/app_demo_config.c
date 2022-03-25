@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 #include <unistd.h>
 #include "ssd1306_oled.h"
 #include "c081_nfc.h"
@@ -22,7 +23,7 @@
 #include "iot_gpio_ex.h"
 #include "app_demo_config.h"
 
-#define NDEF_FILE_LEN (256)
+#define NDEF_FILE_LEN (1024)
 #define TASK_SLEEP_10MS (10)
 #define TASK_SLEEP_1MS (1)
 #define FIFO_LC_CMD (2)

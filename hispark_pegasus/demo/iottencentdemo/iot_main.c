@@ -19,6 +19,7 @@
  * 2, SUBSCRIBE  THE DEFAULT TOPIC
  * 3, WAIT FOR ANY MESSAGE COMES OR ANY MESSAGE TO SEND
 */
+
 #include <securec.h>
 #include <hi_task.h>
 #include <hi_msg.h>

@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef _APP_DEMO_I2C_OLED_H_
-#define _APP_DEMO_I2C_OLED_H_
+#ifndef APP_DEMO_I2C_OLED_H
+#define APP_DEMO_I2C_OLED_H
 
 void AllLedOff(void);
 unsigned char DelayCheckKey(unsigned int delayTime);
