@@ -294,10 +294,6 @@ int IoTMain(void)
     hi_task_attr attr = {0};
 
     g_ioTAppCb.queueID = osMessageQueueNew(CN_QUEUE_MSGNUM, CN_QUEUE_MSGSIZE, NULL);
-    if (ret != HI_ERR_SUCCESS) {
-        IOT_LOG_ERROR("Create the msg queue Failed\r\n");
-    }
-
     attr.stack_size = CN_TASK_STACKSIZE;
     attr.task_prio = CN_TASK_PRIOR;
     attr.task_name = CN_TASK_NAME;
