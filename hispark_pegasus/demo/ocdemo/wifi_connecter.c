@@ -28,10 +28,10 @@ static void PrintLinkedInfo(const WifiLinkedInfo* info)
 
     static char macAddress[32] = {0};
     unsigned char* mac = info->bssid;
-    (void)snprintf_s(macAddress, sizeof(macAddress), sizeof(macAddress), "%02X:%02X:%02X:%02X:%02X:%02X",
-        mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]); /* 打印mac地址从0,1,2,3,4,5位的值 */
-    printf("bssid: %s, rssi: %d, connState: %d, reason: %d, ssid: %s\r\n",
-        macAddress, info->rssi, info->connState, info->disconnectedReason, info->ssid);
+    if (snprintf_s(macAddress, sizeof(macAddress) + 1, sizeof(macAddress), "%02X:%02X:%02X:%02X:%02X:%02X",
+        mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]) < 0) { /* mac地址从0,1,2,3,4,5位 */
+            return;
+    }
 }
 
 static volatile int g_connected = 0;

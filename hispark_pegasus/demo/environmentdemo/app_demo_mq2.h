@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #ifndef APP_DEMO_MQ2_H
 #define APP_DEMO_MQ2_H
 

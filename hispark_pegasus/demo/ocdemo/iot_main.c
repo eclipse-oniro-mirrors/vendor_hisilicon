@@ -237,29 +237,27 @@ static hi_void MainEntryProcess(hi_void)
     char *userID = NULL;
     char *userPwd = NULL;
 
-    MQTTClient client;
+    MQTTClient client = NULL;
     MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
     // make the clientID userID userPwd
     clientID = hi_malloc(0, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1);
     if (clientID == NULL) {
         return;
     }
-    if (snprintf_s(clientID, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1,
-                   strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1,
+    if (snprintf_s(clientID, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) +
+                   CN_QUEUE_MSGNUM, strlen(CN_CLIENTID_FMT) + strlen(CONFIG_DEVICE_ID) + strlen(CN_EVENT_TIME) + 1,
                    CN_CLIENTID_FMT, CONFIG_DEVICE_ID, CN_EVENT_TIME) < 0) {
         return;
     }
     userID = CONFIG_DEVICE_ID;
-    if (CONFIG_DEVICE_PWD != NULL) {
-        userPwd = hi_malloc(0, CN_HMAC_PWD_LEN);
-        if (userPwd == NULL) {
-            hi_free(0, clientID);
-            return;
-        }
-        (void)HmacGeneratePwd((const unsigned char *)CONFIG_DEVICE_PWD, strlen(CONFIG_DEVICE_PWD),
-                              (const unsigned char *)CN_EVENT_TIME, strlen(CN_EVENT_TIME),
-                              (unsigned char *)userPwd, CN_HMAC_PWD_LEN);
+    userPwd = hi_malloc(0, CN_HMAC_PWD_LEN);
+    if (userPwd == NULL) {
+        hi_free(0, clientID);
+        return;
     }
+    (void)HmacGeneratePwd((const unsigned char *)CONFIG_DEVICE_PWD, strlen(CONFIG_DEVICE_PWD),
+                          (const unsigned char *)CN_EVENT_TIME, strlen(CN_EVENT_TIME),
+                          (unsigned char *)userPwd, CN_HMAC_PWD_LEN);
 
     conn_opts.keepAliveInterval = CN_KEEPALIVE_TIME;
     conn_opts.cleansession = CN_CLEANSESSION;
@@ -268,7 +266,6 @@ static hi_void MainEntryProcess(hi_void)
     conn_opts.MQTTVersion = MQTTVERSION_3_1_1;
     // wait for the wifi connect ok
     IOT_LOG_DEBUG("IOTSERVER:%s\r\n", CN_IOT_SERVER);
-    IOT_LOG_DEBUG("CLIENTID:%s USERID:%s USERPWD:%s\r\n", clientID, userID, userPwd == NULL ? "NULL" : userPwd);
     MqttProcess(client, clientID, userPwd, conn_opts, subQos);
     return;
 }
@@ -288,12 +285,7 @@ int IoTMain(void)
 {
     hi_u32 ret;
     hi_task_attr attr = {0};
-
     g_ioTAppCb.queueID = osMessageQueueNew(CN_QUEUE_MSGNUM, CN_QUEUE_MSGSIZE, NULL);
-    if (ret != HI_ERR_SUCCESS) {
-        IOT_LOG_ERROR("Create the msg queue Failed\r\n");
-    }
-
     attr.stack_size = CN_TASK_STACKSIZE;
     attr.task_prio = CN_TASK_PRIOR;
     attr.task_name = CN_TASK_NAME;

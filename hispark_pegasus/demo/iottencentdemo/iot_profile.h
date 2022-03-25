@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef IOT_PROFILE_H_
-#define IOT_PROFILE_H_
+#ifndef IOT_PROFILE_H
+#define IOT_PROFILE_H
 
 #include <hi_types_base.h>
 #include "iot_config.h"

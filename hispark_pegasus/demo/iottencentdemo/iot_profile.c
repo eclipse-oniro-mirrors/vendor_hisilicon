@@ -123,6 +123,7 @@ static cJSON *MakeService(IoTProfileService_t *serviceInfo)
         cJSON_AddItemToObjectCS(root, CN_PROFILE_SERVICE_KEY_EVENTTIME, eventTime);
     }
     // < OK, now we return it
+    cJSON_Delete(properties);
     return root;
 }
 
@@ -272,11 +273,19 @@ static char *MakeProfileReport(WeChatProfile *payload)
 
     /* create json root node */
     root = cJSON_CreateObject();
+    if (root == NULL) {
+        return;
+    }
     /* state create */
     state = cJSON_CreateObject();
+    if (state == NULL) {
+        return;
+    }
     /* reported create */
     reported = cJSON_CreateObject();
-
+    if (reported == NULL) {
+        return;
+    }
     /* add root object */
     cJSON_AddItemToObject(root, payload->subscribeType, cJSON_CreateString(WECHAT_SUBSCRIBE_TYPE));
     cJSON_AddItemToObject(root, payload->status.subState, state);
@@ -295,6 +304,8 @@ static char *MakeProfileReport(WeChatProfile *payload)
     cJSON_AddNumberToObject(reported, payload->reportAction.subDeviceActionLightIntensity,
                             payload->reportAction.lightIntensityActionData);
     ret = cJSON_PrintUnformatted(root);
+    cJSON_Delete(state);
+    cJSON_Delete(reported);
     cJSON_Delete(root);
     return ret;
 }
@@ -310,6 +321,9 @@ int IoTProfilePropertyReport(char *deviceID, WeChatProfile *payload)
         return ret;
     }
     topic = MakeTopic(CN_PROFILE_TOPICFMT_TOPIC, deviceID, NULL);
+    if (topic == NULL) {
+        return;
+    }
     msg = MakeProfileReport(payload);
     if ((topic != NULL) && (msg != NULL)) {
         ret = IotSendMsg(0, topic, msg);

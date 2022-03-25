@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #include <hi_stdlib.h>
 #include <hi_watchdog.h>
 #include <hi_early_debug.h>

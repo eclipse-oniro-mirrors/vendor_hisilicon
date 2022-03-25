@@ -114,7 +114,6 @@ static cJSON *MakeService(IoTProfileServiceT *serviceInfo)
         return root;
     }
     cJSON_AddItemToObjectCS(root, CN_PROFILE_SERVICE_KEY_PROPERTIIES, properties);
-
     // add the event time (optional) to the root
     if (serviceInfo->eventTime != NULL) {
         eventTime = cJSON_CreateString(serviceInfo->eventTime);
@@ -128,6 +127,7 @@ static cJSON *MakeService(IoTProfileServiceT *serviceInfo)
         cJSON_AddItemToObjectCS(root, CN_PROFILE_SERVICE_KEY_EVENTTIME, eventTime);
     }
     // OK, now we return it
+    cJSON_Delete(properties);
     return root;
 }
 
@@ -245,6 +245,9 @@ int IoTProfileCmdResp(const char *deviceID, IoTCmdRespT *payload)
     }
 
     topic = MakeTopic(CN_PROFILE_TOPICFMT_CMDRESP, deviceID, payload->requestID);
+    if (topic == NULL) {
+        return;
+    }
     msg = MakeProfileCmdResp(payload);
     if ((topic != NULL) && (msg != NULL)) {
         ret = IotSendMsg(0, topic, msg);
@@ -293,6 +296,9 @@ int IoTProfilePropertyReport(char *deviceID, IoTProfileServiceT *payload)
         return ret;
     }
     topic = MakeTopic(CN_PROFILE_TOPICFMT_PROPERTYREPORT, deviceID, NULL);
+    if (topic == NULL) {
+        return;
+    }
     msg = MakeProfilePropertyReport(payload);
     if ((topic != NULL) && (msg != NULL)) {
         ret = IotSendMsg(0, topic, msg);

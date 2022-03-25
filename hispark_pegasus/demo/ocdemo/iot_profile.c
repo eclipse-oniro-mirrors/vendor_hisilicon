@@ -30,12 +30,6 @@ static cJSON *FormateProflleValue(IoTProfileKV *kv)
         case EN_IOT_DATATYPE_LONG:
             ret = cJSON_CreateNumber((double)(*(long *)kv->value));
             break;
-        case EN_IOT_DATATYPE_FLOAT:
-            ret = cJSON_CreateNumber((double)(*(float *)kv->value));
-            break;
-        case EN_IOT_DATATYPE_DOUBLE:
-            ret = cJSON_CreateNumber((*(double *)kv->value));
-            break;
         case EN_IOT_DATATYPE_STRING:
             ret = cJSON_CreateString((const char *)kv->value);
             break;
@@ -114,7 +108,6 @@ static cJSON *MakeService(IoTProfileService *serviceInfo)
         return root;
     }
     cJSON_AddItemToObjectCS(root, CN_PROFILE_SERVICE_KEY_PROPERTIIES, properties);
-
     // add the event time (optional) to the root
     if (serviceInfo->eventTime != NULL) {
         eventTime = cJSON_CreateString(serviceInfo->eventTime);
@@ -128,6 +121,7 @@ static cJSON *MakeService(IoTProfileService *serviceInfo)
         cJSON_AddItemToObjectCS(root, CN_PROFILE_SERVICE_KEY_EVENTTIME, eventTime);
     }
     // OK, now we return it
+    cJSON_Delete(properties);
     return root;
 }
 
@@ -172,13 +166,11 @@ static char *MakeTopic(const char *fmt, const char *deviceId, const char *reques
     ret = hi_malloc(0, len);
     if (ret != NULL) {
         if (requestID != NULL) {
-            (void)snprintf_s(ret, len, fmt, deviceId, requestID);
-            if (rc < 0) {
+            if (snprintf_s(ret, len, fmt, deviceId, requestID) < 0) {
                 printf("string is null\r\n");
             }
         } else {
-            (void)snprintf_s(ret, len, fmt, deviceId);
-            if (rct < 0) {
+            if (snprintf_s(ret, len, fmt, deviceId) < 0) {
                 printf("string is null\r\n");
             }
         }
@@ -253,6 +245,9 @@ int IoTProfileCmdResp(char *deviceID, IoTCmdResp *payload)
     }
 
     topic = MakeTopic(CN_PROFILE_TOPICFMT_CMDRESP, deviceID, payload->requestID);
+    if (topic == NULL) {
+        return;
+    }
     msg = MakeProfileCmdResp(payload);
     if ((topic != NULL) && (msg != NULL)) {
         ret = IotSendMsg(0, topic, msg);
@@ -301,6 +296,9 @@ int IoTProfilePropertyReport(char *deviceID, IoTProfileService *payload)
         return ret;
     }
     topic = MakeTopic(CN_PROFILE_TOPICFMT_PROPERTYREPORT, deviceID, NULL);
+    if (topic == NULL) {
+        return;
+    }
     msg = MakeProfilePropertyReport(payload);
     if ((topic != NULL) && (msg != NULL)) {
         ret = IotSendMsg(0, topic, msg);
