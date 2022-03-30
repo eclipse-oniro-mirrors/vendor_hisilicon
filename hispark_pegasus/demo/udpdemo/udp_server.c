@@ -179,6 +179,5 @@ static void UDPTransport(void)
         printf("[UDP] Falied to create udp demo!\n");
     }
 }
-#ifdef UDP_DEDMO_SUPPORT
+
 SYS_RUN(UDPTransport);
-#endif

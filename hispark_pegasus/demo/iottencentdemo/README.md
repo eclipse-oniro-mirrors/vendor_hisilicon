@@ -39,7 +39,21 @@ vendor_hisilicon/hispark_pegasus/demo/iot_tencent_devices
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8722.png)
 
-2.3 返回设备列表可以看到设备并未激活，接下来激活设备；下载MQTT.fx-1.7.1 工具官网：https://www.jensd.de/wordpress/?p=2746，下载完成后打开工具，点击设备图标，进入到设备界面配置ClientID，username,password 等参数。
+2.3 添加设备，同时查看设备相应信息。
+
+![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/800.png)
+
+![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/801.png)
+
+![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/802.png)
+
+![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/803.png)
+
+![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/804.png)
+
+2.4 返回设备列表可以看到设备并未激活，接下来激活设备；下载[MQTT.fx-1.7.1 ](https://www.jensd.de/wordpress/?p=2746)，下载完成后打开工具，点击设备图标，进入到设备界面配置ClientID，username,password 等参数。
+
+![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/806.png)
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8730.png)
 
@@ -53,27 +67,44 @@ vendor_hisilicon/hispark_pegasus/demo/iot_tencent_devices
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8735.png)
 
-2.4 完成2.3步骤后，可以在腾讯云设备列表里面看到设备状态显示已激活，开始腾讯云与MQTT工具之间的通信。
+2.5 完成2.3步骤后，可以在腾讯云设备列表里面看到设备状态显示已激活，开始腾讯云与MQTT工具之间的通信。
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8736.png)
 
-2.5 MQTT.fx-1.7.1工具订阅腾讯云的topic，腾讯云下发指令。
+2.6 MQTT.fx-1.7.1工具订阅腾讯云的topic，腾讯云下发指令。
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8737.png)
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8738.png)
 
-2.6 在腾讯云网页端点击“在线调试”。
+2.7 在腾讯云网页端点击“在线调试”。
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8739.png)
 
-2.7 可以在MQTT.fx-1.7.1工具中看到腾讯云网页端发过来的消息。
+2.8 可以在MQTT.fx-1.7.1工具中看到腾讯云网页端发过来的消息。
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8740.png)
 
-2.8 MQTT.fx-1.7.1工具发布腾讯云到的topic，在设备影子中查看发布到腾讯云的消息。
+2.9 MQTT.fx-1.7.1工具发布腾讯云到的topic，在设备影子中查看发布到腾讯云的消息。
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8741.png)
+
+```
+{
+	"type":"update",
+        "state":{
+        "reported":{
+	"light":1,
+        "motor":1,
+        "temperature":25,
+        "humidity":60,
+        "light_intensity":50
+    }
+  },
+"version":0,
+"clientToken":"clientToken"
+}
+```
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8742.png)
 
@@ -186,7 +217,7 @@ https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/getstart.h
     }
     ```
 
-    -    工程相关配置完成后,然后编译。
+    -    工程相关配置完成后,然后在点击build编译。
 -   5.烧录
     -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择burn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。
     -    注意:一定要断开MQTT工具的连接。

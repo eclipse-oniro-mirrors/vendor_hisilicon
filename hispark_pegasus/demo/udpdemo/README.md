@@ -36,10 +36,10 @@ vendor_hisilicon/hispark_pegasus/demo/udpdemo
                        └── 代码   
     ```
 
-    -   配置源码./applications/sample/wifi-iot/app/udpdemo/iot_config.h中CONFIG_AP_SSID，CONFIG_AP_PWD为WiFi名称和WiFi密码，这里注意手机与Hi3861V100需要在同一个局域网内。
+    -   配置源码./applications/sample/wifi-iot/app/udpdemo/udp_config.h中AP_SSID，AP_PWD为WiFi名称和WiFi密码，这里注意手机与Hi3861V100需要在同一个局域网内。
     ```
-    #define CONFIG_AP_SSID  "xxx" // WIFI SSID
-    #define CONFIG_AP_PWD "xxxxxx" // WIFI PWD
+    #define AP_SSID  "xxx" // WIFI SSID
+    #define AP_PWD "xxxxxx" // WIFI PWD
     ```
 
     -    改源码./applications/sample/wifi-iot/app下的BUILD.gn文件，在features字段中增加索引，使目标模块参与编译。features字段指定业务模块的路径和目标,features字段配置如下。
@@ -57,7 +57,7 @@ vendor_hisilicon/hispark_pegasus/demo/udpdemo
     -    配置源码./applications/sample/wifi-iot/app/udpdemo/udp_server.c，将Hi3861本机的IP地址（上面查到的IP地址）填入NATIVE_IP_ADDRESS宏定义中，并设置本机端口号HOST_PORT宏定义中，客户端端口号DEVICE_PORT宏定义中（用户可自行设置）。
     -    工程相关配置完成后,然后在点击build编译烧录。
 -    3.微信小程序编译预览
-    -    打开微信小程序，在msgSendRead.js文件中var port = udp.bind()中填入DEVICE_PORT,然后编译预览。
+    -    打开微信小程序，在msgSendRead.js文件中var port = udp.bind()中填入DEVICE_PORT(代码里面对应的端口号),然后编译预览。
     -    点击电脑端微信小程序选择真机调试，手机扫码进入微信小程序，首先进行配网，如果手机端已经配网则可以跳过，然后点击“控制设备”下方的按钮进入UDP通信并控制设备侧。如下图所示。
 
    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/250.jpg)![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/251.jpg)
