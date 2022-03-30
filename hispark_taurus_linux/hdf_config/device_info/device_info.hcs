@@ -120,6 +120,23 @@
                 }
             }
 */
+            device_adc :: device {
+                device0 :: deviceNode {
+                    policy = 0;
+                    priority = 65;
+                    permission = 0644;
+                    moduleName = "linux_adc_adapter";
+                    deviceMatchAttr = "linux_adc_adapter_0";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 60;
+                    permission = 0644;
+                    moduleName = "HDF_PLATFORM_ADC_MANAGER";
+                    serviceName = "HDF_PLATFORM_ADC_MANAGER";
+                    deviceMatchAttr = "hdf_platform_adc_manager";
+                }
+            }
             device_spi :: device {
                 device0 :: deviceNode {
                     policy = 2;

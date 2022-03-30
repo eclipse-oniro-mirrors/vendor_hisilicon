@@ -1,0 +1,19 @@
+root {
+    platform {
+        adc_config {
+            template adc_device {
+                serviceName = "";
+                match_attr = "";
+                driver_name = "/sys/bus/iio/devices/iio:device0/in_voltage0-voltage0_raw";
+                deviceNum = 0;
+                scanMode =  0;
+                rate = 100;		
+            }
+            device_adc_0x0000 :: adc_device {
+                match_attr = "linux_adc_adapter_0";
+                driver_name = "/sys/bus/iio/devices/iio:device0/in_voltage0-voltage0_raw";
+                deviceNum = 2;
+            }
+        }
+    }
+}
