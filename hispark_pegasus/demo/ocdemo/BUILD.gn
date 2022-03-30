@@ -27,6 +27,7 @@ static_library("app_demo_iot") {
     "iot_profile.c",
     "iot_sta.c",
     "task_start.c",
+    "app_demo_config.c"
   ]
 
   include_dirs = [

@@ -11,7 +11,7 @@
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍
 ```
-vendor_hisilicon/hispark_pegasus/demo/environment_demo
+vendor_hisilicon/hispark_pegasus/demo/environmentdemo
 ├── app_demo_aht20.c           # 
 ├── app_demo_aht20.h           #
 ├── app_demo_config.c          #

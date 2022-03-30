@@ -103,6 +103,7 @@ static cJSON *MakeService(IoTProfileService *serviceInfo)
     if (properties == NULL) {
         if (root != NULL) {
             cJSON_Delete(root);
+            cJSON_Delete(properties);
             root = NULL;
         }
         return root;
@@ -121,7 +122,6 @@ static cJSON *MakeService(IoTProfileService *serviceInfo)
         cJSON_AddItemToObjectCS(root, CN_PROFILE_SERVICE_KEY_EVENTTIME, eventTime);
     }
     // OK, now we return it
-    cJSON_Delete(properties);
     return root;
 }
 
@@ -166,11 +166,11 @@ static char *MakeTopic(const char *fmt, const char *deviceId, const char *reques
     ret = hi_malloc(0, len);
     if (ret != NULL) {
         if (requestID != NULL) {
-            if (snprintf_s(ret, len, fmt, deviceId, requestID) < 0) {
+            if (snprintf_s(ret, len + 1, len, fmt, deviceId, requestID) < 0) {
                 printf("string is null\r\n");
             }
         } else {
-            if (snprintf_s(ret, len, fmt, deviceId) < 0) {
+            if (snprintf_s(ret, len + 1, len, fmt, deviceId) < 0) {
                 printf("string is null\r\n");
             }
         }

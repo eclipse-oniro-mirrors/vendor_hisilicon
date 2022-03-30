@@ -16,80 +16,79 @@
 #ifndef IOT_PROFILE_H
 #define IOT_PROFILE_H
 
-#define OC_BEEP_STATUS_ON   ((hi_u8) 0x01)
-#define OC_BEEP_STATUS_OFF  ((hi_u8) 0x00)
+#include <hi_types_base.h>
+#include "iot_config.h"
 
-// //<enum all the data type for the oc profile
+#define OC_BEEP_STATUS_ON       ((hi_u8) 0x01)
+#define OC_BEEP_STATUS_OFF      ((hi_u8) 0x00)
+
+// < enum all the data type for the oc profile
 typedef enum {
     EN_IOT_DATATYPE_INT = 0,
     EN_IOT_DATATYPE_LONG,
     EN_IOT_DATATYPE_FLOAT,
     EN_IOT_DATATYPE_DOUBLE,
-    EN_IOT_DATATYPE_STRING, // /<must be ended with '\0'
+    EN_IOT_DATATYPE_STRING,           // < must be ended with '\0'
     EN_IOT_DATATYPE_LAST,
-} IoTDataTypeT;
+}IoTDataType_t;
 
 typedef enum {
     OC_LED_ON = 1,
     OC_LED_OFF
-} OcLedValue;
+}OcLedValue;
 
 typedef struct {
-    void    *nxt; // /<ponit to the next key
-    const char    *key;
-    const char    *value;
-    int    i_value;
-    IoTDataTypeT    type;
-} IoTProfileKVT;
+    void                            *nxt; // < ponit to the next key
+    const char                      *key;
+    const char                      *value;
+    hi_u32                          iValue;
+    IoTDataType_t                   type;
+}IoTProfileKV_t;
 
 typedef struct {
-    void    *nxt;
-    char    *serviceID; // the service id in the profile, which could not be NULL
-    char    *eventTime; // eventtime, which could be NULL means use the platform time
-    IoTProfileKVT    *serviceProperty; // the property in the profile, which could not be NULL
-} IoTProfileServiceT;
+    void *nxt;
+    char *serviceID;
+    char *eventTime;
+    IoTProfileKV_t *serviceProperty;
+}IoTProfileService_t;
 
 typedef struct {
-    int    retCode; // response code, 0 success while others failed
-    const char    *respName; // response name
-    const char    *requestID; // specified by the message command
-    IoTProfileKVT    *paras; // the command paras
-} IoTCmdRespT;
+    int  retCode;           // < response code, 0 success while others failed
+    const char   *respName; // < response name
+    const char   *requestID; // < specified by the message command
+    IoTProfileKV_t  *paras; // < the command paras
+}IoTCmdResp_t;
 
 typedef struct {
-    int    action1Num;
-    int    action2Num;
-    int    action3Num;
-    int    action4Num;
-    int    action5Num;
-    const char    *subDeviceAction1;
-    const char    *subDeviceAction2;
-    const char    *subDeviceAction3;
-    const char    *subDeviceAction4;
-    const char    *subDeviceAction5;
-} WeChatProfileReporte;
+    const char *subState;
+    const char *subReport;
+    const char *reportVersion;
+    const char *Token;
+}WeChatProfileStatus;
 
 typedef struct {
-    const char    *subState;
-    const char    *subReport;
-    const char    *reportVersion;
-    const char    *Token;
-} WeChatProfileStatus;
+    int lightActionStatus;
+    int motorActionStatus;
+    int temperatureData;
+    int humidityActionData;
+    int lightIntensityActionData;
+    const char *subDeviceActionLight;
+    const char *subDeviceActionMotor;
+    const char *subDeviceActionTemperature;
+    const char *subDeviceActionHumidity;
+    const char *subDeviceActionLightIntensity;
+}WeChatProfileReporte;
 
 typedef struct {
-    const char    *subscribeType;
-    WeChatProfileStatus    status;
-    WeChatProfileReporte    reportAction;
-} WeChatProfile;
-/*
- * Use this function to make the command response here
- * and you must supplied the device id, and the payload defines as IoTCmdResp_t
- */
-int IoTProfileCmdResp(const char *deviceID, IoTCmdRespT *payload);
+    const char *subscribeType;
+    WeChatProfileStatus status;
+    WeChatProfileReporte reportAction;
+}WeChatProfile;
 
-/*
+/**
  * use this function to report the property to the iot platform
- */
-int IoTProfilePropertyReport(char *deviceID, IoTProfileServiceT *payload);
-
+*/
+int IoTProfilePropertyReport(char *deviceID, WeChatProfile *payload);
+void cJsonInit(void);
+void WifiStaReadyWait(void);
 #endif

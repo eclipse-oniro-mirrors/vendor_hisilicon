@@ -21,7 +21,6 @@ static_library("app_demo_iot") {
     "iot_main.c",
     "iot_profile.c",
     "iot_sta.c",
-
     #"coap_client.c",
   ]
 

@@ -14,55 +14,68 @@
  */
 
 /**
- * This file make use the hmac to make mqtt pwd.The method is use the date string to hash the device passwd .
+ * This file make use the hmac to make mqtt pwd.
+ * The method is use the date string to hash the device passwd
  * Take care that this implement depends on the hmac of the mbedtls
 */
-
-#include <string.h>
-#include <stdio.h>
 #include <stdint.h>
 #include <stddef.h>
+#include <string.h>
+#include <stdio.h>
 #include "md.h"
 #include "md_internal.h"
-#include "iot_hmac.h"
 
+#define CN_HMAC256_LEN_MAX (65)
 #define CN_HMAC256_LEN   32
-#define HMAC256_LEN  65
+#define RIGHT_MOVE_BIT_4 (4)
+#define NUMBER_9 (9)
+#define DECIMAL_BASE (10)
+#define STRING_LEN_TIMES (2)
+#define LEN_TIMES (2)
+#define OFFSET (1)
 // make a byte to 2 ascii hex
-static int Byte2hexstr(unsigned char *bufin, int len, char *bufout)
+static int byte2hexstr(unsigned char *bufin, int len, char *bufout)
 {
-    if ((bufin == NULL) || (len <= 0) || (bufout == NULL)) {
+    int i = 0;
+    unsigned char  tmp_l = 0x0;
+    unsigned char  tmp_h = 0;
+    if ((bufin == NULL)||(len <= 0)||(bufout == NULL)) {
         return -1;
     }
-    for (int i = 0; i < len; i++) {
-        unsigned char tmpH = (bufin[i] >> 4) & 0X0F; /* 高字节前4位保存到tmpH */
-        unsigned char tmpL = bufin[i] & 0x0F;
-        bufout[2 * i] = (tmpH > 9) ? (tmpH - 10 + 'a') : (tmpH + '0'); /* 如果高字节大于9与高字节减10，将高字节转成字符形式,同时字符占2字节 */
-        bufout[2 * i + 1] = (tmpL > 9) ? (tmpL - 10 + 'a') : (tmpL + '0'); /* 如果低字节大于9与高字节减10，将低字节转成字符形式，同时字符占2字节 */
+    for (i = 0; i < len; i++) {
+        tmp_h = (bufin[i] >> RIGHT_MOVE_BIT_4) & 0X0F;
+        tmp_l = bufin[i] & 0x0F;
+        bufout[STRING_LEN_TIMES * i] = (tmp_h > NUMBER_9) ?
+            (tmp_h - DECIMAL_BASE + 'a'):(tmp_h +'0');
+        bufout[STRING_LEN_TIMES * i + OFFSET] = (tmp_l > NUMBER_9) ?
+            (tmp_l - DECIMAL_BASE + 'a'):(tmp_l +'0');
     }
-    bufout[2 * len] = '\0'; /* 字符占2字节 */
+    bufout[STRING_LEN_TIMES * len] = '\0';
+
     return 0;
 }
 
-int HmacGeneratePwd(unsigned char *content, int contentLen, unsigned char *key, int keyLen,
-                    unsigned char *buf)
+int HmacGeneratePwd(const unsigned char *content, int contentLen, const unsigned char *key,
+    int keyLen, unsigned char *buf)
 {
     int ret = -1;
     mbedtls_md_context_t mbedtls_md_ctx;
-    const mbedtls_md_info_t *mdInfo;
+    const mbedtls_md_info_t *md_info;
     unsigned char hash[CN_HMAC256_LEN];
-    if (key == NULL || content == NULL || buf == NULL || keyLen == 0 || contentLen == 0 ||
-        ((CN_HMAC256_LEN * 2 + 1) > HMAC256_LEN)) { /* 2倍的CN_HMAC256_LEN+1判断buflen是否合理 */
+
+    if ((key == NULL)||(content == NULL)||(buf == NULL)||
+        (keyLen == 0)||(contentLen == 0)||
+        (CN_HMAC256_LEN_MAX < (CN_HMAC256_LEN * LEN_TIMES + OFFSET))) {
         return ret;
     }
 
-    mdInfo = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
-    if (mdInfo == NULL || (size_t)mdInfo->size > CN_HMAC256_LEN) {
+    md_info = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
+    if ((md_info == NULL)||((size_t)md_info->size > CN_HMAC256_LEN)) {
         return ret;
     }
 
     mbedtls_md_init(&mbedtls_md_ctx);
-    ret = mbedtls_md_setup(&mbedtls_md_ctx, mdInfo, 1);
+    ret = mbedtls_md_setup(&mbedtls_md_ctx, md_info, 1);
     if (ret != 0) {
         mbedtls_md_free(&mbedtls_md_ctx);
         return ret;
@@ -72,7 +85,11 @@ int HmacGeneratePwd(unsigned char *content, int contentLen, unsigned char *key, 
     (void)mbedtls_md_hmac_update(&mbedtls_md_ctx, content, contentLen);
     (void)mbedtls_md_hmac_finish(&mbedtls_md_ctx, hash);
 
-    // transfer the hash code to the string mode
-    Byte2hexstr(hash, CN_HMAC256_LEN, (char *)buf);
+    // <transfer the hash code to the string mode
+    ret = byte2hexstr(hash, CN_HMAC256_LEN, (char *)buf);
+    if (ret != 0) {
+        return ret;
+    }
+
     return ret;
 }

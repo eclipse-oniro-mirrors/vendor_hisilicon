@@ -11,7 +11,7 @@
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍
 ```
-vendor_hisilicon/hispark_pegasus/demo/nfc_demo
+vendor_hisilicon/hispark_pegasus/demo/nfcdemo
 ├── app_demo_config.c           #
 ├── app_demo_config.h           #
 ├── app_demo_gl5537_1.c         # 
@@ -37,7 +37,7 @@ vendor_hisilicon/hispark_pegasus/demo/nfc_demo
             └── wifi-iot
                 └── app
                     └──nfcdemo
-                       └── 代码   
+                       └── 代码
     ```
 
     -    修改源码./applications/sample/wifi-iot/app下的BUILD.gn文件，在features字段中增加索引，使目标模块参与编译。features字段指定业务模块的路径和目标,features字段配置如下。

@@ -10,7 +10,7 @@
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍
 ```
-vendor_hisilicon/hispark_pegasus/demo/ledDemo
+vendor_hisilicon/hispark_pegasus/demo/leddemo
 ├── app_demo_led_control.c   # 主要实现控制GPIO口的电平高低，实现控制交通灯板上GPIO10引脚上的LED灯亮灭。
 ├── BUILD.gn                 # BUILD.gn文件由三部分内容（目标、源文件、头文件路径）构成,开发者根据需要填写,static_library中指定业务模块的编译结果，为静态库文件ledDemo，开发者根据实际情况完成填写。sources中指定静态库.a所依赖。
 |                              的.c文件及其路径，若路径中包含"//"则表示绝对路径（此处为代码根路径），若不包含"//"则表示相对路径。include_dirs中指定source所需要依赖的.h文件路径。
@@ -26,7 +26,7 @@ vendor_hisilicon/hispark_pegasus/demo/ledDemo
             └── wifi-iot
                 └── app
                     └──leddemo
-                       └── 代码   
+                       └── 代码
     ```
 
     -   修改源码./applications/sample/wifi-iot/app/BUILD.gn文件，在features字段中增加索引，使目标模块参与编译。features字段指定业务模块的路径和目标,features字段配置如下。

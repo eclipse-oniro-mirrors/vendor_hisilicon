@@ -16,28 +16,16 @@
 #ifndef IOT_CONFIG_H
 #define IOT_CONFIG_H
 
-// /<CONFIG THE LOG
+// <CONFIG THE LOG
 /* if you need the iot log for the development , please enable it, else please comment it */
-#define CONFIG_LINKLOG_ENABLE 1
+#define CONFIG_LINKLOG_ENABLE   1
 
-// /<CONFIG THE WIFI
+// < CONFIG THE WIFI
 /* Please modify the ssid and pwd for the own */
-#define CONFIG_AP_SSID  "H" // WIFI SSID
-#define CONFIG_AP_PWD "12345678" // WIFI PWD
-
-// /<Configure the iot platform
-/* Please modify the device id and pwd for your own */
-// 设备ID名称，请参考华为物联网云文档获取该设备的ID。例如:60790e01ba4b2702c053ff03_helloMQTT
-#define CONFIG_DEVICE_ID  "60790e01ba4b2702c053ff03_helloMQTT"
-#define CONFIG_DEVICE_PWD "hispark2021" // 设备密码，请参考华为物联网云文档设置该设备密码。例如：hispark2021
-// /<if you use the tls mode and x509mode, please modify the DEVICE CA AND PRIVATE KEY IN iot_main.c
-// #define CONFIG_MQTT_SSL /< which means use the tls
-// #define CONFIG_MQTT_SSL_X509 which means use the x509 mode, and must enable the SSL;
-// if both disabled, it means use the tcp mode
-/* app_demo_iot entery function */
+#define CONFIG_AP_SSID  "Mate 20 Pro (Ud)" // WIFI SSID
+#define CONFIG_AP_PWD   "12345678" // WIFI PWD
 /* Tencent iot Cloud user ID , password */
-#define CONFIG_USER_ID    "xxxxxxxxxxxxxx"
-#define CONFIG_USER_PWD   "xxxxxxxxxxxxxx"
-
-static void AppDemoIot(void);
+#define CONFIG_USER_ID    "19VUBHD786mqtt;12010126;YDFHR;1682731282"
+#define CONFIG_USER_PWD   "9e5bb189b803e730def7209767b7135f7e723b7aa61072cbfcd5bff4ab2783f4;hmacsha256"
+#define CN_CLIENTID     "19VUBHD786mqtt" // Tencent cloud ClientID format: Product ID + device name
 #endif

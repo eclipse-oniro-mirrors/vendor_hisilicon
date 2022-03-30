@@ -10,7 +10,7 @@
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍
 ```
-vendor_hisilicon/hispark_pegasus/demo/lwip_demo
+vendor_hisilicon/hispark_pegasus/demo/lwipdemo
 ├── BUILD.gn                 # BUILD.gn文件由三部分内容（目标、源文件、头文件路径）构成,开发者根据需要填写,static_library中指定业务模块的编译结果，为静态库文件netDemo，开发者根据实际情况完成填写。
 |                              sources中指定静态库.a所依赖的.c文件及其路径，若路径中包含"//"则表示绝对路径（此处为代码根路径），若不包含"//"则表示相对路径。include_dirs中指定source所需要依赖的.h文件路径。
 ├── demo_entry_cmsis.c       # 
@@ -32,7 +32,7 @@ vendor_hisilicon/hispark_pegasus/demo/lwip_demo
             └── wifi-iot
                 └── app
                     └──lwipdemo
-                       └── 代码   
+                       └── 代码
     ```
 
     -   编译lwip_tcp_server端，修改./applications/sample/wifi-iot/app/lwipdemo/BUILD.gn文件中,在sources = [ "lwip_tcp_server.c" ]字段中添加,如下图所示。
@@ -67,7 +67,7 @@ vendor_hisilicon/hispark_pegasus/demo/lwip_demo
     
     lite_component("app") {
         features = [
-            "lwip_demo:netdemo",
+            "lwipdemo:net_demo",
         ]
     }
     ```
@@ -109,7 +109,7 @@ vendor_hisilicon/hispark_pegasus/demo/lwip_demo
     
     lite_component("app") {
         features = [
-            "lwip_demo:netdemo",
+            "lwipdemo:net_demo",
         ]
     }
     ```

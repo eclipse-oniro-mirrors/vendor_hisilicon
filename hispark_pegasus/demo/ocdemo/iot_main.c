@@ -106,9 +106,6 @@ static int MsgRcvCallBack(unsigned char *context, char *topic, int topicLen, MQT
         buf += topicLenght + 1;
         bufSize -= (topicLenght + 1);
         (void)memcpy_s(buf, bufSize, message->payload, message->payloadlen);
-        if (ret != EOK) {
-            return;
-        }
         buf[message->payloadlen] = '\0';
         msg->payload = buf;
         IOT_LOG_DEBUG("RCVMSG:QOS:%d TOPIC:%s PAYLOAD:%s\r\n", msg->qos, msg->topic, msg->payload);
@@ -319,9 +316,6 @@ int IotSendMsg(int qos, const char *topic, const char *payload)
         msg->qos = qos;
         msg->type = EN_IOT_MSG_PUBLISH;
         (void)memcpy_s(buf, bufSize, topic, strlen(topic));
-        if (ret != EOK) {
-            return;
-        }
         buf[strlen(topic)] = '\0';
         msg->topic = buf;
         buf += strlen(topic) + 1;

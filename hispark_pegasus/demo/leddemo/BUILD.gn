@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-static_library("ledDemo") {
+static_library("leddemo") {
   sources = [
     "app_demo_led_control.c",
     "hal_iot_gpio_ex.c",

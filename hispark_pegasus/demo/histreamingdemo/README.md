@@ -13,7 +13,7 @@
 
 -   1.代码目录结构及相应接口功能介绍
 ```
-vendor_hisilicon/hispark_pegasus/demo/histreaming_demo
+vendor_hisilicon/hispark_pegasus/demo/histreamingdemo
 ├── app_demo_config.c           # 
 ├── app_demo_config.h           # 
 ├── app_demo_get_mac_addr.c     # 
@@ -44,15 +44,15 @@ vendor_hisilicon/hispark_pegasus/demo/histreaming_demo
 └── wifi_starter.h              # 
 ```
 -   2.工程编译
-    -    将源码./vendor_hisilicon/hispark_pegasus/demo目录下的histreaming_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
+    -    将源码./vendor_hisilicon/hispark_pegasus/demo目录下的histreamingdemo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
     .
     └── applications
         └── sample
             └── wifi-iot
                 └── app
-                    └──histreaming_demo
-                       └── 代码   
+                    └──histreamingdemo
+                       └── 代码
     ```
 
     -    修改源码./applications/sample/wifi-iot/app/BUILD.gn文件，在features字段中增加索引，使目标模块参与编译。features字段指定业务模块的路径和目标,features字段配置如下。
@@ -61,7 +61,7 @@ vendor_hisilicon/hispark_pegasus/demo/histreaming_demo
     
     lite_component("app") {
         features = [
-            "histreaming_demo:app_demo_traffic",
+            "histreamingdemo:app_demo_traffic",
         ]
     }
     ```

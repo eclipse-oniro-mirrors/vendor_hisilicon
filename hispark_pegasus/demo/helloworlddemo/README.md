@@ -10,7 +10,7 @@
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍,如下图所示：
 ```
-vendor_hisilicon/hispark_pegasus/demo/helloworldDemo
+vendor_hisilicon/hispark_pegasus/demo/helloworlddemo
 ├── BUILD.gn            # BUILD.gn文件由三部分内容（目标、源文件、头文件路径）构成,开发者根据需要填写,
 |                       # sources中指定静态库.a所依赖的.c文件及其路径，若路径中包含"//"则表示绝对路径（此处为代码根路径），若不包含"//"则表示相对路
 |                       # 径。include_dirs中指定source所需要依赖的.h文件路径。

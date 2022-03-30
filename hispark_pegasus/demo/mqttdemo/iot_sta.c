@@ -13,58 +13,60 @@
  * limitations under the License.
  */
 
-// this demo make the wifi to connect to the specified AP
-
+// < this demo make the wifi to connect to the specified AP
+#include <unistd.h>
 #include <hi_wifi_api.h>
-#include <hi_types_base.h>
 #include <lwip/ip_addr.h>
 #include <lwip/netifapi.h>
-#include "wifi_device.h"
-#include "lwip/api_shell.h"
-#include "cmsis_os2.h"
+#include <hi_types_base.h>
+#include <hi_task.h>
+#include <hi_mem.h>
 #include "iot_config.h"
 #include "iot_log.h"
+#include "wifi_device.h"
+#include "cmsis_os2.h"
+#include "wifi_device_config.h"
+#include "lwip/api_shell.h"
 
 #define APP_INIT_VAP_NUM    2
 #define APP_INIT_USR_NUM    2
 
-static struct netif *g_lwipNetif = NULL;
-static hi_bool g_scanDone = HI_FALSE;
-unsigned char g_wifiStatus = 0;
+static struct netif *gLwipNetif = NULL;
+static hi_bool  gScanDone = HI_FALSE;
+unsigned char wifiStatus = 0;
 
-unsigned char g_wifiFirstConnecting = 0;
-unsigned char g_wifiSecondConnecting = 0;
-unsigned char g_wifiSecondConnected = 0;
-static struct netif *g_iFace = NULL;
+unsigned char wifiFirstConnecting = 0;
+unsigned char wifiSecondConnecting = 0;
+unsigned char wifiSecondConnected = 0;
+static struct netif* g_iface = NULL;
 void WifiStopSta(int netId);
 static int WifiStartSta(void);
-int g_netId = -1;
+int cnetId = -1;
 int g_connected = 0;
 
 #define WIFI_CONNECT_STATUS ((unsigned char)0x02)
 
-void WifiReconnected(int connetId)
+void wifiReconnected(int netId)
 {
-    int id = connetId;
-
-    if (g_wifiFirstConnecting == WIFI_CONNECT_STATUS) {
-        g_wifiSecondConnecting = HI_TRUE;
-        g_wifiFirstConnecting = HI_FALSE;
-        WifiStopSta(id);
+    int recnetId = netId;
+    if (wifiFirstConnecting == WIFI_CONNECT_STATUS) {
+        wifiSecondConnecting = HI_TRUE;
+        wifiFirstConnecting = HI_FALSE;
+        WifiStopSta(recnetId);
         ip4_addr_t ipAddr;
         ip4_addr_t ipAny;
         IP4_ADDR(&ipAny, 0, 0, 0, 0);
         IP4_ADDR(&ipAddr, 0, 0, 0, 0);
-        id = WifiStartSta();
-        netifapi_dhcp_start(g_lwipNetif);
-        while (memcmp(&ipAddr, &ipAny, sizeof(ip4_addr_t)) == 0) {
+        recnetId = WifiStartSta();
+        netifapi_dhcp_start(gLwipNetif);
+        while (0 == memcmp(&ipAddr, &ipAny, sizeof(ip4_addr_t))) {
             IOT_LOG_DEBUG("<Wifi reconnecting>:Wait the DHCP READY");
-            netifapi_netif_get_addr(g_lwipNetif, &ipAddr, NULL, NULL);
-            hi_sleep(1000); /* 休眠1000ms */
+            netifapi_netif_get_addr(gLwipNetif, &ipAddr, NULL, NULL);
+            hi_sleep(1000); /* 1000: cpu sleep 1000 ms */
         }
-        g_wifiSecondConnected = HI_FALSE;
-        g_wifiFirstConnecting = WIFI_CONNECT_STATUS;
-        g_wifiStatus = HI_WIFI_EVT_CONNECTED;
+        wifiSecondConnected = HI_FALSE;
+        wifiFirstConnecting = WIFI_CONNECT_STATUS;
+        wifiStatus = HI_WIFI_EVT_CONNECTED;
     }
 }
 /* clear netif's ip, gateway and netmask */
@@ -94,26 +96,27 @@ static void WpaEventCB(const hi_wifi_event *hisiEvent)
     switch (hisiEvent->event) {
         case HI_WIFI_EVT_SCAN_DONE:
             IOT_LOG_DEBUG("WiFi: Scan results available");
-            g_scanDone = HI_TRUE;
+            gScanDone = HI_TRUE;
             break;
         case HI_WIFI_EVT_CONNECTED:
             IOT_LOG_DEBUG("WiFi: Connected");
-            netifapi_dhcp_start(g_lwipNetif);
-            g_wifiStatus = HI_WIFI_EVT_CONNECTED;
-            if (g_wifiSecondConnected) {
-                g_wifiSecondConnected = HI_FALSE;
-                g_wifiFirstConnecting = WIFI_CONNECT_STATUS;
+            netifapi_dhcp_start(gLwipNetif);
+            wifiStatus = HI_WIFI_EVT_CONNECTED;
+            if (wifiSecondConnected) {
+                wifiSecondConnected = HI_FALSE;
+                wifiFirstConnecting = WIFI_CONNECT_STATUS;
             }
             break;
         case HI_WIFI_EVT_DISCONNECTED:
             IOT_LOG_DEBUG("WiFi: Disconnected");
-            netifapi_dhcp_stop(g_lwipNetif);
-            StaResetAddr(g_lwipNetif);
-            g_wifiStatus = HI_WIFI_EVT_DISCONNECTED;
+            netifapi_dhcp_stop(gLwipNetif);
+            StaResetAddr(gLwipNetif);
+            wifiStatus = HI_WIFI_EVT_DISCONNECTED;
+            wifiReconnected(cnetId);
             break;
         case HI_WIFI_EVT_WPS_TIMEOUT:
             IOT_LOG_DEBUG("WiFi: wps is timeout");
-            g_wifiStatus = HI_WIFI_EVT_WPS_TIMEOUT;
+            wifiStatus = HI_WIFI_EVT_WPS_TIMEOUT;
             break;
         default:
             break;
@@ -127,7 +130,7 @@ static int StaStartConnect(void)
     hi_wifi_assoc_request assoc_req = {0};
 
     /* copy SSID to assoc_req */
-    rc = memcpy_s(assoc_req.ssid, HI_WIFI_MAX_SSID_LEN + 1, CONFIG_AP_SSID, strlen(CONFIG_AP_SSID)); /* 9:ssid length */
+    rc = memcpy_s(assoc_req.ssid, HI_WIFI_MAX_SSID_LEN + 1, CONFIG_AP_SSID, strlen(CONFIG_AP_SSID));
     if (rc != EOK) {
         return -1;
     }
@@ -143,6 +146,7 @@ static int StaStartConnect(void)
     if (rc != EOK) {
         return -1;
     }
+
     ret = hi_wifi_sta_connect(&assoc_req);
     if (ret != HISI_OK) {
         return -1;
@@ -153,7 +157,10 @@ static int StaStartConnect(void)
 
 static void PrintLinkedInfo(WifiLinkedInfo* info)
 {
-    if (!info) return;
+    int ret = 0;
+    if (!info) {
+        return;
+    }
 
     static char macAddress[32] = {0};
     unsigned char* mac = info->bssid;
@@ -165,7 +172,9 @@ static void PrintLinkedInfo(WifiLinkedInfo* info)
 
 static void OnWifiConnectionChanged(int state, WifiLinkedInfo* info)
 {
-    if (!info) return;
+    if (!info) {
+        return;
+    }
 
     printf("%s %d, state = %d, info = \r\n", __FUNCTION__, __LINE__, state);
     PrintLinkedInfo(info);
@@ -190,8 +199,8 @@ static WifiEvent g_defaultWifiEventListener = {
 static int WifiStartSta(void)
 {
     WifiDeviceConfig apConfig = {0};
-    (void)strcpy_s(apConfig.ssid, strlen(CONFIG_AP_SSID) + 1, CONFIG_AP_SSID);
-    (void)strcpy_s(apConfig.preSharedKey, strlen(CONFIG_AP_PWD) + 1, CONFIG_AP_PWD);
+    strcpy_s(apConfig.ssid, sizeof(CONFIG_AP_SSID), CONFIG_AP_SSID);
+    strcpy_s(apConfig.preSharedKey, sizeof(CONFIG_AP_PWD), CONFIG_AP_PWD);
     apConfig.securityType = WIFI_SEC_TYPE_PSK;
 
     WifiErrorCode errCode;
@@ -211,17 +220,17 @@ static int WifiStartSta(void)
     printf("ConnectTo(%d): %d\r\n", netId, errCode);
 
     while (!g_connected) { // wait until connect to AP
-        osDelay(10); /* 等待1000ms */
+        osDelay(10); /* 10: os sleep 10ms */
     }
     printf("g_connected: %d\r\n", g_connected);
 
-    g_iFace = netifapi_netif_find("wlan0");
-    if (g_iFace) {
-        err_t ret = netifapi_dhcp_start(g_iFace);
+    g_iface = netifapi_netif_find("wlan0");
+    if (g_iface) {
+        err_t ret = netifapi_dhcp_start(g_iface);
         printf("netifapi_dhcp_start: %d\r\n", ret);
 
-        osDelay(100); // wait 100ms DHCP server give me IP
-        ret = netifapi_netif_common(g_iFace, dhcp_clients_info_show, NULL);
+        osDelay(100); // 100: os sleep 100ms wait DHCP server give me IP
+        ret = netifapi_netif_common(g_iface, dhcp_clients_info_show, NULL);
         printf("netifapi_netif_common: %d\r\n", ret);
     }
     return netId;
@@ -229,8 +238,10 @@ static int WifiStartSta(void)
 
 void WifiStopSta(int netId)
 {
-    if (g_iFace) {
-        err_t ret = netifapi_dhcp_stop(g_iFace);
+    int stopNetId = netId;
+
+    if (g_iface) {
+        err_t ret = netifapi_dhcp_stop(g_iface);
         printf("netifapi_dhcp_stop: %d\r\n", ret);
     }
 
@@ -240,7 +251,7 @@ void WifiStopSta(int netId)
     errCode = UnRegisterWifiEvent(&g_defaultWifiEventListener);
     printf("UnRegisterWifiEvent: %d\r\n", errCode);
 
-    RemoveDevice(netId); // remove AP config
+    RemoveDevice(stopNetId); // remove AP config
     printf("RemoveDevice: %d\r\n", errCode);
 
     errCode = DisableWifi();
@@ -253,7 +264,6 @@ void WifiStaReadyWait(void)
     ip4_addr_t ipAny;
     IP4_ADDR(&ipAny, 0, 0, 0, 0);
     IP4_ADDR(&ipAddr, 0, 0, 0, 0);
-    g_netId = WifiStartSta();
+    cnetId = WifiStartSta();
     IOT_LOG_DEBUG("wifi sta dhcp done");
-    return;
 }

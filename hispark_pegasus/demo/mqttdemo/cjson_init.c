@@ -17,21 +17,21 @@
 #include <cJSON.h>
 #include <hi_mem.h>
 
-static void *CJsonMalloc(size_t sz)
+static void *cJsonMalloc(size_t sz)
 {
     return hi_malloc(0, sz);
 }
 
-static void CJsonFree(hi_void *p)
+static void cJsonFree(const char *p)
 {
     hi_free(0, p);
 }
 
-void CJsonInit(void)
+void cJsonInit(void)
 {
-    cJSON_Hooks hooks;
-    hooks.malloc_fn = CJsonMalloc;
-    hooks.free_fn = CJsonFree;
+    cJSON_Hooks  hooks;
+    hooks.malloc_fn = cJsonMalloc;
+    hooks.free_fn = cJsonFree;
     cJSON_InitHooks(&hooks);
 
     return;

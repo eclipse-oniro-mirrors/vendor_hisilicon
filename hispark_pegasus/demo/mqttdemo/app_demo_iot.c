@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-#include <string.h>
 #include <hi_task.h>
+#include <string.h>
 #include <hi_wifi_api.h>
 #include <hi_mux.h>
 #include <hi_io.h>
 #include <hi_gpio.h>
-#include "ohos_init.h"
-#include "cmsis_os2.h"
 #include "iot_config.h"
 #include "iot_log.h"
 #include "iot_main.h"
 #include "iot_profile.h"
+#include "ohos_init.h"
+#include "cmsis_os2.h"
 
 /* attribute initiative to report */
 #define TAKE_THE_INITIATIVE_TO_REPORT
@@ -35,21 +35,26 @@
 #define WECHAT_SUBSCRIBE_LIGHT_ON_STATE     "1"
 #define WECHAT_SUBSCRIBE_LIGHT_OFF_STATE    "0"
 
-#define PUBULISH_TIME (1000)
-
 int g_ligthStatus = -1;
-
-typedef void (*HiFnMsgCallBack)(hi_gpio_value val);
+typedef void (*FnMsgCallBack)(hi_gpio_value val);
 
 typedef struct FunctionCallback {
     hi_bool  stop;
     hi_u32 conLost;
     hi_u32 queueID;
     hi_u32 iotTaskID;
-    HiFnMsgCallBack msgCallBack;
+    FnMsgCallBack    msgCallBack;
 }FunctionCallback;
-
 FunctionCallback g_functinoCallback;
+
+/* CPU Sleep time Set */
+unsigned int TaskMsleep(unsigned int ms)
+{
+    if (ms <= 0) {
+        return HI_ERR_FAILURE;
+    }
+    return hi_sleep((hi_u32)ms);
+}
 
 static void DeviceConfigInit(hi_gpio_value val)
 {
@@ -58,29 +63,29 @@ static void DeviceConfigInit(hi_gpio_value val)
     hi_gpio_set_ouput_val(HI_GPIO_IDX_9, val);
 }
 
-static int  DeviceMsgCallback(HiFnMsgCallBack msgCallBack)
+static int  DeviceMsgCallback(FnMsgCallBack msgCallBack)
 {
     g_functinoCallback.msgCallBack = msgCallBack;
     return 0;
 }
 
-static void WechatControlDeviceMsg(hi_gpio_value val)
+static void wechatControlDeviceMsg(hi_gpio_value val)
 {
     DeviceConfigInit(val);
 }
 
-// this is the callback function, set to the mqtt, and if any messages come, it will be called
-// The payload here is the json string
+// < this is the callback function, set to the mqtt, and if any messages come, it will be called
+// < The payload here is the json string
 static void DemoMsgRcvCallBack(int qos, const char *topic, const char *payload)
 {
     IOT_LOG_DEBUG("RCVMSG:QOS:%d TOPIC:%s PAYLOAD:%s\r\n", qos, topic, payload);
-    /* app 下发的操作 */
+    /* 云端下发命令后，板端的操作处理 */
     if (strstr(payload, WECHAT_SUBSCRIBE_LIGHT) != NULL) {
         if (strstr(payload, WECHAT_SUBSCRIBE_LIGHT_OFF_STATE) != NULL) {
-            WechatControlDeviceMsg(HI_GPIO_VALUE1);
+            wechatControlDeviceMsg(HI_GPIO_VALUE1);
             g_ligthStatus = HI_FALSE;
         } else {
-            WechatControlDeviceMsg(HI_GPIO_VALUE0);
+            wechatControlDeviceMsg(HI_GPIO_VALUE0);
             g_ligthStatus = HI_TRUE;
         }
     }
@@ -88,88 +93,66 @@ static void DemoMsgRcvCallBack(int qos, const char *topic, const char *payload)
 }
 
 /* publish sample */
-hi_void IotPublishSample(WeChatProfile weChatProfile)
+hi_void IotPublishSample(void)
 {
     /* reported attribute */
-    weChatProfile.subscribeType = "type";
-    weChatProfile.status.subState = "state";
-    weChatProfile.status.subReport = "reported";
-    weChatProfile.status.reportVersion = "version";
-    weChatProfile.status.Token = "clientToken";
+    WeChatProfile weChatProfile = {
+        .subscribeType = "type",
+        .status.subState = "state",
+        .status.subReport = "reported",
+        .status.reportVersion = "version",
+        .status.Token = "clientToken",
+        /* report motor */
+        .reportAction.subDeviceActionMotor = "motor",
+        .reportAction.motorActionStatus = 0, /* 0 : motor off */
+        /* report temperature */
+        .reportAction.subDeviceActionTemperature = "temperature",
+        .reportAction.temperatureData = 30, /* 30 :temperature data */
+        /* report humidity */
+        .reportAction.subDeviceActionHumidity = "humidity",
+        .reportAction.humidityActionData = 70, /* humidity data */
+        /* report light_intensity */
+        .reportAction.subDeviceActionLightIntensity = "light_intensity",
+        .reportAction.lightIntensityActionData = 60, /* 60 : light_intensity */
+    };
+
     /* report light */
     if (g_ligthStatus == HI_TRUE) {
-        weChatProfile.reportAction.subDeviceAction1 = "light";
-        weChatProfile.reportAction.action1Num = 1; /* 1: 灯的状态，1表示亮，0表示灭 */
+        weChatProfile.reportAction.subDeviceActionLight = "light";
+        weChatProfile.reportAction.lightActionStatus = 1; /* 1: light on */
     } else if (g_ligthStatus == HI_FALSE) {
-        weChatProfile.reportAction.subDeviceAction1 = "light";
-        weChatProfile.reportAction.action1Num = 0;
+        weChatProfile.reportAction.subDeviceActionLight = "light";
+        weChatProfile.reportAction.lightActionStatus = 0; /* 0: light off */
     } else {
-        weChatProfile.reportAction.subDeviceAction1 = "light";
-        weChatProfile.reportAction.action1Num = 0;
+        weChatProfile.reportAction.subDeviceActionLight = "light";
+        weChatProfile.reportAction.lightActionStatus = 0; /* 0: light off */
     }
-
-    /* report motor */
-    weChatProfile.reportAction.subDeviceAction2 = "motor";
-    weChatProfile.reportAction.action2Num = 0;
-    /* report temperature */
-    weChatProfile.reportAction.subDeviceAction3 = "temperature";
-    weChatProfile.reportAction.action3Num = 30; /* 30:上报温度为30℃ */
-    /* report humidity */
-    weChatProfile.reportAction.subDeviceAction4 = "humidity";
-    weChatProfile.reportAction.action4Num = 70; /* 70:上报空气湿度为70% */
-    /* report light_intensity */
-    weChatProfile.reportAction.subDeviceAction5 = "light_intensity";
-    weChatProfile.reportAction.action5Num = 60; /* 60:上报灯亮度为60% */
-
-    IoTProfilePropertyReport(CONFIG_DEVICE_ID, &weChatProfile);
+    /* profile report */
+    IoTProfilePropertyReport(CONFIG_USER_ID, &weChatProfile);
 }
 
-/* Smart Can */
-hi_void IotPublishPersionTime(hi_u32 time)
+// < this is the demo main task entry,here we will set the wifi/cjson/mqtt ready and
+// < wait if any work to do in the while
+static hi_void *DemoEntry(const char *arg)
 {
-    IoTProfileServiceT service;
-    IoTProfileKVT property;
-
-    memset_s(&property, sizeof(property), 0, sizeof(property));
-    property.type = EN_IOT_DATATYPE_INT;
-    property.key = "Person_times";
-
-    property.i_value = time;
-
-    memset_s(&service, sizeof(service), 0, sizeof(service));
-    service.serviceID = "helloMQTT";
-    service.serviceProperty = &property;
-    IoTProfilePropertyReport(CONFIG_DEVICE_ID, &service);
-}
-
-// this is the demo main task entry,here we will set the wifi/cjson/mqtt ready ,and
-// wait if any work to do in the while
-static hi_void *DemoEntry(char *arg)
-{
-    WeChatProfile weChatProfile = {0};
     WifiStaReadyWait();
-    CJsonInit();
+    cJsonInit();
     IoTMain();
-    /* 云端下发 */
+    /* 云端下发回调 */
     IoTSetMsgCallback(DemoMsgRcvCallBack);
     /* 主动上报 */
 #ifdef TAKE_THE_INITIATIVE_TO_REPORT
     while (1) {
-    // here you could add your own works here--we report the data to the IoTplatform
-    // now we report the data to the iot platform
-    // here you could add your own works here--we report the data to the IoTplatform
-    /* 用户可以在这调用发布函数进行发布，需要用户自己写调用函数 */
-#ifdef HW_IOT_CLOUD
-        IotPublishPersionTime(PUBULISH_TIME);
-#else
-        IotPublishSample(weChatProfile); // 发布例程
+        /* 用户可以在这调用发布函数进行发布，需要用户自己写调用函数 */
+        IotPublishSample(); // 发布例程
 #endif
-        hi_sleep(ONE_SECOND);
+        TaskMsleep(ONE_SECOND);
     }
-#endif
     return NULL;
 }
-// This is the demo entry, we create a task here, and all the works has been done in the demo_entry
+
+// < This is the demo entry, we create a task here,
+// and all the works has been done in the demo_entry
 #define CN_IOT_TASK_STACKSIZE  0x1000
 #define CN_IOT_TASK_PRIOR 25
 #define CN_IOT_TASK_NAME "IOTDEMO"

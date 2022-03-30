@@ -26,7 +26,6 @@
 #include "md_internal.h"
 
 #define CN_HMAC256_LEN   32
-
 #define BUF_OUT_LEN_1 (1)
 #define BUF_OUT_LEN_2 (2)
 
@@ -67,7 +66,7 @@ int HmacGeneratePwd(unsigned char *content, int contentLen, unsigned char *key, 
     const mbedtls_md_info_t *mdInfo;
     unsigned char hash[CN_HMAC256_LEN];
     if (key == NULL || content == NULL || buf == NULL || keyLen == 0 || contentLen == 0 ||
-        ((CN_HMAC256_LEN * 2 + 1) > HMAC256_LEN)) { /* 2倍的CN_HMAC256_LEN+1判断buflen是否合理 */
+        ((CN_HMAC256_LEN * 2 + 1) > HMAC_PWD_LEN)) { /* 2倍的CN_HMAC256_LEN+1判断buflen是否合理 */
         return ret;
     }
 
@@ -88,7 +87,7 @@ int HmacGeneratePwd(unsigned char *content, int contentLen, unsigned char *key, 
     (void)mbedtls_md_hmac_finish(&mbedtls_md_ctx, hash);
 
     // transfer the hash code to the string mode
-    Byte2hexstr(hash, CN_HMAC256_LEN, (char *)buf);
+    Byte2HexStr(hash, CN_HMAC256_LEN, (char *)buf);
     return ret;
 }
 
