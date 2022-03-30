@@ -51,7 +51,7 @@ vendor_hisilicon/hispark_pegasus/demo/nfcdemo
     }
     ```
 
-    -    工程相关配置完成后,然后在点击build编译。
+    -    工程相关配置完成后,然后编译。
 -   3.烧录
     -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择burn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
     -    烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。运行结果：NFC demo一共拉起3个APP，按键切换拉起不同应用。（注：手机上需事先安装下面的APP应用，手机需要有NFC功能，使用前请用户先打开手机的NFC功能），分别是Wechat模式: NFC demo初始状态是WeChat ，也就是用手机靠近贴着NFC板，就会调起手机的微信APP；Today Headline模式 : 再按下左键S1，会从WeChat mode跳到 Today Headline mode，用手机靠近贴着NFC板，就会调起手机的今日头条APP；Tobao模式: 再按下左键S1，会从Today Headline mode跳到Taobao mode，用手机靠近贴着NFC板，就会调起手机的淘宝APP。

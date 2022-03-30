@@ -13,6 +13,7 @@
 
 static_library("app_demo_iot") {
   sources = [
+    "app_demo_config.c",
     "app_demo_gl5537_1.c",
     "app_demo_i2c_oled.c",
     "app_demo_iot.c",
@@ -27,7 +28,6 @@ static_library("app_demo_iot") {
     "iot_profile.c",
     "iot_sta.c",
     "task_start.c",
-    "app_demo_config.c"
   ]
 
   include_dirs = [

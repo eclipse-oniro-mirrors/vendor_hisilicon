@@ -130,7 +130,7 @@ vendor_hisilicon/hispark_pegasus/demo/ocdemo
     CONFIG_PWM_SUPPORT=y
     ```        
 
-    -    工程相关配置完成后,然后在点击build编译。
+    -    工程相关配置完成后,然后编译。
 -   4.烧录
     -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择burn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
     -    烧录成功后，再次点击Hi3861核心板上的“RST”复位键，等待开发板的连接上wifi,连接成功后，华为云设备状态变成在线，设备开始向华为云上上报最新数据栏，同时串口会有如下打印。如下图所示。
