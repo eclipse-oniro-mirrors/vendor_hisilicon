@@ -58,6 +58,6 @@ vendor_hisilicon/hispark_pegasus/demo/udpdemo
     -    工程相关配置完成后,然后在点击build编译烧录。
 -    3.微信小程序编译预览
     -    打开微信小程序，在msgSendRead.js文件中var port = udp.bind()中填入DEVICE_PORT(代码里面对应的端口号),然后编译预览。
-    -    点击电脑端微信小程序选择真机调试，手机扫码进入微信小程序，首先进行配网，如果手机端已经配网则可以跳过，然后点击“控制设备”下方的按钮进入UDP通信并控制设备侧。如下图所示。
+    -    点击电脑端微信小程序选择预览，手机扫码进入微信小程序，首先进行配网，如果手机端已经配网则可以跳过，然后点击“控制设备”下方的按钮进入UDP通信并控制设备侧,输入板端IP地址，端口填入本机端口号HOST_PORT。如下图所示。
 
    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/250.jpg)![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/251.jpg)
