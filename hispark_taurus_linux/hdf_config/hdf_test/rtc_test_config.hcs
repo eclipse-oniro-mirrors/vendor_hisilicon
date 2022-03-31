@@ -10,7 +10,7 @@ root {
         hour = 8;
         minute = 8;
         second = 8;
-        frequence = 32768;
+        frequency = 32768;
         userValue = 0x8;
         userMaxIndex = 8;
         waitTimeSecond = 3;
