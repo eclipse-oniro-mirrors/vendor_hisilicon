@@ -55,7 +55,7 @@ vendor_hisilicon/hispark_pegasus/demo/udp_demo
 
     -    修改完成后编译烧录到Hi3861V100开发板上，烧录成功后，再次点击Hi3861核心板上的“RST”复位键，在串口工具栏可以看到板端IP地址。
     -    配置源码./applications/sample/wifi-iot/app/udp_demo/udp_server.c，将Hi3861本机的IP地址（上面查到的IP地址）填入NATIVE_IP_ADDRESS宏定义中，并设置本机端口号HOST_PORT宏定义中，客户端端口号DEVICE_PORT宏定义中（用户可自行设置）。
-    -    工程相关配置完成后,然后在点击build编译烧录。
+    -    工程相关配置完成后,然后编译烧录。
 -    3.微信小程序编译预览
     -    打开微信小程序，在msgSendRead.js文件中var port = udp.bind()中填入DEVICE_PORT(代码里面对应的端口号),然后编译预览。
     -    点击电脑端微信小程序选择预览，手机扫码进入微信小程序，首先进行配网，如果手机端已经配网则可以跳过，然后点击“控制设备”下方的按钮进入UDP通信并控制设备侧,输入板端IP地址，端口填入本机端口号HOST_PORT。如下图所示。

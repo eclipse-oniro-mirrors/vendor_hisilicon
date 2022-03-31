@@ -217,7 +217,7 @@ https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/getstart.h
     }
     ```
 
-    -    工程相关配置完成后,然后在点击build编译。
+    -    工程相关配置完成后,然后编译。
 -   5.烧录
     -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择burn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。
     -    注意:一定要断开MQTT工具的连接。
