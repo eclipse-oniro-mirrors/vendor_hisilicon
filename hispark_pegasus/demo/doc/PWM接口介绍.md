@@ -1,5 +1,12 @@
 # PWM接口介绍
--   将GPIO复用为PWM模式。通过查阅Hi3861的SOC文档《Hi3861V100／Hi3861LV100／Hi3881V100 WiFi芯片 硬件用户指南_00B01.pdf》可知，Hi3861上一共有6路PWM。由于PWM通道太多就不一一列举了，PWM复用功能在SDK的hi_io.h中，详情用户可查阅该文件。使用交通灯板上的蜂鸣器，本案例复用GPIO5为PWM模式，使用前PWM初始化，包括通道选择，频率选择。
+| API名称                                                      | 说明              |
+| ------------------------------------------------------------ | ----------------- |
+| unsigned int IoTPwmInit(WifiIotPwmPort port);                   | PWM模块初始化     |
+| unsigned int IoTPwmStart(WifiIotPwmPort port, unsigned short duty, unsigned short freq); | 开始输出PWM信号   |
+| unsigned int IoTPwmStop(WifiIotPwmPort port);                   | 停止输出PWM信号   |
+| unsigned int IoTPwmDeinit(WifiIotPwmPort port);                 | 解除PWM模块初始化 |
+| unsigned int PwmSetClock(WifiIotPwmClkSource clkSource);     | 设置PWM模块时钟源 |
+-   将GPIO复用为PWM模式。Hi3861上一共有6路PWM。由于PWM通道太多就不一一列举了，PWM复用功能在SDK的hi_io.h中，详情用户可查阅该文件。使用交通灯板上的蜂鸣器，本案例复用GPIO5为PWM模式，使用前PWM初始化，包括通道选择，频率选择。
     ```
     IoTGpioInit(IOT_PWM_BEEP);
     IoSetFunc(IOT_PWM_BEEP, 5); /* 设置IO5的功能 */
@@ -12,7 +19,7 @@
     IoTPwmStart(IOT_PWM_PORT_PWM0, PWM_LOW_DUTY, PWM_FULL_DUTY); 
     ```
 
--   上图中的Hi_PWM_PORT_PWM0为复用通道，PWM_LOW_DUTY为duty，PWM_FULL_DUTY为分频系数，占空比计算公式如下。
+-   上图中的IOT_PWM_PORT_PWM0为复用通道，PWM_LOW_DUTY为占空比，范围（1-99），PWM_FULL_DUTY为频率，范围为（大于2442HZ），计算公式如下。
 
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8779.png)
 

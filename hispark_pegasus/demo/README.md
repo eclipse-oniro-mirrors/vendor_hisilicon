@@ -6,12 +6,11 @@
 -    [Hi3861V100应用场景介绍](doc/Hi3861V100应用场景介绍.md)
 ## 开发环境搭建<a name="section11660541593"></a>
 -    [搭建IDE工具开发环境](https://device.harmonyos.com/cn/docs/documentation/guide/ide-install-windows-ubuntu-0000001194073744)
--    [搭建Hi3861V100开发环境](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps-hi3861-setting.md)
--    [安装hb](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-package-environment.md)
 -    [源码获取](https://device.harmonyos.com/cn/docs/documentation/guide/sourcecode-acquire-0000001050769927)
 -    [打开工程/源码](https://device.harmonyos.com/cn/docs/documentation/guide/open_project-0000001071680043)
--    [编译Hi3861V100开发板源码(选择安装包方式搭建环境)](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps-hi3861-building.md)
+-    [编译Hi3861V100开发板源码](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861v100-compile-0000001192526021)
 -    [Hi3861V100开发板烧录](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861-upload-0000001051668683)
+-    [IDE串口工具的使用](doc/IDE串口工具指导.md)
 -    [运行第一个程序Hello world](hello_world_demo/hello_world_demo.md)
 -    [环境搭建FAQ](http://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps-hi3861-faqs.md)
 ## WiFi_IoT常用接口案例<a name="section11660541593"></a>
