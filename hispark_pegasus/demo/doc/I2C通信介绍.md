@@ -1,12 +1,21 @@
 # I2C通信介绍<a name="ZH-CN_TOPIC_0000001130176841"></a>
+| API名称                                                      | 说明                          |
+| ------------------------------------------------------------ | ----------------------------- |
+| IoTI2cInit(unsigned int id, unsigned int baudrate);         | 用指定的波特速率初始化I2C设备 |
+| IoTI2cDeinit(unsigned int id);                               | 取消初始化I2C设备             |
+| IoTI2cWrite(unsigned int id, unsigned short deviceAddr, const unsigned char *data, unsigned int dataLen); | 将数据写入I2C设备             |
+| IoTI2cRead(unsigned int id, unsigned short deviceAddr, unsigned char *data, unsigned int dataLen); | 从I2C设备中读取数据           |
+| IoTI2cSetBaudrate(unsigned int id, unsigned int baudrate);   | 设置I2C设备的波特率           |
+
+
 -    例如在 Hi3861 上外接一个 OLED 屏，查阅资料知道，OLED 屏为 I2C 通讯方式，Hi3861 发送命令驱动 OLED 屏显示。
--    GPIO 初始化及引脚功能复用 为 I2C 模式。Hi3861 的 SOC 上一共有两路 I2C，分别是 I2C0 和 I2C1。通过查阅 Hi3861 的 SOC 文档《Hi3861V100／Hi3861LV100／Hi3881V100 WiFi 芯片 硬件用户指 南_00B01.pdf》可知，Hi3861 上的 GPIO 引脚能复用为 I2C0 的有两组，分别为 GPIO9（I2C0_SCL）、 GPIO10（I2C0_SDA）和 GPIO13（I2C0_SDA）、GPIO14（I2C0_SCL）；GPIO 引脚能复用为 I2C1 的有 两组，分别为 GPIO0（I2C1_SDA）、GPIO1（I2C1_SCL）。本案例使用 GPIO13（I2C0_SDA）、 GPIO14（I2C0_SCL）这一组作为 OLED 屏和 Hi3861 进行 I2C 通信 。本案例复用GPIO13,GPIO14。
-    ```
-    IoTGpioInit(13); 
-    IoSetFunc(13, 6); /* gpio13复用I2C0_SDA */
-    IoTGpioInit(14); /* 初始化gpio14 */
-    IoSetFunc(14, 6); /* gpio14复用I2C0_SCL */
-    ```
+-    GPIO 初始化及引脚功能复用 为 I2C 模式。Hi3861 的 SOC 上一共有两路 I2C，分别是 I2C0 和 I2C1。Hi3861 上的 GPIO 引脚能复用为 I2C0 的有两组，分别为 GPIO9（I2C0_SCL）、 GPIO10（I2C0_SDA）和 GPIO13（I2C0_SDA）、GPIO14（I2C0_SCL）；GPIO 引脚能复用为 I2C1 的有 两组，分别为 GPIO0（I2C1_SDA）、GPIO1（I2C1_SCL）。本案例使用 GPIO13（I2C0_SDA）、 GPIO14（I2C0_SCL）这一组作为 OLED 屏和 Hi3861 进行 I2C 通信 。本案例复用GPIO13,GPIO14。
+```
+IoTGpioInit(13); 
+IoSetFunc(13, 6); /* gpio13复用I2C0_SDA */
+IoTGpioInit(14); /* 初始化gpio14 */
+IoSetFunc(14, 6); /* gpio14复用I2C0_SCL */
+ ```
 
 -   I2C 初始化配置，包括通道选择：0，设置初始化波特率：OLED_I2C_BAUDRATE(400kbps)，Hi3861 最高波特率为400kbps。
     ```

@@ -74,7 +74,7 @@ vendor_hisilicon/hispark_pegasus/demo/lwip_demo
 
     -   修改完成后编译烧录到Hi3861V100开发板上，烧录成功后，再次点击Hi3861核心板上的“RST”复位键，在串口工具栏可以看到server服务端IP地址，如下图所示。
 
-    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87203.png)
+    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/lwip/lwip.png)
 
     -   修改./applications/sample/wifi-iot/app/lwip_demo/net_params.h中PARAM_SERVER_ADDR字段为server服务端IP地址，同时PARAM_HOTSPOT_SSID设置为网络名称，PARAM_HOTSPOT_PSK设置为网络密码,这里注意Hi3861V100服务端与客户端需要在同一个局域网内。
     ```
@@ -120,8 +120,8 @@ vendor_hisilicon/hispark_pegasus/demo/lwip_demo
     -   烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。运行结果：在串口工具栏看到Hello,I am lwip。
     服务端串口打印：
 
-    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87205.png)
+    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/lwip/lwip.png)
 
     客户端串口打印：
 
-    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87206.png)
+    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/lwip/lwip2.png)

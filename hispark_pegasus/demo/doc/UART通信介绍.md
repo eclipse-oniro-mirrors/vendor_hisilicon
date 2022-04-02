@@ -1,4 +1,11 @@
 # UART通信介绍
+
+| API                                                          | 接口说明                 |
+| ------------------------------------------------------------ | ------------------------ |
+| unsigned int IoTUartInit(unsigned int id, const IotUartAttribute *param); | 初始化，配置一个UART设备 |
+| int IoTUartRead(unsigned int id, unsigned char *data, unsigned int dataLen); | 从UART设备中读取数据     |
+| int IoTUartWrite(unsigned int id, const unsigned char *data, unsigned int dataLen); | 将数据写入UART设备       |
+
 -   例如在 Hi3861 上外接一个 GPS 模块，GPS 模块跟 Hi3861 之间使用 UART 通讯方式，GPS 模块上电 后会通过串口将经纬度及卫星个数等数据发送给 Hi3861。首先需要进行 GPIO 引脚初始化和引脚复 用、Hi3861 上的 UART 通道选择（Hi3861 一共有 3 路串口，其中 UART0 作为 log 调试口，剩余的 UART1 和 UART2 供用户使用），在本章的最后附上 Hi3861 引脚复用关系表。
 -   在 app_io_init.c 中将 GPIO 引脚复用为串口。下面以实际的 GPS 模块和 Hi3861 通信，使用 UART1 通道进行通信，首先在 app_io_init.c 中将 GPIO 引脚复用为 UART1 的 TX 和 RX。通过查阅 Hi3861 的 SOC 文档《Hi3861V100／Hi3861LV100／Hi3881V100 WiFi 芯片 硬件用户指南_00B01.pdf》可知，可以 复用为 UART1 的 GPIO 引脚有两组，分别是 GPIO0（UART1 的 TX）、GPIO1（UART1 的 RX），另一 组为 GPIO5（UART1 的 RX）、GPIO6（UART1 的 TX）。需要注意的是 GPIO6 引脚会影响 Hi3861 的启 动和烧录，所以一般情况下不使用 GPIO5 和 GPIO6 作为 UART1 使用，而是选择 GPIO0 和 GPIO1 作为 UART1 使用，所以本案例将使用 GPIO0 和 GPIO1 作为 UART1 使用。
     ```
@@ -20,7 +27,7 @@
 
 -   Hi3861 UART 初始化，通道选择，将结构体配置信息配置好。
     ```
-    ret = hi_uart_init()
+    ret = IoTUartInit(DEMO_UART_NUM, &uart_attr)
     ```
 
 -   创建一个任务线程，单独处理串口收发任务，串口通信的具体任务实现。

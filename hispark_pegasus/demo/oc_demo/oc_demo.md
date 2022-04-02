@@ -135,7 +135,7 @@ vendor_hisilicon/hispark_pegasus/demo/oc_demo
     -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择burn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
     -    烧录成功后，再次点击Hi3861核心板上的“RST”复位键，等待开发板的连接上wifi,连接成功后，华为云设备状态变成在线，设备开始向华为云上上报最新数据栏，同时串口会有如下打印。如下图所示。
 
-    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/225.jpg)
+    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/oc_demo/oc1.png)
 
     ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/221.jpg)
 
@@ -143,4 +143,4 @@ vendor_hisilicon/hispark_pegasus/demo/oc_demo
 
     ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/227.jpg)
 
-    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/226.jpg)
+    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/oc_demo/oc2.png)
