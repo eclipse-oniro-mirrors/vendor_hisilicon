@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+enable_liteos_test_bin = false
 enable_audio_alsa_mode = false
 enable_hdf_proxy_stub = true
 enable_audio_hal_notsupport_pathselect = false

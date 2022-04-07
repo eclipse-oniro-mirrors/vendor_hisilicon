@@ -151,8 +151,32 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libhdi_audio_server.z.so";
+                    moduleName = "libhdi_audio_primary_server.z.so";
                     serviceName = "audio_hdi_service";
+                }
+            }
+            audio_usb_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libhdi_audio_usb_server.z.so";
+                    serviceName = "audio_hdi_usb_service";
+                }
+            }
+            audio_a2dp_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libhdi_audio_a2dp_server.z.so";
+                    serviceName = "audio_hdi_a2dp_service";
+                }
+            }
+            audio_pnp_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    moduleName = "libhdi_audio_pnp_server.z.so";
+                    serviceName = "audio_hdi_pnp_service";
                 }
             }
         }

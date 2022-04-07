@@ -14,7 +14,7 @@ root {
         }
         controller_0x120c1000 :: card_controller {
             match_attr = "hdf_audio_driver_0";
-            serviceName = "hdf_audio_codec_dev0";
+            serviceName = "hdf_audio_codec_primary_dev0";
             codecName = "codec_service_0";
             platformName = "dma_service_0";
             cpuDaiName = "dai_service";
@@ -24,7 +24,7 @@ root {
         }
         controller_0x120c1001 :: card_controller {
             match_attr = "hdf_audio_driver_1";
-            serviceName = "hdf_audio_smartpa_dev0";
+            serviceName = "hdf_audio_codec_primary_dev11";
             accessoryName = "codec_service_1";
             platformName = "dma_service_0";
             cpuDaiName = "dai_service";

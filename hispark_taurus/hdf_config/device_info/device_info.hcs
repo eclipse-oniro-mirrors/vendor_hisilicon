@@ -749,7 +749,7 @@
                     permission = 0666;
                     moduleName = "HDF_AUDIO";
                     deviceMatchAttr = "hdf_audio_driver_0";
-                    serviceName = "hdf_audio_codec_dev0";
+                    serviceName = "hdf_audio_codec_primary_dev0";
                 }
                 device1 :: deviceNode {
                     policy = 2;
@@ -758,7 +758,7 @@
                     permission = 0666;
                     moduleName = "HDF_AUDIO";
                     deviceMatchAttr = "hdf_audio_driver_1";
-                    serviceName = "hdf_audio_smartpa_dev0";
+                    serviceName = "hdf_audio_codec_primary_dev11";
                 }
             }
             device_stream :: device {
