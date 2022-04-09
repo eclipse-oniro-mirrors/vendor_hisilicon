@@ -167,6 +167,12 @@
         ]
       },
       {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "syscap_codec", "features":[] }
+        ]
+      },
+      {
         "subsystem": "powermgr",
         "components": [
           { "component": "powermgr_lite", "features":[ "enable_screensaver = true" ] },
