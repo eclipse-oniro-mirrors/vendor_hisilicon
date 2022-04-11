@@ -1,0 +1,19 @@
+root {
+    platfrom {
+        template dsp_controller {
+            match_attr = "";
+            serviceName = "";
+            dspDaiName = "";
+        }
+        controller_0x120c1040 :: dsp_controller {
+            match_attr = "hdf_dsp_driver";
+            serviceName = "dsp_service_0";
+            dspDaiName = "dsp_dai";
+        }
+        controller_0x120c1041 :: dsp_controller {
+            match_attr = "hdf_dsp_driver";
+            serviceName = "dsp_service_0";
+            dspDaiName = "dsp_dai";
+        }
+    }
+}

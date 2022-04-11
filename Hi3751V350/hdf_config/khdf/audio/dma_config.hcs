@@ -1,0 +1,12 @@
+root {
+    platfrom {
+        template dma_controller {
+            match_attr = "";
+            serviceName = "";
+        }
+        controller_0x120c1010 :: dma_controller {
+            match_attr = "hdf_dma_driver";
+            serviceName = "dma_service_0";
+        }
+    }
+}
