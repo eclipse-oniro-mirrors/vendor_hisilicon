@@ -9,16 +9,18 @@
 
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍
-```
-vendor_hisilicon/hispark_pegasus/demo/beep_demo
-├── app_demo_beep_control.c       # 本实验通过GPIO 8按键控制GPIO 9口的PWM的频率，实现控制蜂鸣器鸣响。
-├── BUILD.gn                      # BUILD.gn文件由三部分内容（目标、源文件、头文件路径）构成,开发者根据需要填写,static_library中指定业务模块的编译结果，为静态库文件led_example，开发者根据实际情况完成填写。
-|                                   sources中指定静态库.a所依赖的.c文件及其路径，若路径中包含"//"则表示绝对路径（此处为代码根路径），若不包含"//"则表示相对路径。include_dirs中指定source所需要依赖的.h文件路径。
-├── hal_iot_gpio_ex.c             # IoSetPull();IoSetFunc();TaskMsleep()。
-└── iot_gpio_ex.h                 # SDK提供的Linux系统和Windows系统上使用的工具（包括：NV制作工具、签名工具、Menuconfig等）。
-```
+- PWM API
+
+| API名称                                                      | 说明              |
+| ------------------------------------------------------------ | ----------------- |
+| unsigned int PwmInit(WifiIotPwmPort port);                   | PWM模块初始化     |
+| unsigned int PwmStart(WifiIotPwmPort port, unsigned short duty, unsigned short freq); | 开始输出PWM信号   |
+| unsigned int PwmStop(WifiIotPwmPort port);                   | 停止输出PWM信号   |
+| unsigned int PwmDeinit(WifiIotPwmPort port);                 | 解除PWM模块初始化 |
+| unsigned int PwmSetClock(WifiIotPwmClkSource clkSource);     | 设置PWM模块时钟源 |
+
 -   2.工程编译
-    -   将源码./vendor_hisilicon/hispark_pegasus/demo目录下的beep_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下，如图。
+    -   将源码./vendor/hisilicon/hispark_pegasus/demo目录下的beep_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下，如图。
     ```
     .
     └── applications

@@ -87,7 +87,7 @@ vendor_hisilicon/hispark_pegasus/demo/oc_demo
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/221.jpg)
 
 -   3.板端配置及编译
-    -    将源码./vendor_hisilicon/hispark_pegasus/demo目录下的oc_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
+    -    将源码./vendor/hisilicon/hispark_pegasus/demo目录下的oc_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
     .
     └── applications

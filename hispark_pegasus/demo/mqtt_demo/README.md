@@ -27,7 +27,7 @@ vendor_hisilicon/hispark_pegasus/demo/mqtt_demo
 └── iot_sta.c           # 
 ```
 -   2.工程编译
-    -   将源码./vendor_hisilicon/hispark_pegasus/demo目录下的mqtt_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
+    -   将源码./vendor/hisilicon/hispark_pegasus/demo目录下的mqtt_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
     .
     └── applications
