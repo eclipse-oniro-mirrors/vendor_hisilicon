@@ -15,7 +15,7 @@ static_library("interconnectionClientDemo") {
   sources = [
     "app_demo_uart.c",
     "hal_iot_gpio_ex.c",
-    "hisignalling_protocol.c"
+    "hisignalling_protocol.c",
   ]
 
   include_dirs = [
