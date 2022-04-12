@@ -250,7 +250,6 @@ hi_void *HisignallingMsgHandle(char *param)
                 HisignallingMsgSend(g_sendUartBuff,
                     (GetUartConfig(UART_RECVIVE_LEN) - HISGNALLING_MSG_CRC32_LEN - HISIGNALLING_MSG_HEADER_TAIL_LEN));
             }
-            // recConfig.g_uartReceiveFlag = HI_FALSE;
             (void)SetUartRecvFlag(UART_RECV_FALSE);
             ResetUartReceiveMsg();
         }

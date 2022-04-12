@@ -41,9 +41,9 @@
 /**
 * @brief Adapter plate selection
 * 使用时选择打开宏，使用外设扩展板打开#define BOARD_SELECT_IS_EXPANSION_BOARD这个宏
-* 使用Robot板打开#define BOARD_SELECT_IS_ROBOT_BOARD这个宏
+* 使用Robot板自己定义#define BOARD_SELECT_IS_ROBOT_BOARD这个宏，注释掉#define BOARD_SELECT_IS_EXPANSION_BOARD
 **/
-// #define BOARD_SELECT_IS_ROBOT_BOARD
+
 #define BOARD_SELECT_IS_EXPANSION_BOARD
 #ifdef BOARD_SELECT_IS_EXPANSION_BOARD
 #define EXPANSION_BOARD
