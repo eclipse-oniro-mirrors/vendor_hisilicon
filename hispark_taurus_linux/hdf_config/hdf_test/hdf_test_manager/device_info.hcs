@@ -40,6 +40,17 @@ root {
                     deviceMatchAttr = "I2C_TEST";
                 }
             }
+            device_platform_adc_test :: device {
+                adc_tester :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_ADC_TEST";
+                    serviceName = "ADC_TEST";
+                    deviceMatchAttr = "ADC_TEST";
+                }
+            }
             device_platform_spi_test :: device {
                 spi_test :: deviceNode {
                     policy = 2;
