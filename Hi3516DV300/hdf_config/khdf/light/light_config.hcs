@@ -4,7 +4,7 @@ root {
             match_attr = "hdf_light_driver";
             lightAttr {
                 light01 {
-                    lightType = [1, 2];
+                    lightId = [1, 2];
                     busRNum = 31;
                     busGNum = 30;
                     busBNum = 29;
