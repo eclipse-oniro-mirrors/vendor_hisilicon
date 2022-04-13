@@ -25,7 +25,7 @@ vendor_hisilicon/hispark_pegasus/demo/udp_demo
 └── wifi_sta_connect.c  # 
 ```
 -   2.udp_demo工程编译烧录
-    -   将源码./vendor_hisilicon/hispark_pegasus/demo目录下的udp_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
+    -   将源码./vendor/hisilicon/hispark_pegasus/demo目录下的udp_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
     .
     └── applications

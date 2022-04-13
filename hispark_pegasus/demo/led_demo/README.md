@@ -9,16 +9,18 @@
 
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍
-```
-vendor_hisilicon/hispark_pegasus/demo/led_demo
-├── app_demo_led_control.c   # 主要实现控制GPIO口的电平高低，实现控制交通灯板上GPIO10引脚上的LED灯亮灭。
-├── BUILD.gn                 # BUILD.gn文件由三部分内容（目标、源文件、头文件路径）构成,开发者根据需要填写,static_library中指定业务模块的编译结果，为静态库文件ledDemo，开发者根据实际情况完成填写。sources中指定静态库.a所依赖。
-|                              的.c文件及其路径，若路径中包含"//"则表示绝对路径（此处为代码根路径），若不包含"//"则表示相对路径。include_dirs中指定source所需要依赖的.h文件路径。
-├── hal_iot_gpio_ex.c        # 实现了GPIO口的上拉以及复位
-└── iot_gpio_ex.h            # 
-```
+-   GPIO API
+
+| API名称                                                      | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| unsigned int GpioInit(void);                                 | GPIO模块初始化                                               |
+| unsigned int GpioSetDir(WifiIotGpioIdx id, WifiIotGpioDir dir); | 设置GPIO引脚方向，id参数用于指定引脚，dir参数用于指定输入或输出 |
+| unsigned int GpioSetOutputVal(WifiIotGpioIdx id, WifiIotGpioValue val); | 设置GPIO引脚的输出状态，id参数用于指定引脚，val参数用于指定高电平或低电平 |
+| unsigned int IoSetFunc(WifiIotIoName id, unsigned char val); | 设置引脚功能，id参数用于指定引脚，val用于指定引脚功能        |
+| unsigned int GpioDeinit(void);                               | 解除GPIO模块初始化                                           |
+
 -   2.工程编译
-    -   将源码./vendor_hisilicon/hispark_pegasus/demo目录下的led_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下，如图。
+    -   将源码./vendor/hisilicon/hispark_pegasus/demo目录下的led_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下，如图。
     ```
     .
     └── applications

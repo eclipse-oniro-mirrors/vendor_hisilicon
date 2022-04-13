@@ -33,7 +33,7 @@ vendor_hisilicon/hispark_pegasus/demo/traffic_light_demo
 └── task_start.c                # 
 ```
 -   2.工程编译
-    -    将源码./vendor_hisilicon/hispark_pegasus/demo目录下的traffic_light_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
+    -    将源码./vendor/hisilicon/hispark_pegasus/demo目录下的traffic_light_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
     .
     └── applications

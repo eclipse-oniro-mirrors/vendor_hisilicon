@@ -172,7 +172,7 @@ https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/getstart.h
 ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%8761.png)
 
 -   4.Hi3861V100与微信小程序之间通信
-    -    将源码./vendor_hisilicon/hispark_pegasus/demo目录下的iottencent_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
+    -    将源码./vendor/hisilicon/hispark_pegasus/demo目录下的iottencent_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
     .
     └── applications

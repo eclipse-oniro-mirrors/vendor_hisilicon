@@ -33,5 +33,7 @@
 -    [交通灯实验](traffic_light_demo/README.md)
 -    [环境检测实验](environment_demo/README.md)
 -    [NFC实验](nfc_demo/README.md)
+## 互联<a name="section11660541593"></a>
+-    [串口互联](interconnection_client_demo/README.md)
 ## 附录<a name="section11660541593"></a>
 -    [Hi3861V100 BootLoader的启动与运行](doc/BootLoader的启动与运行.md)

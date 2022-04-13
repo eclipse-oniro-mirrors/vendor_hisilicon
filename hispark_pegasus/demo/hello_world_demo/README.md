@@ -9,21 +9,18 @@
 
 ## 软件介绍
 -   1.代码目录结构及相应接口功能介绍,如下图所示：
-```
-vendor_hisilicon/hispark_pegasus/demo/hello_world_demo
-├── BUILD.gn            # BUILD.gn文件由三部分内容（目标、源文件、头文件路径）构成,开发者根据需要填写,
-|                       # sources中指定静态库.a所依赖的.c文件及其路径，若路径中包含"//"则表示绝对路径（此处为代码根路径），若不包含"//"则表示相对路
-|                       # 径。include_dirs中指定source所需要依赖的.h文件路径。
-├── hal_iot_gpio_ex.c   # 
-├── iot_gpio_ex.h       # 
-├── led_example.c       # LedExampleEntry():gpio9控制led灯闪烁;SYS_RUN(LedExampleEntry):启动恢复业务模块接口,定义ohos_init.h文件中。
-├── oled_demo.c         # OledmentTask():启动OLED任务;OledDemo():实现点亮led屏幕;APP_FEATURE_INIT():。
-├── oled_fonts.h        # g_f6X8[][6]:定义6*8矩阵;g_f8X16[]:定义8*16矩阵。
-├── oled_ssd1306.c      # IotI2cData:定义接收,发送数据以及长度;OledInit():OLED初始化。
-└── oled_ssd1306.h      # 
-```
+-   pwm API
+
+| API名称                                                      | 说明              |
+| ------------------------------------------------------------ | ----------------- |
+| unsigned int PwmInit(WifiIotPwmPort port);                   | PWM模块初始化     |
+| unsigned int PwmStart(WifiIotPwmPort port, unsigned short duty, unsigned short freq); | 开始输出PWM信号   |
+| unsigned int PwmStop(WifiIotPwmPort port);                   | 停止输出PWM信号   |
+| unsigned int PwmDeinit(WifiIotPwmPort port);                 | 解除PWM模块初始化 |
+| unsigned int PwmSetClock(WifiIotPwmClkSource clkSource);     | 设置PWM模块时钟源 |
+
 -  2.工程编译
-    -    将源码./vendor_hisilicon/hispark_pegasus/demo目录下的hello_world_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
+    -    将源码./vendor/hisilicon/hispark_pegasus/demo目录下的hello_world_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
     .
     └── applications

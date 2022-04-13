@@ -29,7 +29,7 @@ vendor_hisilicon/hispark_pegasus/demo/nfc_demo
 └── ssd1306_oled.c              # 
 ```
 -   2.工程编译
-    -    将源码./vendor_hisilicon/hispark_pegasus/demo目录下的nfc_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
+    -    将源码./vendor/hisilicon/hispark_pegasus/demo目录下的nfc_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
     .
     └── applications

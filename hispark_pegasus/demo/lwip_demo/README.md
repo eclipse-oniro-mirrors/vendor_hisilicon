@@ -24,7 +24,7 @@ vendor_hisilicon/hispark_pegasus/demo/lwip_demo
 └── oled_ssd1306.h           # 
 ```
 -   2.工程编译
-    -   将源码./vendor_hisilicon/hispark_pegasus/demo目录下的lwip_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下，如下图所示。
+    -   将源码./vendor/hisilicon/hispark_pegasus/demo目录下的lwip_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下，如下图所示。
     ```
     .
     └── applications
