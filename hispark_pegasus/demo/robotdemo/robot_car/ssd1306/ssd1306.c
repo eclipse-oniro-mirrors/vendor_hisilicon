@@ -336,14 +336,15 @@ void ssd1306_DrawPixel(uint8_t x, uint8_t y, SSD1306_COLOR color)
         return;
     }
 
+    SSD1306_COLOR color_temp = color;
     // Check if pixel should be inverted
     if (SSD1306.Inverted) {
-        color = (SSD1306_COLOR)!color;
+        color_temp = (SSD1306_COLOR)!color_temp;
     }
 
     // Draw in the right color
     uint32_t c = 8;
-    if (color == White) {
+    if (color_temp == White) {
         SSD1306_Buffer[x + (y / c)* SSD1306_WIDTH] |= 1 << (y % c);
     } else {
         SSD1306_Buffer[x + (y / c)* SSD1306_WIDTH] &= ~(1 << (y % c));
@@ -394,18 +395,19 @@ char ssd1306_DrawChar(char ch, FontDef Font, SSD1306_COLOR color)
 char ssd1306_DrawString(char* str, FontDef Font, SSD1306_COLOR color)
 {
     // Write until null-byte
-    while (*str) {
-        if (ssd1306_DrawChar(*str, Font, color)!= *str) {
+    char* str_temp = str;
+    while (*str_temp) {
+        if (ssd1306_DrawChar(*str_temp, Font, color)!= *str_temp) {
             // Char could not be written
-            return *str;
+            return *str_temp;
         }
 
         // Next char
-        str++;
+        str_temp++;
     }
 
     // Everything ok
-    return *str;
+    return *str_temp;
 }
 
 // Position the cursor
@@ -424,21 +426,23 @@ void ssd1306_DrawLine(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, SSD1306_CO
     int32_t signY = ((y1 < y2)? 1 : -1);
     int32_t error = deltaX - deltaY;
     int32_t error2;
+    uint8_t y1_temp = y1;
+    uint8_t x1_temp = x1;
 
     ssd1306_DrawPixel(x2, y2, color);
-    while ((x1 != x2)|| (y1 != y2)) {
-        ssd1306_DrawPixel(x1, y1, color);
+    while ((x1_temp != x2)|| (y1_temp != y2)) {
+        ssd1306_DrawPixel(x1_temp, y1_temp, color);
         error2 = error * DOUBLE;
     if (error2 > -deltaY) {
         error -= deltaY;
-        x1 += signX;
+        x1_temp += signX;
     } else {
     /* nothing to do */
     }
 
     if (error2 < deltaX) {
         error += deltaX;
-        y1 += signY;
+        y1_temp += signY;
     } else {
     /* nothing to do */
     }
@@ -591,15 +595,18 @@ void ssd1306_DrawRegion(uint8_t x, uint8_t y, uint8_t w, uint8_t h, const uint8_
         return;
     }
 
-    w = (w <= SSD1306_WIDTH ? w : SSD1306_WIDTH);
-    h = (h <= SSD1306_HEIGHT ? h : SSD1306_HEIGHT);
-    stride = (stride == 0 ? w : stride);
+    uint8_t w_temp = w;
+    uint8_t h_temp = h;
+    uint32_t stride_temp = stride;
+    w_temp = (w_temp <= SSD1306_WIDTH ? w_temp : SSD1306_WIDTH);
+    h_temp = (h_temp <= SSD1306_HEIGHT ? h_temp : SSD1306_HEIGHT);
+    stride_temp = (stride_temp == 0 ? w_temp : stride_temp);
     unsigned int c = 8;
 
-    uint8_t rows = size * c / stride;
+    uint8_t rows = size * c / stride_temp;
     for (uint8_t i = 0; i < rows; i++) {
-        uint32_t base = i * stride / c;
-        for (uint8_t j = 0; j < w; j++) {
+        uint32_t base = i * stride_temp / c;
+        for (uint8_t j = 0; j < w_temp; j++) {
             uint32_t idx = base + (j / c);
             uint8_t byte = idx < size ? data[idx] : 0;
             uint8_t bit = byte & (0x80 >> (j % c));
