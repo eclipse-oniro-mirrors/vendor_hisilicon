@@ -13,6 +13,7 @@
  *
  * limitations under the License.
  */
+
 #include "ssd1306.h"
 #include <math.h>
 #include <stdlib.h>

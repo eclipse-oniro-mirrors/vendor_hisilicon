@@ -13,6 +13,7 @@
  *
  * limitations under the License.
  */
+
 #include "ssd1306_fonts.h"
 
 #ifdef SSD1306_INCLUDE_FONT_7x10

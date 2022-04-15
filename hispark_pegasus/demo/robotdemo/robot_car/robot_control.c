@@ -17,6 +17,7 @@
  *
  * limitations under the License.
  */
+
 #include "ohos_init.h"
 #include "cmsis_os2.h"
 #include "iot_gpio.h"
