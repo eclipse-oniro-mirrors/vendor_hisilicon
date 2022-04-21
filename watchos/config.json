@@ -285,7 +285,6 @@
       {
         "subsystem": "useriam",
         "components": [
-          { "component": "auth_executor_mgr", "features":[]},
           { "component": "pin_auth", "features":[]},
           { "component": "user_auth", "features":[]},
           { "component": "faceauth", "features":[]},
