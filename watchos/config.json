@@ -288,8 +288,7 @@
           { "component": "pin_auth", "features":[]},
           { "component": "user_auth", "features":[]},
           { "component": "faceauth", "features":[]},
-          { "component": "useriam_common", "features":[]},
-          { "component": "user_idm", "features":[]}	  
+          { "component": "user_idm", "features":[]}
         ]
       },
       {
