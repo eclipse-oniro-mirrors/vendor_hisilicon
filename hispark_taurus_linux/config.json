@@ -136,6 +136,12 @@
         ]
       },
       {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "syscap_codec", "features":[] }
+        ]
+      },
+      {
         "subsystem": "global",
         "components": [
           { "component": "global_cust", "features":[] }
