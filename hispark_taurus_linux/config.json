@@ -32,7 +32,6 @@
         "subsystem": "security",
         "components": [
           { "component": "permission", "features":[] },
-          { "component": "dm-verity", "features":[] },
           { "component": "deviceauth_lite", "features":[] },
           { "component": "huks", "features":
             [
