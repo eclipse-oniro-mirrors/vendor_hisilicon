@@ -111,18 +111,6 @@
         wlan :: host {
             hostName = "wifi_host";
             priority = 50;
-            wifi_device :: device {
-                device0 :: deviceNode {
-                    policy = 2;
-                    priority = 100;
-                    moduleName = "libwifi_hdi_device.z.so";
-                    serviceName = "wlan_hal_service";
-                }
-            }
-        }
-		wifi :: host {
-            hostName = "wifi_c_host";
-            priority = 50;
             wifi_c_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
