@@ -35,5 +35,8 @@
 -    [NFC实验](nfc_demo/README.md)
 ## 互联<a name="section11660541593"></a>
 -    [串口互联](interconnection_client_demo/README.md)
+-    [WiFi互联](histreaming_client_demo/README.md)
+## Robotkit板例程<a name="section11660541593"></a>
+-    [car_demo](robot_demo/README.md)
 ## 附录<a name="section11660541593"></a>
 -    [Hi3861V100 BootLoader的启动与运行](doc/BootLoader的启动与运行.md)

@@ -12,37 +12,46 @@
 ## 软件介绍
 
 -   1.代码目录结构及相应接口功能介绍
-```
-vendor_hisilicon/hispark_pegasus/demo/histreaming_demo
-├── app_demo_config.c           # 
-├── app_demo_config.h           # 
-├── app_demo_get_mac_addr.c     # 
-├── app_demo_get_mac_addr.h     # 
-├── app_demo_gl5537_1.c         # 
-├── app_demo_histreaming.c      # 
-├── app_demo_i2c_oled.c         # 
-├── app_demo_i2c_oled.h         # 
-├── app_demo_multi_sample.c     # 
-├── app_demo_multi_sample.h     # 
-├── app_demo_traffic_sample.c   # 
-├── app_demo_traffic_sample.h   # 
-├── BUILD.gn                    # BUILD.gn文件由三部分内容（目标、源文件、头文件路径）构成,开发者根据需要填写,static_library中指定业务模块的编译结果，为静态库文件led_example，开发者根据实际情况完成填写。
-|                                 sources中指定静态库.a所依赖的.c文件及其路径，若路径中包含"//"则表示绝对路径（此处为代码根路径），若不包含"//"则表示相对路径。include_dirs中指定source所需要依赖的.h文件路径。
-├── hal_iot_adc.c               # 
-├── hal_iot_gpio_ex.c           # 
-├── histreaming.h               # 
-├── iot_adc.h                   # 
-├── iot_gpio_ex.h               # 
-├── ssd1306_oled.h              # 
-├── status_code.h               # 
-├── task_start.c                # 
-├── wifi_connecter.c            # 
-├── wifi_connecter.h            # 
-├── wifi_softap.c               # 
-├── wifi_sta.c                  # 
-├── wifi_starter.c              # 
-└── wifi_starter.h              # 
-```
+
+-   WiFi API
+
+| API                                                          | 接口说明                                |
+| ------------------------------------------------------------ | --------------------------------------- |
+| WifiErrorCode EnableWifi(void);                              | 开启STA                                 |
+| WifiErrorCode DisableWifi(void);                             | 关闭STA                                 |
+| int IsWifiActive(void);                                      | 查询STA是否已开启                       |
+| WifiErrorCode Scan(void);                                    | 触发扫描                                |
+| WifiErrorCode GetScanInfoList(WifiScanInfo* result, unsigned int* size); | 获取扫描结果                            |
+| WifiErrorCode AddDeviceConfig(const WifiDeviceConfig* config, int* result); | 添加热点配置，成功会通过result传出netld |
+| WifiErrorCode GetDeviceConfigs(WifiDeviceConfig* result, unsigned int* size); | 获取本机所有热点配置                    |
+| WifiErrorCode RemoveDevice(int networkId);                   | 删除热点配置                            |
+| WifiErrorCode ConnectTo(int networkId);                      | 连接到热点                              |
+| WifiErrorCode Disconnect(void);                              | 断开热点连接                            |
+| WifiErrorCode GetLinkedInfo(WifiLinkedInfo* result);         | 获取当前连接热点信息                    |
+| WifiErrorCode RegisterWifiEvent(WifiEvent* event);           | 注册事件监听                            |
+| WifiErrorCode UnRegisterWifiEvent(const WifiEvent* event);   | 解除事件监听                            |
+| WifiErrorCode GetDeviceMacAddress(unsigned char* result);    | 获取Mac地址                             |
+| WifiErrorCode AdvanceScan(WifiScanParams *params);           | 高级搜索                                |
+
+-   DHCP客户端接口：
+
+| API                 | 描述               |
+| ------------------- | ------------------ |
+| netifapi_netif_find | 按名称查找网络接口 |
+| netifapi_dhcp_start | 启动DHCP客户端     |
+| netifapi_dhcp_stop  | 停止DHCP客户端     |
+
+-   HiStreaming接口：
+
+| API                 | 描述               |
+| ------------------- | ------------------ |
+| LinkPlatformGe | 获得HiStreamingLinkLite组件对象 |
+| LinkPlatformFree | 释放HiStreamingLinkLite组件对象     |
+| LinkServiceAgentFree  | 释放从设备列表中pop出来的LinkServiceAgent对象     |
+| LinkAgentGet  | 获得LinkAgent对象     |
+| LinkAgentFree  | 释放LinkAgent对象    |
+| QueryResultFree  | 释放设备列表QueryResult。同时也释放设备列表关联的LinkServiceAgent对象    |
+
 -   2.工程编译
     -    将源码./vendor/hisilicon/hispark_pegasus/demo目录下的histreaming_demo整个文件夹及内容复制到源码./applications/sample/wifi-iot/app/下。
     ```
@@ -76,7 +85,7 @@ vendor_hisilicon/hispark_pegasus/demo/histreaming_demo
 
     -    工程相关配置完成后,然后编译。
 -   3.烧录
-    -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择burn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
+    -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择hiburn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
     -    烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。  
 -   4.手机端APP安装及使用（[histreaming APP源码](http://gitee.com/leo593362220/sources-histreaming-app.git)）
 
