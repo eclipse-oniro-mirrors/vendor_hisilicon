@@ -67,7 +67,7 @@ vendor_hisilicon/hispark_pegasus/demo/environment_demo
 
     -    工程相关配置完成后,然后编译。
 -   3.烧录
-    -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择burn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
+    -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择hiburn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
     -    烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。运行结果：environment_demo共有4种模式，分别是Environment Monitoring模式:当进入环境监测demo，初始状态是Environment Monitoring，主要用来实时显示外部环境的温湿度以及可燃气体的浓度。OLED显示屏的最后一行文字的含义：T：Temperature温度，H：Humidity湿度，CG：Combustible Gas 可燃气体。温度、湿度和可燃气体值；Temperature Mode模式: 当再次按下左键S1时，会从Environment Monitoring模式跳到Temperature Mode模式，此模式下的OLED屏上只会显示实时的温度，通过温度传感器来实时监测外界环境的温度数据；Humidity Mode模式: 当再次按下左键S1时，会从Temperature Mode模式跳转到Humiditymode模式，此模式下的OLED屏上只会显示实时的湿度，通过湿度传感器来实时监测外界环境的湿度数据；Combustible Gas Mode模式: 当再次按下左键S1时，会从Humidity mode模式跳转到Combustible Gas Mode模式，此模式下的OLED屏上只会显示实时可燃气体浓度数据，通过可燃气体传感器来实时监测外界环境的可燃气体浓度数据。此时如果再按一下左键S1就会跳到Return Menu界面，选择Exit就可以跳转到主菜单选择界面。
 
     Environment Monitoring模式：
