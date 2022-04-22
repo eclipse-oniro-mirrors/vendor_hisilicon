@@ -16,7 +16,7 @@ root {
                 serviceName = "usb_pnp_sample_service";
                 deviceMatchAttr = "usb_pnp_sample_matchAttr";
                 length = 19;
-                matchFlag = 0x0003;
+                matchFlag = 0x0000;
                 vendorId = 0xFFF0;
                 productId = 0xFFF0;
                 bcdDeviceLow = 0x0000;
@@ -34,7 +34,7 @@ root {
                 serviceName = "usbhost_acm_pnp_service";
                 deviceMatchAttr = "usbhost_acm_pnp_matchAttr";
                 length = 21;
-                matchFlag = 0x0303;
+                matchFlag = 0x0300;
                 vendorId = 0x12D1;
                 productId = 0x5000;
                 bcdDeviceLow = 0x0000;
@@ -52,7 +52,7 @@ root {
                 serviceName = "usbhost_acm_rawapi_service";
                 deviceMatchAttr = "usbhost_acm_rawapi_matchAttr";
                 length = 21;
-                matchFlag = 0x0303;
+                matchFlag = 0x0300;
                 vendorId = 0x12D1;
                 productId = 0x5000;
                 bcdDeviceLow = 0x0000;
@@ -70,7 +70,7 @@ root {
                 serviceName = "usbhost_ecm_pnp_service";
                 deviceMatchAttr = "usbhost_ecm_pnp_matchAttr";
                 length = 21;
-                matchFlag = 0x0303;
+                matchFlag = 0x0300;
                 vendorId = 0x12D1;
                 productId = 0x5000;
                 bcdDeviceLow = 0x0000;
@@ -88,7 +88,7 @@ root {
                 serviceName = "usbhost_acm_pnp_test_service";
                 deviceMatchAttr = "usbhost_acm_pnp_test_matchAttr";
                 length = 18;
-                matchFlag = 0x0003;
+                matchFlag = 0x0000;
                 vendorId = 0x05E3;
                 productId = 0x0749;
                 bcdDeviceLow = 0x0000;
