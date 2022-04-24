@@ -263,7 +263,7 @@
         "subsystem": "developtools",
         "components": [
           { "component": "bytrace_standard", "features":[]},
-          { "component": "hdc_standard", "features":[]},
+          { "component": "hdc", "features":[]},
           { "component": "profiler", "features":[]},
           { "component": "hiperf", "features":[]}
         ]
