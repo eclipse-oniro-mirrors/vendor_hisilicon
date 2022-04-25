@@ -151,7 +151,7 @@
       {
         "subsystem": "distributedhardware",
         "components": [
-          { "component": "devicemanager_lite", "features":[] }
+          { "component": "device_manager_base", "features":[] }
         ]
       },
       {
