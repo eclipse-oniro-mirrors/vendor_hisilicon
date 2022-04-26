@@ -29,8 +29,8 @@ root {
                      reg, rreg, shift, value, min, max, mask, invert value
                  */
                  ctrlParamsSeqConfig = [
-                     0x48,    0x48,    0,     0,     0x0,    0x2,    0x3,    0,    0,    // accessory enable
-                     0x48,    0x48,    0,     0,     0x0,    0x2,    0x3,    0,    0    // codec enable
+                     0x48,    0x48,    0,     0,     0x0,    0x2,    0x3,    0,    0,    // tfa9879 codec enable
+                     0x48,    0x48,    0,     0,     0x0,    0x2,    0x3,    0,    0    // hi3516 codec enable
                  ];
 
                  controlsConfig = [
