@@ -1,0 +1,15 @@
+root {
+    platform {
+        sdio_config {
+            template sdio_controller {
+                match_attr = "";
+                hostId = 2;
+                devType = 2;
+            }
+            controller_0x2dd1 :: sdio_controller {
+                match_attr = "hisilicon_hi35xx_sdio_0";
+            }
+        }
+    }
+}
+
