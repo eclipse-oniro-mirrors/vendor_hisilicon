@@ -185,7 +185,7 @@
         "subsystem": "global",
         "components": [
           { "component": "i18n_standard", "features":[] },
-          { "component": "resmgr_standard", "features":[] },
+          { "component": "resource_management", "features":[] },
           { "component": "systemres", "features":[] },
           { "component": "cust_lite", "features":[] }
         ]
