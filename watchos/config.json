@@ -231,7 +231,7 @@
       {
         "subsystem": "account",
         "components": [
-          { "component": "os_account_standard", "features":[] }
+          { "component": "os_account", "features":[] }
         ]
       },
       {
