@@ -134,7 +134,7 @@
       {
         "subsystem": "global",
         "components": [
-          { "component": "resmgr_lite", "features":[] },
+          { "component": "resource_management_lite", "features":[] },
           { "component": "i18n_lite", "features":[] }
         ]
       },
