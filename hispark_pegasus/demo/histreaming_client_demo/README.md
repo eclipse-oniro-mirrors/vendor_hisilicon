@@ -1,4 +1,5 @@
-# Pegasus与Taurus串口互联通信<a name="ZH-CN_TOPIC_0000001130176841"></a>
+# Pegasus与Taurus WiFi互联通信<a name="ZH-CN_TOPIC_0000001130176841"></a>
+-    在学习Pegasus与Taurus WiFi互联通信前，需要将[device_soc_hisilicon](http://gitee.com/openharmony/device_soc_hisilicon)仓下载，下载完成后，将device_soc_hisilicon/hi3861v100/sdk_liteos/build/libs/libhistreaminglink.a这个库文件替换到docker里面device\soc\hisilicon\hi3861v100\sdk_liteos\build\libs\目录下。同时需要下载[vendor_hisilicon](http://gitee.com/openharmony/vendor_hisilicon)仓，将vendor_hisilicon\hispark_pegasus\demo\histreaming_client_demo整个文件夹复制到docker里面vendor\hisilicon\hispark_pegasus\demo目录下。
 
 -    前言：HiStreaming 组件作为一种技术基础设施，使得海思芯片可以通过WiFi或有线网络实现物联网设备之间的设备自动发现、服务注册与识别、服务操作。HiStreaming把物联网设备分为两类角色，对外部提供服务的设备称之为 Server 设备，而使用其他设备提供的服务的设备称之为 Client 设备。
 
