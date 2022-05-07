@@ -1,0 +1,289 @@
+ root {
+    device_info {
+        match_attr = "hdf_manager";
+        template host {
+            hostName = "";
+            priority = 100;
+            uid = "";
+            gid = "";
+            caps = [""];
+            template device {
+                template deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "";
+                    serviceName = "";
+                    deviceMatchAttr = "";
+                }
+            }
+        }
+        platform :: host {
+            hostName = "sample_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            sample_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 2;
+                    moduleName = "libsample_driver.z.so";
+                    serviceName = "sample_driver_service";
+                }
+            }
+        }
+        usb :: host {
+            hostName = "usb_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            usb_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libusbd.z.so";
+                    serviceName = "usbd";
+                }
+            }
+        }
+        usbfnMaster :: host {
+            hostName = "usbfnMaster_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            usb_pnp_manager_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 70;
+                    moduleName = "libusb_pnp_manager.z.so";
+                    serviceName = "usb_pnp_manager";
+                }
+            }
+            usbfn_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 80;
+                    moduleName = "libusbfn_master.z.so";
+                    serviceName = "usbfn_master";
+                    deviceMatchAttr = "usbfn_master_driver";
+                }
+            }
+            ecm_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 81;
+                    moduleName = "libusbfn_cdcecm.z.so";
+                    serviceName = "usbfn_cdcecm";
+                    deviceMatchAttr = "usbfn_cdcecm_driver";
+                }
+            }
+            acm_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libusbfn_cdcacm.z.so";
+                    serviceName = "usbfn_cdcacm";
+                    deviceMatchAttr = "usbfn_cdcacm_driver";
+                }
+            }
+        }
+        power :: host {
+            hostName = "power_host";
+            priority = 50;
+            uid = "system";
+            gid = "system";
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            power_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libpower_driver.z.so";
+                    serviceName = "power_interface_service";
+                }
+            }
+            battery_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libbattery_driver.z.so";
+                    serviceName = "battery_interface_service";
+                }
+            }
+            thermal_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libthermal_driver.z.so";
+                    serviceName = "thermal_interface_service";
+                }
+            }
+        }
+        wlan :: host {
+            hostName = "wifi_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            wifi_c_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libwifi_hdi_c_device.z.so";
+                    serviceName = "wlan_hal_c_service";
+                }
+            }
+        }
+        audio :: host {
+            hostName = "audio_hdi_server_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            audio_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libhdi_audio_primary_server.z.so";
+                    serviceName = "audio_hdi_service";
+                }
+            }
+            audio_usb_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libhdi_audio_usb_server.z.so";
+                    serviceName = "audio_hdi_usb_service";
+                }
+            }
+            audio_a2dp_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libhdi_audio_a2dp_server.z.so";
+                    serviceName = "audio_hdi_a2dp_service";
+                }
+            }
+            audio_pnp_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    moduleName = "libhdi_audio_pnp_server.z.so";
+                    serviceName = "audio_hdi_pnp_service";
+                }
+            }
+        }
+        hdi_server :: host {
+            hostName = "camera_mpp_host";
+            priority = 50;
+            uid = "root";
+            gid = "system";
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            camera_device :: device {
+                 device0 :: deviceNode {
+                     policy = 2;
+                     priority = 100;
+                     moduleName = "libcamera_hdi_impl.z.so";
+                     serviceName = "camera_service";
+                 }
+             }
+
+	    display_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 120;
+                    moduleName = "libhdi_video_layer_service.z.so";
+                    serviceName = "hdi_video_layer_service";
+                }
+            }
+        }
+
+        input_hal :: host {
+            hostName = "input_user_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            input_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 150;
+                    moduleName = "libhdf_input_hotplug.z.so";
+                    serviceName = "input_service";
+                }
+            }
+        }
+
+        display_gralloc :: host {
+            hostName = "display_gralloc_host";
+            priority = 40;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            input_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 160;
+                    moduleName = "libhdi_display_gralloc_stub.z.so";
+                    serviceName = "hdi_display_gralloc_service";
+                }
+            }
+        }
+
+        codec :: host {
+            hostName = "codec_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            codec_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 200;
+                    moduleName = "libcodec_server.z.so";
+                    serviceName = "codec_hdi_service";
+                }
+            }
+        }
+        riladapter :: host {
+            hostName = "riladapter_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            riladapter_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libhril_hdf.z.so";
+                    serviceName = "cellular_radio1";
+                }
+            }
+        }
+        sensor_dal :: host { 
+            hostName = "sensor_dal_host"; 
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            sensor_dal_device :: device { 
+                device0 :: deviceNode { 
+                    policy = 2; 
+                    priority = 100; 
+                    moduleName = "libsensor_driver.z.so"; 
+                    serviceName = "sensor_interface_service"; 
+                } 
+            } 
+        }
+        vibrator_dal :: host {
+            hostName = "vibrator_dal_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            vibrator_dal_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libvibrator_driver.z.so";
+                    serviceName = "vibrator_interface_service";
+                }
+            }
+        }
+        light_dal :: host {
+            hostName = "light_dal_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            light_dal_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "liblight_driver.z.so";
+                    serviceName = "light_interface_service";
+                }
+            }
+        }
+    }
+}
