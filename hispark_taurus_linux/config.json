@@ -9,7 +9,7 @@
     "kernel_version": "5.10",
     "subsystems": [
       {
-        "subsystem": "ace",
+        "subsystem": "arkui",
         "components": [
           { "component": "ace_engine_lite", "features":[ "" ] }
         ]
