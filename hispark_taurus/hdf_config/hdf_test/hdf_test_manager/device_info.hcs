@@ -291,6 +291,23 @@ root {
                     deviceMatchAttr = "REGULATOR_TEST";
                 }
             }
+	    device_platform_can_test :: device {
+                can_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "can_driver_virtual";
+                    serviceName = "CAN_DRIVER_VIRTUAL";
+                }
+                can_tester :: deviceNode {
+                    policy = 1;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_CAN_TEST";
+                    serviceName = "CAN_TEST";
+                }
+            }
         }
     }
 }
