@@ -106,7 +106,7 @@
         ]
       },
       {
-        "subsystem": "ace",
+        "subsystem": "arkui",
         "components": [
           { "component": "ace_engine_lite", "features":[ "" ] }
         ]
