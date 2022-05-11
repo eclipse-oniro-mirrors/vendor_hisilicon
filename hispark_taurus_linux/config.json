@@ -67,7 +67,9 @@
         "components": [
           { "component": "dsoftbus", "features":[] },
           { "component": "rpc", "features":[] },
-          { "component": "wpa_supplicant", "features":[] }
+          { "component": "wpa_supplicant", "features":[] },
+          { "component": "wifi", "features":[] },
+          { "component": "dhcp", "features":[] }
         ]
       },
       {
