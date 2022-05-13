@@ -4,13 +4,18 @@ root {
             match_attr = "hdf_light_driver";
             lightAttr {
                 light01 {
-                    lightId = [1, 2];
-                    busRNum = 31;
-                    busGNum = 30;
-                    busBNum = 29;
-                    lightBrightness = 0X80000000;
-                    onTime = 50;
-                    offTime = 50;
+                    lightId = [1];    /* Lightid can contain multiple logical light ID, for example:
+                                        1 indicates the power indicator. These logic lights work on
+                                        the same physical light light01. */
+                    busRNum = 31;    // Red corresponding GPIO.
+                    busGNum = 30;    // Green corresponding GPIO.
+                    busBNum = 29;    // Blue corresponding GPIO.
+                    defaultBrightness = 0X00FFFFFF;    /* System default brightness value.
+                                                        B: 0-7bit, R: 8-15bit, G: 16-23, extended bit: 24-31bit. */
+                    onTime = 50;    /* The minimum duration (in milliseconds) that the system supports
+                                        when the light is on during flashing */
+                    offTime = 50;    /* The minimum duration (in milliseconds) that the system supports
+                                        when the light is off during flashing */
                 }
             }
         }
