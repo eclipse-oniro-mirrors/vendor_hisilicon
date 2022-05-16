@@ -4,6 +4,7 @@
     "type": "small",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "hisilicon",
+    "device_build_path": "device/board/hisilicon/hispark_taurus",
     "board": "hispark_taurus",
     "kernel_type": "liteos_a",
     "kernel_version": "",
@@ -136,13 +137,6 @@
         "components": [
           { "component": "resource_management_lite", "features":[] },
           { "component": "i18n_lite", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "vendor",
-        "components": [
-          { "component": "hardware", "features":[] },
-          { "component": "middleware", "features":[] }
         ]
       },
       {

@@ -4,6 +4,7 @@
     "version": "3.0",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "hisilicon",
+    "device_build_path": "device/board/hisilicon/hispark_pegasus",
     "board": "hispark_pegasus",
     "kernel_type": "liteos_m",
     "kernel_is_prebuilt": true,
@@ -93,12 +94,6 @@
             ]
           },
           { "component": "os_dump", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "vendor",
-        "components": [
-          { "component": "hi3861_sdk", "target": "//device/soc/hisilicon/hi3861v100/sdk_liteos:wifiiot_sdk", "features":[] }
         ]
       },
       {

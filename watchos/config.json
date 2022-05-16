@@ -109,11 +109,6 @@
         ]
       },
       {
-        "subsystem": "vendor",
-        "components": [
-        ]
-      },
-      {
         "subsystem": "updater",
         "components": [
           { "component": "updater", "features": [] },
