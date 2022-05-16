@@ -505,6 +505,27 @@
                     deviceMatchAttr = "hdf_sensor_pedometer_bmi160_driver";
                 }
             }
+            device_sensor_ppg :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_PPG";
+                    serviceName = "hdf_sensor_ppg";
+                }
+            }
+            device_ppg_cs1262 :: device {
+                device0 :: deviceNode {
+                    policy = 1;
+                    priority = 120;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "HDF_SENSOR_PPG_CS1262";
+                    serviceName = "hdf_ppg_cs1262";
+                    deviceMatchAttr = "hdf_sensor_ppg_cs1262_driver";
+                }
+            }
         }
         usb_pnp_linux :: host {
             hostName = "usb_pnp_linux_host";

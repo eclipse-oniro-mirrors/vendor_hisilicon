@@ -1,0 +1,57 @@
+#include "../sensor_common.hcs"
+root {
+    ppg_cs1262_chip_config : sensorConfig {
+        match_attr = "hdf_sensor_ppg_cs1262_driver";
+        sensorInfo :: sensorDeviceInfo {
+            sensorName = "ppg";
+            vendorName = "chipsea_cs1262"; // max string length is 16 bytes
+            firmwareVersion = "1.0";
+            hardwareVersion = "1.0";
+            sensorTypeId = 129; // enum SensorTypeTag
+            sensorId = 129; // enum SensorTag SENSOR_TAG_PHOTOPLETHYSMOGRAPH
+        }
+        sensorBusConfig :: sensorBusInfo {
+            busType = 1; // 0:i2c 1:spi
+            busNum = 1;
+            busAddr = 0;
+            regWidth = 2; // 2btye
+            csNum = 0;
+            spiBusCfg :: spiBusInfo { /* reference struct SpiCfg */
+                maxSpeedHz = 8388608; //8 * 1024 * 1024;
+                mode = 0;
+                transferMode = 1;
+                bitsPerWord = 8;
+            }
+        }
+        sensorIdAttr :: sensorIdInfo {
+            chipName = "cs1262";
+            chipIdRegister = 0x01f1;
+            chipIdValue = 0x1262;
+        }
+        ppgPinConfig {
+            /*
+             * regAddr: register address
+             * regLen: with of regAddr
+             * value: config register value
+             */
+            multiUseSet = [
+                0x112F0020, 0x4, 0x4f1,
+                0x112F0024, 0x4, 0x4f1,
+                0x112F0028, 0x4, 0x4f1,
+                0x112F002C, 0x4, 0x501
+            ];
+            /*
+                GPIOINDEX 0,1,2,
+                GPIONO 8*3+5 = 29, for gpio3_5 of hi3516dev300
+                GPIOTYPE GPIO(0)\INT(1)
+                DIR: IN(0)\OUT(1)
+                MODE: LOW(0)\HIGH(1)
+                      irq trigger edge, rising(1)\falling(2)\high(4)\low(8)\thread
+             */
+            gipos = [
+                0, 29, 0, 1, 1,
+                1, 6,  1, 0, 1,
+            ];
+        }
+    }
+}

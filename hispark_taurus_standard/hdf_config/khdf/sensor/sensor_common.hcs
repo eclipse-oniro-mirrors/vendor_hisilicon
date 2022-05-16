@@ -19,6 +19,12 @@ root {
             busAddr = 0;
             regWidth = 1;
             regBigEndian = 0;
+            template spiBusInfo { /* reference struct SpiCfg */
+                maxSpeedHz = 10485760; // 10 * 1024 * 1024;
+                mode = 0;
+                transferMode = 1;
+                bitsPerWord = 8;
+            }
         }
 
         template sensorIdInfo {
