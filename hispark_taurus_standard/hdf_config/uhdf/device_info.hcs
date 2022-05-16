@@ -89,8 +89,8 @@
         power :: host {
             hostName = "power_host";
             priority = 50;
-            uid = "system";
-            gid = "system";
+            uid = "power_host";
+            gid = "power_host";
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
             power_device :: device {
                 device0 :: deviceNode {
