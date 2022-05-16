@@ -4,6 +4,7 @@
     "version": "3.0",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "hisilicon",
+    "device_build_path": "device/board/hisilicon/hispark_aries",
     "board": "hispark_aries",
     "kernel_type": "liteos_a",
     "kernel_version": "",
@@ -105,13 +106,6 @@
         "components": [
           { "component": "kv_store", "features":[] },
           { "component": "os_dump", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "vendor",
-        "components": [
-          { "component": "middleware", "features":[] },
-          { "component": "hardware", "features":[] }
         ]
       },
       {
