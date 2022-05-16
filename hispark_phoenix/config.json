@@ -490,6 +490,10 @@
 		{
 		  "component": "faceauth_device_driver_interface",
 		  "features": []
+		},
+		{
+		  "component": "user_auth_device_driver_interface",
+		  "features": []
 		}
       ]
     },
