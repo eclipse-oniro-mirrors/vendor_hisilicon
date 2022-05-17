@@ -484,11 +484,11 @@
 		  "features": []
 		},
 		{
-		  "component": "pinauth_device_driver_interface",
+		  "component": "pin_auth_device_driver_interface",
 		  "features": []
 		},
 		{
-		  "component": "faceauth_device_driver_interface",
+		  "component": "face_auth_device_driver_interface",
 		  "features": []
 		},
 		{
