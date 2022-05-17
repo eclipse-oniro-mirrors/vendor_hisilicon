@@ -168,11 +168,9 @@
             }
         }
         hdi_server :: host {
-            hostName = "camera_mpp_host";
+            hostName = "camera_host";
             priority = 50;
-            uid = "root";
-            gid = "system";
-            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "SYS_RAWIO"];
             camera_device :: device {
                  device0 :: deviceNode {
                      policy = 2;
