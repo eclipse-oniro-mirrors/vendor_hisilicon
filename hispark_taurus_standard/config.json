@@ -484,6 +484,10 @@
           "features": []
         },
         {
+          "component": "fingerprint_auth_device_driver",
+          "features": []
+        },
+        {
           "component": "sensor_device_driver_interface",
           "features": []
         },
@@ -517,6 +521,10 @@
         },
         {
           "component": "user_auth_device_driver_interface",
+          "features": []
+        },
+        {
+          "component": "fingerprint_auth_device_driver_interface",
           "features": []
         },
         {
