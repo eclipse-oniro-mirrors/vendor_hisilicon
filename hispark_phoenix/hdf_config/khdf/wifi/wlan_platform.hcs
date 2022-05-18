@@ -2,7 +2,7 @@ root {
     module = "wlan";
     wlan_config {
         match_attr = "hdf_wlan_driver";
-        hostChipName = "hi3516dv300";
+        hostChipName = "hi3751v350";
         moduleConfig {
             featureMap = 0xFFFF;
             msgName = "WalService";
@@ -57,7 +57,7 @@ root {
                 }
                 bootUpTimeOut = 30;
                 bus {
-                    busType = 0; /* 0-sdio 1-usb 2-spi etc. */
+                    busType = 1; /* 0-sdio 1-usb 2-spi etc. */
                     busIdx = 2;
                     funcNum = [1,2];
                     timeout = 1000;
@@ -65,13 +65,13 @@ root {
                }
             }
         }
-        hisi :& deviceList {
+        rtl :& deviceList {
             device0 :: deviceInst {
                 deviceInstId = 0;
                 powers {
                     power0 {
                         powerSeqDelay = 0;
-                        powerType = 1; /* AlwaysON(0);GPIO(1) */
+                        powerType = 0; /* AlwaysON(0);GPIO(1) */
                         gpioId = 91;
                         activeLevel=1; /* High(1); Low(0) */
                     }
@@ -83,14 +83,14 @@ root {
                     }
                 }
                 reset {
-                    resetType = 1; /* NotManaged(0);GPIO(1) */
+                    resetType = 0; /* NotManaged(0);GPIO(1) */
                     gpioId = 90;
                     activeLevel = 0; /* High(1); Low(0) */
                     resetHoldTime = 16; /*In ms*/
                 }
                 bootUpTimeOut = 32;
                 bus {
-                    busType = 0; /* 0-sdio 1-usb 2-spi etc. */
+                    busType = 1; /* 0-sdio 1-usb 2-spi etc. */
                     busIdx = 2;
                     funcNum = [1];
                     timeout = 1000;
@@ -100,11 +100,11 @@ root {
         }
         chipList {
             template chipInst {
-                match_attr = "hdf_wlan_chips_hi3881";
-                driverName = "hi3881";
+                match_attr = "hdf_wlan_chips_rtl8723du";
+                driverName = "rtl8723du";
                 sdio {
-                    vendorId = 0x0296;
-                    deviceId = [0x5347];
+                    vendorId = 0x0BDA;
+                    deviceId = [0xD723];
                 }
             }
         }

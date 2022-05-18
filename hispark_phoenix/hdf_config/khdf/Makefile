@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2020-2021 Huawei Device Co., Ltd.
+# Copyright (c) 2020-2022 Huawei Device Co., Ltd.
 #
 # This software is licensed under the terms of the GNU General Public
 # License version 2, as published by the Free Software Foundation, and
@@ -35,6 +35,9 @@ else
     HCS_DIR := $(LOCAL_HCS_ROOT)
   endif
   ifneq ($(CONFIG_ARCH_HI3518EV300),)
+    HCS_DIR := $(LOCAL_HCS_ROOT)
+  endif
+  ifneq ($(CONFIG_ARCH_HI3751V350),)
     HCS_DIR := $(LOCAL_HCS_ROOT)
   endif
 endif
