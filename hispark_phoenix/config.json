@@ -329,6 +329,10 @@
       "subsystem": "communication",
       "components": [
         {
+          "component": "bluetooth",
+          "features": []
+        },
+        {
           "component": "ipc",
           "features": []
         },

@@ -33,6 +33,31 @@
                 }
             }
         }
+        bluetooth :: host {
+            hostName = "blue_host";
+            priority = 50;
+            bluetooth_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libbluetooth_hdi_server.z.so";
+                    serviceName = "BtHciService";
+                }
+            }
+        }
+        audio_bluetooth :: host {
+            hostName = "a2dp_host";
+            priority = 50;
+            bluetooth_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 2;
+                    moduleName = "libaudio_bluetooth_hdi_adapter_server.z.so";
+                    serviceName = "audio_bluetooth_hdi_service";
+                }
+            }
+        }
         usb :: host {
             hostName = "usb_host";
             priority = 50;
