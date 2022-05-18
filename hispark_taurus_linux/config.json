@@ -4,7 +4,7 @@
     "type": "small",
     "ohos_version": "OpenHarmony 1.0",
     "device_company": "hisilicon",
-    "device_build_path": "device/board/hisilicon/hispark_taurus/linux",
+    "device_build_path": "device/board/hisilicon/hispark_taurus",
     "board": "hispark_taurus",
     "kernel_type": "linux",
     "kernel_version": "5.10",
