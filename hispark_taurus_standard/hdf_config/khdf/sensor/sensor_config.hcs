@@ -7,3 +7,4 @@
 #include "proximity/proximity_apds9960_config.hcs"
 #include "accel/gravity_config.hcs"
 #include "pedometer/pedometer_bmi160_config.hcs"
+#include "ppg/ppg_cs1262_config.hcs"
