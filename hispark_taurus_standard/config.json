@@ -34,7 +34,19 @@
       "subsystem": "distributeddatamgr",
       "components": [
         {
-          "component": "native_appdatamgr",
+          "component": "relational_store",
+          "features": []
+        },
+        {
+          "component": "dataability",
+          "features": []
+        },
+        {
+          "component": "preferences",
+          "features": []
+        },
+        {
+          "component": "data_share",
           "features": []
         },
         {
