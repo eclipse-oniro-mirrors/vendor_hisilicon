@@ -88,12 +88,17 @@
         "subsystem": "utils",
         "components": [
           { "component": "file", "features":[] },
+          { "component": "os_dump", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributeddatamgr",
+        "components": [
           { "component": "kv_store",
             "features": [
               "enable_ohos_utils_native_lite_kv_store_use_posix_kv_api = false"
             ]
-          },
-          { "component": "os_dump", "features":[] }
+          }
         ]
       },
       {
