@@ -102,7 +102,7 @@ root {
             template chipInst {
                 match_attr = "hdf_wlan_chips_rtl8723du";
                 driverName = "rtl8723du";
-                sdio {
+                bus {
                     vendorId = 0x0BDA;
                     deviceId = [0xD723];
                 }
