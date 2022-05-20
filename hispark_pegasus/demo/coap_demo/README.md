@@ -4,7 +4,7 @@
 -    [Hi3861V100核心板参考：HiSpark_WiFi_IoT智能开发套件_原理图硬件资料\原理图\HiSpark_WiFi-IoT_Hi3861_CH340G_VER.B.pdf](http://gitee.com/hihope_iot/embedded-race-hisilicon-track-2022/blob/master/%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%96%99/HiSpark_WiFi_IoT%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6_%E5%8E%9F%E7%90%86%E5%9B%BE.rar)
 -    [扩展板参考：HiSpark_WiFi_IoT智能开发套件_原理图硬件资料\原理图\HiSpark_WiFi-IoT_Hi3861_CH340G_VER.B.pdf](http://gitee.com/hihope_iot/embedded-race-hisilicon-track-2022/blob/master/%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%96%99/HiSpark_WiFi_IoT%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%BC%80%E5%8F%91%E5%A5%97%E4%BB%B6_%E5%8E%9F%E7%90%86%E5%9B%BE.rar)
 
-![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87209.png)
+![输入图片说明](../doc/figures/coap_demo/002coap.png)
 
 ## 软件介绍
 
@@ -86,9 +86,9 @@ vendor_hisilicon/hispark_pegasus/demo/coap_demo
     }
     ```
 
-    -    修改完成后编译烧录到Hi3861V100开发板上，烧录成功后，再次点击Hi3861核心板上的“RST”复位键，在串口工具栏可以看到server服务端IP地址。
+    -    修改完成后编译rebuild,烧录到Hi3861V100开发板上，烧录成功后，再次点击Hi3861核心板上的“RST”复位键，在串口工具栏可以看到server服务端IP地址。
 
-    ![输入图片说明](https://gitee.com/asd1122/tupian/raw/master/%E5%9B%BE%E7%89%87/coap/coap2.png)
+    ![输入图片说明](../doc/figures/coap_demo/002coap.png)
 
     -    配置./applications/sample/wifi-iot/app/coap_demo/iot_config.h中字段PARAM_SERVER_ADDR里面主机IP地址。
     ```
@@ -138,9 +138,7 @@ vendor_hisilicon/hispark_pegasus/demo/coap_demo
     }
     ```
 
-    -    工程相关配置完成后,然后编译。
+    -    工程相关配置完成后,然后rebuild编译。
 -   3.烧录
     -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择hiburn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
     -    烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。运行结果：服务端设备在串口工具显示Hello coap，客户端在串口工具显示scheduling for xxxx ticks。
-    
-    

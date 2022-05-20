@@ -6,11 +6,10 @@
 -    [Hi3861V100应用场景介绍](doc/Hi3861V100应用场景介绍.md)
 ## 开发环境搭建<a name="section11660541593"></a>
 -    [搭建IDE工具开发环境](https://device.harmonyos.com/cn/docs/documentation/guide/ide-install-windows-ubuntu-0000001194073744)
--    [源码获取(执行完成后，请在输入repo forall -c git checkout -b weekly_20220419)](https://device.harmonyos.com/cn/docs/documentation/guide/sourcecode-acquire-0000001050769927)
+-    [源码获取](https://device.harmonyos.com/cn/docs/documentation/guide/sourcecode-acquire-0000001050769927)
 -    [打开工程/源码](https://device.harmonyos.com/cn/docs/documentation/guide/open_project-0000001071680043)
 -    [编译Hi3861V100开发板源码](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861v100-compile-0000001192526021)
 -    [Hi3861V100开发板烧录](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861-upload-0000001051668683)
--    [IDE串口工具的使用](doc/IDE串口工具指导.md)
 -    [运行第一个程序Hello world](hello_world_demo/README.md)
 ## WiFi_IoT常用接口案例<a name="section11660541593"></a>
 -    [I2C通信介绍](doc/I2C通信介绍.md)
