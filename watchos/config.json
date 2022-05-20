@@ -250,8 +250,8 @@
       {
         "subsystem": "notification",
         "components": [
-          { "component": "ces_standard", "features":[]},
-          { "component": "ans_standard", "features":[]}
+          { "component": "common_event_service", "features":[]},
+          { "component": "distributed_notification_service", "features":[]}
         ]
       },
       {
