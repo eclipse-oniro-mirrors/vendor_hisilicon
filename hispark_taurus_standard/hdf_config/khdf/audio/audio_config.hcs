@@ -7,8 +7,6 @@ root {
             platformName = "";
             cpuDaiName = "";
             codecDaiName = "";
-            accessoryName = "";
-            accessoryDaiName = "";
             dspName = "";
             dspDaiName = "";
         }
@@ -25,10 +23,10 @@ root {
         controller_0x120c1001 :: card_controller {
             match_attr = "hdf_audio_driver_1";
             serviceName = "hdf_audio_codec_primary_dev11";
-            accessoryName = "codec_service_1";
+            codecName = "codec_service_1";
             platformName = "dma_service_0";
             cpuDaiName = "dai_service";
-            accessoryDaiName = "accessory_dai";
+            codecDaiName = "tfa9879_codec_dai";
             dspName = "dsp_service_0";
             dspDaiName = "dsp_dai";
         }
