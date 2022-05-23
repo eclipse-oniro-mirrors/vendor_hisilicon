@@ -10,20 +10,6 @@
 
 ![输入图片说明](../doc/figures/interconnection_client_demo/030interconnection.png)
 
-## 串口通信控制协议HiSignalling介绍
--    为了便于Taurus与Pegasus开发套件之间进行通信和控制，定义了一套简易的HiSignalling通信控制协议，数据帧格式如下表所示，并提供相关参考代码，大家也可以根据自己的需要使用其他协议。
-
-| 帧头（2Byte）  | Payload Len (2Byte)  | payload  | 帧尾（1Byte）  | CRC32(4Byte)  |
-|---|---|---|---|---|
-| 0xAA,0x55  |   |   | 0xFF  | CRC32 |
-			
-例如一组数据帧为：AA5500020003FF8ED2BEDF (十六进制不区分大小写)
--    0AA55:       帧头
--    0002：       Payload Len
--    0003:        Payload
--    FF:          帧尾
--    8ED2BEDF:    CRC32校验码
-
 ## 软件介绍
 -   注意这里需要跟Taurus同时使用，Taurus软件介绍详情可以参考串口互联server端。
 -   1.代码目录结构及相应接口功能介绍
@@ -77,10 +63,6 @@
     -    工程相关配置完成后,然后rebuild编译。
 -   3.烧录
     -   编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择hiburn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
-    -   烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。运行结果:打开串口工具，可以看到如下打印,同时3861主板灯闪亮一下。
-
-    ![输入图片说明](../doc/figures/interconnection_client_demo/031interconnection.png)
-
-    ![输入图片说明](../doc/figures/interconnection_client_demo/032interconnection.png)
+    -   烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。运行结果:打开串口工具，可以看到打印,同时3861主板灯闪亮一下。
 
     ![输入图片说明](../doc/figures/interconnection_client_demo/033interconnection.png)
