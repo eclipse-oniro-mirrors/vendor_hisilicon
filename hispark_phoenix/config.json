@@ -510,6 +510,10 @@
 		{
 		  "component": "user_auth_device_driver_interface",
 		  "features": []
+		},
+    {
+		  "component": "input_device_driver_interface",
+		  "features": []
 		}
       ]
     },
