@@ -105,7 +105,7 @@
         ![输入图片说明](../doc/figures/histreaming_client_demo/017histreamingclient.png)
 
 -   4.手机端控制
-    -   如果你想使用手机来控制Pegasus或者Taurus，手机端安装及使用（[histreaming APP源码](http://gitee.com/leo593362220/sources-histreaming-app.git)），然后进入app-release.rar目录，将app-debug.apk安装到手机上，具体的安装过程这里就不介绍了(通过数据线复制到手机，或使用微信、QQ等方式发送到手机再安装)。
+    -   如果你想使用手机来控制Pegasus或者Taurus，手机端安装及使用（源码下载](http://gitee.com/leo593362220/sources-histreaming-app.git)），然后进入app-release.rar目录，将app-debug.apk安装到手机上，具体的安装过程这里就不介绍了(通过数据线复制到手机，或使用微信、QQ等方式发送到手机再安装)。
 APP安装成功后，打开手机的WiFi列表，连接到Taurus开发板的AP热点或者路由器热点，再打开刚安装好的HiStreaming APP，下拉刷新几次，手机会发现两个设备，分别是Pegasus开发板设备和Taurus开发板设备。
 
     -   任意点击一个设备进行操作，点击LED灯控制按钮，会进入一个灯的控制界面。点击图片会发生变化，且会给对应的设备发送数据,同时控制灯亮与熄。
