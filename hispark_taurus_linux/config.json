@@ -26,7 +26,8 @@
       {
         "subsystem": "hiviewdfx",
         "components": [
-          { "component": "hilog_featured_lite", "features":[] }
+          { "component": "hilog_featured_lite", "features":[] },
+          { "component": "faultloggerd", "features":[] }
         ]
       },
       {
