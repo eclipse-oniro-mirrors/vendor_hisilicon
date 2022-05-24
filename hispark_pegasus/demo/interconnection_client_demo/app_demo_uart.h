@@ -16,11 +16,24 @@
 #ifndef APP_DEMO_UART_H
 #define APP_DEMO_UART_H
 
-#define UART_BUFF_SIZE           32
+#define UART_BUFF_SIZE           11
 #define WRITE_BY_INT
 #define UART_DEMO_TASK_STAK_SIZE 2048
 #define UART_DEMO_TASK_PRIORITY  25
 #define DEMO_UART_NUM            HI_UART_IDX_1
+
+/**
+* @brief Adapter plate selection
+* 使用时选择打开宏，使用外设扩展板打开#define BOARD_SELECT_IS_EXPANSION_BOARD这个宏
+* 使用Robot板自己定义#define BOARD_SELECT_IS_ROBOT_BOARD这个宏，注释掉#define BOARD_SELECT_IS_EXPANSION_BOARD
+**/
+
+#define BOARD_SELECT_IS_EXPANSION_BOARD
+#ifdef BOARD_SELECT_IS_EXPANSION_BOARD
+#define EXPANSION_BOARD
+#else
+#define ROBOT_BOARD
+#endif
 
 typedef enum {
     UART_RECEIVE_FLAG = 0,

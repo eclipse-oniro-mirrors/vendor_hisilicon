@@ -56,9 +56,9 @@ static hi_void *UartDemoTask(char *param)
             }
             printf("\r\n");
         }
-    IoTGpioSetOutputVal(LED_TEST_GPIO, 0);
-    usleep(LED_INTERVAL_TIME_US);
     IoTGpioSetOutputVal(LED_TEST_GPIO, 1);
+    usleep(LED_INTERVAL_TIME_US);
+    IoTGpioSetOutputVal(LED_TEST_GPIO, 0);
     usleep(LED_INTERVAL_TIME_US);
         TaskMsleep(20); /* 20:sleep 20ms */
     }
@@ -87,9 +87,13 @@ hi_void UartTransmit(hi_void)
     }
     /* Create a task to handle uart communication */
     osThreadAttr_t attr = {0};
-    attr.stack_size = UART_DEMO_TASK_STAK_SIZE;
-    attr.priority = UART_DEMO_TASK_PRIORITY;
-    attr.name = (hi_char*)"uart demo";
+    attr.name = "uart demo";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = 1024; /* ¶ÑÕ»´óÐ¡Îª1024 */
+    attr.priority = osPriorityNormal;
     if (osThreadNew((osThreadFunc_t)UartDemoTask, NULL, &attr) == NULL) {
         printf("Falied to create uart demo task!\n");
     }

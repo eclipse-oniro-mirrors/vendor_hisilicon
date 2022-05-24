@@ -86,7 +86,7 @@
 -   3.烧录
     -    编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择hiburn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
     -    烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。  
--   4.手机端APP安装及使用（[histreaming APP源码](http://gitee.com/leo593362220/sources-histreaming-app.git)）
+-   4.手机端安装及使用（[开发源码](https://gitee.com/leo593362220/shistreaming.git)）
 
 4.1 手机端安装HistreamingAPP,手机wifi连接Hi3861主板发射出来的热点。
 
