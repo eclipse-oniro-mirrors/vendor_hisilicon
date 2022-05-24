@@ -65,4 +65,8 @@
     -   编译成功后，点击DevEco Home->配置工程->hi3861->upload_port->选择对应串口端口号->选择upload_protocol->选择hiburn-serial->点击save保存，在保存成功后点击upload进行烧录，出现connecting, please reset device..字样复位开发板等待烧录完成。
     -   烧录成功后，再次点击Hi3861核心板上的“RST”复位键，此时开发板的系统会运行起来。运行结果:打开串口工具，可以看到打印,同时3861主板灯闪亮一下。
 
+    ![输入图片说明](../doc/figures/interconnection_client_demo/031interconnection.png)
+
+    ![输入图片说明](../doc/figures/interconnection_client_demo/032interconnection.png)
+
     ![输入图片说明](../doc/figures/interconnection_client_demo/033interconnection.png)
