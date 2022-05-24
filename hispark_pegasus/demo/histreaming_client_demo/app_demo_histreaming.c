@@ -31,8 +31,11 @@
 #include "cmsis_os2.h"
 #include "iot_gpio_ex.h"
 #include "wifi_connecter.h"
-
+#include "iot_gpio.h"
 #include "app_demo_histreaming.h"
+
+#define LED_TEST_GPIO 9
+#define LED_INTERVAL_TIME_US 300000
 
 #define HISTREAMING_DEMO_TASK_STAK_SIZE (1024*8)
 #define HISTREAMING_DEMO_TASK_PRIORITY  25
@@ -43,45 +46,6 @@ unsigned char hex_buff[512] = {0};
 unsigned int hex_len = 0;
 
 UartDefConfig uartDefConfig = {0};
-
-int SetUartRecvFlag(UartRecvDef def)
-{
-    if (def == UART_RECV_TRUE) {
-        uartDefConfig.g_uartReceiveFlag = HI_TRUE;
-    } else {
-        uartDefConfig.g_uartReceiveFlag = HI_FALSE;
-    }
-    
-    return uartDefConfig.g_uartReceiveFlag;
-}
-
-int GetUartConfig(UartDefType type)
-{
-    int receive = 0;
-
-    switch (type) {
-        case UART_RECEIVE_FLAG:
-            receive = uartDefConfig.g_uartReceiveFlag;
-            break;
-        case UART_RECVIVE_LEN:
-            receive = uartDefConfig.g_uartLen;
-            break;
-        default:
-            break;
-    }
-    return receive;
-}
-
-void ResetUartReceiveMsg(void)
-{
-    (void)memset_s(uartDefConfig.g_receiveUartBuff, sizeof(uartDefConfig.g_receiveUartBuff),
-        0x0, sizeof(uartDefConfig.g_receiveUartBuff));
-}
-
-unsigned char *GetUartReceiveMsg(void)
-{
-    return uartDefConfig.g_receiveUartBuff;
-}
 
 int StringToHex(char *str, unsigned char *out, unsigned int *outlen)
 {
@@ -146,14 +110,14 @@ static int ModifyStatus(struct LinkService* ar, const char* property, char* valu
     printf("%s, %d\r\n",  rev_buff, len);
 
     StringToHex(rev_buff, hex_buff, &hex_len);
-    uartDefConfig.g_uartLen = hex_len;
-    (void)memcpy_s(uartDefConfig.g_receiveUartBuff, uartDefConfig.g_uartLen, hex_buff, uartDefConfig.g_uartLen);
-
     for (int i = 0; i < hex_len; i++) {
         printf("0x%x ", hex_buff[i]);
     }
     printf("\r\n");
-    (void)SetUartRecvFlag(UART_RECV_TRUE);
+    IoTGpioSetOutputVal(LED_TEST_GPIO, 0);
+    usleep(LED_INTERVAL_TIME_US);
+    IoTGpioSetOutputVal(LED_TEST_GPIO, 1);
+    usleep(LED_INTERVAL_TIME_US);
 /*
  * if Ok return 0,
  * Otherwise, any error, return StatusFailure
@@ -224,6 +188,8 @@ void HistreamingClose(const char *link)
 hi_void HistreamingDemo(hi_void)
 {
     ConnectToHotspot();
+    IoTGpioInit(LED_TEST_GPIO);
+    IoTGpioSetDir(LED_TEST_GPIO, IOT_GPIO_DIR_OUT);
     osThreadAttr_t histreaming = {0};
     histreaming.stack_size = HISTREAMING_DEMO_TASK_STAK_SIZE;
     histreaming.priority = HISTREAMING_DEMO_TASK_PRIORITY;
