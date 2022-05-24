@@ -1,5 +1,5 @@
 # Pegasus与Taurus WiFi互联通信<a name="ZH-CN_TOPIC_0000001130176841"></a>
--    在学习Pegasus与Taurus WiFi互联通信前，如果自己下载的源码没有该sample,需要将[device_soc_hisilicon](http://gitee.com/openharmony/device_soc_hisilicon)仓下载，下载完成后，将device_soc_hisilicon/hi3861v100/sdk_liteos/build/libs/libhistreaminglink.a这个库文件替换到自己工程下的device\soc\hisilicon\hi3861v100\sdk_liteos\build\libs\目录下。同时需要下载[vendor_hisilicon](http://gitee.com/openharmony/vendor_hisilicon)仓，将vendor_hisilicon\hispark_pegasus\demo\histreaming_client_demo整个文件夹复制到自己工程下的vendor\hisilicon\hispark_pegasus\demo目录下。
+-    在学习Pegasus与Taurus WiFi互联通信前，需要将[device_soc_hisilicon](http://gitee.com/openharmony/device_soc_hisilicon)仓下载，在ubuntu下执行：git lfs clone xxxxx仓库地址,下载完成后，将device_soc_hisilicon/hi3861v100/sdk_liteos/build/libs/libhistreaminglink.a这个库文件替换到自己工程下的device\soc\hisilicon\hi3861v100\sdk_liteos\build\libs\目录下。同时需要下载[vendor_hisilicon](http://gitee.com/openharmony/vendor_hisilicon)仓，在ubuntu下执行：git lfs clone xxxxx仓库地址，将vendor_hisilicon\hispark_pegasus\demo\histreaming_client_demo整个文件夹复制到自己工程下的vendor\hisilicon\hispark_pegasus\demo目录下。
 
 -    前言：HiStreaming 组件作为一种技术基础设施，使得海思芯片可以通过WiFi或有线网络实现物联网设备之间的设备自动发现、服务注册与识别、服务操作。HiStreaming把物联网设备分为两类角色，对外部提供服务的设备称之为 Server 设备，而使用其他设备提供的服务的设备称之为 Client 设备。
 
@@ -20,20 +20,6 @@
 -    组网方案2：Pegasus端、Taurus端、手机端都配置成为STA模式，使Taurus开发套件、Pegasus开发套件以及手机都连接在同一路由器发出的WiFi AP热点下面，组成一个局域网。其中，Taurus开发板上跑的是HiStreaming-Server和HiStreaming-Client程序，Pegasus开发板上跑的是HiStreaming-Server程序，手机上跑的是HiStreaming-Client程序。当三者在同一局域网内，手机能够同时发现Taurus和Pegasus上的HiStreaming-Server，且Taurus上的HiStreaming-Client也能发现Pegasus上的HiStreaming-Server。Taurus端、Pegasus端、手机端，三者之间的组网方式如下图所示。（其实手机作为热点代替路由器也是可行的）
 
      ![输入图片说明](../doc/figures/histreaming_client_demo/015histreamingclient.png)
-
-## 串口通信控制协议HiSignalling介绍
--    为了便于Taurus与Pegasus开发套件之间进行通信和控制，定义了一套简易的HiSignalling通信控制协议，数据帧格式如下表所示，并提供相关参考代码，大家也可以根据自己的需要使用其他协议。
-
-| 帧头（2Byte）  | Payload Len (2Byte)  | payload  | 帧尾（1Byte）  | CRC32(4Byte)  |
-|---|---|---|---|---|
-| 0xAA,0x55  |   |   | 0xFF  | CRC32 |
-			
-例如一组数据帧为：AA5500020003FF8ED2BEDF (十六进制不区分大小写)
--    0AA55:       帧头
--    0002：       Payload Len
--    0003:        Payload
--    FF:          帧尾
--    8ED2BEDF:    CRC32校验码
 
 ## 软件介绍
 -    注意这里需要跟Taurus同时使用，Taurus软件介绍详情可以参考[WiFi互联server](http://gitee.com/openharmony/device_soc_hisilicon/blob/master/hi3516dv300/sdk_linux/sample/taurus/histreaming_server/README.md)。
@@ -119,16 +105,10 @@
         ![输入图片说明](../doc/figures/histreaming_client_demo/017histreamingclient.png)
 
 -   4.手机端控制
-    -   如果你想使用手机APP来控制Pegasus或者Taurus，手机端APP安装及使用（[histreaming APP源码](http://gitee.com/leo593362220/sources-histreaming-app.git)），然后进入app-release.rar目录，将app-debug.apk安装到手机上，具体的安装过程这里就不介绍了(通过数据线复制到手机，或使用微信、QQ等方式发送到手机再安装)。
+    -   如果你想使用手机来控制Pegasus或者Taurus，手机端安装及使用（源码下载](https://gitee.com/leo593362220/shistreaming.git)），然后进入app-release.rar目录，将程序安装到手机上，具体的安装过程这里就不介绍了(通过数据线复制到手机，或使用微信、QQ等方式发送到手机再安装)。
 APP安装成功后，打开手机的WiFi列表，连接到Taurus开发板的AP热点或者路由器热点，再打开刚安装好的HiStreaming APP，下拉刷新几次，手机会发现两个设备，分别是Pegasus开发板设备和Taurus开发板设备。
 
-        ![输入图片说明](../doc/figures/histreaming_client_demo/018histreamingclient.png)
-
-        ![输入图片说明](../doc/figures/histreaming_client_demo/019histreamingclient.png)
-
     -   任意点击一个设备进行操作，点击LED灯控制按钮，会进入一个灯的控制界面。点击图片会发生变化，且会给对应的设备发送数据,同时控制灯亮与熄。
-
-        ![输入图片说明](../doc/figures/histreaming_client_demo/020histreamingclient.png)
 
         ![输入图片说明](../doc/figures/histreaming_client_demo/021histreamingclient.png)
     
