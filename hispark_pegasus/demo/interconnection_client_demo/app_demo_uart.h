@@ -22,12 +22,6 @@
 #define UART_DEMO_TASK_PRIORITY  25
 #define DEMO_UART_NUM            HI_UART_IDX_1
 
-/**
-* @brief Adapter plate selection
-* ʹ��ʱѡ��򿪺꣬ʹ��������չ���#define BOARD_SELECT_IS_EXPANSION_BOARD�����
-* ʹ��Robot���Լ�����#define BOARD_SELECT_IS_ROBOT_BOARD����꣬ע�͵�#define BOARD_SELECT_IS_EXPANSION_BOARD
-**/
-
 #define BOARD_SELECT_IS_EXPANSION_BOARD
 #ifdef BOARD_SELECT_IS_EXPANSION_BOARD
 #define EXPANSION_BOARD
@@ -40,19 +34,19 @@ typedef enum {
     UART_RECVIVE_LEN,
     UART_SEND_FLAG = 2,
     UART_SEND_LEN
-}UartDefType;
+} UartDefType;
 
 typedef enum {
     UART_RECV_TRUE = 0,
     UART_RECV_FALSE,
-}UartRecvDef;
+} UartRecvDef;
 
 typedef struct {
     unsigned int uartChannel;
     unsigned char g_receiveUartBuff[UART_BUFF_SIZE];
     int g_uartReceiveFlag;
     int g_uartLen;
-}UartDefConfig;
+} UartDefConfig;
 
 int SetUartRecvFlag(UartRecvDef def);
 int GetUartConfig(UartDefType type);

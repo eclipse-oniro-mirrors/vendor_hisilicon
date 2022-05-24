@@ -56,10 +56,10 @@ static hi_void *UartDemoTask(char *param)
             }
             printf("\r\n");
         }
-    IoTGpioSetOutputVal(LED_TEST_GPIO, 1);
-    usleep(LED_INTERVAL_TIME_US);
-    IoTGpioSetOutputVal(LED_TEST_GPIO, 0);
-    usleep(LED_INTERVAL_TIME_US);
+        IoTGpioSetOutputVal(LED_TEST_GPIO, 1);
+        usleep(LED_INTERVAL_TIME_US);
+        IoTGpioSetOutputVal(LED_TEST_GPIO, 0);
+        usleep(LED_INTERVAL_TIME_US);
         TaskMsleep(20); /* 20:sleep 20ms */
     }
     return HI_NULL;
