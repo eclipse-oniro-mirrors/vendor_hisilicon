@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #include <hi_stdlib.h>
 #include <hi_uart.h>
 #include <app_demo_uart.h>
@@ -92,7 +92,7 @@ hi_void UartTransmit(hi_void)
     attr.cb_mem = NULL;
     attr.cb_size = 0U;
     attr.stack_mem = NULL;
-    attr.stack_size = 1024; /* ¶ÑÕ»´óÐ¡Îª1024 */
+    attr.stack_size = 1024; /* ï¿½ï¿½Õ»ï¿½ï¿½Ð¡Îª1024 */
     attr.priority = osPriorityNormal;
     if (osThreadNew((osThreadFunc_t)UartDemoTask, NULL, &attr) == NULL) {
         printf("Falied to create uart demo task!\n");

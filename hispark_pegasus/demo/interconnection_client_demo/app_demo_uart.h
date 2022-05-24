@@ -24,8 +24,8 @@
 
 /**
 * @brief Adapter plate selection
-* Ê¹ÓÃÊ±Ñ¡Ôñ´ò¿ªºê£¬Ê¹ÓÃÍâÉèÀ©Õ¹°å´ò¿ª#define BOARD_SELECT_IS_EXPANSION_BOARDÕâ¸öºê
-* Ê¹ÓÃRobot°å×Ô¼º¶¨Òå#define BOARD_SELECT_IS_ROBOT_BOARDÕâ¸öºê£¬×¢ÊÍµô#define BOARD_SELECT_IS_EXPANSION_BOARD
+* Ê¹ï¿½ï¿½Ê±Ñ¡ï¿½ï¿½ò¿ªºê£¬Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½#define BOARD_SELECT_IS_EXPANSION_BOARDï¿½ï¿½ï¿½ï¿½ï¿½
+* Ê¹ï¿½ï¿½Robotï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½#define BOARD_SELECT_IS_ROBOT_BOARDï¿½ï¿½ï¿½ï¿½ê£¬×¢ï¿½Íµï¿½#define BOARD_SELECT_IS_EXPANSION_BOARD
 **/
 
 #define BOARD_SELECT_IS_EXPANSION_BOARD
