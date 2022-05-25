@@ -12,17 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #include <hi_stdlib.h>
-#include <hisignalling_protocol.h>
 #include <hi_uart.h>
 #include <app_demo_uart.h>
 #include <iot_uart.h>
 #include <hi_gpio.h>
 #include <hi_io.h>
 #include "iot_gpio_ex.h"
+#include "iot_gpio.h"
 #include "ohos_init.h"
 #include "cmsis_os2.h"
+
+#define LED_TEST_GPIO 9
+#define LED_INTERVAL_TIME_US 300000
 
 UartDefConfig uartDefConfig = {0};
 
@@ -38,44 +41,6 @@ static void Uart1GpioCOnfig(void)
 #endif
 }
 
-int SetUartRecvFlag(UartRecvDef def)
-{
-    if (def == UART_RECV_TRUE) {
-        uartDefConfig.g_uartReceiveFlag = HI_TRUE;
-    } else {
-        uartDefConfig.g_uartReceiveFlag = HI_FALSE;
-    }
-    
-    return uartDefConfig.g_uartReceiveFlag;
-}
-
-int GetUartConfig(UartDefType type)
-{
-    int receive = 0;
-
-    switch (type) {
-        case UART_RECEIVE_FLAG:
-            receive = uartDefConfig.g_uartReceiveFlag;
-            break;
-        case UART_RECVIVE_LEN:
-            receive = uartDefConfig.g_uartLen;
-            break;
-        default:
-            break;
-    }
-    return receive;
-}
-
-void ResetUartReceiveMsg(void)
-{
-    (void)memset_s(uartDefConfig.g_receiveUartBuff, sizeof(uartDefConfig.g_receiveUartBuff),
-        0x0, sizeof(uartDefConfig.g_receiveUartBuff));
-}
-
-unsigned char *GetUartReceiveMsg(void)
-{
-    return uartDefConfig.g_receiveUartBuff;
-}
 
 static hi_void *UartDemoTask(char *param)
 {
@@ -86,12 +51,15 @@ static hi_void *UartDemoTask(char *param)
     for (;;) {
         uartDefConfig.g_uartLen = IoTUartRead(DEMO_UART_NUM, uartBuff, UART_BUFF_SIZE);
         if ((uartDefConfig.g_uartLen > 0) && (uartBuff[0] == 0xaa) && (uartBuff[1] == 0x55)) {
-            if (GetUartConfig(UART_RECEIVE_FLAG) == HI_FALSE) {
-                (void)memcpy_s(uartDefConfig.g_receiveUartBuff, uartDefConfig.g_uartLen,
-                    uartBuff, uartDefConfig.g_uartLen);
-                (void)SetUartRecvFlag(UART_RECV_TRUE);
+            for (int i = 0; i < UART_BUFF_SIZE; i++) {
+                printf("0x%x", uartBuff[i]);
             }
+            printf("\r\n");
         }
+        IoTGpioSetOutputVal(LED_TEST_GPIO, 1);
+        usleep(LED_INTERVAL_TIME_US);
+        IoTGpioSetOutputVal(LED_TEST_GPIO, 0);
+        usleep(LED_INTERVAL_TIME_US);
         TaskMsleep(20); /* 20:sleep 20ms */
     }
     return HI_NULL;
@@ -103,7 +71,8 @@ static hi_void *UartDemoTask(char *param)
 hi_void UartTransmit(hi_void)
 {
     hi_u32 ret = 0;
-
+    IoTGpioInit(LED_TEST_GPIO);
+    IoTGpioSetDir(LED_TEST_GPIO, IOT_GPIO_DIR_OUT);
     IotUartAttribute uartAttr = {
         .baudRate = 115200, /* baudRate: 115200 */
         .dataBits = 8, /* dataBits: 8bits */
@@ -118,9 +87,13 @@ hi_void UartTransmit(hi_void)
     }
     /* Create a task to handle uart communication */
     osThreadAttr_t attr = {0};
-    attr.stack_size = UART_DEMO_TASK_STAK_SIZE;
-    attr.priority = UART_DEMO_TASK_PRIORITY;
-    attr.name = (hi_char*)"uart demo";
+    attr.name = "uart demo";
+    attr.attr_bits = 0U;
+    attr.cb_mem = NULL;
+    attr.cb_size = 0U;
+    attr.stack_mem = NULL;
+    attr.stack_size = 1024; /* ��ջ��СΪ1024 */
+    attr.priority = osPriorityNormal;
     if (osThreadNew((osThreadFunc_t)UartDemoTask, NULL, &attr) == NULL) {
         printf("Falied to create uart demo task!\n");
     }
