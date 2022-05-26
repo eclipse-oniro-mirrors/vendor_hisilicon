@@ -202,6 +202,14 @@
                     serviceName = "input_service";
                 }
             }
+            input_hdi_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libinput_driver.z.so";
+                    serviceName = "input_interfaces_service";
+                }
+            }
         }
 
         display_gralloc :: host {
