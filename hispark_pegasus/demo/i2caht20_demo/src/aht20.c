@@ -152,7 +152,7 @@ uint32_t AHT20_Calibrate(void)
     uint8_t buffer[AHT20_STATUS_RESPONSE_MAX];
     reval = memset_s(&buffer, sizeof(buffer), 0x0, sizeof(buffer));
     if (reval == TRUE) {
-         printf("OK");
+    printf("OK");
     }
 
     retval = AHT20_StatusCommand();
@@ -197,7 +197,7 @@ uint32_t AHT20_GetMeasureResult(float* temp, float* humi)
     uint8_t buffer[AHT20_STATUS_RESPONSE_MAX];
     reval = memset_s(&buffer, sizeof(buffer), 0x0, sizeof(buffer));
     if (reval == TRUE) {
-         printf("OK");
+    printf("OK");
     }
 
     retval = AHT20_Read(buffer, sizeof(buffer));  // recv status command result
