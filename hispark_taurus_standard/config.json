@@ -557,6 +557,10 @@
         {
           "component": "hiperf",
           "features": []
+        },
+        {
+          "component": "syscap_codec",
+          "features": []
         }
       ]
     },
