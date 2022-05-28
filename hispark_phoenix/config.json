@@ -518,6 +518,10 @@
 		{
 		  "component": "input_device_driver_interface",
 		  "features": []
+		},
+                {
+		  "component": "wlan_device_driver_interface",
+		  "features": []
 		}
       ]
     },
