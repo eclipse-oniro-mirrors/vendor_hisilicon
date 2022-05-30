@@ -1,0 +1,85 @@
+{
+    "product_name": "hispark_taurus_mini_system",
+    "version": "3.0",
+    "type": "small",
+    "ohos_version": "OpenHarmony 3.1",
+    "device_company": "hisilicon",
+    "device_build_path": "device/board/hisilicon/hispark_taurus",
+    "board": "hispark_taurus",
+    "kernel_type": "liteos_a",
+    "kernel_version": "",
+    "subsystems": [  
+      {
+        "subsystem": "kernel",
+        "components": [
+          { "component": "liteos_a" }
+        ]
+      },
+      {
+        "subsystem": "hdf",
+        "components": [
+          { "component": "device_driver_framework" }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hilog_featured_lite" }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "init_lite" },  
+          { "component": "bootstrap_lite" },
+          { "component": "syspara_lite" }
+        ]
+      },
+      {
+        "subsystem": "communication",
+        "components": [
+          { "component": "dsoftbus" },
+          { "component": "ipc_lite" }
+        ]
+      },
+      {
+        "subsystem": "distributedschedule",
+        "components": [
+          { "component": "samgr_lite" },
+          { "component": "safwk_lite" }
+        ]
+      },
+      {
+        "subsystem": "security",
+        "components": [
+          { "component": "deviceauth_standard" },
+          { "component": "huks", "features":
+            [
+              "huks_config_file = \"hks_config_small.h\""
+            ]
+          }
+        ]
+      },
+      {
+        "subsystem": "utils",
+        "components": [
+          { "component": "kv_store" },
+          { "component": "kal_timer" }
+        ]
+      },
+      {
+        "subsystem": "updater",
+        "components": [
+          { "component": "ota_lite" }
+        ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "syscap_codec" }
+        ]
+      }
+    ],
+    "third_party_dir": "//third_party",
+    "product_adapter_dir": "//vendor/hisilicon/hispark_taurus_mini_system/hals"
+  }

@@ -1,0 +1,13 @@
+root {
+    module = "watchdog";
+    watchdog_config {
+        watchdog_device_tester {
+            match_attr = "WATCHDOG_TEST";
+            id = 0;
+            timeoutSet = 2;
+            statusStop = 0;
+            statusStart = 0;
+            feedTime = 6;
+        }
+    }
+}

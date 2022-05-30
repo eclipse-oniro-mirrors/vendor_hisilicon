@@ -1,0 +1,25 @@
+root {
+	platform {
+        pcie_config {
+            template pcie_controller {
+                match_attr = "";
+                busNum = 0;
+                vendorId = 0x01;
+                devId = 0x02;
+            }
+            controller_0x10100000 :: pcie_controller {
+                match_attr = "PCIE_VIRTUAL";
+                busNum = 0;
+                vendorId = 0x01;
+                devId = 0x02;
+            }
+        }
+    }
+    module = "pcie";
+    pcie_config {
+        pcie_controller_tester {
+            match_attr = "PCIE_TEST";
+            busNum = 0;
+        }
+    }
+}

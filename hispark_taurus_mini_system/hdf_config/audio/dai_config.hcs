@@ -1,0 +1,67 @@
+root {
+    platfrom {
+        template dai_controller {
+            match_attr = "";
+            serviceName = "";
+        }
+        controller_0x120c1020 :: dai_controller {
+            match_attr = "hdf_dai_driver";
+            serviceName = "dai_service";
+
+            idInfo {
+                    chipName = "hi3516";
+                    chipIdRegister = 0x113b0000;
+                    chipIdSize = 0x10000;
+                }
+
+            regConfig {
+
+                 /*  reg: register address
+                     rreg: register address
+                     shift: shift bits
+                     rshift: rshift bits
+                     min: min value
+                     max: max value
+                     mask: mask of value
+                     invert: enum InvertVal 0-uninvert 1-invert
+                     value: value
+
+                     reg, rreg, shift, value, min, max, mask, invert value
+                 */
+                 ctrlParamsSeqConfig = [
+                     0x48,    0x48,    0,     0,     0x0,    0x2,    0x3,    0,    0,    // tfa9879 codec enable
+                     0x48,    0x48,    0,     0,     0x0,    0x2,    0x3,    0,    0    // hi3516 codec enable
+                 ];
+
+                 controlsConfig = [
+                     /*
+                         "External Codec Enable",
+                         "Internally Codec Enable",
+                     */
+                     /*array index, iface, enable*/
+                     6,  4,  0,
+                     7,  4,  0
+                 ];
+
+                 daiStartupSeqConfig = [
+                     0x0100,    0x0100,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x152ef0,      // AIP_I2S_REG_CFG0
+                     0x0104,    0x0104,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x0000c115,    // AIP_I2S_REG_CFG1
+                     0x0140,    0x0140,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x152ef0,      // AOP_I2S_REG_CFG0
+                     0x0144,    0x0144,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x0000c115,    // AOP_I2S_REG_CFG1
+                 ];
+
+                 daiParamsSeqConfig = [
+                     0x0140,    0x0140,    0,    0,    0x0,    0x7FFFFFF,   0x7FFFFFF,    0,    0x0,    // ao i2s_frequency
+                     0x0144,    0x0144,    0,    0,    0x0,    0x7F,        0x7F,         0,    0x0,    // ao i2s_frequency
+                     0x2000,    0x2000,    2,    2,    0x0,    0x2,         0x3,          0,    0x0,    // ao i2s_format
+                     0x2000,    0x2000,    4,    4,    0x0,    0x1,         0x3,          0,    0x0,     // ao i2s_channel
+                     0x0100,    0x0100,    0,    0,    0x0,    0x7FFFFFF,   0x7FFFFFF,    0,    0x0,    // ai i2s_frequency
+                     0x0104,    0x0104,    0,    0,    0x0,    0x7F,        0x7F,         0,    0x0,    // ai i2s_frequency
+                     0x1000,    0x1000,    2,    2,    0x0,    0x2,         0x3,          0,    0x0,    // ai i2s_format
+                     0x1000,    0x1000,    4,    4,    0x0,    0x1,         0x3,          0,    0x0,     // ai i2s_channel
+                 ];
+
+              }
+        }
+    }
+}

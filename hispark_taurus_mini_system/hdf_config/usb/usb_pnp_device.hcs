@@ -1,0 +1,106 @@
+root {
+    module = "usb_pnp_device";
+    usb_pnp_config {
+        match_attr = "usb_pnp_match";
+        usb_pnp_device_id = "UsbPnpDeviceId";
+        UsbPnpDeviceId {
+            idTableList = [
+                "sample_table",
+                "host_acm_table",
+                "host_acm_rawapi_table",
+                "host_ecm_table",
+                "host_acm_test_table"
+            ];
+            sample_table {
+                moduleName = "usb_pnp_sample_driver";
+                serviceName = "usb_pnp_sample_service";
+                deviceMatchAttr = "usb_pnp_sample_matchAttr";
+                length = 19;
+                matchFlag = 0x0000;
+                vendorId = 0xFFF0;
+                productId = 0xFFF0;
+                bcdDeviceLow = 0x0000;
+                bcdDeviceHigh = 0x0000;
+                deviceClass = 0;
+                deviceSubClass = 0;
+                deviceProtocol = 0;
+                interfaceClass = [0];
+                interfaceSubClass = [0];
+                interfaceProtocol = [0];
+                interfaceNumber = [0, 1];
+            }
+            host_acm_table {
+                moduleName = "usbhost_acm";
+                serviceName = "usbhost_acm_pnp_service";
+                deviceMatchAttr = "usbhost_acm_pnp_matchAttr";
+                length = 21;
+                matchFlag = 0x0300;
+                vendorId = 0x12D1;
+                productId = 0x5000;
+                bcdDeviceLow = 0x0000;
+                bcdDeviceHigh = 0x0000;
+                deviceClass = 0;
+                deviceSubClass = 0;
+                deviceProtocol = 0;
+                interfaceClass = [0];
+                interfaceSubClass = [2, 0];
+                interfaceProtocol = [1, 2];
+                interfaceNumber = [2, 3];
+            }
+            host_acm_rawapi_table {
+                moduleName = "usbhost_acm_rawapi";
+                serviceName = "usbhost_acm_rawapi_service";
+                deviceMatchAttr = "usbhost_acm_rawapi_matchAttr";
+                length = 21;
+                matchFlag = 0x0300;
+                vendorId = 0x12D1;
+                productId = 0x5000;
+                bcdDeviceLow = 0x0000;
+                bcdDeviceHigh = 0x0000;
+                deviceClass = 0;
+                deviceSubClass = 0;
+                deviceProtocol = 0;
+                interfaceClass = [0];
+                interfaceSubClass = [2, 0];
+                interfaceProtocol = [1, 2];
+                interfaceNumber = [2, 3];
+            }
+            host_ecm_table {
+                moduleName = "usbhost_ecm";
+                serviceName = "usbhost_ecm_pnp_service";
+                deviceMatchAttr = "usbhost_ecm_pnp_matchAttr";
+                length = 21;
+                matchFlag = 0x0300;
+                vendorId = 0x12D1;
+                productId = 0x5000;
+                bcdDeviceLow = 0x0000;
+                bcdDeviceHigh = 0x0000;
+                deviceClass = 0;
+                deviceSubClass = 0;
+                deviceProtocol = 0;
+                interfaceClass = [0];
+                interfaceSubClass = [6, 0];
+                interfaceProtocol = [0, 6];
+                interfaceNumber = [0, 1];
+            }
+            host_acm_test_table {
+                moduleName = "usbhost_acm";
+                serviceName = "usbhost_acm_pnp_test_service";
+                deviceMatchAttr = "usbhost_acm_pnp_test_matchAttr";
+                length = 18;
+                matchFlag = 0x0000;
+                vendorId = 0x05E3;
+                productId = 0x0749;
+                bcdDeviceLow = 0x0000;
+                bcdDeviceHigh = 0x0000;
+                deviceClass = 0;
+                deviceSubClass = 0;
+                deviceProtocol = 0;
+                interfaceClass = [0];
+                interfaceSubClass = [0];
+                interfaceProtocol = [0];
+                interfaceNumber = [0];
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+root {
+    module = "pin";
+    pin_config {
+        pin_device_tester {
+            match_attr = "PIN_TEST";
+            pinName = "P18";
+            strengthNum = 2;
+            PullTypeNum = 0;
+            funcName = "LSADC_CH1";
+        }
+    }
+}

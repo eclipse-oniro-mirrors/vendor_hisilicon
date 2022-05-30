@@ -1,0 +1,195 @@
+root {
+    platform {
+        regulator_config {
+			match_attr = "virtual_regulator";
+			template regulator_controller {
+			    device_num = 1;
+			    name = "";
+				parentName = "";
+				alwaysOn = 0;
+				mode = 1;     /* voltage:1; current:2 */
+				minUv = 0;
+				maxUv = 0;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d0000 :: regulator_controller {
+			    device_num = 1;
+			    name = "regulator_virtual_1";
+				alwaysOn = 0;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d3000 :: regulator_controller {
+			    device_num = 4;
+			    name = "regulator_virtual_4";
+				parentName = "regulator_virtual_3";
+				alwaysOn = 1;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d2000 :: regulator_controller {
+			    device_num = 3;
+			    name = "regulator_virtual_3";
+				parentName = "regulator_virtual_2";
+				alwaysOn = 0;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d1000 :: regulator_controller {
+			    device_num = 2;
+			    name = "regulator_virtual_2";
+				parentName = "regulator_virtual_1";
+				alwaysOn = 0;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d8000 :: regulator_controller {
+			    device_num = 9;
+			    name = "regulator_virtual_9";
+				parentName = "regulator_virtual_5";
+				alwaysOn = 0;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d6000 :: regulator_controller {
+			    device_num = 7;
+			    name = "regulator_virtual_7";
+				parentName = "regulator_virtual_6";
+				alwaysOn = 0;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d4000 :: regulator_controller {
+			    device_num = 5;
+			    name = "regulator_virtual_5";
+				parentName = "regulator_virtual_2";
+				alwaysOn = 0;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d7000 :: regulator_controller {
+			    device_num = 8;
+			    name = "regulator_virtual_8";
+				parentName = "regulator_virtual_7";
+				alwaysOn = 0;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d5000 :: regulator_controller {
+			    device_num = 6;
+			    name = "regulator_virtual_6";
+				parentName = "regulator_virtual_5";
+				alwaysOn = 0;
+				mode = 1;
+				minUv = 0;
+				maxUv = 20000;
+				minUa = 0;
+				maxUa = 0;
+			}
+			controller_0x130d900 :: regulator_controller {
+			    device_num = 10;
+			    name = "regulator_virtual_10";
+				parentName = "";
+				alwaysOn = 1;
+				mode = 2;
+				minUv = 0;
+				maxUv = 0;
+				minUa = 0;
+				maxUa = 20000;
+			}
+			controller_0x130da00 :: regulator_controller {
+			    device_num = 11;
+			    name = "regulator_virtual_11";
+				parentName = "";
+				alwaysOn = 0;
+				mode = 2;
+				minUv = 0;
+				maxUv = 0;
+				minUa = 0;
+				maxUa = 20000;
+			}
+			controller_0x130dc00 :: regulator_controller {
+			    device_num = 13;
+			    name = "regulator_virtual_13";
+				parentName = "regulator_virtual_12";
+				alwaysOn = 0;
+				mode = 2;
+				minUv = 0;
+				maxUv = 0;
+				minUa = 0;
+				maxUa = 20000;
+			}
+			controller_0x130dd00 :: regulator_controller {
+			    device_num = 14;
+			    name = "regulator_virtual_14";
+				parentName = "regulator_virtual_12";
+				alwaysOn = 0;
+				mode = 2;
+				minUv = 0;
+				maxUv = 0;
+				minUa = 0;
+				maxUa = 20000;
+			}
+			controller_0x130db00 :: regulator_controller {
+			    device_num = 12;
+			    name = "regulator_virtual_12";
+				parentName = "regulator_virtual_11";
+				alwaysOn = 0;
+				mode = 2;
+				minUv = 0;
+				maxUv = 0;
+				minUa = 0;
+				maxUa = 20000;
+			}
+			controller_0x130de00 :: regulator_controller {
+                device_num = 15;
+                name = "regulator_virtual_15";
+                parentName = "regulator_virtual_13";
+                alwaysOn = 1;
+                mode = 2;
+                minUv = 0;
+                maxUv = 0;
+                minUa = 0;
+                maxUa = 20000;
+            }
+        }
+    }
+    
+    module = "regulator";
+    regulator_test_config {
+        regulator_controller_tester {
+            match_attr = "REGULATOR_TEST";
+            name = "regulator_virtual_15"; /* test node:15, 7, 4, 1, 10, 13 */
+            mode = 2;
+            minUv = 500;
+            maxUv = 1500;
+            minUa = 500;
+            maxUa = 1500;
+        }
+    }
+}
