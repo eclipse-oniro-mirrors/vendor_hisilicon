@@ -282,10 +282,6 @@
       "subsystem": "bundlemanager",
       "components": [
         {
-          "component": "eventhandler",
-          "features": []
-        },
-        {
           "component": "bundle_framework",
           "features": []
         },
@@ -333,6 +329,10 @@
         },
         {
           "component": "distributed_notification_service",
+          "features": []
+        },
+        {
+          "component": "eventhandler",
           "features": []
         }
       ]
