@@ -42,16 +42,16 @@ void Aht20TestTask(int* arg)
     I2cInit(WIFI_IOT_I2C_IDX_0, NUM_F*NUM_S);
 
     retval = AHT20_Calibrate();
-    printf("AHT20_Calibrate: %d\r\n", retval);
+    printf("AHT20_Calibrate: %u\r\n", retval);
 
     while (NUM) {
         float temp = 0.0, humi = 0.0;
 
         retval = AHT20_StartMeasure();
-        printf("AHT20_StartMeasure: %d\r\n", retval);
+        printf("AHT20_StartMeasure: %u\r\n", retval);
 
         retval = AHT20_GetMeasureResult(&temp, &humi);
-        printf("AHT20_GetMeasureResult: %d, temp = %.2f, humi = %.2f\r\n", retval, temp, humi);
+        printf("AHT20_GetMeasureResult: %u, temp = %.2f, humi = %.2f\r\n", retval, temp, humi);
 
         sleep(SLEEP);
     }

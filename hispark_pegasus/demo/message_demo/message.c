@@ -89,13 +89,13 @@ void rtosv2_msgq_main(int *arg)
 
     osDelay(OS_DELAY_S);
     uint32_t cap = osMessageQueueGetCapacity(qid);
-    printf("[Message Test] osMessageQueueGetCapacity, capacity: %d.\r\n", cap);
+    printf("[Message Test] osMessageQueueGetCapacity, capacity: %u.\r\n", cap);
     uint32_t msg_size =  osMessageQueueGetMsgSize(qid);
-    printf("[Message Test] osMessageQueueGetMsgSize, size: %d.\r\n", msg_size);
+    printf("[Message Test] osMessageQueueGetMsgSize, size: %u.\r\n", msg_size);
     uint32_t count = osMessageQueueGetCount(qid);
-    printf("[Message Test] osMessageQueueGetCount, count: %d.\r\n", count);
+    printf("[Message Test] osMessageQueueGetCount, count: %u.\r\n", count);
     uint32_t space = osMessageQueueGetSpace(qid);
-    printf("[Message Test] osMessageQueueGetSpace, space: %d.\r\n", space);
+    printf("[Message Test] osMessageQueueGetSpace, space: %u.\r\n", space);
 
     osDelay(OS_DELAY_T);
     osThreadTerminate(ctid1);
