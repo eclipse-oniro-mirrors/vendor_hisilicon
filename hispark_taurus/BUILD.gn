@@ -2,6 +2,7 @@
 
 group("hispark_taurus") {
   deps = [
+    "hals/utils/sys_param:vendor.para",
     "init_configs:init_configs",
     "init_configs:init_configs_mksh",
   ]

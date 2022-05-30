@@ -22,7 +22,7 @@ shared_library("hal_pms") {
     "//base/security/permission/services/permission_lite/pms/include",
     "//base/security/permission/interfaces/kits/permission_lite",
     "//base/hiviewdfx/interfaces/kits/hilog",
-    "//base/startup/syspara_lite/interfaces/kits",
+    "//base/startup/init_lite/interfaces/innerkits/include/syspara",
     "//drivers/framework/include/platform",
     "//drivers/framework/include/core",
     "//drivers/framework/include/osal",
@@ -33,7 +33,7 @@ shared_library("hal_pms") {
     "//third_party/bounds_checking_function/include/",
   ]
   deps = [
-    "//base/startup/syspara_lite/frameworks/parameter:parameter",
+    "//base/startup/init_lite/interfaces/innerkits:libbegetutil",
     "//drivers/adapter/uhdf/platform:hdf_platform",
     "//third_party/bounds_checking_function:libsec_shared",
     "//third_party/mbedtls:mbedtls_shared",

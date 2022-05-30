@@ -2,8 +2,9 @@
 
 group("hispark_taurus_linux") {
   deps = [
+    "hals/utils/sys_param:vendor.para",
     "init_configs",
+    "init_configs:init_fstab",
     "init_configs:init_initd",
-    "init_configs:init_fstab"
   ]
 }
