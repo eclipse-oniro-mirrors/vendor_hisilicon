@@ -261,6 +261,31 @@
       ]
     },
     {
+      "subsystem": "developtools",
+      "components": [
+        {
+          "component": "bytrace",
+          "features": []
+        },
+        {
+          "component": "hdc",
+          "features": []
+        },
+        {
+          "component": "profiler",
+          "features": []
+        },
+        {
+          "component": "hiperf",
+          "features": []
+        },
+        {
+          "component": "syscap_codec",
+          "features": []
+        }
+      ]
+    },
+    {
       "subsystem": "developertest",
       "components": [
         {
