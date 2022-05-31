@@ -30,7 +30,11 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "init_lite", "features":["enable_ohos_startup_init_feature_begetctl_liteos=true"] },
+          { "component": "init_lite", "features":
+            [
+              "enable_ohos_startup_init_feature_begetctl_liteos = true"
+            ]
+          },
           { "component": "bootstrap_lite" },
           { "component": "syspara_lite" }
         ]
