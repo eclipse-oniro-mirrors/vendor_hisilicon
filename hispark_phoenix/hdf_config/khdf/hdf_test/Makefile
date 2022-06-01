@@ -44,6 +44,9 @@ else
   ifneq ($(CONFIG_ARCH_HI3518EV300),)
     HCS_DIR := $(LOCAL_HCS_ROOT)
   endif
+  ifneq ($(CONFIG_ARCH_HI3751V350),)
+    HCS_DIR := $(LOCAL_HCS_ROOT)
+  endif
 endif
 $(info HCS_DIR = $(HCS_DIR))
 HCB_FLAGS := -b -i -a

@@ -4,7 +4,7 @@ root {
             chipHi3881 :: chipInst {
                 match_attr = "hdf_wlan_chips_hi3881";
                 driverName = "hisi";
-                sdio {
+                bus {
                     vendorId = 0x0296;
                     deviceId = [0x5347];
                 }

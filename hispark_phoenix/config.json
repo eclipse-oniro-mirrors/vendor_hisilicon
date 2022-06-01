@@ -374,7 +374,9 @@
         },
         {
           "component": "wifi",
-          "features": []
+          "features": [
+              "wifi_feature_with_p2p = false"
+          ]
         },
         {
           "component": "dhcp",
