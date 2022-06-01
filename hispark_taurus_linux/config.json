@@ -54,7 +54,7 @@
         "components": [
           { "component": "bootstrap_lite", "features":[] },
           { "component": "syspara_lite", "features":[] },
-          { "component": "init_lite", "features":[] },
+          { "component": "init_lite", "features":["enable_ohos_startup_init_feature_begetctl_liteos=true"] },
           { "component": "appspawn_lite", "features":[] }
         ]
       },
