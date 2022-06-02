@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir -p /sys/fs/pstore/
+mount -t pstore pstore sys/fs/pstore/
+chmod 0777 /sys/fs/pstore/

@@ -27,6 +27,7 @@ copy("init_initd") {
     "etc/init.d/S01mdev",
     "etc/init.d/S80network",
     "etc/init.d/S82ohos",
+    "etc/init.d/S84pstore",
   ]
   outputs = [ "$root_out_dir/etc/init.d/{{source_file_part}}" ]
 }
