@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "product_hispark_taurus_mini_system": {
+      "module_list": [
+        "//vendor/hisilicon/hispark_taurus_mini_system:hispark_taurus_mini_system"
+      ]
+    }
+  },
+  "subsystem": "product_hispark_taurus_mini_system"
+}

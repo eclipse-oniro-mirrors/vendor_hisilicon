@@ -1,0 +1,314 @@
+root {
+    device_info {
+        test_host :: host {
+            hostName = "test_host";
+            priority = 180;
+            device_hdf_test :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "HDF_TEST";
+                    serviceName = "HDF_TEST";
+                }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    preload = 2;
+                    permission = 0644;
+                    moduleName = "sample_driver";
+                    serviceName = "sample_service";
+                }
+                device2 :: deviceNode {
+                    policy = 2;
+                    priority = 10;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "pm_test_driver";
+                    serviceName = "pm_test_service";
+                }
+            }
+            device_platform_test :: device {
+                platform_test:: deviceNode {
+                    policy = 1;
+                    priority = 150;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_TEST_DRIVER";
+                    serviceName = "PLATFORM_TEST";
+                    deviceMatchAttr = "platform_test";
+                }
+            }
+            device_platform_i2c_test :: device {
+                i2c_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_I2C_TEST";
+                    serviceName = "I2C_TEST";
+                    deviceMatchAttr = "I2C_TEST";
+                }
+            }
+            device_platform_spi_test :: device {
+                spi_test :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_SPI_TEST";
+                    serviceName = "SPI_TEST";
+                    deviceMatchAttr = "SPI_TEST";
+                }
+            }
+            device_platform_gpio_test :: device {
+                gpio_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_GPIO_TEST";
+                    serviceName = "GPIO_TEST";
+                    deviceMatchAttr = "GPIO_TEST";
+                }
+            }
+            device_platform_pin_test :: device {
+                pin_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PIN_TEST";
+                    deviceMatchAttr = "PIN_TEST";
+                    serviceName = "PIN_TEST";
+                }
+            }
+            device_platform_mipi_dsi_test :: device {
+                mipi_dsi_tester :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_MIPI_DSI_TEST";
+                    serviceName = "PLATFORM_MIPI_DSI_TEST";
+                    deviceMatchAttr = "PLATFORM_MIPI_DSI_TEST";
+                }
+            }
+            device_platform_uart_test :: device {
+                uart_test :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_UART_TEST";
+                    serviceName = "UART_TEST";
+                    deviceMatchAttr = "UART_TEST";
+                }
+            }
+            device_platform_sdio_test :: device {
+                sdio_tester :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_SDIO_TEST";
+                    serviceName = "SDIO_TEST";
+                    deviceMatchAttr = "SDIO_TEST";
+                }
+            }
+            device_platform_i2s_test :: device {
+                i2s_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_I2S_TEST";
+                    serviceName = "I2S_TEST";
+                    deviceMatchAttr = "I2S_TEST";
+                }
+            }
+            device_platform_pwm_test :: device {
+                pwm_test :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PWM_TEST";
+                    serviceName = "PWM_TEST";
+                    deviceMatchAttr = "PWM_TEST";
+                }
+            }
+            device_platform_emmc_test :: device {
+                emmc_tester :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_EMMC_TEST";
+                    serviceName = "EMMC_TEST";
+                    deviceMatchAttr = "EMMC_TEST";
+                }
+            }
+            device_platform_pcie_test :: device {
+                pcie_virtual :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PCIE_VIRTUAL";
+                    serviceName = "HDF_PLATFORM_PCIE_0";
+                    deviceMatchAttr = "PCIE_VIRTUAL";
+                }
+                pcie_tester :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PCIE_TEST";
+                    serviceName = "PCIE_TEST";
+                    deviceMatchAttr = "PCIE_TEST";
+                }
+            }
+            device_platform_adc_test :: device {
+                adc_tester :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_ADC_TEST";
+                    serviceName = "ADC_TEST";
+                    deviceMatchAttr = "ADC_TEST";
+                }
+            }
+            device_platform_i3c_test :: device {
+                i3c_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 56;
+                    permission = 0644;
+                    moduleName = "virtual_i3c_driver";
+                    serviceName = "VIRTUAL_I3C_DRIVER";
+                    deviceMatchAttr = "virtual_i3c";
+                }
+                i3c_tester :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_I3C_TEST";
+                    deviceMatchAttr = "I3C_TEST";
+                    serviceName = "I3C_TEST";
+                }
+            }
+            device_platform_dac_test :: device {
+                dac_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 56;
+                    permission = 0644;
+                    moduleName = "virtual_dac_driver";
+                    serviceName = "VIRTUAL_DAC_DRIVER";
+                    deviceMatchAttr = "virtual_dac";
+                }
+                dac_tester :: deviceNode {
+                    policy = 2;
+                    priority = 110;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_DAC_TEST";
+                    deviceMatchAttr = "DAC_TEST";
+                    serviceName = "DAC_TEST";
+                }
+            }
+             device_platform_rtc_test :: device {
+                 rtc_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_RTC_TEST";
+                    serviceName = "RTC_TEST";
+                    deviceMatchAttr = "RTC_TEST";
+                 }
+            }
+            device_platform_watchdog_test :: device {
+                watchdog_tester :: deviceNode {
+                    policy = 2;
+                    priority = 105;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_WATCHDOG_TEST";
+                    serviceName = "WATCHDOG_TEST";
+                    deviceMatchAttr = "WATCHDOG_TEST";
+                }
+            }
+            device_platform_timer_test :: device {
+                timer_tester :: deviceNode {
+                    policy = 2;
+                    priority = 105;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_TIMER_TEST";
+                    serviceName = "TIMER_TEST";
+                    deviceMatchAttr = "TIMER_TEST";
+                }
+            }
+            device_platform_mipi_csi_test :: device {
+                mipi_csi_tester :: deviceNode {
+                    policy = 1;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_MIPI_CSI_TEST";
+                    serviceName = "PLATFORM_MIPI_CSI_TEST";
+                    deviceMatchAttr = "PLATFORM_MIPI_CSI_TEST";
+                }
+            }
+            device_sensor_test :: device {
+                sensor_tester :: deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "HDF_SENSOR_TEST_DRIVER";
+                }
+            }
+	    device_platform_regulator_test :: device {
+                regulator_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "virtual_regulator_driver";
+                    serviceName = "VIRTUAL_REGULATOR_DRIVER";
+                    deviceMatchAttr = "virtual_regulator";
+                }
+                regulator_tester :: deviceNode {
+                    policy = 2;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_REGULATOR_TEST";
+                    serviceName = "REGULATOR_TEST";
+                    deviceMatchAttr = "REGULATOR_TEST";
+                }
+            }
+	    device_platform_can_test :: device {
+                can_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "can_driver_virtual";
+                    serviceName = "CAN_DRIVER_VIRTUAL";
+                }
+                can_tester :: deviceNode {
+                    policy = 1;
+                    priority = 101;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_CAN_TEST";
+                    serviceName = "CAN_TEST";
+                }
+            }
+        }
+    }
+}
+

@@ -11,9 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-static_library("hal_sysparam") {
+shared_library("hal_sysparam") {
   sources = [ "hal_sys_param.c" ]
-  include_dirs = [ "//base/startup/syspara_lite/hals" ]
+  cflags = [ "-Wall" ]
+  include_dirs = [
+    "//base/startup/syspara_lite/hals",
+    "//drivers/framework/include/platform",
+    "//drivers/framework/include/utils",
+    "//drivers/adapter/uhdf/posix/include",
+    "//third_party/bounds_checking_function/include",
+  ]
   defines = [
     "INCREMENTAL_VERSION=\"${ohos_version}\"",
     "BUILD_TYPE=\"${ohos_build_type}\"",
@@ -21,5 +28,9 @@ static_library("hal_sysparam") {
     "BUILD_TIME=\"${ohos_build_time}\"",
     "BUILD_HOST=\"${ohos_build_host}\"",
     "BUILD_ROOTHASH=\"${ohos_build_roothash}\"",
+  ]
+  deps = [
+    "//drivers/adapter/uhdf/platform:hdf_platform",
+    "//third_party/bounds_checking_function:libsec_shared",
   ]
 }

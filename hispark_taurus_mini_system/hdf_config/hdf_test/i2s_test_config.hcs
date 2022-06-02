@@ -1,0 +1,15 @@
+root {
+    i2s_test {
+        module = "i2s_test";
+        match_attr = "I2S_TEST";
+		writeChannel = 0;         /* I2S_WRITE_CHANNEL_AUDIO */
+		i2slFsSel = 3;            /* I2SL_FS_SEL_256_FS */
+		MCLK = 12288;             /* KHZ */
+		BCLK = 3072;              /* KHZ */
+		sampleRate = 48;          /* KHZ */
+		type = 2;                 /* I2S_PROTOCOL_I2S_LSB */
+		channelMode = 0;          /* I2S_CHANNEL_MODE_STEREO */
+		channelIfMode = 0;        /* I2S_CHANNEL_IF_MODE_I2S */
+		samplePrecision = 16;     /* bit */
+    }
+}
