@@ -91,7 +91,7 @@
           { "component": "netmanager_base", "features":[] },
           { "component": "netmanager_ext", "features":[] },
           { "component": "netstack", "features":[] },
-          { "component": "dsoftbus_standard", "features":[] },
+          { "component": "dsoftbus", "features":[] },
           { "component": "wifi", "features":[] },
           { "component": "dhcp", "features":[] },
           { "component": "bluetooth_native_js", "features":[] }
