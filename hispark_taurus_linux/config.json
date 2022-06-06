@@ -75,9 +75,14 @@
         ]
       },
       {
+        "subsystem": "distributeddatamgr",
+        "components": [
+          { "component": "kv_store", "features":[] }
+        ]
+      },
+      {
         "subsystem": "utils",
         "components": [
-          { "component": "kv_store", "features":[] },
           { "component": "os_dump", "features":[] }
         ]
       },
