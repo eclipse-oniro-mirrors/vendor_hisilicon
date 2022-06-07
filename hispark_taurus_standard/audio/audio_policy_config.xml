@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright (c) 2021-2022 Huawei Device Co., Ltd.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<audioPolicyConfiguration version="1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <deviceclass name="primary">
+        <modules>
+            <module name="Speaker" lib="libmodule-hdi-sink.z.so" role="sink" channels="1" rate="44100" buffer_size="4096">
+                <Ports>
+                    <Port adapter_name="primary" id="0" channels="1" rate="44100" buffer_size="4096" fixed_latency="1" render_in_idle_state="0" open_mic_speaker="0"/>
+                </Ports>
+            </module>
+            <module name="Built_in_mic" lib="libmodule-hdi-source.z.so" role="source" channels="1" rate="44100" buffer_size="8192">
+                <Ports>
+                    <Port adapter_name="primary1" id="0" channels="1" rate="44100" buffer_size="8192" open_mic_speaker="0"/>
+                </Ports>
+            </module>
+            <module name="fifo_output" lib="libmodule-pipe-sink.z.so" role="sink" file="/data/data/.pulse_dir/pipe_sink.pcm">
+                <Ports>
+                    <Port adapter_name="internal" id="0"/>
+                </Ports>
+            </module>
+            <module name="fifo_input" lib="libmodule-pipe-source.z.so" role="source" file="/data/data/.pulse_dir/pipe_source.pcm">
+                <Ports>
+                    <Port adapter_name="internal" id="0"/>
+                </Ports>
+            </module>
+        </modules>
+    </deviceclass>
+    <deviceclass name="a2dp">
+        <modules>
+            <module name="Bt_Speaker" lib="libmodule-hdi-sink.z.so" role="sink" channels="2" rate="48000" buffer_size="3840">
+                <Ports>
+                    <Port adapter_name="bt_a2dp" id="0" channels="2" rate="48000" buffer_size="3840"/>
+                </Ports>
+            </module>
+        </modules>
+    </deviceclass>
+    <deviceclass name="file_io">
+        <modules>
+            <module name="file_sink" lib="libmodule-hdi-sink.z.so" role="sink" channels="8" rate="48000" buffer_size="3840" file="/data/data/.pulse_dir/file_sink.pcm">
+                <Ports>
+                    <Port id="0" channels="8" rate="48000" buffer_size="3840"/>
+                </Ports>
+            </module>
+            <module name="file_source" lib="libmodule-hdi-source.z.so" role="source" channels="6" rate="48000" buffer_size="3840" file="/data/data/.pulse_dir/file_source.pcm">
+                <Ports>
+                    <Port id="0" channels="6" rate="48000" buffer_size="3840"/>
+                </Ports>
+            </module>
+        </modules>
+    </deviceclass>
+    <AudioInterruptEnable>false</AudioInterruptEnable>
+    <UpdateRouteSupport>false</UpdateRouteSupport>
+    <AudioLatency>50</AudioLatency>
+</audioPolicyConfiguration>

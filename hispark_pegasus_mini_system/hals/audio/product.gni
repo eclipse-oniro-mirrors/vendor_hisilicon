@@ -14,3 +14,4 @@
 enable_audio_alsa_mode = false
 enable_hdf_proxy_stub = true
 enable_audio_hal_notsupport_pathselect = false
+enable_audio_policy_config = false
