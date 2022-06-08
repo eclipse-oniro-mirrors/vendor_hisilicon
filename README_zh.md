@@ -14,23 +14,23 @@
 
 ## 对应仓库<a name="section641143415335"></a>
 
-device/hisilicon/build
+[device/hisilicon/build](https://gitee.com/openharmony/device_hisilicon_build)
 
-device/hisilicon/drivers
+[device/hisilicon/drivers](https://gitee.com/openharmony/device_hisilicon_drivers)
 
-device/hisilicon/hardware
+[device/hisilicon/hardware](https://gitee.com/openharmony/device_hisilicon_hardware)
 
-device/hisilicon/hispark\_aries
+[device/hisilicon/hispark\_aries](https://gitee.com/openharmony/device_hisilicon_hispark_aries)
 
-device/hisilicon/hispark\_taurus
+[device/hisilicon/hispark\_taurus](https://gitee.com/openharmony/device_hisilicon_hispark_taurus)
 
-device/hisilicon/hispark\_pegasus
+[device/hisilicon/hispark\_pegasus](https://gitee.com/openharmony/device_hisilicon_hispark_pegasus)
 
-device/hisilicon/modules
+[device/hisilicon/modules](https://gitee.com/openharmony/device_hisilicon_modules)
 
-device/hisilicon/third\_party/ffmpeg
+[device/hisilicon/third\_party/ffmpeg](https://gitee.com/openharmony/device_hisilicon_third_party_ffmpeg)
 
-device/hisilicon/third\_party/uboot
+[device/hisilicon/third\_party/uboot](https://gitee.com/openharmony/device_hisilicon_third_party_uboot)
 
 **vendor/hisilicon**
 
