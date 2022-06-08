@@ -1,9 +1,9 @@
-# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2021-2022 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#     http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -11,9 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-enable_liteos_test_bin = false
-enable_audio_alsa_mode = false
-enable_hdf_proxy_stub = true
-enable_audio_hal_notsupport_pathselect = false
-enable_hdf_audio_full_test_suite = true
-enable_audio_policy_config = false
+import("//build/ohos.gni")
+
+ohos_prebuilt_etc("audio_policy_config") {
+  source = "//vendor/hisilicon/hispark_phoenix/audio/audio_policy_config.xml"
+  subsystem_name = "hdf"
+  relative_install_dir = "audio"
+  install_images = [ chipset_base_dir ]
+  part_name = "audio_device_driver"
+}
