@@ -154,7 +154,6 @@
       {
         "subsystem": "bundlemanager",
         "components": [
-          { "component": "eventhandler", "features":[] },
           { "component": "bundle_framework", "features":[] },
           { "component": "bundle_tool", "features":[] },
           { "component": "distributed_bundle_framework", "features":[] }
@@ -254,7 +253,8 @@
         "subsystem": "notification",
         "components": [
           { "component": "common_event_service", "features":[]},
-          { "component": "distributed_notification_service", "features":[]}
+          { "component": "distributed_notification_service", "features":[]},
+          { "component": "eventhandler", "features":[]}
         ]
       },
       {
