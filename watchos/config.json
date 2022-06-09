@@ -65,7 +65,7 @@
           { "component": "multimedia_audio_standard", "features":[] },
           { "component": "multimedia_image_standard", "features":[] },
           { "component": "multimedia_camera_standard", "features":[] },
-          { "component": "multimedia_media_library_standard", "features":[] }
+          { "component": "media_library", "features":[] }
         ]
       },
       {
