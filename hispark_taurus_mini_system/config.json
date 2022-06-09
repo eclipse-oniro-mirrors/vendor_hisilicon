@@ -30,7 +30,7 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "init_lite" },  
+          { "component": "init_lite", "features":["enable_ohos_startup_init_feature_begetctl_liteos=true"] },
           { "component": "bootstrap_lite" },
           { "component": "syspara_lite" }
         ]
@@ -63,7 +63,6 @@
       {
         "subsystem": "utils",
         "components": [
-          { "component": "kv_store" },
           { "component": "kal_timer" }
         ]
       },
