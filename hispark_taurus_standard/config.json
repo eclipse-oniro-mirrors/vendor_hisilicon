@@ -300,7 +300,7 @@
       ]
     },
     {
-      "subsystem": "aafwk",
+      "subsystem": "ability",
       "components": [
         {
           "component": "ability_runtime",
@@ -311,11 +311,11 @@
           "features": []
         },
         {
-          "component": "idl",
+          "component": "idl_tool",
           "features": []
         },
         {
-          "component": "form_runtime",
+          "component": "form_fwk",
           "features": []
         },
         {
