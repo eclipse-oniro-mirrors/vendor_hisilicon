@@ -524,7 +524,19 @@
                 {
 		  "component": "wlan_device_driver_interface",
 		  "features": []
-		}
+		},
+                {
+                  "component": "usb_device_driver_interface",
+                  "features": []
+                },
+                {
+                  "component": "ril_device_driver_interface",
+                  "features": []
+                },
+                {
+                  "component": "display_device_driver_interface",
+                  "features": []
+                }
       ]
     },
     {
