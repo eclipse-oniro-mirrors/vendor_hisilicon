@@ -72,7 +72,7 @@ root {
                 powers {
                     power0 {
                         powerSeqDelay = 0;
-                        powerType = 0; /* AlwaysON(0);GPIO(1) */
+                        powerType = 1; /* AlwaysON(0);GPIO(1) */
                         gpioId = 50;
                         activeLevel=1; /* High(1); Low(0) */
                     }
