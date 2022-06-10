@@ -300,7 +300,7 @@
       ]
     },
     {
-      "subsystem": "aafwk",
+      "subsystem": "ability",
       "components": [
         {
           "component": "ability_runtime",
@@ -311,11 +311,11 @@
           "features": []
         },
         {
-          "component": "idl",
+          "component": "idl_tool",
           "features": []
         },
         {
-          "component": "form_runtime",
+          "component": "form_fwk",
           "features": []
         },
         {
@@ -533,6 +533,18 @@
         },
         {
           "component": "wlan_device_driver_interface",
+          "features": []
+        },
+        {
+          "component": "usb_device_driver_interface",
+          "features": []
+        },
+        {
+          "component": "ril_device_driver_interface",
+          "features": []
+        },
+        {
+          "component": "display_device_driver_interface",
           "features": []
         },
         {
