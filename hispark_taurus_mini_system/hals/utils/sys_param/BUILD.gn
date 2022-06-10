@@ -15,7 +15,7 @@ shared_library("hal_sysparam") {
   sources = [ "hal_sys_param.c" ]
   cflags = [ "-Wall" ]
   include_dirs = [
-    "//base/startup/syspara_lite/hals",
+    "//base/startup/init_lite/interfaces/hals",
     "//drivers/framework/include/platform",
     "//drivers/framework/include/utils",
     "//drivers/adapter/uhdf/posix/include",
@@ -33,4 +33,9 @@ shared_library("hal_sysparam") {
     "//drivers/adapter/uhdf/platform:hdf_platform",
     "//third_party/bounds_checking_function:libsec_shared",
   ]
+}
+
+copy("vendor.para") {
+  sources = [ "./vendor.para" ]
+  outputs = [ "$root_out_dir/vendor/etc/param/vendor.para" ]
 }
