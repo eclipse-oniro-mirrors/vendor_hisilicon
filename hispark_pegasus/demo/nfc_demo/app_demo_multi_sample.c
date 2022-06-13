@@ -545,15 +545,15 @@ void HumanDetectSample(void)
         IoTGpioGetInputVal(HI_GPIO_7, &gpio_val); // gpio7
 
         if (gpio_val == IOT_GPIO_VALUE1) {
-            someoneWalking = OLED_FALG_ON;
+            someoneWalking = OLED_FLAG_ON;
         } else {
-            someoneWalking = OLED_FALG_OFF;
+            someoneWalking = OLED_FLAG_OFF;
         }
-        if (someoneWalking == OLED_FALG_ON) {
+        if (someoneWalking == OLED_FLAG_ON) {
             IoTPwmStart(HI_PWM1, PWM_FRQ_50, PWM_SMALL_DUTY); /* 1,占空比百分之50 */
             IoTPwmStart(HI_PWM2, PWM_FRQ_50, PWM_SMALL_DUTY); /* 2,占空比百分之50 */
             IoTPwmStart(HI_PWM3, PWM_FRQ_50, PWM_SMALL_DUTY); /* 3,占空比百分之50 */
-        } else if (someoneWalking == OLED_FALG_OFF) {
+        } else if (someoneWalking == OLED_FLAG_OFF) {
             IoTPwmStart(HI_PWM1, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 1,占空比百分之50 */
             IoTPwmStart(HI_PWM2, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 2,占空比百分之50 */
             IoTPwmStart(HI_PWM3, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 3,占空比百分之50 */
@@ -580,11 +580,11 @@ void LightDetectSample(void)
     currentMode = GetKeyStatus(CURRENT_MODE);
     while (1) {
         withLigh = GetLightStatus();
-        if (withLigh == OLED_FALG_ON) {
+        if (withLigh == OLED_FLAG_ON) {
             IoTPwmStart(HI_PWM1, PWM_FRQ_50, PWM_SMALL_DUTY); /* 1,占空比百分之50 */
             IoTPwmStart(HI_PWM2, PWM_FRQ_50, PWM_SMALL_DUTY); /* 2,占空比百分之50 */
             IoTPwmStart(HI_PWM3, PWM_FRQ_50, PWM_SMALL_DUTY); /* 3,占空比百分之50 */
-        } else if (withLigh == OLED_FALG_OFF) {
+        } else if (withLigh == OLED_FLAG_OFF) {
             IoTPwmStart(HI_PWM1, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 1,占空比百分之50 */
             IoTPwmStart(HI_PWM2, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 2,占空比百分之50 */
             IoTPwmStart(HI_PWM3, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 3,占空比百分之50 */
@@ -606,8 +606,8 @@ void LightDetectSample(void)
  * 无人无光照 => 灯不亮
  * 有人有光照 => 灯不亮
  * 有人无光照 => 灯亮
- * g_withLightFlag = OLED_FALG_ON：无光照(黑夜)，OLED_FALG_OFF有光照(白天)
- * g_someoneWalkingFlag = OLED_FALG_ON(有人)，OLED_FALG_OFF(无人)
+ * g_withLightFlag = OLED_FLAG_ON：无光照(黑夜)，OLED_FLAG_OFF有光照(白天)
+ * g_someoneWalkingFlag = OLED_FLAG_ON(有人)，OLED_FLAG_OFF(无人)
  */
 void UnionDetectSample(void)
 {
@@ -624,17 +624,17 @@ void UnionDetectSample(void)
     while (1) {
         IoTGpioGetInputVal(HI_GPIO_7, &gpio_val); // gpio7
         if (gpio_val == IOT_GPIO_VALUE1) {
-            someoneWalking =  OLED_FALG_ON;
+            someoneWalking =  OLED_FLAG_ON;
         } else {
-            someoneWalking =  OLED_FALG_OFF;
+            someoneWalking =  OLED_FLAG_OFF;
         }
         withLigh = GetLightStatus();
-        if (((someoneWalking == OLED_FALG_ON) && (withLigh == OLED_FALG_OFF)) ||
-            (someoneWalking == OLED_FALG_OFF)) {
+        if (((someoneWalking == OLED_FLAG_ON) && (withLigh == OLED_FLAG_OFF)) ||
+            (someoneWalking == OLED_FLAG_OFF)) {
             IoTPwmStart(HI_PWM1, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 1,占空比百分之50 */
             IoTPwmStart(HI_PWM2, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 2,占空比百分之50 */
             IoTPwmStart(HI_PWM3, PWM_LOW_DUTY, PWM_SMALL_DUTY); /* 3,占空比百分之50 */
-        } else if ((withLigh == OLED_FALG_ON) && (someoneWalking == OLED_FALG_ON)) {
+        } else if ((withLigh == OLED_FLAG_ON) && (someoneWalking == OLED_FLAG_ON)) {
             IoTPwmStart(HI_PWM1, PWM_FRQ_50, PWM_SMALL_DUTY); /* 1,占空比百分之50 */
             IoTPwmStart(HI_PWM2, PWM_FRQ_50, PWM_SMALL_DUTY); /* 2,占空比百分之50 */
             IoTPwmStart(HI_PWM3, PWM_FRQ_50, PWM_SMALL_DUTY); /* 3,占空比百分之50 */

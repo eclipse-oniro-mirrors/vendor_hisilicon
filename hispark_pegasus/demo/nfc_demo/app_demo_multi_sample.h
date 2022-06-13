@@ -49,8 +49,8 @@
 #define MAX_TRAFFIC_AUTO_TYPE       (2)
 #define MAX_TRAFFIC_HUMAN_TYPE      (1)
 
-#define OLED_FALG_ON                ((hi_u8)0x01)
-#define OLED_FALG_OFF               ((hi_u8)0x00)
+#define OLED_FLAG_ON                ((hi_u8)0x01)
+#define OLED_FLAG_OFF               ((hi_u8)0x00)
 
 #define  KEY_GPIO_5                 (1)
 #define  KEY_GPIO_7                 (2)

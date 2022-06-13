@@ -27,8 +27,8 @@
 
 #define     ADC_TEST_LENGTH             (20)
 #define     VLT_MIN                     (100)
-#define     OLED_FALG_ON                ((unsigned char)0x01)
-#define     OLED_FALG_OFF               ((unsigned char)0x00)
+#define     OLED_FLAG_ON                ((unsigned char)0x01)
+#define     OLED_FLAG_OFF               ((unsigned char)0x00)
 
 #define VOLTAGE_1_8_V  ((float)1.8)
 #define VOLTAGE_4_TIMES (4)
@@ -72,9 +72,9 @@ unsigned char GetLightStatus(void)
     }
 
     if (vltMax > VOLTAGE_3_V) { /* 判断电压是否大于3.0V */
-        return OLED_FALG_ON;
+        return OLED_FLAG_ON;
     } else {
-        return OLED_FALG_OFF;
+        return OLED_FLAG_OFF;
     }
 }
 
