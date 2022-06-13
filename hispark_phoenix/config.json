@@ -847,7 +847,7 @@
       "subsystem": "distributedhardware",
       "components": [
         {
-          "component": "device_manager_base",
+          "component": "device_manager",
           "features": []
         },
         {
