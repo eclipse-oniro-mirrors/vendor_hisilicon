@@ -81,12 +81,6 @@
         ]
       },
       {
-        "subsystem": "utils",
-        "components": [
-          { "component": "os_dump", "features":[] }
-        ]
-      },
-      {
         "subsystem": "updater",
         "components": [
           { "component": "ota_lite", "features": [] }
