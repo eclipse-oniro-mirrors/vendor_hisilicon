@@ -53,7 +53,7 @@ static void DemoMsgRcvCallBack(int qos, const char *topic, const char *payload)
 }
 
 /* Smart Can */
-hi_void IotPublishPersionTime(hi_u32 time)
+hi_void IotPublishPersonTime(hi_u32 time)
 {
     IoTProfileServiceT service;
     IoTProfileKVT property;
