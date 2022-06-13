@@ -57,9 +57,9 @@ void ShowAllEnvironmentValue(void)
     while (1) {
         (void)GetAht20SensorData();
         Mq2GetData();
-        (void*)FlaotToString(GetAhtSensorValue(AHT_TEMPERATURE), temperatureStr);
-        (void*)FlaotToString(GetAhtSensorValue(AHT_HUMIDITY), humidityStr);
-        (void*)FlaotToString(GetCombuSensorValue(), combustibleMainMenuGasValueStr);
+        (void*)FloatToString(GetAhtSensorValue(AHT_TEMPERATURE), temperatureStr);
+        (void*)FloatToString(GetAhtSensorValue(AHT_HUMIDITY), humidityStr);
+        (void*)FloatToString(GetCombuSensorValue(), combustibleMainMenuGasValueStr);
 
         OledShowStr(OLED_X_POSITION_18, OLED_Y_POSITION_5,
                     temperatureStr, OLED_DISPLAY_STRING_TYPE_1); /* 18, 5, xx, 1 */

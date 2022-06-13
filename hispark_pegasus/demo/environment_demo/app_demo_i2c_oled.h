@@ -23,6 +23,6 @@ void OledPositionCleanScreen(unsigned char fillData, unsigned char line,
     unsigned char pos, unsigned char len);
 void OledShowChar(unsigned char x, unsigned char y, unsigned char chr, unsigned char charSize);
 void OledShowStr(unsigned char x, unsigned char y, unsigned char *chr, unsigned char charSize);
-unsigned char *FlaotToString(double d, unsigned char *str);
+unsigned char *FloatToString(double d, unsigned char *str);
 void AllLedOff(void);
 #endif
