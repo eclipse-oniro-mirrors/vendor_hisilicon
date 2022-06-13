@@ -38,11 +38,7 @@
           "features": []
         },
         {
-          "component": "dataability",
-          "features": []
-        },
-        {
-          "component": "preferences",
+          "component": "preference",
           "features": []
         },
         {
