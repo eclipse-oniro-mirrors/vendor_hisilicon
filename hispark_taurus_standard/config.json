@@ -148,7 +148,7 @@
           "features": []
         },
         {
-          "component": "user_auth_framework",
+          "component": "user_auth",
           "features": []
         },
         {
