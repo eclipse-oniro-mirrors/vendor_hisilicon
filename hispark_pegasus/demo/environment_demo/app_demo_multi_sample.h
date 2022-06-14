@@ -43,7 +43,7 @@
 #define MAX_CONTROL_MODE_TYPE       (2)
 #define MAX_COLORFUL_LIGHT_TYPE     (2)
 #define MAX_PWM_CONTROL_TYPE        (4)
-#define MAX_BIRGHTNESS_TYPE         (2)
+#define MAX_BRIGHTNESS_TYPE         (2)
 #define RETURN_TYPE_MODE            (2)
 
 #define MAX_TRAFFIC_CONTROL_TYPE    (3)
@@ -146,7 +146,7 @@ typedef enum {
     CONTROL_MODE = 0,
     COLORFUL_LIGHT_MODE,
     PWM_CONTROL_MODE,
-    BIRGHTNESS_MODE,
+    BRIGHTNESS_MODE,
     HUMAN_DETECT_MODE,
     LIGHT_DETECT_MODE,
     UNION_DETECT_MODE,
