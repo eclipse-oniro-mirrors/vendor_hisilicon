@@ -20,7 +20,7 @@
 #include "iot_profile.h"
 
 // format the report data to json string mode
-static cJSON *FormateProflleValue(IoTProfileKVT *kv)
+static cJSON *FormatProfileValue(IoTProfileKVT *kv)
 {
     cJSON  *ret = NULL;
     switch (kv->type) {
@@ -60,7 +60,7 @@ static cJSON *MakeKvs(IoTProfileKVT *kvlst)
     // add all the property to the properties
     kvInfo = kvlst;
     while (kvInfo != NULL) {
-        kv = FormateProflleValue(kvInfo);
+        kv = FormatProfileValue(kvInfo);
         if (kv == NULL) {
             if (root != NULL) {
                 cJSON_Delete(root);
