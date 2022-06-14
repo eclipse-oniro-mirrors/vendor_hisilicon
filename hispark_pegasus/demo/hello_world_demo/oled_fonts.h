@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef OLOED_FONTS_H
-#define OLOED_FONTS_H
+#ifndef OLED_FONTS_H
+#define OLED_FONTS_H
 
 /************************************6*8的点阵************************************/
 static unsigned char g_f6X8[][6] = {
