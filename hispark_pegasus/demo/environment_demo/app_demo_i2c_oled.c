@@ -585,7 +585,7 @@ void OledShowStr(unsigned char x, unsigned char y, unsigned char *chr, unsigned 
  * 输入：double 小数
  * 输出：转换后的字符串
 */
-unsigned char *FlaotToString(double d, unsigned char *str)
+unsigned char *FloatToString(double d, unsigned char *str)
 {
     unsigned char str1[40] = {0};
     double data = d;

@@ -39,7 +39,7 @@ void ShowTemperatureValue(void)
     while (1) {
         hi_udelay(DELAY_10_MS); // delay 10ms
         GetAht20SensorData();
-        (void*)FlaotToString(GetAhtSensorValue(AHT_TEMPERATURE), temperatureStr);
+        (void*)FloatToString(GetAhtSensorValue(AHT_TEMPERATURE), temperatureStr);
         OledShowStr(OLED_X_POSITION_40, OLED_Y_POSITION_5,
                     temperatureStr, OLED_DISPLAY_STRING_TYPE_1); /* 40, 5, x.xx, 1 */
         if (currentMode != GetKeyStatus(CURRENT_MODE)) {
@@ -62,7 +62,7 @@ void ShowHumidityValue(void)
     while (1) {
         hi_udelay(DELAY_10_MS); // delay 10ms
         GetAht20SensorData();
-        (void*)FlaotToString(GetAhtSensorValue(AHT_HUMIDITY), humidityStr);
+        (void*)FloatToString(GetAhtSensorValue(AHT_HUMIDITY), humidityStr);
         OledShowStr(OLED_X_POSITION_56, OLED_Y_POSITION_5,
                     humidityStr,        OLED_DISPLAY_STRING_TYPE_1); /* 56, 5, x.xx, 1 */
         if (currentMode != GetKeyStatus(CURRENT_MODE)) {
@@ -84,7 +84,7 @@ void ShowCombustibleGasValue(void)
     while (1) {
         SetCombuSensorValue();
         Mq2GetData();
-        (void*)FlaotToString(GetCombuSensorValue(), combustibleGasValueStr);
+        (void*)FloatToString(GetCombuSensorValue(), combustibleGasValueStr);
         if (!GetCombuSensorValue()) {
             OledShowStr(OLED_X_POSITION_60, OLED_Y_POSITION_5,
                         "0.00    ", OLED_DISPLAY_STRING_TYPE_1); /* 60, 5, x.xx, 1 */

@@ -109,7 +109,7 @@ float Mq2GetPpm(float voltage)
         count = 0;
         IoTPwmStop(0);
     }
-    FlaotToString(ppm, combGas.g_ahu20GasBuff);
+    FloatToString(ppm, combGas.g_ahu20GasBuff);
     return ppm;
 }
 
