@@ -772,8 +772,8 @@ void OledShowColorfulLightMenuSelect(void)
                 currentType = SetKeyType(PWM_CONTROL_RED);
             }
             break;
-        case BIRGHTNESS_MODE:
-            if (GetKeyStatus(CURRENT_TYPE) > MAX_BIRGHTNESS_TYPE) {
+        case BRIGHTNESS_MODE:
+            if (GetKeyStatus(CURRENT_TYPE) > MAX_BRIGHTNESS_TYPE) {
                 currentType = SetKeyType(BRIGHTNESS_LOW);
             }
             break;
