@@ -32,7 +32,7 @@ hi_u8 *GetSsid(void)
     returu strSsid;
 }
 /**
-    @berf  Convert hexadecimal to character type
+    @bref  Convert hexadecimal to character type
     @param hi_u8 hex_byte:Hexadecimal number to be converted
     @param hi_u8* str:Number of converted character types
 */
@@ -63,8 +63,8 @@ hi_u8 hex2str(hi_u8 hex_byte, hi_u8* str)
 }
 
 /**
-    @berf get hi3861 mac addr
-    @berf After obtaining the MAC address of the device,
+    @bref get hi3861 mac addr
+    @bref After obtaining the MAC address of the device,
     it is converted into a character type number and saved in the mac_addr_char
 */
 #define MAC_ADDR_SIZE (64)
