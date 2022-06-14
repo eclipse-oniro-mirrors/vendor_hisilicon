@@ -19,10 +19,10 @@
 #define UDP_DEMO
 
 #ifdef UDP_DEMO
-#define UDP_DEDMO_SUPPORT
+#define UDP_DEMO_SUPPORT
 #define CONFIG_WIFI_STA_MODULE
 #elif defined(UDP_AP_DEMO)
-#define UDP_DEDMO_SUPPORT
+#define UDP_DEMO_SUPPORT
 #define CONFIG_WIFI_AP_MODULE
 #endif
 /**
