@@ -35,8 +35,8 @@
 #define     FUNC_GPIO 0
 #define     IOT_IO_PULL_UP 1
 #define     VLT_MIN                     (100)
-#define     OLED_FALG_ON                ((unsigned char)0x01)
-#define     OLED_FALG_OFF               ((unsigned char)0x00)
+#define     OLED_FLAG_ON                ((unsigned char)0x01)
+#define     OLED_FLAG_OFF               ((unsigned char)0x00)
 unsigned short  g_gpio5_adc_buf[ADC_TEST_LENGTH] = {0 };
 unsigned int    g_gpio5_tick = 0;
 unsigned int    g_car_control_demo_task_id = 0;
