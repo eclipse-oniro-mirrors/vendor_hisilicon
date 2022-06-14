@@ -70,7 +70,7 @@ int StringToHex(char *str, unsigned char *out, unsigned int *outlen)
 }
 
 /**
- * @berf The device side sends the characteristic value to the app side
+ * @bref The device side sends the characteristic value to the app side
  * @param struct LinkService* ar: histreaming LinkServer structural morphology
  * @param const char* property: characteristic value
  * @param char* value: send value to apps
@@ -88,8 +88,8 @@ static int GetStatusValue(struct LinkService* ar, const char* property, char* va
     return 0;
 }
 /**
- * @berf recv from app cmd
- * @berf Receive the message sent by the app, and operate the hi3861 device side accordingly
+ * @bref recv from app cmd
+ * @bref Receive the message sent by the app, and operate the hi3861 device side accordingly
  * @param struct LinkService* ar: histreaming LinkServer structural morphology
  * @param const char* property: Eigenvalues sent by app
  * @param char* value: Value sent by app
