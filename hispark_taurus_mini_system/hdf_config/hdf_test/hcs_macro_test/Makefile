@@ -7,7 +7,7 @@ endif
 MODULE_NAME := hdf_test_macro
 LOCAL_HCS_ROOT := $(shell pwd)
 
-HDF_FRAMWORK_ROOT = $(abspath $(LITEOSTOPDIR)/../../drivers/framework)
+HDF_FRAMWORK_ROOT = $(abspath $(LITEOSTOPDIR)/../../drivers/hdf_core/framework)
 HC_GEN_DIR = $(HDF_FRAMWORK_ROOT)/tools/hc-gen
 HC_GEN = $(OUT)/hc_gen_build/hc-gen
 

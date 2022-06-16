@@ -418,7 +418,7 @@
       "subsystem": "hdf",
       "components": [
         {
-          "component": "device_driver_framework",
+          "component": "hdf_core",
           "features": []
         },
         {
