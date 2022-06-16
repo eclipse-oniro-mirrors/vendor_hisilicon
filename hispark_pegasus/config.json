@@ -79,12 +79,6 @@
         ]
       },
       {
-        "subsystem": "iot",
-        "components": [
-          { "component": "iot_link", "features":[] }
-        ]
-      },
-      {
         "subsystem": "utils",
         "components": [
           { "component": "file", "features":[] },
