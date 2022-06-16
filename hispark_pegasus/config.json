@@ -87,8 +87,7 @@
       {
         "subsystem": "utils",
         "components": [
-          { "component": "file", "features":[] },
-          { "component": "os_dump", "features":[] }
+          { "component": "file", "features":[] }
         ]
       },
       {
