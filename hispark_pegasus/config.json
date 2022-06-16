@@ -40,7 +40,7 @@
       {
         "subsystem": "security",
         "components": [
-          { "component": "deviceauth_standard", "features":[] },
+          { "component": "device_auth", "features":[] },
           { "component": "huks", "features":
             [
               "disable_huks_binary = false",

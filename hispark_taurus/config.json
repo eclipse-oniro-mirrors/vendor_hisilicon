@@ -43,7 +43,7 @@
         "components": [
           { "component": "permission_lite", "features":[] },
           { "component": "appverify", "features":[] },
-          { "component": "deviceauth_standard", "features":[] },
+          { "component": "device_auth", "features":[] },
           { "component": "huks", "features":
             [
               "huks_config_file = \"hks_config_small.h\""
