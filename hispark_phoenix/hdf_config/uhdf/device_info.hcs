@@ -169,7 +169,7 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libhdi_audio_server.z.so";
+                    moduleName = "libhdi_audio_primary_server.z.so";
                     serviceName = "audio_hdi_service";
                 }
             }
