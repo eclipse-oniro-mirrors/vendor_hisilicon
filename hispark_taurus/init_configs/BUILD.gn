@@ -20,4 +20,3 @@ copy("init_configs_mksh") {
   sources = [ "init_liteos_a_3516dv300_mksh.cfg" ]
   outputs = [ "$root_out_dir/config/init_mksh.cfg" ]
 }
-

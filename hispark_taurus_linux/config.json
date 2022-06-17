@@ -89,7 +89,7 @@
       {
         "subsystem": "hdf",
         "components": [
-          { "component": "device_driver_framework", "features":[] },
+          { "component": "hdf_core", "features":[] },
           { "component": "display_device_driver", "features":[] },
           { "component": "input_device_driver", "features":[] },
           { "component": "sensor_device_driver", "features":[] },

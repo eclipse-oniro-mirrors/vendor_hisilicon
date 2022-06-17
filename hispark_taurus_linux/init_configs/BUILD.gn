@@ -22,18 +22,16 @@ copy("init_configs") {
 
 copy("init_initd") {
   sources = [
-    "etc/init.d/rcS",
     "etc/init.d/S00devs",
     "etc/init.d/S01mdev",
     "etc/init.d/S80network",
     "etc/init.d/S82ohos",
+    "etc/init.d/rcS",
   ]
   outputs = [ "$root_out_dir/etc/init.d/{{source_file_part}}" ]
 }
 
 copy("init_fstab") {
-  sources = [
-    "etc/fstab",
-  ]
+  sources = [ "etc/fstab" ]
   outputs = [ "$root_out_dir/etc/{{source_file_part}}" ]
 }
