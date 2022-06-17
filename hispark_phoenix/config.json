@@ -536,7 +536,16 @@
                 {
                   "component": "display_device_driver_interface",
                   "features": []
+                },
+                {
+                  "component": "distributed_camera_device_driver",
+                  "features": []
+                },
+                {
+                  "component": "distributed_camera_device_driver_interface",
+                  "features": []
                 }
+
       ]
     },
     {
