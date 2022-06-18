@@ -281,6 +281,17 @@
                     deviceMatchAttr = "EC11";
                 }
             }
+	    device_hdf_infrared :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 200;
+                    preload = 0;
+                    permission = 0660;
+                    moduleName = "HDF_INFRARED";
+                    serviceName = "hdf_input_event2";
+                    deviceMatchAttr = "Infrared_device0";
+                }
+            }
         }
 
         network :: host {
