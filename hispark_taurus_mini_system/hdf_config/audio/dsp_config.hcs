@@ -1,5 +1,5 @@
 root {
-    platfrom {
+    platform {
         template dsp_controller {
             match_attr = "";
             serviceName = "";
