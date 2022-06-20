@@ -49,7 +49,7 @@
         "components": [
           { "component": "appverify", "features":[] },
           { "component": "huks", "features":[] },
-          { "component": "deviceauth_standard", "features":[] },
+          { "component": "device_auth", "features":[] },
           { "component": "dataclassification", "features":[] },
           { "component": "device_security_level", "features":[] },
           { "component": "access_token", "features":[] },

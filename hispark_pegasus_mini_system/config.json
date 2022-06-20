@@ -40,7 +40,7 @@
       {
         "subsystem": "security",
         "components": [
-          { "component": "deviceauth_standard" },
+          { "component": "device_auth" },
           { "component": "huks", "features":
             [
               "huks_use_lite_storage = true",
