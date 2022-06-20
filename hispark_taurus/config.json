@@ -127,9 +127,9 @@
         ]
       },
       {
-        "subsystem": "appexecfwk",
+        "subsystem": "bundlemanager",
         "components": [
-          { "component": "appexecfwk_lite", "features":[] }
+          { "component": "bundle_framework_lite", "features":[] }
         ]
       },
       {
