@@ -53,8 +53,7 @@
           { "component": "dataclassification", "features":[] },
           { "component": "device_security_level", "features":[] },
           { "component": "access_token", "features":[] },
-          { "component": "selinux", "features":[] },
-          { "component": "permission_standard", "features":[] }
+          { "component": "selinux", "features":[] }
         ]
       },
       {
