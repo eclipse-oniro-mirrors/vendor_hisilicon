@@ -432,7 +432,7 @@
           "features": []
         },
         {
-          "component": "wlan_device_driver",
+          "component": "drivers_peripheral_wlan",
           "features": []
         },
         {
@@ -532,7 +532,7 @@
           "features": []
         },
         {
-          "component": "wlan_device_driver_interface",
+          "component": "drivers_interface_wlan",
           "features": []
         },
         {

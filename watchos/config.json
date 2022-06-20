@@ -123,7 +123,7 @@
           { "component": "input_device_driver", "features":[] },
           { "component": "display_device_driver", "features":[] },
           { "component": "thermal_device_driver", "features":[] },
-          { "component": "wlan_device_driver", "features":[] },
+          { "component": "drivers_peripheral_wlan", "features":[] },
           { "component": "sensor_device_driver", "features":[] },
           { "component": "audio_device_driver", "features":[] },
           { "component": "usb_device_driver", "features":[] },
