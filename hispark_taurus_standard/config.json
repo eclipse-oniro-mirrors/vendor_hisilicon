@@ -412,7 +412,7 @@
           "features": []
         },
         {
-          "component": "bluetooth_device_driver",
+          "component": "drivers_peripheral_bluetooth",
           "features": []
         },
         {
