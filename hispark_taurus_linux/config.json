@@ -34,7 +34,7 @@
         "subsystem": "security",
         "components": [
           { "component": "permission_lite", "features":[] },
-          { "component": "deviceauth_standard", "features":[] },
+          { "component": "device_auth", "features":[] },
           { "component": "huks", "features":
             [
               "huks_config_file = \"hks_config_small.h\""
@@ -114,9 +114,9 @@
         ]
       },
       {
-        "subsystem": "appexecfwk",
+        "subsystem": "bundlemanager",
         "components": [
-          { "component": "appexecfwk_lite", "features":[] }
+          { "component": "bundle_framework_lite", "features":[] }
         ]
       },
       {

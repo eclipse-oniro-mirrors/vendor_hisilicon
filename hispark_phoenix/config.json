@@ -107,10 +107,6 @@
       "subsystem": "security",
       "components": [
         {
-          "component": "permission_standard",
-          "features": []
-        },
-        {
           "component": "appverify",
           "features": []
         },
@@ -119,7 +115,7 @@
           "features": []
         },
         {
-          "component": "deviceauth_standard",
+          "component": "device_auth",
           "features": []
         },
         {
@@ -422,7 +418,7 @@
           "features": []
         },
         {
-          "component": "bluetooth_device_driver",
+          "component": "drivers_peripheral_bluetooth",
           "features": []
         },
         {
@@ -536,7 +532,16 @@
                 {
                   "component": "display_device_driver_interface",
                   "features": []
+                },
+                {
+                  "component": "distributed_camera_device_driver",
+                  "features": []
+                },
+                {
+                  "component": "distributed_camera_device_driver_interface",
+                  "features": []
                 }
+
       ]
     },
     {
