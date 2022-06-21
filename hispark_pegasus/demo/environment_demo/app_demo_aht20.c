@@ -224,7 +224,7 @@ static void StartAht20Task(void)
     attr.name = (hi_char*)"app_demo_aht20_task";
 
     if (osThreadNew((osThreadFunc_t)AppDemoAht20, NULL, &attr) == NULL) {
-        printf("[LedExample] Falied to create app_demo_aht20!\n");
+        printf("[LedExample] Failed to create app_demo_aht20!\n");
     }
 }
 

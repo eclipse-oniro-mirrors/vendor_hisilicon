@@ -100,7 +100,7 @@ static void MutexTestTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)rtosv2_mutex_main, NULL, &attr) == NULL) {
-        printf("[MutexTestTask] Falied to create rtosv2_mutex_main!\n");
+        printf("[MutexTestTask] Failed to create rtosv2_mutex_main!\n");
     }
 }
 

@@ -171,7 +171,7 @@ static void AppDemoIot(void)
     attr.priority = CN_IOT_TASK_PRIOR;
 
     if (osThreadNew((osThreadFunc_t)DemoEntry, NULL, &attr) == NULL) {
-        printf("[mqtt] Falied to create IOTDEMO!\n");
+        printf("[mqtt] Failed to create IOTDEMO!\n");
     }
 }
 

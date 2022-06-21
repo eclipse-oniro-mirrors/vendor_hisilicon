@@ -59,7 +59,7 @@ static void GpioExampleEntry(void)
     attr.priority = LED_TASK_PRIO;
 
     if (osThreadNew((osThreadFunc_t)GpioTask, NULL, &attr) == NULL) {
-        printf("[GpioExample] Falied to create GpioTask!\n");
+        printf("[GpioExample] Failed to create GpioTask!\n");
     }
 }
 

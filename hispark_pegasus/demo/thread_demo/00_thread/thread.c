@@ -99,7 +99,7 @@ static void ThreadTestTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)rtosv2_thread_main, NULL, &attr) == NULL) {
-        printf("[ThreadTestTask] Falied to create rtosv2_thread_main!\n");
+        printf("[ThreadTestTask] Failed to create rtosv2_thread_main!\n");
     }
 }
 

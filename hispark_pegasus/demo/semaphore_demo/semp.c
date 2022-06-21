@@ -109,7 +109,7 @@ static void SempTestTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)rtosv2_semp_main, NULL, &attr) == NULL) {
-        printf("[SempTestTask] Falied to create rtosv2_semp_main!\n");
+        printf("[SempTestTask] Failed to create rtosv2_semp_main!\n");
     }
 }
 

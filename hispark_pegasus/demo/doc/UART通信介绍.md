@@ -47,7 +47,7 @@
         attr.stack_size = 4096; /* 任务大小4096 */
         attr.priority = osPriorityNormal;
         if (osThreadNew(UartDemoTask, NULL, &attr) == NULL) {
-            printf("[UartDemo] Falied to create UartDemoTask!\n");
+            printf("[UartDemo] Failed to create UartDemoTask!\n");
         }
     }
     SYS_RUN(UartDemo);

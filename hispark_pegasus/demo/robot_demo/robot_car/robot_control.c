@@ -254,7 +254,7 @@ void RobotCarDemo(void)
     attr.priority = CAR_CONTROL_DEMO_TASK_PRIORITY;
 
     if (osThreadNew(RobotCarTestTask, NULL, &attr) == NULL) {
-        printf("[Ssd1306TestDemo] Falied to create RobotCarTestTask!\n");
+        printf("[Ssd1306TestDemo] Failed to create RobotCarTestTask!\n");
     }
 }
 APP_FEATURE_INIT(RobotCarDemo);

@@ -80,7 +80,7 @@ static void StartPWMBeepTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)PWMBeepTask, NULL, &attr) == NULL) {
-        printf("[StartPWMBeepTask] Falied to create PWMBeepTask!\n");
+        printf("[StartPWMBeepTask] Failed to create PWMBeepTask!\n");
     }
 }
 

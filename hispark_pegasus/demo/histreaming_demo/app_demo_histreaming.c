@@ -242,7 +242,7 @@ hi_void HistreamingDemo(hi_void)
     histreaming.task_name = "histreaming_demo";
     ret = hi_task_create(&g_histreamingDemoTaskId, &histreaming, HistreamingOpen, HI_NULL);
     if (ret != HI_ERR_SUCCESS) {
-        printf("Falied to create histreaming demo task!\n");
+        printf("Failed to create histreaming demo task!\n");
     }
 }
 #endif

@@ -52,7 +52,7 @@ static void DelayTestTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)rtosv2_delay_main, NULL, &attr) == NULL) {
-        printf("[DelayTestTask] Falied to create rtosv2_delay_main!\n");
+        printf("[DelayTestTask] Failed to create rtosv2_delay_main!\n");
     }
 }
 

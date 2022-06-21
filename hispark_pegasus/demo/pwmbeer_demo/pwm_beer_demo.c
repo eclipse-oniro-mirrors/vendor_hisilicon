@@ -81,7 +81,7 @@ static void StartPWMBeerTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)PWMBeerTask, NULL, &attr) == NULL) {
-        printf("[StartPWMBeerTask] Falied to create PWMBeerTask!\n");
+        printf("[StartPWMBeerTask] Failed to create PWMBeerTask!\n");
     }
 }
 

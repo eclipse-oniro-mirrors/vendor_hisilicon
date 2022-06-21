@@ -125,7 +125,7 @@ static void ColorfulLightDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(CorlorfulLightTask, NULL, &attr) == NULL) {
-        printf("[ColorfulLightDemo] Falied to create CorlorfulLightTask!\n");
+        printf("[ColorfulLightDemo] Failed to create CorlorfulLightTask!\n");
     }
 }
 

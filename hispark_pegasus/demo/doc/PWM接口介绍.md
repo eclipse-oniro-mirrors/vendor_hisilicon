@@ -42,7 +42,7 @@
         attr.stack_size = 4096; /* 任务大小4096 */
         attr.priority = osPriorityNormal;
         if (osThreadNew(PWMDemoTask, NULL, &attr) == NULL) {
-            printf("[PWMDemo] Falied to create PWMDemoTask!\n");
+            printf("[PWMDemo] Failed to create PWMDemoTask!\n");
         }
     }
     SYS_RUN(PWMDemo);
