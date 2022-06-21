@@ -45,7 +45,7 @@ typedef struct FunctionCallback {
     hi_u32 iotTaskID;
     FnMsgCallBack    msgCallBack;
 }FunctionCallback;
-FunctionCallback g_functinoCallback;
+FunctionCallback g_functionCallback;
 
 /* CPU Sleep time Set */
 unsigned int TaskMsleep(unsigned int ms)
@@ -65,7 +65,7 @@ static void DeviceConfigInit(hi_gpio_value val)
 
 static int  DeviceMsgCallback(FnMsgCallBack msgCallBack)
 {
-    g_functinoCallback.msgCallBack = msgCallBack;
+    g_functionCallback.msgCallBack = msgCallBack;
     return 0;
 }
 
