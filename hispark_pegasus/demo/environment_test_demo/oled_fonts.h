@@ -15,8 +15,8 @@
  */
 
 
-#ifndef OLOED_FONTS_H
-#define OLOED_FONTS_H
+#ifndef OLED_FONTS_H
+#define OLED_FONTS_H
 
 /************************************6*8的点阵************************************/
 static unsigned char F6x8[][6] = {
