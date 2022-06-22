@@ -1,0 +1,14 @@
+root {
+    wlan_config {
+        rtl8723du :& chipList {
+            chiprtl8723du :: chipInst {
+                match_attr = "hdf_wlan_chips_rtl8723du";
+                driverName = "rtl8723du";
+                bus {
+                    vendorId = 0x0BDA;
+                    deviceId = [0xD723];
+                }
+            }
+        }
+    }
+}
