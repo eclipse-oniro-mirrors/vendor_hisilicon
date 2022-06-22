@@ -119,7 +119,7 @@
           { "component": "display_device_driver", "features":[] },
           { "component": "input_device_driver", "features":[] },
           { "component": "sensor_device_driver", "features":[] },
-          { "component": "wlan_device_driver", "features":[] },
+          { "component": "drivers_peripheral_wlan", "features":[] },
           { "component": "vibrator_device_driver", "features":[] },
           { "component": "usb_device_driver", "features":[] },
           { "component": "camera_device_driver", "features":[] },
