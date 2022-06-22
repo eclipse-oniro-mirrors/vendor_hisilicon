@@ -123,6 +123,8 @@
           { "component": "display_device_driver", "features":[] },
           { "component": "thermal_device_driver", "features":[] },
           { "component": "drivers_peripheral_wlan", "features":[] },
+          { "component": "drivers_peripheral_thermal", "features":[] },
+          { "component": "wlan_device_driver", "features":[] },
           { "component": "sensor_device_driver", "features":[] },
           { "component": "audio_device_driver", "features":[] },
           { "component": "usb_device_driver", "features":[] },
@@ -130,8 +132,8 @@
           { "component": "vibrator_device_driver", "features":[] },
           { "component": "light_device_driver", "features":[] },
           { "component": "codec_device_driver", "features":[] },
-          { "component": "power_device_driver", "features":[] },
-          { "component": "battery_device_driver", "features":[] }
+          { "component": "drivers_peripheral_power", "features":[] },
+          { "component": "drivers_peripheral_battery", "features":[] }
         ]
       },
       {
