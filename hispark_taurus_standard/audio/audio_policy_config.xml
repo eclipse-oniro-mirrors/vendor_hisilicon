@@ -26,16 +26,6 @@
                     <Port adapter_name="primary1" id="0" channels="1" rate="44100" buffer_size="8192" open_mic_speaker="0"/>
                 </Ports>
             </module>
-            <module name="fifo_output" lib="libmodule-pipe-sink.z.so" role="sink" file="/data/data/.pulse_dir/pipe_sink.pcm">
-                <Ports>
-                    <Port adapter_name="internal" id="0"/>
-                </Ports>
-            </module>
-            <module name="fifo_input" lib="libmodule-pipe-source.z.so" role="source" file="/data/data/.pulse_dir/pipe_source.pcm">
-                <Ports>
-                    <Port adapter_name="internal" id="0"/>
-                </Ports>
-            </module>
         </modules>
     </deviceclass>
     <deviceclass name="a2dp">
