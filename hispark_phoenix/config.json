@@ -446,7 +446,7 @@
           "features": []
         },
         {
-          "component": "usb_device_driver",
+          "component": "drivers_peripheral_usb",
           "features": []
         },
         {
