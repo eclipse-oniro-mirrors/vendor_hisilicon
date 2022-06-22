@@ -498,19 +498,19 @@
 		  "features": []
 		},
 		{
-		  "component": "pin_auth_device_driver_interface",
+		  "component": "drivers_interface_pin_auth",
 		  "features": []
 		},
 		{
-		  "component": "face_auth_device_driver_interface",
+		  "component": "drivers_interface_face_auth",
 		  "features": []
 		},
 		{
-		  "component": "user_auth_device_driver_interface",
+		  "component": "drivers_interface_user_auth",
 		  "features": []
 		},
 		{
-		  "component": "fingerprint_auth_device_driver_interface",
+		  "component": "drivers_interface_fingerprint_auth",
 		  "features": []
 		},
 		{
