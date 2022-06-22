@@ -9,10 +9,10 @@
      -    [源码获取](https://device.harmonyos.com/cn/docs/documentation/guide/sourcecode-acquire-0000001050769927)
      -    [搭建IDE工具开发环境](https://device.harmonyos.com/cn/docs/documentation/guide/ide-install-windows-ubuntu-0000001194073744)
      -    [打开工程/源码](https://device.harmonyos.com/cn/docs/documentation/guide/open_project-0000001071680043)
-     -    [编译Hi3861V100开发板源码(由于Hi3861V100与Hi3516DV300源码相同，为方便开发请选择unbuntu方式编译)](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861v100-compile-0000001192526021)
+     -    [编译Hi3861V100开发板源码(由于Hi3861V100与Hi3516DV300源码相同，为方便开发请选择Ubuntu方式编译)](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861v100-compile-0000001192526021)
      -    [Hi3861V100开发板烧录](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861-upload-0000001051668683)
      -    [运行第一个程序Hello world](helloworlddemo/README.md)
--    第二种方式(hb方式，只能在unbuntu下使用)：
+-    第二种方式(hb方式，只能在Ubuntu下使用)：
      -    [源码获取](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-sourcecode-acquire.md)
      -    [搭建Hi3861V100开发环境](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps-hi3861-setting.md)
      -    [编译Hi3861V100开发板源码(选择安装包方式搭建环境)](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps-hi3861-building.md)
