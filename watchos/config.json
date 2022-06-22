@@ -126,7 +126,7 @@
           { "component": "sensor_device_driver", "features":[] },
           { "component": "audio_device_driver", "features":[] },
           { "component": "drivers_peripheral_usb", "features":[] },
-          { "component": "camera_device_driver", "features":[] },
+          { "component": "driver_peripheral_camera", "features":[] },
           { "component": "vibrator_device_driver", "features":[] },
           { "component": "light_device_driver", "features":[] },
           { "component": "codec_device_driver", "features":[] },
