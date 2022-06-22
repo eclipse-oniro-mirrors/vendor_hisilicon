@@ -95,7 +95,7 @@ hi_void UartTransmit(hi_void)
     attr.stack_size = 1024; /* ��ջ��СΪ1024 */
     attr.priority = osPriorityNormal;
     if (osThreadNew((osThreadFunc_t)UartDemoTask, NULL, &attr) == NULL) {
-        printf("Falied to create uart demo task!\n");
+        printf("Failed to create uart demo task!\n");
     }
 }
 SYS_RUN(UartTransmit);

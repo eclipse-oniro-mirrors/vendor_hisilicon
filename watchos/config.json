@@ -49,12 +49,11 @@
         "components": [
           { "component": "appverify", "features":[] },
           { "component": "huks", "features":[] },
-          { "component": "deviceauth_standard", "features":[] },
+          { "component": "device_auth", "features":[] },
           { "component": "dataclassification", "features":[] },
           { "component": "device_security_level", "features":[] },
           { "component": "access_token", "features":[] },
-          { "component": "selinux", "features":[] },
-          { "component": "permission_standard", "features":[] }
+          { "component": "selinux", "features":[] }
         ]
       },
       {
@@ -119,14 +118,14 @@
         "subsystem": "hdf",
         "components": [
           { "component": "hdf_core", "features":[] },
-          { "component": "bluetooth_device_driver", "features":[] },
+          { "component": "drivers_peripheral_bluetooth", "features":[] },
           { "component": "input_device_driver", "features":[] },
           { "component": "display_device_driver", "features":[] },
           { "component": "thermal_device_driver", "features":[] },
-          { "component": "wlan_device_driver", "features":[] },
+          { "component": "drivers_peripheral_wlan", "features":[] },
           { "component": "sensor_device_driver", "features":[] },
           { "component": "audio_device_driver", "features":[] },
-          { "component": "usb_device_driver", "features":[] },
+          { "component": "drivers_peripheral_usb", "features":[] },
           { "component": "camera_device_driver", "features":[] },
           { "component": "vibrator_device_driver", "features":[] },
           { "component": "light_device_driver", "features":[] },

@@ -99,7 +99,7 @@ static void StartBeepMusicTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)BeeperMusicTask, NULL, &attr) == NULL) {
-        printf("[LedExample] Falied to create BeeperMusicTask!\n");
+        printf("[LedExample] Failed to create BeeperMusicTask!\n");
     }
 }
 

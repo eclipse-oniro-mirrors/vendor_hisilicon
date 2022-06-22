@@ -120,7 +120,7 @@ static void StartTrafficLightTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)TrafficLightTask, NULL, &attr) == NULL) {
-        printf("[LedExample] Falied to create TrafficLightTask!\n");
+        printf("[LedExample] Failed to create TrafficLightTask!\n");
     }
 }
 

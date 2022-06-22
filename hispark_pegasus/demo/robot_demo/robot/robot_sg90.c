@@ -137,7 +137,7 @@ static void RobotDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(RobotTask, NULL, &attr) == NULL) {
-        printf("[RobotDemo] Falied to create RobotTask!\n");
+        printf("[RobotDemo] Failed to create RobotTask!\n");
     }
 }
 APP_FEATURE_INIT(RobotDemo);

@@ -32,7 +32,7 @@
       {
         "subsystem": "security",
         "components": [
-          { "component": "deviceauth_standard", "features":[] },
+          { "component": "device_auth", "features":[] },
           { "component": "permission_lite", "features":[] },
           { "component": "appverify", "features":[] },
           { "component": "huks", "features":
@@ -92,13 +92,13 @@
           { "component": "hdf_core", "features":[] },
           { "component": "display_device_driver", "features":[] },
           { "component": "input_device_driver", "features":[] },
-          { "component": "wlan_device_driver", "features":[] }
+          { "component": "drivers_peripheral_wlan", "features":[] }
         ]
       },
       {
-        "subsystem": "appexecfwk",
+        "subsystem": "bundlemanager",
         "components": [
-          { "component": "appexecfwk_lite", "features":[] }
+          { "component": "bundle_framework_lite", "features":[] }
         ]
       },
       {

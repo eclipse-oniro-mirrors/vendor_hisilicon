@@ -1,5 +1,5 @@
 root {
-    platfrom {
+    platform {
         template card_controller {
             match_attr = "";
             serviceName = "";

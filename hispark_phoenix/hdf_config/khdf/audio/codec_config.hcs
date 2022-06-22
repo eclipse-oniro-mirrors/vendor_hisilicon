@@ -1,5 +1,5 @@
 root {
-    platfrom {
+    platform {
         template codec_controller {
             match_attr = "";
             serviceName = "";
@@ -50,7 +50,7 @@ root {
                     0x20,    0x20,    16,   16,   0x0,    0xF,    0x1F,   0,    0,  //"Mic Left Gain"
                     0x20,    0x20,    24,   24,   0x0,    0xF,    0x1F,   0,    0,  //"Mic Right Gain"
                     0x2000,  0x2000,  16,   16,   0x0,    0x7,    0x7,    0,    0,  //"Render Channel Mode"
-                    0x1000,  0x1000,  16,   16,   0x0,    0x7,    0x7,    0,    0   //"Captrue Channel Mode"
+                    0x1000,  0x1000,  16,   16,   0x0,    0x7,    0x7,    0,    0   //"Capture Channel Mode"
                 ];
 
                 controlsConfig = [
@@ -64,7 +64,7 @@ root {
                         "External Codec Enable",
                         "Internally Codec Enable",
                         "Render Channel Mode",
-                        "Captrue Channel Mode"
+                        "Capture Channel Mode"
                     */
 
                     /*array index, iface, enable*/

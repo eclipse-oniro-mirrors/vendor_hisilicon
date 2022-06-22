@@ -40,7 +40,7 @@
       {
         "subsystem": "security",
         "components": [
-          { "component": "deviceauth_standard", "features":[] },
+          { "component": "device_auth", "features":[] },
           { "component": "huks", "features":
             [
               "disable_huks_binary = false",
@@ -57,9 +57,11 @@
         "subsystem": "startup",
         "components": [
           { "component": "bootstrap_lite", "features":[] },
-          { "component": "syspara_lite", "features":
+          { "component": "syspara_lite", "features":[] },
+          { "component": "init_lite", "features":
             [
-              "enable_ohos_startup_syspara_lite_use_thirdparty_mbedtls = false"
+              "enable_ohos_startup_init_feature_begetctl_liteos = true",
+              "enable_ohos_startup_init_lite_use_thirdparty_mbedtls = false"
             ]
           }
         ]

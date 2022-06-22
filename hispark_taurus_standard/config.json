@@ -107,10 +107,6 @@
       "subsystem": "security",
       "components": [
         {
-          "component": "permission_standard",
-          "features": []
-        },
-        {
           "component": "appverify",
           "features": []
         },
@@ -119,7 +115,7 @@
           "features": []
         },
         {
-          "component": "deviceauth_standard",
+          "component": "device_auth",
           "features": []
         },
         {
@@ -416,7 +412,7 @@
           "features": []
         },
         {
-          "component": "bluetooth_device_driver",
+          "component": "drivers_peripheral_bluetooth",
           "features": []
         },
         {
@@ -432,7 +428,7 @@
           "features": []
         },
         {
-          "component": "wlan_device_driver",
+          "component": "drivers_peripheral_wlan",
           "features": []
         },
         {
@@ -444,7 +440,7 @@
           "features": []
         },
         {
-          "component": "usb_device_driver",
+          "component": "drivers_peripheral_usb",
           "features": []
         },
         {
@@ -472,19 +468,19 @@
           "features": []
         },
         {
-          "component": "pin_auth_device_driver",
+          "component": "drivers_peripheral_pin_auth",
           "features": []
         },
         {
-          "component": "face_auth_device_driver",
+          "component": "drivers_peripheral_face_auth",
           "features": []
         },
         {
-          "component": "user_auth_device_driver",
+          "component": "drivers_peripheral_user_auth",
           "features": []
         },
         {
-          "component": "fingerprint_auth_device_driver",
+          "component": "drivers_peripheral_fingerprint_auth",
           "features": []
         },
         {
@@ -512,19 +508,19 @@
           "features": []
         },
         {
-          "component": "pin_auth_device_driver_interface",
+          "component": "drivers_interface_pin_auth",
           "features": []
         },
         {
-          "component": "face_auth_device_driver_interface",
+          "component": "drivers_interface_face_auth",
           "features": []
         },
         {
-          "component": "user_auth_device_driver_interface",
+          "component": "drivers_interface_user_auth",
           "features": []
         },
         {
-          "component": "fingerprint_auth_device_driver_interface",
+          "component": "drivers_interface_fingerprint_auth",
           "features": []
         },
         {
@@ -532,7 +528,7 @@
           "features": []
         },
         {
-          "component": "wlan_device_driver_interface",
+          "component": "drivers_interface_wlan",
           "features": []
         },
         {

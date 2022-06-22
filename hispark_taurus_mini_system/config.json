@@ -30,7 +30,11 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "init_lite", "features":["enable_ohos_startup_init_feature_begetctl_liteos=true"] },
+          { "component": "init_lite", "features":
+            [
+              "enable_ohos_startup_init_feature_begetctl_liteos = true"
+            ]
+          },
           { "component": "bootstrap_lite" },
           { "component": "syspara_lite" }
         ]
@@ -52,7 +56,7 @@
       {
         "subsystem": "security",
         "components": [
-          { "component": "deviceauth_standard" },
+          { "component": "device_auth" },
           { "component": "huks", "features":
             [
               "huks_config_file = \"hks_config_small.h\""

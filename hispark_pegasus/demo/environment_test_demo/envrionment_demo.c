@@ -150,7 +150,7 @@ static void EnvironmentDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(EnvironmentTask, NULL, &attr) == NULL) {
-        printf("[EnvironmentDemo] Falied to create EnvironmentTask!\n");
+        printf("[EnvironmentDemo] Failed to create EnvironmentTask!\n");
     }
 }
 

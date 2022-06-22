@@ -176,7 +176,7 @@ static void UDPTransport(void)
     attr.priority = UDP_TASK_PRIOR;
 
     if (osThreadNew((osThreadFunc_t)UdpServerDemo, NULL, &attr) == NULL) {
-        printf("[UDP] Falied to create udp demo!\n");
+        printf("[UDP] Failed to create udp demo!\n");
     }
 }
 

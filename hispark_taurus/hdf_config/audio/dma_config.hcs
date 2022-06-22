@@ -1,5 +1,5 @@
 root {
-    platfrom {
+    platform {
         template dma_controller {
             match_attr = "";
             serviceName = "";

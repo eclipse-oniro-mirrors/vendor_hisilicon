@@ -181,7 +181,7 @@ static void WifiHotspotDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(WifiHotspotTask, NULL, &attr) == NULL) {
-        printf("[WifiHotspotDemo] Falied to create WifiHotspotTask!\n");
+        printf("[WifiHotspotDemo] Failed to create WifiHotspotTask!\n");
     }
 }
 

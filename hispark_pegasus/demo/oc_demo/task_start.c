@@ -48,7 +48,7 @@ static void InterruptTask(void)
     attr.priority = INTERRUPT_TASK_PRIO;
 
     if (osThreadNew((osThreadFunc_t)KeyInterruptScan, NULL, &attr) == NULL) {
-        printf("[TrafficLight] Falied to create TrafficLightDemo!\n");
+        printf("[TrafficLight] Failed to create TrafficLightDemo!\n");
     }
 }
 
@@ -68,7 +68,7 @@ static void StartTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)TrafficLightDemo, NULL, &attr) == NULL) {
-        printf("[TrafficLight] Falied to create TrafficLightDemo!\n");
+        printf("[TrafficLight] Failed to create TrafficLightDemo!\n");
     }
 }
 

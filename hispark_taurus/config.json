@@ -43,7 +43,7 @@
         "components": [
           { "component": "permission_lite", "features":[] },
           { "component": "appverify", "features":[] },
-          { "component": "deviceauth_standard", "features":[] },
+          { "component": "device_auth", "features":[] },
           { "component": "huks", "features":
             [
               "huks_config_file = \"hks_config_small.h\""
@@ -119,17 +119,17 @@
           { "component": "display_device_driver", "features":[] },
           { "component": "input_device_driver", "features":[] },
           { "component": "sensor_device_driver", "features":[] },
-          { "component": "wlan_device_driver", "features":[] },
+          { "component": "drivers_peripheral_wlan", "features":[] },
           { "component": "vibrator_device_driver", "features":[] },
-          { "component": "usb_device_driver", "features":[] },
+          { "component": "drivers_peripheral_usb", "features":[] },
           { "component": "camera_device_driver", "features":[] },
           { "component": "audio_device_driver", "features":[] }
         ]
       },
       {
-        "subsystem": "appexecfwk",
+        "subsystem": "bundlemanager",
         "components": [
-          { "component": "appexecfwk_lite", "features":[] }
+          { "component": "bundle_framework_lite", "features":[] }
         ]
       },
       {

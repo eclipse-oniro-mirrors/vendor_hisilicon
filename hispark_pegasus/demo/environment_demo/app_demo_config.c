@@ -28,7 +28,7 @@
 static unsigned short g_hi3861BoardLedTest = 0;
 
 #define FLAG_TRUE   (1)
-#define FLAG_FAILSE (0)
+#define FLAG_FALSE  (0)
 
 void ReturnAllModeEnumSample(void)
 {
@@ -199,7 +199,7 @@ void EnvironmentReturnMode(void)
 void EnvironmentDisplay(void)
 {
     while (HI_ERR_SUCCESS != OledInit()) {
-        if (g_hi3861BoardLedTest == FLAG_FAILSE) {
+        if (g_hi3861BoardLedTest == FLAG_FALSE) {
             g_hi3861BoardLedTest = FLAG_TRUE;
              /* test HiSpark board */
             FACTORY_HISPARK_BOARD_TEST("-----------HiSpark board check----------");
@@ -213,7 +213,7 @@ void EnvironmentDisplay(void)
             case ENV_ALL_MODE:
                 EnvironmentAllMode();
                 break;
-            case ENV_TEMPERRATURE_MODE:
+            case ENV_TEMPERATURE_MODE:
                 EnvironmentTemperatureMode();
                 break;
             case ENV_HUMIDITY_MODE:

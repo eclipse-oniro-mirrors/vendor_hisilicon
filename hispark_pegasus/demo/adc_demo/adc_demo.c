@@ -61,7 +61,7 @@ static void ADCLightDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(ADCLightTask, NULL, &attr) == NULL) {
-        printf("[ADCLightDemo] Falied to create ADCLightTask!\n");
+        printf("[ADCLightDemo] Failed to create ADCLightTask!\n");
     }
 }
 
