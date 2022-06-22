@@ -73,7 +73,7 @@ static void TimerTestTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)timer_periodic, NULL, &attr) == NULL) {
-        printf("[TimerTestTask] Falied to create timer_periodic!\n");
+        printf("[TimerTestTask] Failed to create timer_periodic!\n");
     }
 }
 

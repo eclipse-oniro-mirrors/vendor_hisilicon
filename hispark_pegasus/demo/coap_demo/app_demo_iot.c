@@ -97,7 +97,7 @@ static void AppDemoIot(void)
     attr.priority = CN_IOT_TASK_PRIOR;
 
     if (osThreadNew((osThreadFunc_t)DemoEntry, NULL, &attr) == NULL) {
-        printf("[TrafficLight] Falied to create IOTDEMO!\n");
+        printf("[TrafficLight] Failed to create IOTDEMO!\n");
     }
 }
 

@@ -99,7 +99,7 @@ void NfcExampleEntry(void)
     attr.stack_mem = NULL;
 
     if (osThreadNew((osThreadFunc_t)NfcTask, NULL, &attr) == NULL) {
-        printf("[nfcExample] Falied to create LedTask!\n");
+        printf("[nfcExample] Failed to create LedTask!\n");
     }
 }
 
@@ -126,7 +126,7 @@ void NfcDisplayExampleEntry(void)
     attr.cb_size = 0U;
     attr.stack_mem = NULL;
     if (osThreadNew((osThreadFunc_t)AppNfcDisplay, NULL, &attr) == NULL) {
-        printf("[nfcDisplayExampleEntry] Falied to create LedTask!\n");
+        printf("[nfcDisplayExampleEntry] Failed to create LedTask!\n");
     }
 }
 

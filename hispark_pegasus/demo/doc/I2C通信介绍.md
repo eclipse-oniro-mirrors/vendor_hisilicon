@@ -80,7 +80,7 @@ IoSetFunc(14, 6); /* gpio14复用I2C0_SCL */
         attr.stack_size = 4096; /* 任务大小4096 */
         attr.priority = osPriorityNormal;
         if (osThreadNew(OLEDDemoTask, NULL, &attr) == NULL) {
-            printf("[OledDemo] Falied to create OLEDDemoTask!\n");
+            printf("[OledDemo] Failed to create OLEDDemoTask!\n");
         }
     }
     SYS_RUN(OLEDDemo);

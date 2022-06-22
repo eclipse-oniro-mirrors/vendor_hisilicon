@@ -80,7 +80,7 @@ static void UartDemo_Entry(void)
     attr.priority = osPriorityNormal; // 优先级
  
     if (osThreadNew((osThreadFunc_t)UartDemo_Task, NULL, &attr) == NULL) {
-        printf("[UartDemo] Falied to create UartDemo_Task!\n");
+        printf("[UartDemo] Failed to create UartDemo_Task!\n");
     }
 }
  

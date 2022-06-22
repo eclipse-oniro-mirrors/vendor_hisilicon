@@ -67,7 +67,7 @@ static void NetDemoEntry(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(NetDemoTask, NULL, &attr) == NULL) {
-        printf("[NetDemoEntry] Falied to create NetDemoTask!\n");
+        printf("[NetDemoEntry] Failed to create NetDemoTask!\n");
     }
 }
 

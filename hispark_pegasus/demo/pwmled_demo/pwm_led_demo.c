@@ -65,7 +65,7 @@ static void PWMLedDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(PWMLedDemoTask, NULL, &attr) == NULL) {
-        printf("[ColorfulLightDemo] Falied to create PWMLedDemoTask!\n");
+        printf("[ColorfulLightDemo] Failed to create PWMLedDemoTask!\n");
     }
 }
 

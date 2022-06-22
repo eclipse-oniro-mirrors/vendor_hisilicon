@@ -95,7 +95,7 @@ void Ssd1306TestDemo(void)
     attr.priority = PRIORITY;
 
     if (osThreadNew(Ssd1306TestTask, NULL, &attr) == NULL) {
-        printf("[Ssd1306TestDemo] Falied to create Ssd1306TestTask!\n");
+        printf("[Ssd1306TestDemo] Failed to create Ssd1306TestTask!\n");
     }
 }
 APP_FEATURE_INIT(Ssd1306TestDemo);

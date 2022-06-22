@@ -2065,7 +2065,7 @@ static void TimerTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)SoftwareTimersTaskEntry, NULL, &attr) == NULL) {
-        printf("[TrafficLight] Falied to create SoftwareTimersTaskEntry!\n");
+        printf("[TrafficLight] Failed to create SoftwareTimersTaskEntry!\n");
     }
 }
 

@@ -119,7 +119,7 @@ static void MessageTestTask(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew((osThreadFunc_t)rtosv2_msgq_main, NULL, &attr) == NULL) {
-        printf("[MessageTestTask] Falied to create rtosv2_msgq_main!\n");
+        printf("[MessageTestTask] Failed to create rtosv2_msgq_main!\n");
     }
 }
 
