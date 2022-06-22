@@ -213,7 +213,7 @@ void EnvironmentDisplay(void)
             case ENV_ALL_MODE:
                 EnvironmentAllMode();
                 break;
-            case ENV_TEMPERRATURE_MODE:
+            case ENV_TEMPERATURE_MODE:
                 EnvironmentTemperatureMode();
                 break;
             case ENV_HUMIDITY_MODE:
