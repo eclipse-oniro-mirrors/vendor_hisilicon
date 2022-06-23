@@ -532,7 +532,7 @@
           "features": []
         },
         {
-          "component": "usb_device_driver_interface",
+          "component": "drivers_interface_usb",
           "features": []
         },
         {
