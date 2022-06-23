@@ -438,7 +438,7 @@
           "features": []
         },
         {
-          "component": "audio_device_driver",
+          "component": "drivers_peripheral_audio",
           "features": []
         },
         {
@@ -458,7 +458,7 @@
           "features": []
         },
         {
-          "component": "codec_device_driver",
+          "component": "drivers_peripheral_codec",
           "features": []
         },
         {
