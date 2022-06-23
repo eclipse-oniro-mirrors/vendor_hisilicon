@@ -117,10 +117,10 @@
         "components": [
           { "component": "hdf_core", "features":[] },
           { "component": "display_device_driver", "features":[] },
-          { "component": "input_device_driver", "features":[] },
-          { "component": "sensor_device_driver", "features":[] },
+          { "component": "drivers_peripheral_input", "features":[] },
+          { "component": "drivers_peripheral_sensor", "features":[] },
           { "component": "drivers_peripheral_wlan", "features":[] },
-          { "component": "vibrator_device_driver", "features":[] },
+          { "component": "drivers_peripheral_vibrator", "features":[] },
           { "component": "drivers_peripheral_usb", "features":[] },
           { "component": "camera_device_driver", "features":[] },
           { "component": "drivers_peripheral_audio", "features":[] }
