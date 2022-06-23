@@ -13,7 +13,7 @@ root {
             busType = 0; // 0:i2c 1:spi
             busNum = 6;
             busAddr = 0x68;
-            regWidth = 1; // 1btye
+            regWidth = 1; // 1byte
         }
         sensorIdAttr :: sensorIdInfo {
             chipName = "bmi160";
