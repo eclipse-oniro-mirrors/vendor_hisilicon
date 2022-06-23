@@ -426,7 +426,7 @@
           "features": []
         },
         {
-          "component": "thermal_device_driver",
+          "component": "drivers_peripheral_thermal",
           "features": []
         },
         {
@@ -462,11 +462,11 @@
           "features": []
         },
         {
-          "component": "power_device_driver",
+          "component": "drivers_peripheral_power",
           "features": []
         },
         {
-          "component": "battery_device_driver",
+          "component": "drivers_peripheral_battery",
           "features": []
         },
 		{
@@ -482,15 +482,15 @@
 		  "features": []
 		},
 		{
-		  "component": "power_device_driver_interface",
+		  "component": "drivers_interface_power",
 		  "features": []
 		},
 		{
-		  "component": "battery_device_driver_interface",
+		  "component": "drivers_interface_battery",
 		  "features": []
 		},
 		{
-		  "component": "thermal_device_driver_interface",
+		  "component": "drivers_interface_thermal",
 		  "features": []
 		},
 		{
