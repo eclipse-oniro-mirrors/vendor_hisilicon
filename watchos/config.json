@@ -123,15 +123,17 @@
           { "component": "display_device_driver", "features":[] },
           { "component": "thermal_device_driver", "features":[] },
           { "component": "drivers_peripheral_wlan", "features":[] },
+          { "component": "drivers_peripheral_thermal", "features":[] },
+          { "component": "wlan_device_driver", "features":[] },
           { "component": "sensor_device_driver", "features":[] },
-          { "component": "audio_device_driver", "features":[] },
+          { "component": "drivers_peripheral_audio", "features":[] },
           { "component": "drivers_peripheral_usb", "features":[] },
           { "component": "driver_peripheral_camera", "features":[] },
           { "component": "vibrator_device_driver", "features":[] },
           { "component": "light_device_driver", "features":[] },
-          { "component": "codec_device_driver", "features":[] },
-          { "component": "power_device_driver", "features":[] },
-          { "component": "battery_device_driver", "features":[] }
+          { "component": "drivers_peripheral_codec", "features":[] },
+          { "component": "drivers_peripheral_power", "features":[] },
+          { "component": "drivers_peripheral_battery", "features":[] }
         ]
       },
       {
@@ -201,8 +203,7 @@
         "subsystem": "distributeddatamgr",
         "components": [
           { "component": "relational_store", "features":[] },
-          { "component": "dataability", "features":[] },
-          { "component": "preferences", "features":[] },
+          { "component": "preference", "features":[] },
           { "component": "data_share", "features":[] },
           { "component": "distributeddatamgr", "features":[] },
           { "component": "distributedfilejs", "features":[] },

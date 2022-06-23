@@ -38,11 +38,7 @@
           "features": []
         },
         {
-          "component": "dataability",
-          "features": []
-        },
-        {
-          "component": "preferences",
+          "component": "preference",
           "features": []
         },
         {
@@ -430,7 +426,7 @@
           "features": []
         },
         {
-          "component": "thermal_device_driver",
+          "component": "drivers_peripheral_thermal",
           "features": []
         },
         {
@@ -442,7 +438,7 @@
           "features": []
         },
         {
-          "component": "audio_device_driver",
+          "component": "drivers_peripheral_audio",
           "features": []
         },
         {
@@ -462,15 +458,15 @@
           "features": []
         },
         {
-          "component": "codec_device_driver",
+          "component": "drivers_peripheral_codec",
           "features": []
         },
         {
-          "component": "power_device_driver",
+          "component": "drivers_peripheral_power",
           "features": []
         },
         {
-          "component": "battery_device_driver",
+          "component": "drivers_peripheral_battery",
           "features": []
         },
 		{
@@ -486,15 +482,15 @@
 		  "features": []
 		},
 		{
-		  "component": "power_device_driver_interface",
+		  "component": "drivers_interface_power",
 		  "features": []
 		},
 		{
-		  "component": "battery_device_driver_interface",
+		  "component": "drivers_interface_battery",
 		  "features": []
 		},
 		{
-		  "component": "thermal_device_driver_interface",
+		  "component": "drivers_interface_thermal",
 		  "features": []
 		},
 		{
@@ -522,7 +518,7 @@
 		  "features": []
 		},
                 {
-                  "component": "usb_device_driver_interface",
+                  "component": "drivers_interface_usb",
                   "features": []
                 },
                 {

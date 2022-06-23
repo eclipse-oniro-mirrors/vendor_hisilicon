@@ -122,8 +122,8 @@
           { "component": "drivers_peripheral_wlan", "features":[] },
           { "component": "vibrator_device_driver", "features":[] },
           { "component": "drivers_peripheral_usb", "features":[] },
-          { "component": "driver_peripheral_camera", "features":[] },
-          { "component": "audio_device_driver", "features":[] }
+          { "component": "camera_device_driver", "features":[] },
+          { "component": "drivers_peripheral_audio", "features":[] }
         ]
       },
       {
