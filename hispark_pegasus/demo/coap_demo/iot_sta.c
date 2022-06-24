@@ -182,7 +182,7 @@ static void OnWifiConnectionChanged(int state, WifiLinkedInfo* info)
     printf("%s %d, state = %d, info = \r\n", __FUNCTION__, __LINE__, state);
     PrintLinkedInfo(info);
 
-    if (state == WIFI_STATE_AVALIABLE) {
+    if (state == WIFI_STATE_AVAILABLE) {
         g_connected = 1;
     } else {
         g_connected = 0;
