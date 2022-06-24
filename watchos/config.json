@@ -128,9 +128,9 @@
           { "component": "drivers_peripheral_sensor", "features":[] },
           { "component": "drivers_peripheral_audio", "features":[] },
           { "component": "drivers_peripheral_usb", "features":[] },
-          { "component": "camera_device_driver", "features":[] },
-          { "component": "drivers_peripheral_vibrator", "features":[] },
-          { "component": "drivers_peripheral_light", "features":[] },
+          { "component": "driver_peripheral_camera", "features":[] },
+          { "component": "vibrator_device_driver", "features":[] },
+          { "component": "light_device_driver", "features":[] },
           { "component": "drivers_peripheral_codec", "features":[] },
           { "component": "drivers_peripheral_power", "features":[] },
           { "component": "drivers_peripheral_battery", "features":[] }
