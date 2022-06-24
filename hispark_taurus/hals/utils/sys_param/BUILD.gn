@@ -15,7 +15,7 @@ shared_library("hal_sysparam") {
   sources = [ "hal_sys_param.c" ]
   cflags = [ "-Wall" ]
   include_dirs = [
-    "//base/startup/init_lite/interfaces/hals",
+    "//base/startup/init/interfaces/hals",
     "//drivers/hdf_core/framework/include/platform",
     "//drivers/hdf_core/framework/include/utils",
     "//drivers/hdf_core/adapter/uhdf/posix/include",
