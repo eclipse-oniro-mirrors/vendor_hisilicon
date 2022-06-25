@@ -530,11 +530,11 @@
                   "features": []
                 },
                 {
-                  "component": "distributed_camera_device_driver",
+                  "component": "drivers_peripheral_distributed_camera",
                   "features": []
                 },
                 {
-                  "component": "distributed_camera_device_driver_interface",
+                  "component": "drivers_interface_distributed_camera",
                   "features": []
                 }
 
