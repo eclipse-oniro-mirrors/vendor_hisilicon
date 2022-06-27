@@ -90,7 +90,7 @@
         "subsystem": "hdf",
         "components": [
           { "component": "hdf_core", "features":[] },
-          { "component": "display_device_driver", "features":[] },
+          { "component": "drivers_peripheral_display", "features":[] },
           { "component": "drivers_peripheral_input", "features":[] },
           { "component": "drivers_peripheral_wlan", "features":[] }
         ]
