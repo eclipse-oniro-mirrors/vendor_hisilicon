@@ -203,7 +203,7 @@
         "subsystem": "distributeddatamgr",
         "components": [
           { "component": "relational_store", "features":[] },
-          { "component": "preference", "features":[] },
+          { "component": "preferences", "features":[] },
           { "component": "data_share", "features":[] },
           { "component": "distributeddatamgr", "features":[] },
           { "component": "distributedfilejs", "features":[] },
