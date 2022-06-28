@@ -14,7 +14,7 @@
       {
         "subsystem": "arkui",
         "components": [
-          { "component": "ace_engine_standard", "features":[ "" ] },
+          { "component": "ace_engine", "features":[ "" ] },
           { "component": "napi", "features":[ "" ] }
         ]
       },

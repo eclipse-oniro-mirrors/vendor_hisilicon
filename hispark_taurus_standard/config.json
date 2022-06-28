@@ -12,7 +12,7 @@
       "subsystem": "arkui",
       "components": [
         {
-          "component": "ace_engine_standard",
+          "component": "ace_engine",
           "features": []
         },
         {
