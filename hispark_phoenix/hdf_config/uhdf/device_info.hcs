@@ -5,7 +5,7 @@
             hostName = "";
             priority = 100;
             uid = "";
-            gid = "";
+            gid = [""];
             caps = [""];
             template device {
                 template deviceNode {
@@ -37,7 +37,7 @@
             hostName = "blue_host";
             priority = 50;
             uid = "root";
-            gid = "system";
+            gid = ["system"];
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
             bluetooth_device :: device {
                 device0 :: deviceNode {
@@ -52,7 +52,7 @@
             hostName = "a2dp_host";
             priority = 50;
             uid = "root";
-            gid = "system";
+            gid = ["system"];
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
             bluetooth_device :: device {
                 device0 :: deviceNode {
@@ -121,7 +121,7 @@
             hostName = "power_host";
             priority = 50;
             uid = "system";
-            gid = "system";
+            gid = ["system"];
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
             power_device :: device {
                 device0 :: deviceNode {
@@ -178,7 +178,7 @@
             hostName = "camera_mpp_host";
             priority = 50;
             uid = "root";
-            gid = "system";
+            gid = ["system"];
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
             camera_device :: device {
                  device0 :: deviceNode {
