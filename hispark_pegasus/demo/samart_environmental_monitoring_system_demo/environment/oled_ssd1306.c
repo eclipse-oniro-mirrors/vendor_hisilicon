@@ -120,7 +120,7 @@ uint32_t OledInit(void)
         0x05, //
         0xD9, // Set Pre-Charge Period
         0xF1, //
-        0xDA, // set com pin configuartion
+        0xDA, // set com pin configuration
         0x12, //
         0xDB, // set Vcomh
         0x30, //

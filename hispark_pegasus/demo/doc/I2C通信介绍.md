@@ -45,7 +45,7 @@ IoSetFunc(14, 6); /* gpio14复用I2C0_SCL */
         0x05,
         0xD9, // Set Pre-Charge Period
         0xF1,
-        0xDA, // set com pin configuartion
+        0xDA, // set com pin configuration
         0x12,
         0xDB, // set Vcomh
         0x30,
