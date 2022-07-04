@@ -532,7 +532,7 @@
           "features": []
         },
         {
-          "component": "ril_device_driver_interface",
+          "component": "drivers_interface_ril",
           "features": []
         },
         {
