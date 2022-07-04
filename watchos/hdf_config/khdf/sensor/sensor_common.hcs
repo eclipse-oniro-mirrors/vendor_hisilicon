@@ -3,7 +3,7 @@ root {
     sensorConfig {
         template sensorDeviceInfo {
             sensorName = "sensor"; // max string length is 16 bytes
-            vendorName = "vondorXXX_XXX"; // max string length is 16 bytes
+            vendorName = "vendorXXX_XXX"; // max string length is 16 bytes
             firmwareVersion = "1.0";
             hardwareVersion = "1.0";
             sensorTypeId = 0; // enum SensorTypeTag
