@@ -24,16 +24,20 @@
 #define ATTR.STACK_SIZE 1024
 #define TIMES_CNT   3
 
+// 声明一个用于计数的全局变量
 static int times = 0;
 
+// 声明定时器的回调函数
 void cb_timeout_periodic(int *arg)
 {
     (int)arg;
     times++;
 }
 
+
 void timer_periodic(void)
 {
+// 用osTimerNew创建一个定时器
     osTimerId_t periodic_tid = osTimerNew(cb_timeout_periodic, osTimerPeriodic, NULL, NULL);
     if (periodic_tid == NULL) {
         printf("[Timer Test] osTimerNew(periodic timer) failed.\r\n");
@@ -41,6 +45,7 @@ void timer_periodic(void)
     } else {
         printf("[Timer Test] osTimerNew(periodic timer) success, tid: %p.\r\n", periodic_tid);
     }
+// 一秒钟调用一次回调函数
     osStatus_t status = osTimerStart(periodic_tid, 100);
     if (status != osOK) {
         printf("[Timer Test] osTimerStart(periodic timer) failed.\r\n");
@@ -49,13 +54,16 @@ void timer_periodic(void)
         printf("[Timer Test] osTimerStart(periodic timer) success, wait a while and stop.\r\n");
     }
 
+// 等待三秒
     while (times < TIMES_CNT) {
         printf("[Timer Test] times:%d.\r\n", times);
         osDelay(OS_DELAY);
 }
 
+// 停止定时器
     status = osTimerStop(periodic_tid);
     printf("[Timer Test] stop periodic timer, status :%d.\r\n", status);
+// 删除定时器
     status = osTimerDelete(periodic_tid);
     printf("[Timer Test] kill periodic timer, status :%d.\r\n", status);
 }
