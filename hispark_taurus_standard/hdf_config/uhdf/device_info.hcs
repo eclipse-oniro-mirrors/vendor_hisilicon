@@ -252,42 +252,42 @@
                 }
             }
         }
-        sensor_dal :: host { 
+        sensor :: host { 
             hostName = "sensor_host"; 
             priority = 50;
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
-            sensor_dal_device :: device { 
+            sensor_device :: device { 
                 device0 :: deviceNode { 
                     policy = 2; 
                     priority = 100; 
                     moduleName = "libsensor_driver.z.so"; 
-                    serviceName = "sensor_interface_service"; 
+                    serviceName = "uservice_sensor"; 
                 } 
             } 
         }
-        vibrator_dal :: host {
+        vibrator :: host {
             hostName = "vibrator_host";
             priority = 50;
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
-            vibrator_dal_device :: device {
+            vibrator_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
                     moduleName = "libvibrator_driver.z.so";
-                    serviceName = "vibrator_interface_service";
+                    serviceName = "uservice_vibrator";
                 }
             }
         }
-        light_dal :: host {
+        light :: host {
             hostName = "light_host";
             priority = 50;
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
-            light_dal_device :: device {
+            light_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
                     moduleName = "liblight_driver.z.so";
-                    serviceName = "light_interface_service";
+                    serviceName = "uservice_light";
                 }
             }
         }
