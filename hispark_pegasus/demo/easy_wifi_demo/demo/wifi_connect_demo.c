@@ -31,6 +31,7 @@ static void WifiConnectTask(int *arg)
     osDelay(TEN);
 
     // setup your AP params
+    // 设置AP参数，包括SSID、预共享密钥、安全类型（PSK）、netID
     WifiDeviceConfig apConfig = {0};
     if (strcpy_s(apConfig.ssid, sizeof(apConfig.ssid), "ABCD")) {
     printf("OK");
@@ -42,12 +43,13 @@ static void WifiConnectTask(int *arg)
 
     int netId = ConnectToHotspot(&apConfig);
 
+    // 连接等待一定时间后自动断开
     int timeout = 60;
     while (timeout--) {
         printf("After %d seconds I will disconnect with AP!\r\n", timeout);
         osDelay(ONE_HUNDRED);
     }
-
+    // 断开热点连接
     DisconnectWithHotspot(netId);
 }
 
