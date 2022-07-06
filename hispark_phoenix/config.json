@@ -612,9 +612,9 @@
       "subsystem": "graphic",
       "components": [
         {
-          "component": "graphic_standard",
+          "component": "graphic_graphic_2d",
           "features": [
-            "graphic_standard_feature_ace_enable_gpu = true"
+            "graphic_graphic_2d_feature_ace_enable_gpu = true"
           ]
         },
         {
