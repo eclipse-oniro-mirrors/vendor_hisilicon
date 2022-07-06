@@ -139,7 +139,7 @@
       {
         "subsystem": "graphic",
         "components": [
-          { "component": "graphic_graphic_2d", "features":[] }
+          { "component": "graphic_standard", "features":[] }
         ]
       },
       {
