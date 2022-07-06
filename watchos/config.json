@@ -126,7 +126,11 @@
           { "component": "drivers_peripheral_thermal", "features":[] },
           { "component": "wlan_device_driver", "features":[] },
           { "component": "drivers_peripheral_sensor", "features":[] },
-          { "component": "drivers_peripheral_audio", "features":[] },
+          { "component": "drivers_peripheral_audio", "features":[
+            "drivers_peripheral_audio_hal_notsupport_pathselect=false",
+            "drivers_peripheral_audio_full_test_suite=true",
+            "drivers_peripheral_audio_policy_config=false" ]
+          },
           { "component": "drivers_peripheral_usb", "features":[] },
           { "component": "drivers_peripheral_camera", "features":[] },
           { "component": "vibrator_device_driver", "features":[] },

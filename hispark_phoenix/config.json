@@ -439,7 +439,11 @@
         },
         {
           "component": "drivers_peripheral_audio",
-          "features": []
+          "features": [
+            "drivers_peripheral_audio_user_mode=true",
+            "drivers_peripheral_audio_full_test_suite=true",
+            "drivers_peripheral_audio_policy_config=false"
+          ]
         },
         {
           "component": "drivers_peripheral_usb",
