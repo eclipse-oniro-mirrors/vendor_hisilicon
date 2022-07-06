@@ -270,7 +270,7 @@
                     policy = 2; 
                     priority = 100; 
                     moduleName = "libsensor_driver.z.so"; 
-                    serviceName = "uservice_sensor"; 
+                    serviceName = "sensor_interface_service"; 
                 } 
             } 
         }
@@ -283,7 +283,7 @@
                     policy = 2;
                     priority = 100;
                     moduleName = "libvibrator_driver.z.so";
-                    serviceName = "uservice_vibrator";
+                    serviceName = "vibrator_interface_service";
                 }
             }
         }
@@ -296,7 +296,7 @@
                     policy = 2;
                     priority = 100;
                     moduleName = "liblight_driver.z.so";
-                    serviceName = "uservice_light";
+                    serviceName = "light_interface_service";
                 }
             }
         }
