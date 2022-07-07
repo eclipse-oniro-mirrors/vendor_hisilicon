@@ -409,11 +409,11 @@ static unsigned int SetOledColorPreChargeCmd(void)
     if (status != 0) {
         return -1;
     }
-    status = WriteCmd(PIN_CONFIGUARTION); // set com pin configuartion
+    status = WriteCmd(PIN_CONFIGURATION); // set com pin configuration
     if (status != 0) {
         return -1;
     }
-    status = WriteCmd(CONFIGUARTION);
+    status = WriteCmd(CONFIGURATION);
     if (status != 0) {
         return -1;
     }

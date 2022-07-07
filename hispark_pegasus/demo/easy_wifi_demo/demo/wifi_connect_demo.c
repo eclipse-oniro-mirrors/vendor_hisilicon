@@ -66,7 +66,7 @@ static void WifiConnectDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(WifiConnectTask, NULL, &attr) == NULL) {
-        printf("[WifiConnectDemo] Falied to create WifiConnectTask!\n");
+        printf("[WifiConnectDemo] Failed to create WifiConnectTask!\n");
     }
 }
 

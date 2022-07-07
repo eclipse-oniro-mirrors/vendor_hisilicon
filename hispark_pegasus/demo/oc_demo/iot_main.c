@@ -87,12 +87,12 @@ static int MsgRcvCallBack(unsigned char *context, char *topic, int topicLen, MQT
     IoTMsgT *msg;
     char *buf;
     hi_u32 bufSize;
-    int topicLenght = topicLen;
+    int topicLength = topicLen;
 
-    if (topicLenght == 0) {
-        topicLenght = strlen(topic);
+    if (topicLength == 0) {
+        topicLength = strlen(topic);
     }
-    bufSize = topicLenght + 1  + message->payloadlen + 1 + sizeof(IoTMsgT);
+    bufSize = topicLength + 1  + message->payloadlen + 1 + sizeof(IoTMsgT);
     buf = hi_malloc(0, bufSize);
     if (buf != NULL) {
         msg = (IoTMsgT *)buf;
@@ -100,17 +100,17 @@ static int MsgRcvCallBack(unsigned char *context, char *topic, int topicLen, MQT
         bufSize -= sizeof(IoTMsgT);
         msg->qos = message->qos;
         msg->type = EN_IOT_MSG_RECV;
-        (void)memcpy_s(buf, bufSize, topic, topicLenght);
-        buf[topicLenght] = '\0';
+        (void)memcpy_s(buf, bufSize, topic, topicLength);
+        buf[topicLength] = '\0';
         msg->topic = buf;
-        buf += topicLenght + 1;
-        bufSize -= (topicLenght + 1);
+        buf += topicLength + 1;
+        bufSize -= (topicLength + 1);
         (void)memcpy_s(buf, bufSize, message->payload, message->payloadlen);
         buf[message->payloadlen] = '\0';
         msg->payload = buf;
         IOT_LOG_DEBUG("RCVMSG:QOS:%d TOPIC:%s PAYLOAD:%s\r\n", msg->qos, msg->topic, msg->payload);
         if (IOT_SUCCESS != osMessageQueuePut(g_ioTAppCb.queueID, &msg, 0, CN_QUEUE_WAITTIMEOUT)) {
-            IOT_LOG_ERROR("Wrie queue failed\r\n");
+            IOT_LOG_ERROR("Write queue failed\r\n");
             hi_free(0, msg);
         }
     }
@@ -127,7 +127,7 @@ static void ConnLostCallBack(unsigned char *context, char *cause)
     return;
 }
 
-void IoTMsgProces(IoTMsgT *msg, MQTTClient_message pubmsg, MQTTClient client)
+void IoTMsgProcess(IoTMsgT *msg, MQTTClient_message pubmsg, MQTTClient client)
 {
     hi_u32 ret;
     switch (msg->type) {
@@ -154,7 +154,7 @@ void IoTMsgProces(IoTMsgT *msg, MQTTClient_message pubmsg, MQTTClient client)
     return;
 }
 
-// use this function to deal all the comming message
+// use this function to deal all the coming message
 static int ProcessQueueMsg(MQTTClient client)
 {
     printf("ProcessQueueMsg\r\n");
@@ -173,10 +173,10 @@ static int ProcessQueueMsg(MQTTClient client)
             return HI_ERR_FAILURE;
         }
         if (msg != NULL) {
-            IoTMsgProces(msg, pubmsg, client);
+            IoTMsgProcess(msg, pubmsg, client);
             hi_free(0, msg);
         }
-        timeout = 0;  // continous to deal the message without wait here
+        timeout = 0;  // continuos to deal the message without wait here
     } while (ret == HI_ERR_SUCCESS);
     return;
 }
@@ -325,7 +325,7 @@ int IotSendMsg(int qos, const char *topic, const char *payload)
         msg->payload = buf;
         IOT_LOG_DEBUG("SNDMSG:QOS:%d TOPIC:%s PAYLOAD:%s\r\n", msg->qos, msg->topic, msg->payload);
         if (osMessageQueuePut(g_ioTAppCb.queueID, &msg, 0, CN_QUEUE_WAITTIMEOUT) != IOT_SUCCESS) {
-            IOT_LOG_ERROR("Wrie queue failed\r\n");
+            IOT_LOG_ERROR("Write queue failed\r\n");
             hi_free(0, msg);
             return;
         } else {

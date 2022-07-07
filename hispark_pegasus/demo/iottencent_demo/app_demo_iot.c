@@ -30,12 +30,12 @@
 #define TAKE_THE_INITIATIVE_TO_REPORT
 #define ONE_SECOND                          (1000)
 /* oc request id */
-#define CN_COMMADN_INDEX                    "commands/request_id="
+#define CN_COMMAND_INDEX                    "commands/request_id="
 #define WECHAT_SUBSCRIBE_LIGHT              "light"
 #define WECHAT_SUBSCRIBE_LIGHT_ON_STATE     "1"
 #define WECHAT_SUBSCRIBE_LIGHT_OFF_STATE    "0"
 
-int g_ligthStatus = -1;
+int g_lightStatus = -1;
 typedef void (*FnMsgCallBack)(hi_gpio_value val);
 
 typedef struct FunctionCallback {
@@ -83,10 +83,10 @@ static void DemoMsgRcvCallBack(int qos, const char *topic, const char *payload)
     if (strstr(payload, WECHAT_SUBSCRIBE_LIGHT) != NULL) {
         if (strstr(payload, WECHAT_SUBSCRIBE_LIGHT_OFF_STATE) != NULL) {
             wechatControlDeviceMsg(HI_GPIO_VALUE1);
-            g_ligthStatus = HI_FALSE;
+            g_lightStatus = HI_FALSE;
         } else {
             wechatControlDeviceMsg(HI_GPIO_VALUE0);
-            g_ligthStatus = HI_TRUE;
+            g_lightStatus = HI_TRUE;
         }
     }
     return HI_NULL;
@@ -117,10 +117,10 @@ hi_void IotPublishSample(void)
     };
 
     /* report light */
-    if (g_ligthStatus == HI_TRUE) {
+    if (g_lightStatus == HI_TRUE) {
         weChatProfile.reportAction.subDeviceActionLight = "light";
         weChatProfile.reportAction.lightActionStatus = 1; /* 1: light on */
-    } else if (g_ligthStatus == HI_FALSE) {
+    } else if (g_lightStatus == HI_FALSE) {
         weChatProfile.reportAction.subDeviceActionLight = "light";
         weChatProfile.reportAction.lightActionStatus = 0; /* 0: light off */
     } else {

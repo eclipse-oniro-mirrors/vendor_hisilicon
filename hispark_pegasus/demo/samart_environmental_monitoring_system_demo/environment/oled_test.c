@@ -48,7 +48,7 @@ static void OledDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(OledTask, NULL, &attr) == NULL) {
-        printf("[OledDemo] Falied to create OledTask!\n");
+        printf("[OledDemo] Failed to create OledTask!\n");
     }
 }
 
