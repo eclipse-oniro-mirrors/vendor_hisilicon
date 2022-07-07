@@ -433,7 +433,10 @@
         },
         {
           "component": "drivers_peripheral_audio",
-          "features": []
+          "features": [
+            "drivers_peripheral_audio_hal_notsupport_pathselect=false",
+            "drivers_peripheral_audio_full_test_suite=true"
+          ]
         },
         {
           "component": "drivers_peripheral_usb",
