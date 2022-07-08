@@ -536,7 +536,7 @@
           "features": []
         },
         {
-          "component": "drivers_peripheral_display_interface",
+          "component": "drivers_interface_display",
           "features": []
         },
         {
