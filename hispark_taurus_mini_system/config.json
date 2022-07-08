@@ -42,8 +42,7 @@
       {
         "subsystem": "communication",
         "components": [
-          { "component": "dsoftbus" },
-          { "component": "ipc_lite" }
+          { "component": "dsoftbus" }
         ]
       },
       {
