@@ -285,7 +285,7 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 200;
-                    preload = 0;
+                    preload = 2;
                     permission = 0660;
                     moduleName = "HDF_INFRARED";
                     serviceName = "hdf_input_event2";
