@@ -367,7 +367,8 @@
         {
           "component": "wifi",
           "features": [
-              "wifi_feature_with_p2p = false"
+              "wifi_feature_with_p2p = false",
+              "wifi_feature_with_ap_num = 0"
           ]
         },
         {
