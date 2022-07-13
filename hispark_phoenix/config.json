@@ -774,7 +774,7 @@
           "features": []
         },
         {
-          "component": "battery_statistics_native",
+          "component": "battery_statistics",
           "features": []
         },
         {
