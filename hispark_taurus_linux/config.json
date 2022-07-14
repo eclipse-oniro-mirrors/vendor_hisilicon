@@ -6,6 +6,7 @@
     "device_company": "hisilicon",
     "device_build_path": "device/board/hisilicon/hispark_taurus",
     "board": "hispark_taurus",
+    "api_version": 8,
     "kernel_type": "linux",
     "kernel_version": "5.10",
     "subsystems": [
