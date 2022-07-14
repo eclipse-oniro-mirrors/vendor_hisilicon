@@ -97,6 +97,12 @@
         ]
       },
       {
+        "subsystem": "commonlibrary",
+        "components": [
+          { "component": "c_utils", "features": [] }
+        ]
+      },
+      {
         "subsystem": "utils",
         "components": [
           { "component": "jsapi_sys", "features":[]},
