@@ -60,7 +60,7 @@
         "subsystem": "multimedia",
         "components": [
           { "component": "multimedia_histreamer", "features":[] },
-          { "component": "multimedia_media_standard", "features":[] },
+          { "component": "multimedia_player_framework", "features":[] },
           { "component": "multimedia_audio_framework", "features":[] },
           { "component": "multimedia_image_standard", "features":[] },
           { "component": "multimedia_camera_standard", "features":[] },
