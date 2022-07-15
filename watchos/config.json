@@ -171,7 +171,7 @@
           { "component": "battery_manager_native", "features":[ ] },
           { "component": "battery_statistics", "features":[ ] },
           { "component": "thermal_manager", "features":[ ] },
-          { "component": "display_manager_native", "features":[ ] }
+          { "component": "display_manager", "features":[ ] }
         ]
       },
       {

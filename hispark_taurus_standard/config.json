@@ -785,7 +785,7 @@
           "features": []
         },
         {
-          "component": "display_manager_native",
+          "component": "display_manager",
           "features": []
         },
         {
