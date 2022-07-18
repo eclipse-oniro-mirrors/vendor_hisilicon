@@ -766,7 +766,7 @@
       "subsystem": "powermgr",
       "components": [
         {
-          "component": "power_manager_native",
+          "component": "power_manager",
           "features": []
         },
         {
