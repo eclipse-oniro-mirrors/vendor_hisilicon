@@ -313,6 +313,10 @@
         {
           "component": "ability_base",
           "features": []
+        },
+        {
+          "component": "dmsfwk",
+          "features": []
         }
       ]
     },
@@ -392,10 +396,6 @@
         },
         {
           "component": "safwk",
-          "features": []
-        },
-        {
-          "component": "dmsfwk_standard",
           "features": []
         }
       ]
