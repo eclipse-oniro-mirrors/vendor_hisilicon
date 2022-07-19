@@ -299,7 +299,7 @@
         "components": [
           { "component": "ark", "features":[]},
           { "component": "ark_js_runtime", "features":[]},
-          { "component": "ark_ts2abc", "features":[]}
+          { "component": "ets_frontend", "features":[]}
         ]
       },
       {

@@ -889,7 +889,7 @@
           "features": []
         },
         {
-          "component": "ark_ts2abc",
+          "component": "ets_frontend",
           "features": []
         }
       ]
