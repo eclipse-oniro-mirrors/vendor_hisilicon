@@ -18,9 +18,9 @@ shared_library("hal_pms") {
   sources = [ "hal_pms.c" ]
   cflags = [ "-Wall" ]
   include_dirs = [
-    "//base/security/permission/services/permission_lite/pms/include/hals",
-    "//base/security/permission/services/permission_lite/pms/include",
-    "//base/security/permission/interfaces/kits/permission_lite",
+    "//base/security/permission_lite/services/pms/include/hals",
+    "//base/security/permission_lite/services/pms/include",
+    "//base/security/permission_lite/interfaces/kits",
     "//base/hiviewdfx/interfaces/kits/hilog",
     "//base/startup/init_lite/interfaces/innerkits/include/syspara",
     "//drivers/hdf_core/framework/include/platform",
