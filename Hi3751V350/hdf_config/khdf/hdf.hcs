@@ -8,7 +8,7 @@
 #include "platform/hi35xx_spi_config.hcs"
 #include "input/input_config.hcs"
 #include "wifi/wlan_platform.hcs"
-#include "wifi/wlan_chip_hi3881.hcs"
+#include "wifi/wlan_chip_rtl8723du.hcs"
 #include "sensor/sensor_config.hcs"
 #include "audio/audio_config.hcs"
 #include "audio/codec_config.hcs"
