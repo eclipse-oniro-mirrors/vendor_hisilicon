@@ -73,7 +73,7 @@ void CoapClientStop(void)
     printf("[%s][%d] stopped\n", __FUNCTION__, __LINE__);
     return;
 }
-/* to create a new token value depending on time */
+/* to create a new token value depanding on time */
 s32_t CoapNewToken(u16_t msg_id, u8_t *token, u8_t token_len)
 {
     u32_t now_ms;

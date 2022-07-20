@@ -27,7 +27,7 @@ uint32_t OledInit(void);
 /**
  * @brief Set cursor position
  *
- * @param x the horizontal position of cursor
+ * @param x the horizontal posistion of cursor
  * @param y the vertical position of cursor
  * @return Returns {@link WIFI_IOT_SUCCESS} if the operation is successful;
  * returns an error code defined in {@link wifiiot_errno.h} otherwise.

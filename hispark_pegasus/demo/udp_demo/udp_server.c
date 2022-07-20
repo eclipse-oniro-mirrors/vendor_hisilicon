@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define INVALID_SOCKET          (-1)
+#define INVAILD_SOCKET          (-1)
 #define FREE_CPU_TIME_20MS      (20)
 #define INVALID_VALUE           "202.202.202.202"
 
@@ -37,7 +37,7 @@
 #define WECHAT_MSG_LIGHT_OFF    "_light_off"
 #define DEVICE_MSG_LIGHT_ON     "device_light_on"
 #define DEVICE_MSG_LIGHT_OFF    "device_light_off"
-#define WECHAT_MSG_UNLOAD_PAGE  "UnloadPage"
+#define WECHAT_MSG_UNLOAD_PAGE  "UnoladPage"
 #define RECV_DATA_FLAG_OTHER    (2)
 #define HOST_PORT               (5566)
 #define DEVICE_PORT             (6655)
@@ -76,7 +76,7 @@ void WeChatControlDeviceMsg(hi_gpio_value val)
 int UdpTransportInit(struct sockaddr_in serAddr, struct sockaddr_in remoteAddr)
 {
     int sServer = socket(AF_INET, SOCK_DGRAM, 0);
-    if (sServer == INVALID_SOCKET) {
+    if (sServer == INVAILD_SOCKET) {
         printf("create server socket failed\r\n");
         close(sServer);
     }

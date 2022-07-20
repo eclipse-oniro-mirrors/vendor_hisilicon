@@ -134,7 +134,7 @@ static void RedOledLedLigthTimeShowNum9(void)
     }
 }
 
-static void RedOledLedLightTimeShowNum8(void)
+static void RedOledLedLigthTimeShowNum8(void)
 {
     if (GetKeyStatus(OC_BEEP_STATUS) == BEEP_ON) {
         OledShowStr(OLED_X_POSITION_0, OLED_Y_POSITION_7,

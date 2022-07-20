@@ -136,7 +136,7 @@ static int GetStatusValue(const struct LinkService* ar, const char* property, co
     printf("Receive property: %s(value=%s[%d])\n", property, value, len);
 
     if (strcmp(property, "Status") == 0) {
-        (void)strcpy_s(value, strlen(status) + 1, "Opend"); /* 1: '\0' length */
+        (void)strcpy_s(value, strlen(status) + 1, "Opend"); /* 1: '\0' lenght */
     }
     /*
      * if Ok return 0,

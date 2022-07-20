@@ -81,8 +81,8 @@ hi_u32 hi3816_get_mac_addr(hi_void)
         j = j + 3; /* 3: mac addr  */
     }
     memcpy_s(&hispark_ssid[16], MAC_ADDR_SIZE, /* 16:data of buffer 17 */
-        &mac_addr_char[13], 1); /* 13: data of buffer 14, 1: l length  */
+        &mac_addr_char[13], 1); /* 13: data of buffer 14, 1: l lenght  */
     memcpy_s(&hispark_ssid[17], MAC_ADDR_SIZE, /* 17: data of buffer 18 */
-        &mac_addr_char[15], 2); /* 15: data of buffer 16, 2: 2 length */
+        &mac_addr_char[15], 2); /* 15: data of buffer 16, 2: 2 lenght */
     return HI_ERR_SUCCESS;
 }

@@ -195,7 +195,7 @@ typedef enum {
 typedef enum {
     CYCLE_FOR_ONE_SECOND = 0,
     CYCLE_FOR_HALF_SECOND,
-    CYCLE_FOR_QUARTER_SECOND
+    CYCLE_FOR_QUARATER_SECOND
 } HiColorfulLightType;
 
 typedef enum {
@@ -234,7 +234,7 @@ typedef enum {
     KEY_DOWN_FLAG,
     OC_BEEP_STATUS = 5,
     SOMEONE_WALKING,
-}GlobalStatusDef ;
+}GloableStatuDef;
 
 typedef struct {
     unsigned char g_menuSelect;
@@ -246,12 +246,12 @@ typedef struct {
     unsigned int g_gpio7Tick;
     unsigned int g_gpio8Tick;
     unsigned char g_gpio9Tick;
-    unsigned int g_gpio7FirstKeyDown;
+    unsigned int g_gpio7FirstKeyDwon;
     unsigned char g_gpio8CurrentType;
     unsigned char g_ocBeepStatus;
     unsigned char g_someoneWalkingFlag;
     unsigned char g_withLightFlag;
-} GlobalStatusType;
+} GlobalStausType;
 
 void GpioKey1IsrFuncMode(void);
 void GpioKey2IsrFuncType(void);
@@ -283,5 +283,5 @@ void Gpio8Interrupt(const char *param);
 void AppMultiSampleDemo(void);
 unsigned char SetKeyStatus(HiColorfulLightMode setSta);
 unsigned char SetKeyType(HiColorfulLightMode setSta);
-unsigned char GetKeyStatus(GlobalStatuDef staDef);
+unsigned char GetKeyStatus(GloableStatuDef staDef);
 #endif
