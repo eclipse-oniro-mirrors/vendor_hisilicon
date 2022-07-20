@@ -174,7 +174,7 @@
         "subsystem": "powermgr",
         "components": [
           { "component": "power_manager", "features":[ ] },
-          { "component": "battery_manager_native", "features":[ ] },
+          { "component": "battery_manager", "features":[ ] },
           { "component": "battery_statistics", "features":[ ] },
           { "component": "thermal_manager", "features":[ ] },
           { "component": "display_manager", "features":[ ] }
