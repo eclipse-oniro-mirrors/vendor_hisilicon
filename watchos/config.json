@@ -99,16 +99,13 @@
       {
         "subsystem": "commonlibrary",
         "components": [
-          { "component": "c_utils", "features": [] }
+          { "component": "c_utils", "features": [] },
+	  { "component": "ets_utils", "features":[] }
         ]
       },
       {
         "subsystem": "utils",
         "components": [
-          { "component": "jsapi_sys", "features":[]},
-          { "component": "jsapi_api", "features":[]},
-          { "component": "jsapi_util", "features":[]},
-          { "component": "jsapi_worker", "features":[]},
           { "component": "utils_base", "features":[] },
           { "component": "utils_memory", "features":[] }
         ]

@@ -229,6 +229,10 @@
         {
           "component": "c_utils",
           "features": []
+        },
+	{
+          "component": "ets_utils",
+          "features": []
         }
       ]
     },
@@ -237,22 +241,6 @@
       "components": [
         {
           "component": "utils_base",
-          "features": []
-        },
-        {
-          "component": "jsapi_sys",
-          "features": []
-        },
-        {
-          "component": "jsapi_api",
-          "features": []
-        },
-        {
-          "component": "jsapi_util",
-          "features": []
-        },
-        {
-          "component": "jsapi_worker",
           "features": []
         },
         {
