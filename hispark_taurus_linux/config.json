@@ -69,7 +69,7 @@
         "subsystem": "communication",
         "components": [
           { "component": "dsoftbus", "features":[] },
-          { "component": "rpc", "features":[] },
+          { "component": "ipc", "features":[] },
           { "component": "wpa_supplicant", "features":[] },
           { "component": "wifi", "features":[] },
           { "component": "dhcp", "features":[] }
