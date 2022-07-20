@@ -907,7 +907,7 @@
       "subsystem": "deviceprofile",
       "components": [
         {
-          "component": "device_profile_core",
+          "component": "device_info_manager",
           "features": []
         }
       ]

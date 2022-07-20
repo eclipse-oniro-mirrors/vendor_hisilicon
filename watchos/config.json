@@ -323,7 +323,7 @@
       {
         "subsystem": "deviceprofile",
         "components": [
-          { "component": "device_profile_core", "features":[]}
+          { "component": "device_info_manager", "features":[]}
         ]
       },
       {
