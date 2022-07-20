@@ -64,6 +64,10 @@
         {
           "component": "e2fsprogs",
           "features": []
+        },
+        {
+          "component": "pasteboard",
+          "features": []
         }
       ]
     },
@@ -652,25 +656,36 @@
         {
           "component": "time_native",
           "features": []
-        },
+        }
+      ]
+    },
+    {
+      "subsystem": "request",
+      "components": [
         {
-          "component": "inputmethod_native",
+          "component": "request",
           "features": []
-        },
+        }
+      ]
+    },
+    {
+      "subsystem": "inputmethod",
+      "components": [
         {
-          "component": "pasteboard_native",
+          "component": "imf",
           "features": []
-        },
+        }
+      ]
+    },
+    {
+      "subsystem": "theme",
+      "components": [
         {
-          "component": "screenlock",
+          "component": "screenlock_mgr",
           "features": []
         },
         {
           "component": "wallpaper_mgr",
-          "features": []
-        },
-        {
-          "component": "request",
           "features": []
         }
       ]
