@@ -8,25 +8,8 @@
     "board": "hispark_taurus",
     "kernel_type": "liteos_a",
     "kernel_version": "",
+    "inherit": [ "productdefine/common/base/small_system.json" ],
     "subsystems": [  
-      {
-        "subsystem": "kernel",
-        "components": [
-          { "component": "liteos_a" }
-        ]
-      },
-      {
-        "subsystem": "hdf",
-        "components": [
-          { "component": "hdf_core" }
-        ]
-      },
-      {
-        "subsystem": "hiviewdfx",
-        "components": [
-          { "component": "hilog_featured_lite" }
-        ]
-      },
       {
         "subsystem": "startup",
         "components": [
@@ -34,51 +17,17 @@
             [
               "enable_ohos_startup_init_feature_begetctl_liteos = true"
             ]
-          },
-          { "component": "bootstrap_lite" },
-          { "component": "syspara_lite" }
-        ]
-      },
-      {
-        "subsystem": "communication",
-        "components": [
-          { "component": "dsoftbus" }
-        ]
-      },
-      {
-        "subsystem": "distributedschedule",
-        "components": [
-          { "component": "samgr_lite" },
-          { "component": "safwk_lite" }
+          }
         ]
       },
       {
         "subsystem": "security",
         "components": [
-          { "component": "device_auth" },
           { "component": "huks", "features":
             [
               "huks_config_file = \"hks_config_small.h\""
             ]
           }
-        ]
-      },
-      {
-        "subsystem": "utils",
-        "components": [
-          { "component": "kal_timer" }
-        ]
-      },
-      {
-        "subsystem": "updater",
-        "components": [
-          { "component": "ota_lite" }
-        ]
-      },
-      {
-        "subsystem": "developtools",
-        "components": [
-          { "component": "syscap_codec" }
         ]
       }
     ],

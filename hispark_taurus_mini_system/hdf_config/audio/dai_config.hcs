@@ -38,9 +38,9 @@ root {
                          "External Codec Enable",
                          "Internally Codec Enable",
                      */
-                     /*array index, iface, enable*/
-                     6,  4,  0,
-                     7,  4,  0
+                     /* array index, iface, mixer/mux, enable */
+                     6,  2,  0,  1,
+                     7,  2,  0,  1
                  ];
 
                  daiStartupSeqConfig = [
@@ -48,6 +48,7 @@ root {
                      0x0104,    0x0104,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x0000c115,    // AIP_I2S_REG_CFG1
                      0x0140,    0x0140,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x152ef0,      // AOP_I2S_REG_CFG0
                      0x0144,    0x0144,     0,    0,    0,    0xFFFFFFFF,   0xFFFFFFFF,    0,   0x0000c115,    // AOP_I2S_REG_CFG1
+                     0x1000,    0x1000,     16,   16,   0x0,  0x7,          0x7,           0,   0x01,          // RX IF ATTRI
                  ];
 
                  daiParamsSeqConfig = [
