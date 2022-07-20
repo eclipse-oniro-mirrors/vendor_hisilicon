@@ -20,8 +20,7 @@
         "subsystem": "distributedschedule",
         "components": [
           { "component": "samgr_lite", "features":[] },
-          { "component": "safwk_lite", "features":[] },
-          { "component": "dmsfwk_lite", "features":[] }
+          { "component": "safwk_lite", "features":[] }
         ]
       },
       {
@@ -111,7 +110,8 @@
       {
         "subsystem": "ability",
         "components": [
-          { "component": "ability_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = true" ] }
+          { "component": "ability_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = true" ] },
+          { "component": "dmsfwk_lite", "features":[] }
         ]
       },
       {

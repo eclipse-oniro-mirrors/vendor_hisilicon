@@ -22,8 +22,7 @@
         "subsystem": "distributedschedule",
         "components": [
           { "component": "samgr_standard", "features":[] },
-          { "component": "safwk", "features":[] },
-          { "component": "dmsfwk_standard", "features":[] }
+          { "component": "safwk", "features":[] }
         ]
       },
       {
@@ -159,7 +158,8 @@
           { "component": "ability_tools", "features":[ ] },
           { "component": "idl_tool", "features":[ ] },
           { "component": "form_fwk", "features":[ ] },
-          { "component": "ability_base", "features":[ ] }
+          { "component": "ability_base", "features":[ ] },
+          { "component": "dmsfwk", "features":[] }
         ]
       },
       {
