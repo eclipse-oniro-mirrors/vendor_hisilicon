@@ -38,7 +38,7 @@
 #define VOLTAGE_1_5_V   ((float)1.5)
 #define VOLTAGE_3_V   ((float)3.0)
 
-#define ADC_CHANNAL_RANGE ((float)4096.0)
+#define ADC_CHANNEL_RANGE ((float)4096.0)
 
 unsigned short g_adcBuf[ADC_TEST_LENGTH] = { 0 };
 unsigned short g_gpio5AdcBuf[ADC_TEST_LENGTH] = { 0 };
@@ -66,7 +66,7 @@ unsigned char GetLightStatus(void)
     for (int j = 0; j < ADC_TEST_LENGTH; j++) {
         vlt = g_adcBuf[j];
         voltage = (float)vlt * VOLTAGE_1_8_V *
-            VOLTAGE_4_TIMES / ADC_CHANNAL_RANGE; /* vlt * 1.8 * 4 / 4096.0为将码字转换为电压 */
+            VOLTAGE_4_TIMES / ADC_CHANNEL_RANGE; /* vlt * 1.8 * 4 / 4096.0为将码字转换为电压 */
         vltMax = (voltage > vltMax) ? voltage : vltMax;
         vltMin = (voltage < vltMin) ? voltage : vltMin;
     }
@@ -102,7 +102,7 @@ void GetGpio5Voltage(char *param)
     for (int i = 0; i < ADC_TEST_LENGTH; i++) {
         vlt = g_gpio5AdcBuf[i];
         voltage = (float)vlt * VOLTAGE_1_8_V *
-            VOLTAGE_4_TIMES / ADC_CHANNAL_RANGE; /* vlt * 1.8* 4 / 4096.0为将码字转换为电压 */
+            VOLTAGE_4_TIMES / ADC_CHANNEL_RANGE; /* vlt * 1.8* 4 / 4096.0为将码字转换为电压 */
         vltMax = (voltage > vltMax) ? voltage : vltMax;
         vltMin = (voltage < vltMin) ? voltage : vltMin;
     }

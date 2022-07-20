@@ -28,6 +28,7 @@ static void *LedCntrolDemo(const char *arg)
 {
     (void)arg;
     printf("LedTask start\r\n");
+    // 配置GPIO引脚号和输出值
     IoTGpioSetOutputVal(IOT_GPIO_IDX_10, IOT_GPIO_VALUE1);
     return NULL;
 }
@@ -35,8 +36,9 @@ static void *LedCntrolDemo(const char *arg)
 static void LedControlTask(void)
 {
     osThreadAttr_t attr;
-
+    // 初始化GPIO
     IoTGpioInit(IOT_GPIO_IDX_10);
+    // 设置GPIO为输出方向
     IoTGpioSetDir(IOT_GPIO_IDX_10, IOT_GPIO_DIR_OUT);
 
     attr.name = "LedCntrolDemo";
@@ -46,7 +48,7 @@ static void LedControlTask(void)
     attr.stack_mem = NULL;
     attr.stack_size = 1024; /* 堆栈大小为1024 */
     attr.priority = osPriorityNormal;
-
+    // 报错
     if (osThreadNew((osThreadFunc_t)LedCntrolDemo, NULL, &attr) == NULL) {
         printf("[LedExample] Failed to create LedTask!\n");
     }

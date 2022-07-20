@@ -32,7 +32,7 @@ static int g_iState = 0;
 /* attribute initiative to report */
 #define TAKE_THE_INITIATIVE_TO_REPORT
 /* oc request id */
-#define CN_COMMADN_INDEX                    "commands/request_id="
+#define CN_COMMAND_INDEX                    "commands/request_id="
 /* oc report HiSpark attribute */
 #define IO_FUNC_GPIO_OUT 0
 #define IOT_GPIO_INDEX_10 10
@@ -134,11 +134,11 @@ static void DemoMsgRcvCallBack(int qos, const char *topic, char *payload)
     IOT_LOG_DEBUG("RCVMSG:QOS:%d TOPIC:%s PAYLOAD:%s\r\n", qos, topic, payload);
     /* app 下发的操作 */
     TrafficLightMsgRcvCallBack(payload);
-    tmp = strstr(topic, CN_COMMADN_INDEX);
+    tmp = strstr(topic, CN_COMMAND_INDEX);
     if (tmp != NULL) {
         // /< now you could deal your own works here --THE COMMAND FROM THE PLATFORM
         // /< now er roport the command execute result to the platform
-        requesID = tmp + strlen(CN_COMMADN_INDEX);
+        requesID = tmp + strlen(CN_COMMAND_INDEX);
         resp.requestID = requesID;
         resp.respName = NULL;
         resp.retCode = 0;   ////< which means 0 success and others failed
@@ -343,7 +343,7 @@ void SetupTrflHumanModule(HiTrafficLightMode currentMode, HiControlModeType curr
 
 void TrafficLightStatusReport(HiTrafficLightMode currentMode, const TrflCallBackFunc msgReport)
 {
-    printf("tarffic light: reporting status...\r\n");
+    printf("traffic light: reporting status...\r\n");
     switch (currentMode) {
         case TRAFFIC_CONTROL_MODE:
             msgReport(TRAFFIC_CONTROL_MODE, NULL);
