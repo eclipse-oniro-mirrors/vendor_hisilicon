@@ -164,7 +164,7 @@ static void Ssd1306PlayDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(Ssd1306PlayTask, NULL, &attr) == NULL) {
-        printf("[Ssd1306PlayDemo] Failed to create Ssd1306PlayTask!\n");
+        printf("[Ssd1306PlayDemo] Falied to create Ssd1306PlayTask!\n");
     }
 }
 APP_FEATURE_INIT(Ssd1306PlayDemo);

@@ -37,7 +37,7 @@
 #define TICK_COUNT_MAX  255
 #define PAIR_2          2
 
-GlobalStatusType globalStaType = {0};
+GlobalStausType globalStaType = {0};
 
 /* Set key status */
 unsigned char SetKeyStatus(HiColorfulLightMode setSta)
@@ -53,7 +53,7 @@ unsigned char SetKeyType(HiColorfulLightMode setSta)
 }
 
 /* GetKeyStatus */
-unsigned char GetKeyStatus(GlobalStatuDef staDef)
+unsigned char GetKeyStatus(GloableStatuDef staDef)
 {
     unsigned char status = 0;
     switch (staDef) {
@@ -320,7 +320,7 @@ void ColorfulLightSample(void)
             case CYCLE_FOR_HALF_SECOND:
                 CycleForHalfSecond();
                 break;
-            case CYCLE_FOR_QUARTER_SECOND:
+            case CYCLE_FOR_QUARATER_SECOND:
                 CycleForQuarterSecond();
                 break;
             default:
@@ -541,7 +541,7 @@ void HumanDetectSample(void)
     IotGpioValue gpio_val = IOT_GPIO_VALUE1;
 
     while (1) {
-        /* use adc channel_0 */
+        /* use adc channal_0 */
         /* use gpio7 */
         IoTGpioGetInputVal(HI_GPIO_7, &gpio_val); // gpio7
 
@@ -649,7 +649,7 @@ void UnionDetectSample(void)
 }
 
 /*
- * mode:8.Return
+ * mode:8.Creturn
  * 模式8：返回主界面
  */
 void ReturnMainEnumSample(void)

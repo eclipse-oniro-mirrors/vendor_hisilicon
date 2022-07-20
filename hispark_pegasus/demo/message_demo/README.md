@@ -63,8 +63,8 @@ void rtosv2_msgq_main(void *arg) {
 
     qid = osMessageQueueNew(QUEUE_SIZE, sizeof(message_entry), NULL);
 
-    osThreadId_t ctid1 = newThread("receiver1", receiver_thread, NULL);
-    osThreadId_t ctid2 = newThread("receiver2", receiver_thread, NULL);
+    osThreadId_t ctid1 = newThread("recevier1", receiver_thread, NULL);
+    osThreadId_t ctid2 = newThread("recevier2", receiver_thread, NULL);
     osThreadId_t ptid1 = newThread("sender1", sender_thread, NULL);
     osThreadId_t ptid2 = newThread("sender2", sender_thread, NULL);
     osThreadId_t ptid3 = newThread("sender3", sender_thread, NULL);
@@ -109,24 +109,24 @@ void rtosv2_msgq_main(void *arg) {
 截取部分运行结果
 
 ```
-[Message Test] osThreadNew(receiver1) success, thread id: 0xe89d8.
-[Message Test] osThreadNew(receiver2) success, thread id: 0xe8974.
+[Message Test] osThreadNew(recevier1) success, thread id: 0xe89d8.
+[Message Test] osThreadNew(recevier2) success, thread id: 0xe8974.
 [Message Test] osThreadNew(sender1) success, thread id: 0xe84c4.
 [Message Test] os[Message Test] sender1 send 0 to message queue.
 [Message Test] sender2 send 1 to message queue.
 ThreadNew(sender2) success, thread id: 0xe871c.
 [Message Test] osThreadNew(sender3) success, thread id: 0xe8910.
-[Message Test] receiver1 get 0 from sender1 by message queue.
-[Message Test] receiver2 get 1 from sender2 by message queue.
+[Message Test] recevier1 get 0 from sender1 by message queue.
+[Message Test] recevier2 get 1 from sender2 by message queue.
 [Message Test] sender3 send 2 to message queue.
 [Message Test] sender1 send 3 to message queue.
 [Message Test] sender2 send 4 to message queue.
 ....
 [Message Test] sender3 send 11 to message queue.
-[Message Test] receiver2 get 11 from sender3 by message queue.
+[Message Test] recevier2 get 11 from sender3 by message queue.
 [Message Test] sender1 send 12 to message queue.
 [Message Test] sender2 send 13 to message queue.
-[Message Test] receiver1 get 12 from sender1 by message queue.
+[Message Test] recevier1 get 12 from sender1 by message queue.
 [Message Test] osMessageQueueGetCapacity, capacity: 3.
 [Message Test] osMessageQueueGetMsgSize, size: 8.
 [Message Test] osMessageQueueGetCount, count: 1.

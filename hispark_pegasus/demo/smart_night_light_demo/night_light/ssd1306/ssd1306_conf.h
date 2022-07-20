@@ -22,7 +22,7 @@
 // Choose a bus
 #define SSD1306_USE_I2C
 
-// I2C Configuration
+// I2C Configuration1
 #define SSD1306_I2C_ADDR        (0x3C << 1)
 
 // Mirror the screen if needed

@@ -82,7 +82,7 @@ int StartHotspot(void)
     strcpy_s(config.ssid, SSID_LEN, "HiSpark-AP");
     config.securityType = WIFI_SEC_TYPE_OPEN;
     config.band = HOTSPOT_BAND_TYPE_2G;
-    config.channelNum = 7; /* 7: channel number */
+    config.channelNum = 7; /* 7: channal number */
 
     errCode = RegisterWifiEvent(&g_defaultWifiEventListener);
     printf("RegisterWifiEvent: %d\r\n", errCode);

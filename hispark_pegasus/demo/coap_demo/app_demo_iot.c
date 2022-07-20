@@ -27,7 +27,7 @@
 /* attribute initiative to report */
 #define TAKE_THE_INITIATIVE_TO_REPORT
 /* oc request id */
-#define CN_COMMAND_INDEX    "commands/request_id="
+#define CN_COMMADN_INDEX    "commands/request_id="
 
 // this is the callback function, set to the mqtt, and if any messages come, it will be called
 // The payload here is the json string
@@ -38,11 +38,11 @@ static void DemoMsgRcvCallBack(int qos, const char *topic, const char *payload)
     IoTCmdRespT resp;
     IOT_LOG_DEBUG("RCVMSG:QOS:%d TOPIC:%s PAYLOAD:%s\r\n", qos, topic, payload);
 
-    tmp = strstr(topic, CN_COMMAND_INDEX);
+    tmp = strstr(topic, CN_COMMADN_INDEX);
     if (tmp != NULL) {
         // <now you could deal your own works here --THE COMMAND FROM THE PLATFORM
         // <now er roport the command execute result to the platform
-        requesID = tmp + strlen(CN_COMMAND_INDEX);
+        requesID = tmp + strlen(CN_COMMADN_INDEX);
         resp.requestID = requesID;
         resp.respName = NULL;
         resp.retCode = 0;  // <which means 0 success and others failed

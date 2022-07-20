@@ -81,8 +81,8 @@ void rtosv2_msgq_main(int *arg)
 
     qid = osMessageQueueNew(QUEUE_SIZE, sizeof(message_entry), NULL);
 
-    osThreadId_t ctid1 = newThread("receiver1", receiver_thread, NULL);
-    osThreadId_t ctid2 = newThread("receiver2", receiver_thread, NULL);
+    osThreadId_t ctid1 = newThread("recevier1", receiver_thread, NULL);
+    osThreadId_t ctid2 = newThread("recevier2", receiver_thread, NULL);
     osThreadId_t ptid1 = newThread("sender1", sender_thread, NULL);
     osThreadId_t ptid2 = newThread("sender2", sender_thread, NULL);
     osThreadId_t ptid3 = newThread("sender3", sender_thread, NULL);

@@ -46,7 +46,7 @@
 #define NUM_SENSORS 2
 
 #define ADC_RESOLUTION 4096
-#define PWM_FREQ_DIVISION 64000
+#define PWM_FREQ_DIVITION 64000
 #define ATTR.STACK_SIZE 4096
 #define TEN_THOUSAND 10000
 #define TWO_HUNDRED_AND_FIFTY_THOUSAND 250000
@@ -77,7 +77,7 @@ static void CorlorfulLightTask(int *arg)
 
     // use PWM control BLUE LED brightness
     for (int i = 1; i <= ADC_RESOLUTION; i *= TWO) {
-        PwmStart(WIFI_IOT_PWM_PORT_PWM3, i, PWM_FREQ_DIVISION);
+        PwmStart(WIFI_IOT_PWM_PORT_PWM3, i, PWM_FREQ_DIVITION);
         usleep(TWO_HUNDRED_AND_FIFTY_THOUSAND);
         PwmStop(WIFI_IOT_PWM_PORT_PWM3);
     }
@@ -91,9 +91,9 @@ static void CorlorfulLightTask(int *arg)
         for (size_t i = 0; i < sizeof(chan)/sizeof(chan[0]); i++) {
             if (AdcRead(chan[i], &data[i], WIFI_IOT_ADC_EQU_MODEL_4, WIFI_IOT_ADC_CUR_BAIS_DEFAULT, 0)
                 == WIFI_IOT_SUCCESS) {
-                duty[i] = PWM_FREQ_DIVISION * (unsigned int)data[i] / ADC_RESOLUTION;
+                duty[i] = PWM_FREQ_DIVITION * (unsigned int)data[i] / ADC_RESOLUTION;
             }
-            PwmStart(port[i], duty[i], PWM_FREQ_DIVISION);
+            PwmStart(port[i], duty[i], PWM_FREQ_DIVITION);
             usleep(TEN_THOUSAND);
             PwmStop(port[i]);
         }

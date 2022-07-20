@@ -297,7 +297,7 @@ static unsigned int I2cWriteByte(unsigned char regAddr, unsigned char cmd)
 {
     unsigned int status;
 
-    unsigned char sendLen = 2; /* 2: send length */
+    unsigned char sendLen = 2; /* 2: send lenght */
     unsigned char userData = cmd;
     IotI2cData oledI2cCmd = { 0 };
     IotI2cData oledI2cWriteCmd = { 0 };
@@ -453,11 +453,11 @@ static int SetOledColorPreChargeCmd(void)
     if (status != 0) {
         return -1;
     }
-    status = WriteCmd(PIN_CONFIGURATION); // set com pin configuration
+    status = WriteCmd(PIN_CONFIGUARTION); // set com pin configuartion
     if (status != 0) {
         return -1;
     }
-    status = WriteCmd(CONFIGURATION);
+    status = WriteCmd(CONFIGUARTION);
     if (status != 0) {
         return -1;
     }
@@ -655,7 +655,7 @@ static void NFCTagWechatMode(void)
 static void NFCTagTodayHeadlineMode(void)
 {
     OledShowStr(OLED_X_POSITION_0, OLED_Y_POSITION_4, \
-                "2.Today_headline ", OLED_DISPLAY_STRING_TYPE_1); /* 0, 4, xx, 1 */
+                "2.Today_headlin ", OLED_DISPLAY_STRING_TYPE_1); /* 0, 4, xx, 1 */
     SetNdefData();
     int ret = GetNdefData(ndefFileTodayHeadline, sizeof(ndefFileTodayHeadline));
     if (ret != 0) {
