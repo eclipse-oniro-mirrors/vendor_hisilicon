@@ -43,7 +43,7 @@
 #define HUMAN_CHECK_LEVEL       1800
 #define LIGHT_CHECK_LEVEL       1800
 
-#define PWM_FREQ_DIVITION       64000
+#define PWM_FREQ_DIVISION       64000
 #define TEN 10
 #define ATTR.STACK_SIZE 4096
 
@@ -97,9 +97,9 @@ static void CorlorfulLightTask(int *arg)
                 if (hi_adc_read(HUMAN_SENSOR_CHAN_NAME, &data_human, HI_ADC_EQU_MODEL_4, HI_ADC_CUR_BAIS_DEFAULT, 0)
                         == IOT_SUCCESS) {
                     if (data_human > LIGHT_CHECK_LEVEL) {
-                        IoTPwmStart(IOT_PWM_PORT_PWM1, g_lightness, PWM_FREQ_DIVITION);
-                        IoTPwmStart(IOT_PWM_PORT_PWM2, g_lightness, PWM_FREQ_DIVITION);
-                        IoTPwmStart(IOT_PWM_PORT_PWM3, g_lightness, PWM_FREQ_DIVITION);
+                        IoTPwmStart(IOT_PWM_PORT_PWM1, g_lightness, PWM_FREQ_DIVISION);
+                        IoTPwmStart(IOT_PWM_PORT_PWM2, g_lightness, PWM_FREQ_DIVISION);
+                        IoTPwmStart(IOT_PWM_PORT_PWM3, g_lightness, PWM_FREQ_DIVISION);
                         osDelay(g_ledDelayTime);
                         IoTPwmStop(IOT_PWM_PORT_PWM1);
                         IoTPwmStop(IOT_PWM_PORT_PWM2);
@@ -132,7 +132,7 @@ static void ColorfulLightDemo(void)
     attr.priority = osPriorityNormal;
 
     if (osThreadNew(CorlorfulLightTask, NULL, &attr) == NULL) {
-        printf("[ColorfulLightDemo] Falied to create CorlorfulLightTask!\n");
+        printf("[ColorfulLightDemo] Failed to create CorlorfulLightTask!\n");
     }
 }
 

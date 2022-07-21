@@ -110,7 +110,7 @@ static int MsgRcvCallBack(char *context, char *topic, int topicLen, MQTTClient_m
         msg->payload = buf;
         IOT_LOG_DEBUG("RCVMSG:QOS:%d TOPIC:%s PAYLOAD:%s\r\n", msg->qos, msg->topic, msg->payload);
         if (IOT_SUCCESS != osMessageQueuePut(gIoTAppCb.queueID, &msg, 0, CN_QUEUE_WAITTIMEOUT)) {
-            IOT_LOG_ERROR("Wrie queue failed\r\n");
+            IOT_LOG_ERROR("Write queue failed\r\n");
             hi_free(0, msg);
         }
     }
@@ -154,7 +154,7 @@ static int MqttProcessQueueMsg(MQTTClient client, IoTMsg_t  *msg, MQTTClient_mes
     }
 }
 
-// <use this function to deal all the comming message
+// <use this function to deal all the coming message
 static int ProcessQueueMsg(MQTTClient client)
 {
     unsigned  int     ret;
@@ -173,7 +173,7 @@ static int ProcessQueueMsg(MQTTClient client)
             MqttProcessQueueMsg(client, msg, pubmsg);
             hi_free(0, msg);
         }
-        timeout = 0;  // < continous to deal the message without wait here
+        timeout = 0;  // < continuos to deal the message without wait here
     } while (ret == IOT_SUCCESS);
 
     return 0;
