@@ -162,7 +162,7 @@
       {
         "subsystem": "distributeddatamgr",
         "components": [
-          { "component": "objectstore", "features":[] }
+          { "component": "data_object", "features":[] }
         ]
       }
     ],

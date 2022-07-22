@@ -215,7 +215,7 @@
           { "component": "distributeddatamgr", "features":[] },
           { "component": "distributedfilejs", "features":[] },
           { "component": "storage_standard", "features":[] },
-          { "component": "distributeddataobject", "features":[] },
+          { "component": "data_object", "features":[] },
           { "component": "e2fsprogs", "features":[] }
         ]
       },
