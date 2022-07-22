@@ -286,7 +286,7 @@
         "subsystem": "miscservices",
         "components": [
           { "component": "time_native", "features":[]},
-          { "component": "inputmethod_native", "features":[]}
+          { "component": "imf", "features":[]}
         ]
       },
       {
