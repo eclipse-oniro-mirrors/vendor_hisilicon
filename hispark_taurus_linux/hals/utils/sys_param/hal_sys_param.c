@@ -41,8 +41,6 @@ static const char OHOS_SERIAL[] = {"1234567890"};  // provided by OEM.
 static const char SN_FILE[] = {"/sys/block/mmcblk0/device/cid"};
 static const int OHOS_FIRST_API_VERSION = 1;
 
-static const char EMPTY_STR[] = {""};
-
 const char* HalGetDeviceType(void)
 {
     return OHOS_DEVICE_TYPE;
