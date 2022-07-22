@@ -26,7 +26,7 @@
 #define STR_MAX  65
 
 static const char OHOS_DEVICE_TYPE[] = {"****"};
-static const char OHOS_DISPLAY_VERSION[] = {"OpenHarmony 1.0.1"};
+static const char OHOS_DISPLAY_VERSION[] = {"OpenHarmony 3.1 release"};
 static const char OHOS_MANUFACTURE[] = {"****"};
 static const char OHOS_BRAND[] = {"****"};
 static const char OHOS_MARKET_NAME[] = {"****"};
