@@ -694,7 +694,7 @@
           "features": []
         },
         {
-          "component": "multimedia_camera_standard",
+          "component": "multimedia_camera_framework",
           "features": []
         },
         {
