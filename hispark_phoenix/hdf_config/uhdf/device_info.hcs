@@ -72,8 +72,8 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libusbd.z.so";
-                    serviceName = "usbd";
+                    moduleName = "libusb_driver.z.so";
+                    serviceName = "usb_interface_service";
                 }
             }
         }
