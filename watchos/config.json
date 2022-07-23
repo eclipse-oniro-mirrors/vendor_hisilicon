@@ -283,9 +283,9 @@
         ]
       },
       {
-        "subsystem": "miscservices",
+        "subsystem": "time",
         "components": [
-          { "component": "time_native", "features":[]},
+          { "component": "time_service", "features":[]},
           { "component": "imf", "features":[]}
         ]
       },
