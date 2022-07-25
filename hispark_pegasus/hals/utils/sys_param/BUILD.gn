@@ -13,7 +13,7 @@
 
 static_library("hal_sysparam") {
   sources = [ "hal_sys_param.c" ]
-  include_dirs = [ "//base/startup/init_lite/interfaces/hals" ]
+  include_dirs = [ "//base/startup/init/interfaces/hals" ]
   defines = [
     "INCREMENTAL_VERSION=\"${ohos_version}\"",
     "BUILD_TYPE=\"${ohos_build_type}\"",
