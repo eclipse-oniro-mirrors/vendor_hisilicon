@@ -102,7 +102,7 @@ root {
             template chipInst {
                 match_attr = "hdf_wlan_chips_hi3881";
                 driverName = "hi3881";
-                sdio {
+                bus {
                     vendorId = 0x0296;
                     deviceId = [0x5347];
                 }
