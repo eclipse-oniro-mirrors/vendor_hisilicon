@@ -101,7 +101,7 @@
         ]
       },
       {
-        "subsystem": "utils",
+        "subsystem": "commonlibrary",
         "components": [
           { "component": "kv_store", "features":[] },
           { "component": "os_dump", "features":[] }
