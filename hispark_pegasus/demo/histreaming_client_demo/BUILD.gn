@@ -22,7 +22,7 @@ static_library("histreamingClentDemo") {
     "./",
     "//utils/native/lite/include",
     "//kernel/liteos_m/kal/cmsis",
-    "//base/iot_hardware/peripheral/interfaces/kits",
+    "//base/iothardware/peripheral/interfaces/inner_api",
     "//device/soc/hisilicon/hi3861v100/sdk_liteos/components/histreaming/src",
     "//foundation/communication/wifi_lite/interfaces/wifiservice",
   ]

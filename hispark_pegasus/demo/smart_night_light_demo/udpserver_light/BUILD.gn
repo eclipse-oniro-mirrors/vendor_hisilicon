@@ -33,7 +33,7 @@ static_library("net_demo") {
     "../night_light",
     "//utils/native/lite/include",
     "//kernel/liteos_m/kal/cmsis",
-    "//base/iot_hardware/peripheral/interfaces/kits",
+    "//base/iothardware/peripheral/interfaces/inner_api",
     "//foundation/communication/wifi_lite/interfaces/wifiservice",
     "//third_party/cJSON",
   ]

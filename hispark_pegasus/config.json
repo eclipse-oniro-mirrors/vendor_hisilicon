@@ -17,9 +17,9 @@
         ]
       },
       {
-        "subsystem": "iot_hardware",
+        "subsystem": "iothardware",
         "components": [
-          { "component": "iot_controller", "features":[] }
+          { "component": "peripheral", "features":[] }
         ]
       },
       {

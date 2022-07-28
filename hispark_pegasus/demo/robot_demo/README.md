@@ -34,7 +34,7 @@ static_library("robot_demo") {
     include_dirs = [
         "//utils/native/lite/include",
         "//kernel/liteos_m/kal/cmsis",
-        "//base/iot_hardware/peripheral/interfaces/kits",
+        "//base/iothardware/peripheral/interfaces/inner_api",
     ]
 }
 ```
@@ -88,7 +88,7 @@ static_library("robot_demo") {
         "./ssd1306",
         "//utils/native/lite/include",
         "//kernel/liteos_m/kal/cmsis",
-        "//base/iot_hardware/peripheral/interfaces/kits",
+        "//base/iothardware/peripheral/interfaces/inner_api",
     ]
 }
 ```
