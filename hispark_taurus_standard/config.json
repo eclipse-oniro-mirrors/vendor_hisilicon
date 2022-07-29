@@ -12,7 +12,7 @@
       "subsystem": "arkui",
       "components": [
         {
-          "component": "ace_engine_standard",
+          "component": "ace_engine",
           "features": []
         },
         {
@@ -38,7 +38,7 @@
           "features": []
         },
         {
-          "component": "preference",
+          "component": "preferences",
           "features": []
         },
         {
@@ -63,6 +63,10 @@
         },
         {
           "component": "e2fsprogs",
+          "features": []
+        },
+        {
+          "component": "pasteboard",
           "features": []
         }
       ]
@@ -224,26 +228,23 @@
       ]
     },
     {
+      "subsystem": "commonlibrary",
+      "components": [
+        {
+          "component": "c_utils",
+          "features": []
+        },
+	{
+          "component": "ets_utils",
+          "features": []
+        }
+      ]
+    },
+    {
       "subsystem": "utils",
       "components": [
         {
           "component": "utils_base",
-          "features": []
-        },
-        {
-          "component": "jsapi_sys",
-          "features": []
-        },
-        {
-          "component": "jsapi_api",
-          "features": []
-        },
-        {
-          "component": "jsapi_util",
-          "features": []
-        },
-        {
-          "component": "jsapi_worker",
           "features": []
         },
         {
@@ -312,6 +313,10 @@
         },
         {
           "component": "ability_base",
+          "features": []
+        },
+        {
+          "component": "dmsfwk",
           "features": []
         }
       ]
@@ -393,10 +398,6 @@
         {
           "component": "safwk",
           "features": []
-        },
-        {
-          "component": "dmsfwk_standard",
-          "features": []
         }
       ]
     },
@@ -416,7 +417,7 @@
           "features": []
         },
         {
-          "component": "display_device_driver",
+          "component": "drivers_peripheral_display",
           "features": []
         },
         {
@@ -433,14 +434,17 @@
         },
         {
           "component": "drivers_peripheral_audio",
-          "features": []
+          "features": [
+            "drivers_peripheral_audio_hal_notsupport_pathselect=false",
+            "drivers_peripheral_audio_full_test_suite=true"
+          ]
         },
         {
           "component": "drivers_peripheral_usb",
           "features": []
         },
         {
-          "component": "driver_peripheral_camera",
+          "component": "drivers_peripheral_camera",
           "features": []
         },
         {
@@ -532,11 +536,11 @@
           "features": []
         },
         {
-          "component": "ril_device_driver_interface",
+          "component": "drivers_interface_ril",
           "features": []
         },
         {
-          "component": "display_device_driver_interface",
+          "component": "drivers_interface_display",
           "features": []
         },
         {
@@ -646,30 +650,41 @@
       ]
     },
     {
-      "subsystem": "miscservices",
+      "subsystem": "time",
       "components": [
         {
-          "component": "time_native",
+          "component": "time_service",
           "features": []
-        },
-        {
-          "component": "inputmethod_native",
-          "features": []
-        },
-        {
-          "component": "pasteboard_native",
-          "features": []
-        },
-        {
-          "component": "screenlock",
-          "features": []
-        },
-        {
-          "component": "wallpaper_native",
-          "features": []
-        },
+        }
+      ]
+    },
+    {
+      "subsystem": "request",
+      "components": [
         {
           "component": "request",
+          "features": []
+        }
+      ]
+    },
+    {
+      "subsystem": "inputmethod",
+      "components": [
+        {
+          "component": "imf",
+          "features": []
+        }
+      ]
+    },
+    {
+      "subsystem": "theme",
+      "components": [
+        {
+          "component": "screenlock_mgr",
+          "features": []
+        },
+        {
+          "component": "wallpaper_mgr",
           "features": []
         }
       ]
@@ -682,7 +697,7 @@
           "features": []
         },
         {
-          "component": "multimedia_media_standard",
+          "component": "multimedia_player_framework",
           "features": []
         },
         {
@@ -774,19 +789,19 @@
       "subsystem": "powermgr",
       "components": [
         {
-          "component": "power_manager_native",
+          "component": "power_manager",
           "features": []
         },
         {
-          "component": "battery_manager_native",
+          "component": "battery_manager",
           "features": []
         },
         {
-          "component": "battery_statistics_native",
+          "component": "battery_statistics",
           "features": []
         },
         {
-          "component": "display_manager_native",
+          "component": "display_manager",
           "features": []
         },
         {
@@ -890,7 +905,7 @@
           "features": []
         },
         {
-          "component": "ark_ts2abc",
+          "component": "ets_frontend",
           "features": []
         }
       ]
@@ -899,7 +914,7 @@
       "subsystem": "deviceprofile",
       "components": [
         {
-          "component": "device_profile_core",
+          "component": "device_info_manager",
           "features": []
         }
       ]

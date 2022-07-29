@@ -15,7 +15,7 @@ static_library("hal_token_static") {
   sources = [ "hal_token.c" ]
 
   include_dirs = [
-    "//base/startup/init_lite/interfaces/hals",
+    "//base/startup/init/interfaces/hals",
     "//utils/native/lite/include",
   ]
   deps = []

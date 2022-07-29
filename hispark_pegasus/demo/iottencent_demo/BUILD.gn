@@ -26,7 +26,7 @@ static_library("appDemoIot") {
     "./",
     "//utils/native/lite/include",
     "//kernel/liteos_m/kal/cmsis",
-    "//base/iot_hardware/peripheral/interfaces/kits",
+    "//base/iothardware/peripheral/interfaces/inner_api",
     "//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party/lwip_sack/include/lwip",
     "//third_party/cJSON",
     "//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party/mbedtls/include/mbedtls",

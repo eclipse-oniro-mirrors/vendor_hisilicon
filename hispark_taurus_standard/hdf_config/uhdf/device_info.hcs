@@ -5,7 +5,7 @@
             hostName = "";
             priority = 100;
             uid = "";
-            gid = "";
+            gid = [""];
             caps = [""];
             template device {
                 template deviceNode {
@@ -41,8 +41,8 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libusbd.z.so";
-                    serviceName = "usbd";
+                    moduleName = "libusb_driver.z.so";
+                    serviceName = "usb_interface_service";
                 }
             }
         }
@@ -90,7 +90,7 @@
             hostName = "power_host";
             priority = 50;
             uid = "power_host";
-            gid = "power_host";
+            gid = ["power_host"];
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
             power_device :: device {
                 device0 :: deviceNode {
@@ -170,7 +170,7 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libidl_audio_server.z.so";
+                    moduleName = "libaudio_manager_service.z.so";
                     serviceName = "idl_audio_service";
                 }
             }
@@ -260,11 +260,11 @@
                 }
             }
         }
-        sensor_dal :: host { 
-            hostName = "sensor_dal_host"; 
+        sensor :: host { 
+            hostName = "sensor_host"; 
             priority = 50;
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
-            sensor_dal_device :: device { 
+            sensor_device :: device { 
                 device0 :: deviceNode { 
                     policy = 2; 
                     priority = 100; 
@@ -273,11 +273,11 @@
                 } 
             } 
         }
-        vibrator_dal :: host {
-            hostName = "vibrator_dal_host";
+        vibrator :: host {
+            hostName = "vibrator_host";
             priority = 50;
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
-            vibrator_dal_device :: device {
+            vibrator_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
@@ -286,11 +286,11 @@
                 }
             }
         }
-        light_dal :: host {
-            hostName = "light_dal_host";
+        light :: host {
+            hostName = "light_host";
             priority = 50;
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
-            light_dal_device :: device {
+            light_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;

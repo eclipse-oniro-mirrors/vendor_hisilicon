@@ -20,7 +20,7 @@
             }
         }
     }
-    normal_privew :: pipeline_spec {
+    normal_preview :: pipeline_spec {
         name = "normal_preview";
         sensor :: node_spec {
             name = "sensor#0";

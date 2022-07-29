@@ -399,11 +399,11 @@ static int SetOledColorPreChargeCmd(void)
     if (status != 0) {
         return -1;
     }
-    status = WriteCmd(PIN_CONFIGUARTION); // set com pin configuartion
+    status = WriteCmd(PIN_CONFIGURATION); // set com pin configuration
     if (status != 0) {
         return -1;
     }
-    status = WriteCmd(CONFIGUARTION);
+    status = WriteCmd(CONFIGURATION);
     if (status != 0) {
         return -1;
     }
@@ -587,16 +587,16 @@ void OledMainMenuDisplay(void)
 
     if (GetKeyStatus(MENU_SELECT) == COLORFUL_LIGHT_MENU) {
         OledShowStr(OLED_X_POSITION_0, OLED_Y_POSITION_7,
-                    "Selet:1   Enter", OLED_DISPLAY_STRING_TYPE_1); /* 0, 7, xx, 1 */
+                    "Select:1   Enter", OLED_DISPLAY_STRING_TYPE_1); /* 0, 7, xx, 1 */
     } else if (GetKeyStatus(MENU_SELECT) == TRAFFIC_LIGHT_MENU) {
         OledShowStr(OLED_X_POSITION_0, OLED_Y_POSITION_7,
-                    "Selet:2   Enter", OLED_DISPLAY_STRING_TYPE_1); /* 0, 7, xx, 1 */
+                    "Select:2   Enter", OLED_DISPLAY_STRING_TYPE_1); /* 0, 7, xx, 1 */
     } else if (GetKeyStatus(MENU_SELECT) == ENVIRONMENT_MENU) {
         OledShowStr(OLED_X_POSITION_0, OLED_Y_POSITION_7,
-                    "Selet:3   Enter", OLED_DISPLAY_STRING_TYPE_1); /* 0, 7, xx, 1 */
+                    "Select:3   Enter", OLED_DISPLAY_STRING_TYPE_1); /* 0, 7, xx, 1 */
     } else if (GetKeyStatus(MENU_SELECT) == NFC_TEST_MENU) {
         OledShowStr(OLED_X_POSITION_0, OLED_Y_POSITION_7,
-                    "Selet:4   Enter", OLED_DISPLAY_STRING_TYPE_1); /* 0, 7, xx, 1 */
+                    "Select:4   Enter", OLED_DISPLAY_STRING_TYPE_1); /* 0, 7, xx, 1 */
     }
 }
 

@@ -9,8 +9,8 @@ root {
                     priority = 10;
                     preload = 0;
                     permission = 0644;
-                    moduleName = "HDF_TEST";
-                    serviceName = "HDF_TEST";
+                    moduleName = "khdf_ut";
+                    serviceName = "khdf_ut";
                 }
                 device1 :: deviceNode {
                     policy = 2;
@@ -26,7 +26,7 @@ root {
                     preload = 0;
                     permission = 0644;
                     moduleName = "pm_test_driver";
-                    serviceName = "pm_test_service";
+                    serviceName = "pm_ut_service";
                 }
                 device3 :: deviceNode {
                     policy = 2;

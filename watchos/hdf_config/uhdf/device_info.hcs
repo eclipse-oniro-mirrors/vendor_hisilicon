@@ -36,8 +36,8 @@
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
-                    moduleName = "libusbd.z.so";
-                    serviceName = "usbd";
+                    moduleName = "libusb_driver.z.so";
+                    serviceName = "usb_interface_service";
                 }
             }
         }
@@ -204,10 +204,10 @@
                 }
             }
         }
-        sensor_dal :: host { 
-            hostName = "sensor_dal_host"; 
+        sensor :: host { 
+            hostName = "sensor_host"; 
             priority = 50; 
-            sensor_dal_device :: device { 
+            sensor_device :: device { 
                 device0 :: deviceNode { 
                     policy = 2; 
                     priority = 100; 
@@ -216,10 +216,10 @@
                 } 
             } 
         }
-        vibrator_dal :: host {
-            hostName = "vibrator_dal_host";
+        vibrator :: host {
+            hostName = "vibrator_host";
             priority = 50;
-            vibrator_dal_device :: device {
+            vibrator_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
@@ -228,10 +228,10 @@
                 }
             }
         }
-        light_dal :: host {
-            hostName = "light_dal_host";
+        light :: host {
+            hostName = "light_host";
             priority = 50;
-            light_dal_device :: device {
+            uhdf_light_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;

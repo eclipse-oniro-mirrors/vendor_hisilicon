@@ -16,47 +16,14 @@
 <audioPolicyConfiguration version="1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
     <deviceclass name="primary">
         <modules>
-            <module name="Speaker" lib="libmodule-hdi-sink.z.so" role="sink" channels="1" rate="44100" buffer_size="4096">
+            <module name="Speaker" lib="libmodule-hdi-sink.z.so" role="sink" channels="2" rate="44100" buffer_size="4096">
                 <Ports>
-                    <Port adapter_name="primary" id="0" channels="1" rate="44100" buffer_size="4096" fixed_latency="1" render_in_idle_state="0" open_mic_speaker="0"/>
+                    <Port adapter_name="primary" id="0" channels="2" rate="44100" buffer_size="4096" fixed_latency="1" render_in_idle_state="0" open_mic_speaker="0"/>
                 </Ports>
             </module>
-            <module name="Built_in_mic" lib="libmodule-hdi-source.z.so" role="source" channels="1" rate="44100" buffer_size="8192">
+            <module name="Built_in_mic" lib="libmodule-hdi-source.z.so" role="source" channels="2" rate="44100" buffer_size="8192">
                 <Ports>
-                    <Port adapter_name="primary1" id="0" channels="1" rate="44100" buffer_size="8192" open_mic_speaker="0"/>
-                </Ports>
-            </module>
-            <module name="fifo_output" lib="libmodule-pipe-sink.z.so" role="sink" file="/data/data/.pulse_dir/pipe_sink.pcm">
-                <Ports>
-                    <Port adapter_name="internal" id="0"/>
-                </Ports>
-            </module>
-            <module name="fifo_input" lib="libmodule-pipe-source.z.so" role="source" file="/data/data/.pulse_dir/pipe_source.pcm">
-                <Ports>
-                    <Port adapter_name="internal" id="0"/>
-                </Ports>
-            </module>
-        </modules>
-    </deviceclass>
-    <deviceclass name="a2dp">
-        <modules>
-            <module name="Bt_Speaker" lib="libmodule-hdi-sink.z.so" role="sink" channels="2" rate="48000" buffer_size="3840">
-                <Ports>
-                    <Port adapter_name="bt_a2dp" id="0" channels="2" rate="48000" buffer_size="3840"/>
-                </Ports>
-            </module>
-        </modules>
-    </deviceclass>
-    <deviceclass name="file_io">
-        <modules>
-            <module name="file_sink" lib="libmodule-hdi-sink.z.so" role="sink" channels="8" rate="48000" buffer_size="3840" file="/data/data/.pulse_dir/file_sink.pcm">
-                <Ports>
-                    <Port id="0" channels="8" rate="48000" buffer_size="3840"/>
-                </Ports>
-            </module>
-            <module name="file_source" lib="libmodule-hdi-source.z.so" role="source" channels="6" rate="48000" buffer_size="3840" file="/data/data/.pulse_dir/file_source.pcm">
-                <Ports>
-                    <Port id="0" channels="6" rate="48000" buffer_size="3840"/>
+                    <Port adapter_name="primary1" id="0" channels="2" rate="44100" buffer_size="8192" open_mic_speaker="0"/>
                 </Ports>
             </module>
         </modules>

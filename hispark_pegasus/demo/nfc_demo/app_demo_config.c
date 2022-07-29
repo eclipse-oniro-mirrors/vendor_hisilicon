@@ -82,9 +82,9 @@ unsigned char C08iNfcI2cWrite(unsigned char regHigh8bitCmd, unsigned char regLow
     unsigned char sendUserCmd[64] = {regHigh8bitCmd, regLow8bitCmd};
 
     C081nfcI2cWriteCmdAddr.sendBuf = sendUserCmd;
-    C081nfcI2cWriteCmdAddr.sendLen = 2 + len; /* 2: send lenght */
+    C081nfcI2cWriteCmdAddr.sendLen = 2 + len; /* 2: send length */
     for (int i = 0; i < len; i++) {
-        sendUserCmd[2 + i] = *(dataBuff + i); /* 2: send lenght */
+        sendUserCmd[2 + i] = *(dataBuff + i); /* 2: send length */
     }
     IoTI2cWrite(id,
                 C081_NFC_ADDR& 0xFE,
@@ -102,7 +102,7 @@ unsigned int WriteFifoReg(unsigned char regHigh8bitCmd,
     IotI2cData c081nfcI2cWriteCmdAddr = {0};
     unsigned char sendUserCmd[3] = {regHigh8bitCmd, regLow8bitCmd, dataBuff};
     c081nfcI2cWriteCmdAddr.sendBuf = sendUserCmd;
-    c081nfcI2cWriteCmdAddr.sendLen = 3; /* 3: send lenght */
+    c081nfcI2cWriteCmdAddr.sendLen = 3; /* 3: send length */
     IoTI2cWrite(id,
                 C081_NFC_ADDR & 0xFE,
                 c081nfcI2cWriteCmdAddr.sendBuf,
@@ -126,7 +126,7 @@ unsigned int WriteFifoData(unsigned char* dataBuff, unsigned char len)
         sendUserCmd[2 + i] = *(writeBuf + i); /* 2: buffer index address */
     }
     c081nfcI2cWriteCmdAddr.sendBuf = sendUserCmd;
-    c081nfcI2cWriteCmdAddr.sendLen = 2 + len; /* 2: send lenght */
+    c081nfcI2cWriteCmdAddr.sendLen = 2 + len; /* 2: send length */
     IoTI2cWrite(id,
                 C081_NFC_ADDR & 0xFE,
                 c081nfcI2cWriteCmdAddr.sendBuf,
@@ -152,32 +152,32 @@ void Fm11WriteEep(unsigned short addr, unsigned int len, unsigned char *wbuf)
     unsigned char offset;
     unsigned short address = addr;
     unsigned char *writeBuf = wbuf;
-    unsigned int lenght = len;
+    unsigned int length = len;
 
     if (address < FM11_E2_USER_ADDR || address >= FM11_E2_MANUF_ADDR) {
         return;
     }
     if (address % FM11_E2_BLOCK_SIZE) {
         offset = FM11_E2_BLOCK_SIZE - (address % FM11_E2_BLOCK_SIZE);
-        if (lenght > offset) {
+        if (length > offset) {
             EepWritePage(writeBuf, address, offset);
             address += offset;
             writeBuf += offset;
-            lenght -= offset;
+            length -= offset;
         } else {
-            EepWritePage(writeBuf, address, lenght);
-            lenght = 0;
+            EepWritePage(writeBuf, address, length);
+            length = 0;
         }
     }
-    while (lenght) {
-        if (lenght >= FM11_E2_BLOCK_SIZE) {
+    while (length) {
+        if (length >= FM11_E2_BLOCK_SIZE) {
             EepWritePage(writeBuf, address, FM11_E2_BLOCK_SIZE);
             address += FM11_E2_BLOCK_SIZE;
             writeBuf += FM11_E2_BLOCK_SIZE;
-            lenght -= FM11_E2_BLOCK_SIZE;
+            length -= FM11_E2_BLOCK_SIZE;
         } else {
-            EepWritePage(writeBuf, address, lenght);
-            lenght = 0;
+            EepWritePage(writeBuf, address, length);
+            length = 0;
         }
     }
 }
@@ -188,7 +188,7 @@ unsigned int Fm11ReadEep(unsigned char *dataBuff, unsigned short ReadAddr, unsig
     WriteRead((unsigned char)((ReadAddr & 0xFF00) >> 8), /* 8: right move 8 bit */
         (unsigned char)(ReadAddr & 0x00FF),
         dataBuff,
-        2, /* 2: read lenght */
+        2, /* 2: read length */
         len);
 
     return  0;
@@ -200,7 +200,7 @@ unsigned char Fm11ReadReg(unsigned short addr)
     unsigned char pdata[10] = {0};
     unsigned char a = 0;
 
-    if (Fm11ReadEep(pdata, addr, 1) == 0) { /* 1: read lenght */
+    if (Fm11ReadEep(pdata, addr, 1) == 0) { /* 1: read length */
         a = pdata[0];
         return a;
     } else {
@@ -288,7 +288,7 @@ void Fm11DataSend(unsigned int iLen, unsigned char *iBuf)
     sLen = inLen;
     sBuf = &iBuf[0];
 
-    if (sLen <= 32) { /* 32: send data lenght */
+    if (sLen <= 32) { /* 32: send data length */
         Fm11WriteFifo(sBuf, sLen); // write fifo 有多少发多少
         sLen = 0;
         Fm11WriteReg(RF_TXEN_REG, 0x55); // 写0x55时触发非接触口回发数据
@@ -400,24 +400,24 @@ void SetApdu(unsigned char *statusOk, unsigned char *statusWord2,
     if (fm327Fifo[P1] == 0x00) { /* 0x00:  FIFO P1 cmd */
         if ((fm327Fifo[LC] == FIFO_LC_CMD) &&
             (memcmp(ndefCapabilityContainer, fm327Fifo + DATA, fm327Fifo[LC]) == 0)) {
-            Fm11WriteFifo(statusOk, 3); /* 3: statusOk lenght */
+            Fm11WriteFifo(statusOk, 3); /* 3: statusOk length */
             Fm11WriteReg(RF_TXEN_REG, 0x55); /* 0x55: TX reg cmd */
             currentFile = CC_FILE;
         } else if ((fm327Fifo[LC] == FIFO_LC_CMD) &&
             (memcmp(ndefId, fm327Fifo + DATA, fm327Fifo[LC]) == 0)) {
-            Fm11WriteFifo(statusOk, 3); /* 3: statusOk lenght */
+            Fm11WriteFifo(statusOk, 3); /* 3: statusOk length */
             Fm11WriteReg(RF_TXEN_REG, 0x55); /* TX reg cmd */
             currentFile = NDEF_FILE;
         } else {
-            Fm11WriteFifo(statusWord2, 3); /* 3: statusOk lenght */
+            Fm11WriteFifo(statusWord2, 3); /* 3: statusOk length */
             Fm11WriteReg(RF_TXEN_REG, 0x55); /* TX reg cmd */
             currentFile = NONE;
         }
     } else if (fm327Fifo[P1] == 0x04) { /* 0x04:  FIFO P1 cmd */
-        Fm11WriteFifo(statusOk, 3); /* 3: statusOk lenght */
+        Fm11WriteFifo(statusOk, 3); /* 3: statusOk length */
         Fm11WriteReg(RF_TXEN_REG, 0x55); /* 0x55: TX reg cmd */
     } else {
-        Fm11WriteFifo(statusOk, 3); /* 3: statusOk lenght */
+        Fm11WriteFifo(statusOk, 3); /* 3: statusOk length */
         Fm11WriteReg(RF_TXEN_REG, 0x55); /* 0x55: TX reg cmd */
     }
 }
@@ -438,31 +438,31 @@ void SelectApdu(unsigned char *statusOk,
                 ndefId);
     } else if (fm327Fifo[INS] == 0xB0) { /* 0xB0:  FIFO INS cmd */
         if (currentFile == CC_FILE) {
-            Fm11WriteFifo(statusOk, 1); /* 1: statusOk lenght */
+            Fm11WriteFifo(statusOk, 1); /* 1: statusOk length */
             Fm11WriteFifo(capabilityContainer + (fm327Fifo[P1] << 8) + fm327Fifo[P2], /* 8: left move 8 bit */
                 fm327Fifo[LC]);
-            Fm11WriteFifo(&statusOk[1], 2); /* 2: statusOk lenght */
+            Fm11WriteFifo(&statusOk[1], 2); /* 2: statusOk length */
             Fm11WriteReg(RF_TXEN_REG, 0x55); /* 0x55: TX reg cmd */
         } else if (currentFile == NDEF_FILE) {
-            (void)memcpy_s(&xbuf[0], NDEF_FILE_LEN, &statusOk[0], 1); /* 1: statusOk lenght */
-            (void)memcpy_s(&xbuf[1], /* 1: xbuf lenght */
+            (void)memcpy_s(&xbuf[0], NDEF_FILE_LEN, &statusOk[0], 1); /* 1: statusOk length */
+            (void)memcpy_s(&xbuf[1], /* 1: xbuf length */
                 NDEF_FILE_LEN,
                 &ndefFile[0] + (fm327Fifo[P1] << 8) + fm327Fifo[P2], /* 8: left move 8 bit */
                 fm327Fifo[LC]);
             (void)memcpy_s(&xbuf[0] + fm327Fifo[LC] + 1, /* 1: compy data addr */
                 NDEF_FILE_LEN, statusOk + 1, /* 1: compy data addr */
-                2); /* 2:  compy data lenght */
-            xlen = fm327Fifo[LC] + 3; /* 3:  FIFO LC lenght */
+                2); /* 2:  compy data length */
+            xlen = fm327Fifo[LC] + 3; /* 3:  FIFO LC length */
             Fm11DataSend(xlen, xbuf);
         } else {
-            Fm11WriteFifo(statusWord, 3); /* 3: statusOk lenght */
+            Fm11WriteFifo(statusWord, 3); /* 3: statusOk length */
             Fm11WriteReg(RF_TXEN_REG, 0x55); /* 0x55: TX reg cmd */
         }
     } else if (fm327Fifo[INS] ==  0xD6) { // UPDATE_BINARY
         (void)memcpy_s(ndefFile + (fm327Fifo[P1] << 8) + fm327Fifo[P2], /* 8: left move 8 bit */
             NDEF_FILE_LEN, fm327Fifo + DATA,
             fm327Fifo[LC]);
-        Fm11WriteFifo(statusOk, 3); /* 3: statusOk lenght */
+        Fm11WriteFifo(statusOk, 3); /* 3: statusOk length */
         Fm11WriteReg(RF_TXEN_REG, 0x55); /* 0x55: TX reg cmd */
     } else {
         Fm11DataSend(rfLen, fm327Fifo);
@@ -481,7 +481,7 @@ void Fm11T4t(void)
     const unsigned char ndefId[2] = { 0xE1, 0x04 };
 
     if (crcErr) {
-        Fm11WriteFifo(&nakCrcErr, 1); /* 1: write FiFo lenght */
+        Fm11WriteFifo(&nakCrcErr, 1); /* 1: write FiFo length */
         Fm11WriteReg(RF_TXEN_REG, 0x55); /* 0x55: TX reg cmd */
         crcErr = 0;
     } else {

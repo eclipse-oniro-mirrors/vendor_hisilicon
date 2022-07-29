@@ -49,7 +49,7 @@ vendor_hisilicon/hispark_pegasus/demo/lwip_demo
         "//utils/native/lite/include",
         "//kernel/liteos_m/components/cmsis/2.0",
         "//base/iot_hardware/interfaces/kits/wifiiot_lite",
-        "//base/iot_hardware/peripheral/interfaces/kits",
+        "//base/iothardware/peripheral/interfaces/inner_api",
         "//foundation/communication/wifi_lite/interfaces/wifiservice",
       ]
     }
@@ -97,7 +97,7 @@ vendor_hisilicon/hispark_pegasus/demo/lwip_demo
         "//utils/native/lite/include",
         "//kernel/liteos_m/components/cmsis/2.0",
         "//base/iot_hardware/interfaces/kits/wifiiot_lite",
-        "//base/iot_hardware/peripheral/interfaces/kits",
+        "//base/iothardware/peripheral/interfaces/inner_api",
         "//foundation/communication/wifi_lite/interfaces/wifiservice",
       ]
     }

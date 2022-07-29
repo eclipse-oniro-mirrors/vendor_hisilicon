@@ -15,7 +15,7 @@ IoTGpioInit(13);
 IoSetFunc(13, 6); /* gpio13复用I2C0_SDA */
 IoTGpioInit(14); /* 初始化gpio14 */
 IoSetFunc(14, 6); /* gpio14复用I2C0_SCL */
- ```
+```
 
 -   I2C 初始化配置，包括通道选择：0，设置初始化波特率：OLED_I2C_BAUDRATE(400kbps)，Hi3861 最高波特率为400kbps。
     ```
@@ -45,7 +45,7 @@ IoSetFunc(14, 6); /* gpio14复用I2C0_SCL */
         0x05,
         0xD9, // Set Pre-Charge Period
         0xF1,
-        0xDA, // set com pin configuartion
+        0xDA, // set com pin configuration
         0x12,
         0xDB, // set Vcomh
         0x30,

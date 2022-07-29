@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef POLICY_PERSET_PRODUCT_H
-#define POLICY_PERSET_PRODUCT_H
+#ifndef POLICY_PRESET_PRODUCT_H
+#define POLICY_PRESET_PRODUCT_H
 
 #include "policy_define.h"
 
@@ -25,4 +25,4 @@ static PolicySetting g_productPolicies[] = {
 
 static int g_productPolicySize = sizeof(g_productPolicies) / sizeof(PolicySetting);
 
-#endif // POLICY_PERSET_PRODUCT_H
+#endif // POLICY_PRESET_PRODUCT_H

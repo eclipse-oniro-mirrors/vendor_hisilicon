@@ -45,7 +45,7 @@
 #define DELAY_30_S                  30000000
 #define DEFAULT_TYPE                ((hi_u8)0)
 #define INIT_TIME_COUNT             ((hi_u8)1)
-#define TIME_PEROID_COUNT           10
+#define TIME_PERIOD_COUNT           10
 /* pwm duty */
 #define PWM_LOW_DUTY                1
 #define PWM_SLOW_DUTY               1000
@@ -77,8 +77,8 @@
 #define COLOR                       0x05
 #define PRE_CHARGE_PERIOD           0xD9
 #define PERIOD                      0xF1
-#define PIN_CONFIGUARTION           0xDA
-#define CONFIGUARTION               0x12
+#define PIN_CONFIGURATION           0xDA
+#define CONFIGURATION               0x12
 #define SET_VCOMH                   0xDB
 #define VCOMH                       0x30
 #define SET_CHARGE_PUMP_ENABLE      0x8D

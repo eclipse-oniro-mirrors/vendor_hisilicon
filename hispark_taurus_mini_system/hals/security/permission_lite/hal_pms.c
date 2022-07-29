@@ -143,6 +143,21 @@ int HalAccess(const char *pathname)
     return access(pathname, F_OK);
 }
 
+void* HalMalloc(unsigned int size)
+{
+    if (size == 0) {
+        return NULL;
+    }
+    return NULL;
+}
+
+void HalFree(void *ptr)
+{
+    if (ptr != NULL) {
+        free(ptr);
+    }
+}
+
 void HalMutexLock(void)
 {
     pthread_mutex_lock(&g_mutex);
@@ -170,3 +185,11 @@ int HalGetDevUdid(unsigned char *udid, int size)
     return PERM_ERRORCODE_SUCCESS;
 }
 
+bool HalIsValidPath(const char *path)
+{
+    if (path == NULL) {
+        return false;
+    }
+
+    return true;
+}
