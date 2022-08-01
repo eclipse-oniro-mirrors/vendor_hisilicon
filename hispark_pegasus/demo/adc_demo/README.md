@@ -4,7 +4,7 @@
 
 [HiSpark WiFi-IoT开发套件](https://item.taobao.com/item.htm?spm=a1z10.1-c-s.w5003-23341819265.1.bf644a82Da9PZK&id=622343426064&scene=taobao_shop) 首发于HDC 2020，是首批支持OpenHarmony 2.0的开发套件，亦是官方推荐套件，由润和软件HiHope量身打造，已在OpenHarmony社区和广大OpenHarmony开发者中得到广泛应用。
 
-!![wifi_iot](https://gitee.com/hihopeorg/hispark-hm-pegasus/raw/master/docs/figures/2.png)
+![wifi_iot](https://gitee.com/hihopeorg/hispark-hm-pegasus/raw/master/docs/figures/2.png)
 
 ## 一、ADC API
 
@@ -27,7 +27,7 @@
     ]
 ```
 
-   3.在openharmony源码顶层目录执行：`python build.py wifiiot`
+3. 在openharmony源码顶层目录执行：`python build.py wifiiot`
 
 ## 四、运行结果
 
