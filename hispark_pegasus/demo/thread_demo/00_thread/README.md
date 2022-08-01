@@ -140,7 +140,7 @@ void rtosv2_thread_main(void *arg) {
     ]
 ```
 
-   3.在openharmony源码顶层目录执行：`python build.py wifiiot`
+3. 在openharmony源码顶层目录执行：`python build.py wifiiot`
 
 ## 四、运行结果
 
