@@ -166,6 +166,14 @@
                     serviceName = "audio_hdi_pnp_service";
                 }
             }
+            idl_audio_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libaudio_manager_service.z.so";
+                    serviceName = "idl_audio_service";
+                }
+            }
         }
         hdi_server :: host {
             hostName = "camera_host";

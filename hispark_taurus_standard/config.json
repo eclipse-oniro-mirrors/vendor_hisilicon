@@ -550,6 +550,10 @@
         {
           "component": "drivers_interface_distributed_camera",
           "features": []
+        },
+        {
+          "component": "drivers_interface_audio",
+          "features": []
         }
       ]
     },
