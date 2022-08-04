@@ -183,7 +183,7 @@
                  device0 :: deviceNode {
                      policy = 2;
                      priority = 100;
-                     moduleName = "libcamera_hdi_impl.z.so";
+                     moduleName = "libcamera_host_service_1.0.z.so";
                      serviceName = "camera_service";
                  }
              }
