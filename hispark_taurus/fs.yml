@@ -63,7 +63,7 @@
       dir_mode: 555
       file_mode: 444
     -
-      source_dir: obj/foundation/distributedschedule/samgr_lite/config
+      source_dir: obj/foundation/systemabilitymgr/samgr_lite/config
       target_dir: etc
       dir_mode: 555
       file_mode: 444
@@ -159,7 +159,7 @@
       dir_mode: 555
       file_mode: 444
     -
-      source_dir: obj/foundation/distributedschedule/samgr_lite/config
+      source_dir: obj/foundation/systemabilitymgr/samgr_lite/config
       target_dir: etc
       dir_mode: 555
       file_mode: 444

@@ -389,10 +389,10 @@
       ]
     },
     {
-      "subsystem": "distributedschedule",
+      "subsystem": "systemabilitymgr",
       "components": [
         {
-          "component": "samgr_standard",
+          "component": "samgr",
           "features": []
         },
         {
