@@ -36,7 +36,7 @@
         usb :: host {
             hostName = "usb_host";
             priority = 50;
-            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            caps = ["DAC_OVERRIDE"];
             usb_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
@@ -49,7 +49,7 @@
         usbfnMaster :: host {
             hostName = "usbfnMaster_host";
             priority = 50;
-            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            caps = ["DAC_OVERRIDE"];
             usb_pnp_manager_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
