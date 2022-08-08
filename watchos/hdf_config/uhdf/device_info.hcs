@@ -85,6 +85,7 @@
         power :: host {
             hostName = "power_host";
             priority = 50;
+            caps = ["BLOCK_SUSPEND"];
             power_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
