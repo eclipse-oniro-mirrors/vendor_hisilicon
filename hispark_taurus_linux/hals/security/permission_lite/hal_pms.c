@@ -59,7 +59,7 @@ static const PermissionDef g_permissions[] = {
     {"ohos.permission.WRITE_MEDIA_VIDEO",     USER_GRANT,    NOT_RESTRICTED,    CAP_NOT_BINDED},
 };
 
-static unsigned char *GetCId()
+static unsigned char *GetCId(void)
 {
     int mallocSize = sizeof(unsigned char) * CID_LENGTH;
     unsigned char *cid = (unsigned char *)malloc(mallocSize);
@@ -131,12 +131,12 @@ PermissionDef* HalGetPermissionList(unsigned int *length)
     return (PermissionDef*)g_permissions;
 }
 
-const char *HalGetPermissionPath()
+const char *HalGetPermissionPath(void)
 {
     return P_DIR;
 }
 
-int HalGetMaxPermissionSize()
+int HalGetMaxPermissionSize(void)
 {
     return PERM_MAX;
 }
@@ -161,12 +161,12 @@ int HalAccess(const char *pathname)
     return access(pathname, F_OK);
 }
 
-void HalMutexLock()
+void HalMutexLock(void)
 {
     pthread_mutex_lock(&g_mutex);
 }
 
-void HalMutexUnlock()
+void HalMutexUnlock(void)
 {
     pthread_mutex_unlock(&g_mutex);
 }

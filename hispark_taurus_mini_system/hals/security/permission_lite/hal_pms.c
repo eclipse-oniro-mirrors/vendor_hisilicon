@@ -88,35 +88,38 @@ static int GenerateOriginalDevUdid(unsigned char *ori, int size)
     mbedtls_md_context_t mdCtx;
     mbedtls_md_init(&mdCtx);
     if (mbedtls_md_setup(&mdCtx, mdInfo, 0) != 0) {
-        mbedtls_md_free(&mdCtx);
-        return result;
+        goto EXIT;
     }
     if (mbedtls_md_starts(&mdCtx) != 0) {
-        mbedtls_md_free(&mdCtx);
-        return result;
+        goto EXIT;
     }
     // Get sn number
     const char *sn = GetSerial();
     if (sn == NULL) {
-        mbedtls_md_free(&mdCtx);
-        return result;
+        goto EXIT;
     }
     // Get emmc id
     unsigned char *cid = GetCId();
     if (cid == NULL) {
-        mbedtls_md_free(&mdCtx);
-        return result;
+        goto EXIT;
     }
     if (mbedtls_md_update(&mdCtx, sn, strlen(sn)) != 0) {
-        free(cid);
+        goto FREE_EXIT;
     }
     if (mbedtls_md_update(&mdCtx, cid, CID_LENGTH) != 0) {
-        free(cid);
+        goto FREE_EXIT;
     }
     if (mbedtls_md_finish(&mdCtx, ori) != 0) {
-        free(cid);
+        goto FREE_EXIT;
     }
     result = PERM_ERRORCODE_SUCCESS;
+
+FREE_EXIT:
+    free(cid);
+
+EXIT:
+    mbedtls_md_free(&mdCtx);
+    return result;
 }
 
 PermissionDef* HalGetPermissionList(unsigned int *length)
