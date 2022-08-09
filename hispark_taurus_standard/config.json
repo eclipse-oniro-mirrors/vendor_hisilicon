@@ -46,7 +46,13 @@
           "features": []
         },
         {
-          "component": "distributeddatamgr",
+          "component": "kv_store",
+          "features": [
+            "kv_store_build_lite = false"
+          ]
+        },
+        {
+          "component": "datamgr_service",
           "features": []
         },
         {
