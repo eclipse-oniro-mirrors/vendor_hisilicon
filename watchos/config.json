@@ -213,6 +213,7 @@
           { "component": "preferences", "features":[] },
           { "component": "data_share", "features":[] },
           { "component": "datamgr_service", "features":[] },
+          { "component": "kv_store", "features":[] },
           { "component": "distributedfilejs", "features":[] },
           { "component": "storage_standard", "features":[] },
           { "component": "data_object", "features":[] },
