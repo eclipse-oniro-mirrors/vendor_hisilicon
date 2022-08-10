@@ -212,7 +212,6 @@
           { "component": "relational_store", "features":[] },
           { "component": "preferences", "features":[] },
           { "component": "data_share", "features":[] },
-          { "component": "kv_store", "features":["kv_store_build_lite = false"] },
           { "component": "datamgr_service", "features":[] },
           { "component": "distributedfilejs", "features":[] },
           { "component": "storage_standard", "features":[] },

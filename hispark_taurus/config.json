@@ -148,12 +148,6 @@
         ]
       },
       {
-        "subsystem": "distributeddatamgr",
-        "components": [
-          { "component": "kv_store", "features":[] }
-        ]
-      },
-      {
         "subsystem": "ai",
         "components": [
           { "component": "ai_engine", "features":[] }
