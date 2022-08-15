@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-#include "hal_token.h"
 #include "ohos_errno.h"
 #include <stdlib.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include "hal_token.h"
 
 static int OEMReadToken(char *token, unsigned int len)
 {
