@@ -15,7 +15,7 @@ static_library("led_example") {
   sources = [ "led_example.c" ]
 
   include_dirs = [
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/kal",
     "//base/iot_hardware/interfaces/kits/wifiiot_lite",
   ]

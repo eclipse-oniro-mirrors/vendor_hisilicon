@@ -21,7 +21,7 @@ static_library("night_light") {
 
   include_dirs = [
     "./ssd1306",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/kal/cmsis",
     "//base/iothardware/peripheral/interfaces/inner_api",
   ]

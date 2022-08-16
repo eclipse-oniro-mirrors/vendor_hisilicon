@@ -15,7 +15,7 @@ static_library("thread_demo") {
   sources = [ "thread.c" ]
 
   include_dirs = [
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/components/cmsis/2.0",
   ]
 }

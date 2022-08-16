@@ -31,7 +31,7 @@ static_library("net_demo") {
   ]
   include_dirs = [
     "../night_light",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/kal/cmsis",
     "//base/iothardware/peripheral/interfaces/inner_api",
     "//foundation/communication/wifi_lite/interfaces/wifiservice",

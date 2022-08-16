@@ -23,7 +23,7 @@ static_library("robot_demo") {
   ]
 
   include_dirs = [
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/kal/cmsis",
     "//base/iothardware/peripheral/interfaces/inner_api",
   ]

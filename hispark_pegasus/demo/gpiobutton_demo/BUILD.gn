@@ -15,7 +15,7 @@ static_library("button_example") {
   sources = [ "button_example.c" ]
 
   include_dirs = [
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/kal",
     "//base/iot_hardware/interfaces/kits/wifiiot_lite",
   ]

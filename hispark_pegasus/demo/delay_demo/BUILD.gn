@@ -15,7 +15,7 @@ static_library("delay_demo") {
   sources = [ "delay.c" ]
 
   include_dirs = [
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/components/cmsis/2.0",
   ]
 }
