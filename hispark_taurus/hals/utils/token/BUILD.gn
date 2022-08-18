@@ -19,7 +19,7 @@ shared_library("haltoken_shared") {
   cflags = [ "-Wall" ]
   include_dirs = [
     "//base/startup/init/interfaces/hals",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
   ]
   deps = []
 }

@@ -24,7 +24,7 @@ static_library("appDemoIot") {
 
   include_dirs = [
     "./",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/kal/cmsis",
     "//base/iothardware/peripheral/interfaces/inner_api",
     "//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party/lwip_sack/include/lwip",

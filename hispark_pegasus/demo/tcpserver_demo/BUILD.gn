@@ -20,7 +20,7 @@ static_library("net_demo") {
     "wifi_connecter.c",
   ]
   include_dirs = [
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/components/cmsis/2.0",
     "//foundation/communication/interfaces/kits/wifi_lite/wifiservice",
     "//vendor/hisi/hi3861/hi3861/third_party/lwip_sack/include/",

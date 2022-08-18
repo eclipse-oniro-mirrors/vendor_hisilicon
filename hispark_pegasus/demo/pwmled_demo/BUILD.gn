@@ -15,7 +15,7 @@ static_library("pwm_led_demo") {
   sources = [ "pwm_led_demo.c" ]
 
   include_dirs = [
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//kernel/liteos_m/components/cmsis/2.0",
     "//base/iot_hardware/interfaces/kits/wifiiot_lite",
   ]
