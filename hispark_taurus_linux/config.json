@@ -75,12 +75,6 @@
         ]
       },
       {
-        "subsystem": "distributeddatamgr",
-        "components": [
-          { "component": "kv_store", "features":[] }
-        ]
-      },
-      {
         "subsystem": "updater",
         "components": [
           { "component": "ota_lite", "features": [] }
