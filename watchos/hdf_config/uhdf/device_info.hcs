@@ -118,7 +118,7 @@
                     policy = 2;
                     priority = 100;
                     moduleName = "libwifi_hdi_c_device.z.so";
-                    serviceName = "wlan_hal_c_service";
+                    serviceName = "wlan_interface_service";
                 }
             }
         }
