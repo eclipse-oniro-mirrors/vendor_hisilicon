@@ -122,7 +122,7 @@
             priority = 50;
             uid = "system";
             gid = ["system"];
-            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "BLOCK_SUSPEND"];
             power_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
