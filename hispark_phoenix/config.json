@@ -31,6 +31,15 @@
       ]
     },
     {
+      "subsystem": "barrierfree",
+      "components": [
+        {
+          "component": "accessibility",
+          "features": []
+        }
+      ]
+    },
+    {
       "subsystem": "distributeddatamgr",
       "components": [
         {
@@ -921,6 +930,14 @@
         },
         {
           "component": "device_usage_statistics",
+          "features": []
+        },
+        {
+          "component": "resource_schedule_service",
+          "features": []
+        },
+        {
+          "component": "soc_perf",
           "features": []
         }
       ]
