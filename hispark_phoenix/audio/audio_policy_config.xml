@@ -28,7 +28,7 @@
             </module>
         </modules>
     </deviceclass>
-    <AudioInterruptEnable>false</AudioInterruptEnable>
+    <AudioInterruptEnable>true</AudioInterruptEnable>
     <UpdateRouteSupport>false</UpdateRouteSupport>
     <AudioLatency>50</AudioLatency>
 </audioPolicyConfiguration>
