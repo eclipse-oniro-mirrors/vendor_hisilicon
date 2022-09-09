@@ -7,6 +7,8 @@ root {
                     lightId = [1];    /* Lightid can contain multiple logical light ID, for example:
                                         1 indicates the power indicator. These logic lights work on
                                         the same physical light light01. */
+                    lightName = "battery";
+                    lightNumber = 1;
                     busRNum = 31;    // Red corresponding GPIO.
                     busGNum = 30;    // Green corresponding GPIO.
                     busBNum = 29;    // Blue corresponding GPIO.
