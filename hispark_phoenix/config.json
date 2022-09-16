@@ -400,6 +400,39 @@
       ]
     },
     {
+      "subsystem": "location",
+      "components": [
+        {
+          "component": "location",
+          "features": []
+        },
+        {
+          "component": "location_common",
+          "features": []
+        },
+        {
+          "component": "location_locator",
+          "features": []
+        },
+        {
+          "component": "location_network",
+          "features": []
+        },
+        {
+          "component": "location_gnss",
+          "features": []
+        },
+        {
+          "component": "location_passive",
+          "features": []
+        },
+        {
+          "component": "location_geocode",
+          "features": []
+        }
+      ]
+    },
+    {
       "subsystem": "customization",
       "components": [
         {
@@ -488,74 +521,82 @@
           "component": "drivers_peripheral_battery",
           "features": []
         },
-		{
-		  "component": "drivers_interface_sensor",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_light",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_vibrator",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_power",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_battery",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_thermal",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_pin_auth",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_face_auth",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_user_auth",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_fingerprint_auth",
-		  "features": []
-		},
-		{
-		  "component": "drivers_interface_input",
-		  "features": []
-		},
-                {
-		  "component": "drivers_interface_wlan",
-		  "features": []
-		},
-                {
-                  "component": "drivers_interface_usb",
-                  "features": []
-                },
-                {
-                  "component": "drivers_interface_ril",
-                  "features": []
-                },
-                {
-                  "component": "drivers_interface_display",
-                  "features": []
-                },
-                {
-                  "component": "drivers_peripheral_distributed_camera",
-                  "features": []
-                },
-                {
-                  "component": "drivers_interface_distributed_camera",
-                  "features": []
-                }
+        {
+          "component": "drivers_interface_sensor",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_camera",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_motion",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_light",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_vibrator",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_power",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_battery",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_thermal",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_pin_auth",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_face_auth",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_user_auth",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_fingerprint_auth",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_input",
+          "features": []
+        },
+                    {
+          "component": "drivers_interface_wlan",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_usb",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_ril",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_display",
+          "features": []
+        },
+        {
+          "component": "drivers_peripheral_distributed_camera",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_distributed_camera",
+          "features": []
+        }
 
       ]
     },
