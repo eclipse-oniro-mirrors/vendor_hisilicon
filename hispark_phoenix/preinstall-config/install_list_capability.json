@@ -1,0 +1,60 @@
+{
+    "install_list": [
+        {
+            "bundleName": "com.example.kikakeyboard",
+            "singleton": true,
+            "bootable": false,
+            "runningResourcesApply": false,
+            "associatedWakeUp": false,
+            "app_signature" : ["9AED2A79925ECA050CD2BB9D2A7F694E49E5E135D28EBDCE53836DE76B5080ED"],
+            "allowCommonEvent": []
+        },
+        {
+            "bundleName": "com.ohos.systemui",
+            "singleton": true,
+            "keepAlive": true,
+            "bootable": false,
+            "runningResourcesApply": false,
+            "app_signature" : ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"],
+            "associatedWakeUp": false
+        },
+        {
+            "bundleName": "com.ohos.callui",
+            "app_signature" : ["E64B13B84E6D2167F73B46530C6E02E323DA43C9C2DA251D7C64D20E091B936F"],
+            "singleton": true,
+            "keepAlive": true
+        },
+        {
+            "bundleName": "com.ohos.mms",
+            "app_signature" : ["04AC9C3F045EAB7DB992B7C4E38B59468CA3EABB7D654AE47641471B9785EA04"],
+            "singleton": true,
+            "keepAlive": true
+        },
+        {
+            "bundleName": "com.ohos.screenlock",
+            "singleton": true,
+            "keepAlive": true
+        },
+        {
+            "bundleName": "com.ohos.settingsdata",
+            "app_signature" : ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"],
+            "singleton": true,
+            "keepAlive": true
+        },
+        {
+            "bundleName": "ohos.backgroundtaskmgr.resources",
+            "app_signature" : ["72BE2C651A9E0C57B4BB67825BA6F8180FC883858434712150A55C17C7E1A6F7"],
+            "singleton": true
+        },
+        {
+            "bundleName": "ohos.global.systemres",
+            "app_signature" : ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"],
+            "singleton": true
+        },
+        {
+            "bundleName": "com.ohos.launcher",
+            "app_signature" : ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"],
+            "keepAlive": true
+        }
+    ]
+}
