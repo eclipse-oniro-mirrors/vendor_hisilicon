@@ -1,21 +1,22 @@
-# vendor/hisilicon component <a name="ZH-CN_TOPIC_0000001130275863"></a>
+# HiSpark Pegasus <a name="ZH-CN_TOPIC_0000001130275863"></a>
 
-- [Introduction](#section469617221261)
-- [constraint](#section12212842173518)
-- [Related warehouse](#section641143415335)
-- [Hi3861V100 experimental development guide](#ZH-CN_TOPIC_0000001130176841)
-- [Hi3861V100 hardware introduction](#section11660541593)
-- [Development environment setup](#section11660541593)
-- [WiFi_IoT basic control experiment](#section11660541593)
-- [Appendix](#section11660541593)
+- [HiSpark Pegasus <a name="ZH-CN_TOPIC_0000001130275863"></a>](#hispark-pegasus-)
+  - [Introduction <a name="section469617221261"></a>](#introduction-)
+  - [Constraints <a name="section12212842173518"></a>](#constraints-)
+  - [Hi3861V100 Experiment Development Guide<a name="ZH-CN_TOPIC_0000001130176841"></a>](#hi3861v100-experiment-development-guide)
+  - [Hi3861V100 Hardware Introduction<a name="section11660541593"></a>](#hi3861v100-hardware-introduction)
+  - [Development environment setup <a name="section11660541593"></a>](#development-environment-setup-)
+  - [WiFi_IoT basic control experiment <a name="section11660541593"></a>](#wifi_iot-basic-control-experiment-)
+  - [Appendix <a name="section11660541593"></a>](#appendix-)
+  - [Related repositories <a name="section641143415335"></a>](#related-repositories-)
 
 ## Introduction <a name="section469617221261"></a>
 
-Refer to the development board, compile framework adaptation, solution reference code and scripts.
+compile framework adaptation, solution reference code and scripts.
 
 ## Constraints <a name="section12212842173518"></a>
 
-Support HiSpark\_taurus (Hi3516DV300), HiSpark\_aries (Hi3518EV300), HiSpark\_pegasus (Hi3861V100).
+Support HiSpark\_pegasus (Hi3861V100).
 
 ## Hi3861V100 Experiment Development Guide<a name="ZH-CN_TOPIC_0000001130176841"></a>
 
@@ -58,4 +59,4 @@ Preface: Before learning the experiment, please learn some theoretical knowledge
 
 - [device_board_hisilicon](https://gitee.com/openharmony/device_board_hisilicon)
 
-- [device_hisilicon_third_party_uboot](https://gitee.com/openharmony/device_hisilicon_third_party_uboot)
+- [third_party_u-boot](https://gitee.com/openharmony/third_party_u-boot)
