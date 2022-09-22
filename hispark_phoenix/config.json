@@ -13,7 +13,10 @@
       "components": [
         {
           "component": "ace_engine",
-          "features": []
+          "features": [
+            "ace_engine_feature_enable_accessibility = true",
+            "ace_engine_feature_enable_web = true"
+          ]
         },
         {
           "component": "napi",
@@ -981,6 +984,10 @@
         {
           "component": "soc_perf",
           "features": []
+        },
+        {
+          "component": "frame_aware_sched",
+          "features": []
         }
       ]
     },
@@ -998,6 +1005,15 @@
       "components": [
         {
           "component": "device_status",
+          "features": []
+        }
+      ]
+    },
+    {
+      "subsystem": "web",
+      "components": [
+        {
+          "component": "webview",
           "features": []
         }
       ]
