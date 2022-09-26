@@ -243,7 +243,7 @@
           "features": []
         },
         {
-          "component": "utils_memory",
+          "component": "memory_utils",
           "features": []
         }
       ]
