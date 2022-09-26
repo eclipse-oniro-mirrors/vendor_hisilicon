@@ -58,10 +58,6 @@
           "features": []
         },
         {
-          "component": "distributedfilejs",
-          "features": []
-        },
-        {
           "component": "storage_standard",
           "features": []
         },
@@ -80,6 +76,10 @@
       "components": [
         {
           "component": "user_file_service",
+          "features": []
+        },
+        {
+          "component": "file_api",
           "features": []
         },
         {
