@@ -100,7 +100,7 @@
         "components": [
           { "component": "c_utils", "features": [] },
 	  { "component": "ets_utils", "features":[] },
-	  { "component": "utils_memory", "features":[] }
+	  { "component": "memory_utils", "features":[] }
         ]
       },
       {
