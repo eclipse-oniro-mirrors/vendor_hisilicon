@@ -14,7 +14,7 @@ root {
             busType = 1; // 0:i2c 1:spi
             busNum = 1;
             busAddr = 0;
-            regWidth = 2; // 2btye
+            regWidth = 2; // 2 bytes
             csNum = 0;
             spiBusCfg :: spiBusInfo { /* reference struct SpiCfg */
                 maxSpeedHz = 8388608; //8 * 1024 * 1024;

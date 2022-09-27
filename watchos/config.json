@@ -99,14 +99,8 @@
         "subsystem": "commonlibrary",
         "components": [
           { "component": "c_utils", "features": [] },
-	  { "component": "ets_utils", "features":[] },
-	  { "component": "memory_utils", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "utils",
-        "components": [
-          { "component": "utils_base", "features":[] }
+          { "component": "ets_utils", "features":[] },
+          { "component": "memory_utils", "features":[] }
         ]
       },
       {

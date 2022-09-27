@@ -171,7 +171,7 @@
                     policy = 2;
                     priority = 100;
                     moduleName = "libaudio_manager_service.z.so";
-                    serviceName = "idl_audio_service";
+                    serviceName = "audio_manager_service";
                 }
             }
         }
