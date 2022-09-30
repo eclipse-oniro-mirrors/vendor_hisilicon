@@ -208,7 +208,6 @@
           { "component": "data_share", "features":[] },
           { "component": "datamgr_service", "features":[] },
           { "component": "kv_store", "features":[] },
-          { "component": "distributedfilejs", "features":[] },
           { "component": "storage_standard", "features":[] },
           { "component": "data_object", "features":[] },
           { "component": "e2fsprogs", "features":[] }
@@ -323,6 +322,7 @@
         "components": [
           { "component": "storage_service", "features":[]},
           { "component": "dfs_service", "features":[]},
+          { "component": "file_api", "features":[]},
           { "component": "user_file_service", "features":[]},
           { "component": "app_file_service", "features":[]}
         ]
