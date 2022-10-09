@@ -58,10 +58,6 @@
           "features": []
         },
         {
-          "component": "distributedfilejs",
-          "features": []
-        },
-        {
           "component": "storage_standard",
           "features": []
         },
@@ -80,6 +76,10 @@
       "components": [
         {
           "component": "user_file_service",
+          "features": []
+        },
+        {
+          "component": "file_api",
           "features": []
         },
         {
@@ -241,14 +241,9 @@
         {
           "component": "ets_utils",
           "features": []
-        }
-      ]
-    },
-    {
-      "subsystem": "utils",
-      "components": [
+        },
         {
-          "component": "utils_memory",
+          "component": "memory_utils",
           "features": []
         }
       ]
@@ -713,7 +708,7 @@
           "features": []
         },
         {
-          "component": "multimedia_image_standard",
+          "component": "multimedia_image_framework",
           "features": []
         },
         {
