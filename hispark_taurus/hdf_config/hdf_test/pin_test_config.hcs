@@ -3,10 +3,45 @@ root {
     pin_config {
         pin_device_tester {
             match_attr = "PIN_TEST";
-            pinName = "P18";
+            pinName = "PINVIRTUAL1";
             strengthNum = 2;
             PullTypeNum = 0;
-            funcName = "LSADC_CH1";
+            funcName = "V1_F1";
+        }
+        pin_virtual {
+            match_attr = "virtual_pin";
+            number = 16;
+            pinCount = 3;
+            PINVIRTUAL1 {
+                pinName = "PINVIRTUAL1";
+                init = 0xFFFF;
+                F0 = "V1_F0";
+                F1 = "V1_F1";
+                F2 = "V1_F2";
+                F3 = "V1_F3";
+                F4 = "V1_F4";
+                F5 = "V1_F5";
+            }
+            PINVIRTUAL2 {
+                pinName = "PINVIRTUAL2";
+                init = 0xFFFF;
+                F0 = "V2_F0";
+                F1 = "V2_F1";
+                F2 = "V2_F2";
+                F3 = "V2_F3";
+                F4 = "V2_F4";
+                F5 = "V2_F5";
+            }
+            PINVIRTUAL3 {
+                pinName = "PINVIRTUAL3";
+                init = 0xFFFF;
+                F0 = "V3_F0";
+                F1 = "V3_F1";
+                F2 = "V3_F2";
+                F3 = "V3_F3";
+                F4 = "V3_F4";
+                F5 = "V3_F5";
+            }
         }
     }
 }
