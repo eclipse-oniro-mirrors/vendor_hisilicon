@@ -292,11 +292,12 @@
         ]
       },
       {
-        "subsystem": "ark",
+        "subsystem": "arkcompiler",
         "components": [
-          { "component": "ark", "features":[]},
-          { "component": "ark_js_runtime", "features":[]},
-          { "component": "ets_frontend", "features":[]}
+          { "component": "runtime_core", "features":[]},
+          { "component": "ets_runtime", "features":[]},
+          { "component": "ets_frontend", "features":[]},
+          { "component": "toolchain", "features":[]}
         ]
       },
       {
