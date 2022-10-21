@@ -765,7 +765,7 @@
                     permission = 0666;
                     moduleName = "HDF_AUDIO";
                     deviceMatchAttr = "hdf_audio_driver_1";
-                    serviceName = "hdf_audio_codec_primary_dev11";
+                    serviceName = "hdf_audio_codec_primary_dev1";
                 }
             }
             device_stream :: device {

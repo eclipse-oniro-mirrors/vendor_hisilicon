@@ -38,7 +38,7 @@
         "portnum": 1,
         "port": [{
             "dir": "PORT_OUT",
-            "id": 11,
+            "id": 1,
             "name": "AOP"
         }]
     },
