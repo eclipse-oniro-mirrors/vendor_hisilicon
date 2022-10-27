@@ -131,7 +131,7 @@
             }
         }
         audio :: host {
-            hostName = "audio_hdi_server_host";
+            hostName = "audio_host";
             priority = 50;
             caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH"];
             audio_device :: device {

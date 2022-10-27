@@ -124,7 +124,7 @@
             }
         }
         audio :: host {
-            hostName = "audio_hdi_server_host";
+            hostName = "audio_host";
             priority = 50;
             audio_device :: device {
                 device0 :: deviceNode {
