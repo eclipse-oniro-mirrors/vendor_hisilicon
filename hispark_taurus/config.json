@@ -90,7 +90,7 @@
       {
         "subsystem": "updater",
         "components": [
-          { "component": "ota_lite", "features":[] }
+          { "component": "sys_installer_lite", "features":[] }
         ]
       },
       {
