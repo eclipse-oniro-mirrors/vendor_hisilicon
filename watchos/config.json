@@ -218,7 +218,7 @@
         "components": [
           { "component": "core_service", "features":[] },
           { "component": "ril_adapter", "features":[] },
-          { "component": "data_storage", "features":[] },
+          { "component": "telephony_data", "features":[] },
           { "component": "state_registry", "features":[] },
           { "component": "cellular_call", "features":[] },
           { "component": "cellular_data", "features":[] },
