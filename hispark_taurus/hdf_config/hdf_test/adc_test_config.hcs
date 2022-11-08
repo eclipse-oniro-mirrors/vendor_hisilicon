@@ -2,9 +2,17 @@ root {
     module = "adc";
     adc_config {
         adc_device_tester {
+            match_attr = "virtual_adc_driver";
+            devNum = 14;
+            channels = 8;
+            dataWidth = 10;
+        }
+    }
+    adc_test_config {
+        adc_device_tester {
             match_attr = "ADC_TEST";
-            devNum = 0;
-            channel = 1;
+            devNum = 14;
+            channel = 5;
             maxChannel = 1;
             dataWidth = 10;
             rate = 20000;
