@@ -409,7 +409,9 @@
         },
         {
           "component": "drivers_peripheral_input",
-          "features": []
+          "features": [
+            "drivers_peripheral_input_feature_model = true"
+          ]
         },
         {
           "component": "drivers_peripheral_display",
