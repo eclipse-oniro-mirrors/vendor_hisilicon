@@ -15,7 +15,7 @@
         }]
     },
     {
-        "name": "primary1",
+        "name": "primary",
         "portnum": 3,
         "port": [{
             "dir": "PORT_OUT",
