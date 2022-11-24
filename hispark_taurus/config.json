@@ -123,7 +123,8 @@
           { "component": "drivers_peripheral_vibrator", "features":[] },
           { "component": "drivers_peripheral_usb", "features":[] },
           { "component": "camera_device_driver", "features":[] },
-          { "component": "drivers_peripheral_audio", "features":[] }
+          { "component": "drivers_peripheral_audio", "features":[] },
+          { "component": "drivers_peripheral_light", "features":[] }
         ]
       },
       {
