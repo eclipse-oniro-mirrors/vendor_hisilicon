@@ -592,6 +592,18 @@
         {
           "component": "drivers_interface_distributed_camera",
           "features": []
+        },
+        {
+          "component": "drivers_peripheral_location_agnss",
+          "features": []
+        },
+        {
+          "component": "drivers_peripheral_location_geofence",
+          "features": []
+        },
+        {
+          "component": "drivers_peripheral_location_gnss",
+          "features": []
         }
 
       ]
@@ -1011,6 +1023,15 @@
       "components": [
         {
           "component": "webview",
+          "features": []
+        }
+      ]
+    },
+    {
+      "subsystem": "wukong",
+      "components": [
+        {
+          "component": "wukong",
           "features": []
         }
       ]
