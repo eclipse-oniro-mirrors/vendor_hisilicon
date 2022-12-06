@@ -60,7 +60,7 @@
           { "component": "init_lite", "features":
             [
               "enable_ohos_startup_init_feature_begetctl_liteos = true",
-              "enable_ohos_startup_init_lite_use_thirdparty_mbedtls = false"
+              "enable_ohos_startup_init_lite_use_thirdparty_mbedtls = true"
             ]
           }
         ]
