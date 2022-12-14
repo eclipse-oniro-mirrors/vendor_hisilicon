@@ -951,7 +951,9 @@
       "components": [
         {
           "component": "device_status",
-          "features": []
+          "features": [
+            "fusion_interaction_coordination = false"
+          ]
         }
       ]
     }
