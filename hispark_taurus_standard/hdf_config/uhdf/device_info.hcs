@@ -31,6 +31,13 @@
                     moduleName = "libsample_driver.z.so";
                     serviceName = "sample_driver_service";
                 }
+                device1 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    preload = 2;
+                    moduleName = "libsample1_driver.z.so";
+                    serviceName = "sample1_driver_service";
+                }
             }
         }
         usb :: host {
