@@ -47,7 +47,6 @@ static const char OHOS_HARDWARE_MODEL[] = {"****"};
 static const char OHOS_HARDWARE_PROFILE[] = {"aout:true,display:true"};
 static const char OHOS_BOOTLOADER_VERSION[] = {"bootloader"};
 static const char OHOS_ABI_LIST[] = {"****"};
-static const char OHOS_SERIAL[] = {"1234567890"};  // provided by OEM.
 static const int OHOS_FIRST_API_VERSION = 1;
 
 const char* HalGetDeviceType(void)
@@ -130,7 +129,15 @@ static int32_t Getcid(char * str, int strlength)
         return CID_ERROR;
     }
     uint8_t cid[CID_LENGTH] = {0};
-    EmmcGetHuid(cid, CID_LENGTH);
+    DevHandle handle = EmmcOpen(0);
+    if (handle == NULL) {
+        return CID_ERROR;
+    }
+    if (EmmcGetCid(handle, cid, CID_LENGTH) != HDF_SUCCESS) {
+        EmmcClose(handle);
+        return CID_ERROR;
+    }
+    EmmcClose(handle);
     char digitalCid[DIGITAL_CID_LENGTH] = {0};
     if (TranslateCid(cid, CID_LENGTH, digitalCid, DIGITAL_CID_LENGTH) != CID_OK) {
         return CID_ERROR;
@@ -148,7 +155,7 @@ const char* HalGetSerial(void)
         return str;
     }
     if (Getcid(str, STR_MAX) != CID_OK) {
-        return OHOS_SERIAL;
+        return NULL;
     }
     return str;
 }
