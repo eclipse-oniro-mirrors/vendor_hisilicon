@@ -16,6 +16,15 @@ root {
                 chipIdSize = 0x1000;
             }
 
+            hwInfo = [
+                /*
+                    Playback/Captrue, formats, rates, rate_min, rate_max, channels_min, channels_max,
+                    buffer_bytes_max, period_bytes_min, period_bytes_max, periods_min, periods_max
+                */
+                1, 0xF, 0xFF, 8000, 96000, 1, 2, 1, 2, 3, 4, 5,
+                2, 0xF, 0xFF, 8000, 96000, 1, 2, 1, 2, 3, 4, 5,
+            ];
+
             regConfig {
                 /* reg, value */
                 initSeqConfig = [
@@ -147,6 +156,14 @@ root {
                 /* reg, rreg, shift, value, min, max, mask, invert */
                 resetSeqConfig = [
                     0x00,    0x0
+                ];
+
+                hwInfo = [
+                    /*
+                        Playback/Captrue, formats, rates, rate_min, rate_max, channels_min, channels_max,
+                        buffer_bytes_max, period_bytes_min, period_bytes_max, periods_min, periods_max
+                    */
+                    1, 0xF, 0xFF, 8000, 96000, 1, 2, 1, 2, 3, 4, 5,
                 ];
 
                 /* reg, value */

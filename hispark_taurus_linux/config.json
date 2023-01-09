@@ -46,7 +46,7 @@
         "subsystem": "multimedia",
         "components": [
           { "component": "media_service", "features":[] },
-          { "component": "histreamer", "features":[ "multimedia_histreamer_enable_plugin_hdi_adapter = true"] }
+          { "component": "multimedia_histreamer", "features":[] }
         ]
       },
       {
@@ -76,7 +76,7 @@
       {
         "subsystem": "updater",
         "components": [
-          { "component": "ota_lite", "features": [] }
+          { "component": "sys_installer_lite", "features": [] }
         ]
       },
       {
