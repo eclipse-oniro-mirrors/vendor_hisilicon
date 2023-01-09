@@ -35,8 +35,6 @@
 #define CID_ERROR    (-1)
 #define CID_OK    1
 
-static const char OHOS_SERIAL[] = {"1234567890"};  // provided by OEM.
-
 static int GetDigitalCidLocation(int i)
 {
     return ((i / HEX_OF_BINARY_BITS + 1) * HEX_OF_BINARY_BITS - (i % HEX_OF_BINARY_BITS) - 1) * TWO_TIMES;
@@ -72,7 +70,15 @@ static int32_t Getcid(char * str, int strlength)
         return CID_ERROR;
     }
     uint8_t cid[CID_LENGTH] = {0};
-    EmmcGetHuid(cid, CID_LENGTH);
+    DevHandle handle = EmmcOpen(0);
+    if (handle == NULL) {
+        return CID_ERROR;
+    }
+    if (EmmcGetCid(handle, cid, CID_LENGTH) != HDF_SUCCESS) {
+        EmmcClose(handle);
+        return CID_ERROR;
+    }
+    EmmcClose(handle);
     char digitalCid[DIGITAL_CID_LENGTH] = {0};
     if (TranslateCid(cid, CID_LENGTH, digitalCid, DIGITAL_CID_LENGTH) != CID_OK) {
         return CID_ERROR;
@@ -90,7 +96,7 @@ const char* HalGetSerial(void)
         return str;
     }
     if (Getcid(str, STR_MAX) != CID_OK) {
-        return OHOS_SERIAL;
+        return NULL;
     }
     return str;
 }
