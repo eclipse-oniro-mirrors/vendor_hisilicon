@@ -1,7 +1,7 @@
 root {
-    module = "master";
-    master_config {
-        match_attr = "usbfn_master_driver";
+    module = "usbfn";
+    usbfn_config {
+        match_attr = "usbfn_driver";
         use_hcs = 1;
         udc_name = "100e0000.hidwc3_0";
         usb_dev_desc = "UsbDeviceDescriptor";
