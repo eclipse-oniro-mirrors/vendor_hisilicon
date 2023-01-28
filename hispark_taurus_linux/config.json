@@ -47,7 +47,7 @@
         "subsystem": "multimedia",
         "components": [
           { "component": "media_service", "features":[] },
-          { "component": "histreamer", "features":[ "multimedia_histreamer_enable_plugin_hdi_adapter = true"] }
+          { "component": "multimedia_histreamer", "features":[] }
         ]
       },
       {
@@ -144,7 +144,8 @@
         "components": [
           { "component": "developer_test", "features":[] },
           { "component": "xts_acts", "features":[] },
-          { "component": "xts_tools", "features":[] }
+          { "component": "xts_tools", "features":[] },
+          { "component": "device_attest_lite", "features":[] }
         ]
       },
       {
