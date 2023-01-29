@@ -49,7 +49,7 @@
               "huks_use_hardware_root_key = true",
               "huks_config_file = \"hks_config_lite.h\"",
               "ohos_security_huks_mbedtls_porting_path = \"//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party/mbedtls\"",
-              "huks_uid_white_list_define = \"{0, 1, 2}\"",
+              "huks_uid_white_list_define = \"{0, 1, 2}\""
             ]
           }
         ]
