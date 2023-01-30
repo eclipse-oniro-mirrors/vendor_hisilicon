@@ -797,17 +797,17 @@
                 }
             }
         }
-        usbfnMaster :: host {
-            hostName = "usbfnMaster_host";
-            usbfnMaster_device :: device {
+        usbfn :: host {
+            hostName = "usbfn_host";
+            usbfn_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
                     preload = 2;
                     permission = 0664;
-                    moduleName = "usbfn_master";
-                    serviceName = "usbfn_master";
-                    deviceMatchAttr = "usbfn_master_driver";
+                    moduleName = "usbfn";
+                    serviceName = "usbfn";
+                    deviceMatchAttr = "usbfn_driver";
                 }
                 device1 :: deviceNode {
                     policy = 2;
