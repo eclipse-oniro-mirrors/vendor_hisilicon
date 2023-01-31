@@ -96,6 +96,12 @@
          { "component": "xts_tools", "features":[] },
          { "component": "device_attest_lite", "features":[] }
         ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "syscap_codec", "features":[] }
+        ]
       }
     ],
     "third_party_dir": "//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party",
