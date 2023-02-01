@@ -19,9 +19,9 @@
 #include <string.h>
 #include "securec.h"
 #include "hi_flash.h"
-#include "hal_token.h"
 #include "ohos_errno.h"
 #include "ohos_types.h"
+#include "hal_token.h"
 
 #define BITS_PER_BYTE 8
 // sector size is 4096 Bytes
