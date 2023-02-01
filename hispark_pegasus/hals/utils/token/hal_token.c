@@ -37,13 +37,10 @@
 #define TOKEN_FLAG_SIZE 4
 #define TOKEN_WITH_FLAG_SIZE (TOKEN_SIZE + TOKEN_FLAG_SIZE)
 
-// token flag offset address on HAL_PARTITION_HARMONYOS_TOKEN
 #define TOKEN_ADDR 0x001F0000        // 实际的toekn地址
 
-// token area A offset address on HAL_PARTITION_HARMONYOS_TOKEN
 #define TOKEN_A_ADDR TOKEN_ADDR
 
-// token area B offset address on HAL_PARTITION_HARMONYOS_TOKEN
 #define TOKEN_B_ADDR (TOKEN_A_ADDR + SECTOR_ALIGN_BYTES)
 
 #define TOKEN_Debug 1
