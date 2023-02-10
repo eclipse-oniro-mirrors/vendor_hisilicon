@@ -425,10 +425,10 @@ static int32_t OEMWriteToken(const char* token, uint32_t len)
     }
     char tokenWithFlagA[TOKEN_WITH_FLAG_SIZE] = {0};
     char tokenWithFlagB[TOKEN_WITH_FLAG_SIZE] = {0};
-    int32_t retA = ReadTokenWithFlag(TOKEN_A_ADDR, tokenWithFlagA, TOKEN_WITH_FLAG_SIZE);
-    int32_t retB = ReadTokenWithFlag(TOKEN_B_ADDR, tokenWithFlagB, TOKEN_WITH_FLAG_SIZE);
+    int32_t retA = ReadTokenWithFlag(TOKEN_FILE_PATH, TOKEN_A_FILE_NAME, tokenWithFlagA, TOKEN_WITH_FLAG_SIZE);
+    int32_t retB = ReadTokenWithFlag(TOKEN_FILE_PATH, TOKEN_B_FILE_NAME, tokenWithFlagB, TOKEN_WITH_FLAG_SIZE);
     if ((retA != 0) && (retB != 0)) {
-        printf("[OEMWriteToken]:No token data on device.\n", );
+        printf("[OEMWriteToken]:No token data on device.\n");
         return OEMWriteTokenANoToken(token, len, tokenWithFlagA);
     } else if ((retA == 0) && (retB != 0)) {
         // token area A has data, area B is NULL, write token to B area;
