@@ -271,7 +271,7 @@ static void SetTokenFlag(uint8_t flag[], uint32_t value)
 
 static int32_t OEMReadToken(char* token, uint32_t len)
 {
-    if (token == NULL || len < 0) {
+    if (token == NULL || len == 0) {
         return HAL_TOKEN_ERR;
     }
     char tokenWithFlagA[TOKEN_WITH_FLAG_SIZE] = {0};
@@ -386,7 +386,7 @@ static int32_t OEMWriteTokenSmaller(const char* token, uint32_t len, char* token
             printf("[OEMWriteTokenSmaller]:Flash write tokenB memcpy failed.\n");
             return HAL_TOKEN_ERR;
         }
-        if (WriteTokenWithFlag(TOKEN_B_ADDR, tokenWithFlagB, TOKEN_WITH_FLAG_SIZE) != 0) {
+        if (WriteTokenWithFlag(TOKEN_FILE_PATH, TOKEN_B_FILE_NAME, tokenWithFlagB, TOKEN_WITH_FLAG_SIZE) != 0) {
             printf("[OEMWriteTokenSmaller]:Flash write token area B failed.\n");
             return HAL_TOKEN_ERR;
         }

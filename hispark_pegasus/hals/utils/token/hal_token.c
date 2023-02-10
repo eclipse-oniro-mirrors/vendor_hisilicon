@@ -61,7 +61,7 @@ static const char g_tokenMagicNum[] = {1, 2, 3, 4};
 #endif
 
 
-static int32_t flashRead(uint32_t addr, uint32_t size, uint32_t *buffer)
+static int32_t flashRead(uint32_t addr, uint32_t size, uint8_t *buffer)
 {
     uint32_t len = 0;
     if ((size % 4) != 0) {
@@ -72,7 +72,7 @@ static int32_t flashRead(uint32_t addr, uint32_t size, uint32_t *buffer)
     return hi_flash_read(addr, len, buffer);
 }
 
-static int32_t flashWrite(uint32_t addr, uint32_t size, uint32_t *buffer)
+static int32_t flashWrite(uint32_t addr, uint32_t size, uint8_t *buffer)
 {
     uint32_t len = 0;
     if ((size % 4) != 0) {
@@ -199,7 +199,7 @@ static void SetTokenFlag(uint8_t flag[], uint32_t value)
  */
 static int32_t OEMReadToken(char* token, uint32_t len)
 {
-    if (token == NULL || len < 0) {
+    if (token == NULL || len == 0) {
         return HAL_TOKEN_ERR;
     }
     char tokenWithFlagA[TOKEN_WITH_FLAG_SIZE] = {0};
@@ -356,7 +356,7 @@ static int32_t OEMWriteToken(const char* token, uint32_t len)
     int32_t retA = ReadTokenWithFlag(TOKEN_A_ADDR, tokenWithFlagA, TOKEN_WITH_FLAG_SIZE);
     int32_t retB = ReadTokenWithFlag(TOKEN_B_ADDR, tokenWithFlagB, TOKEN_WITH_FLAG_SIZE);
     if ((retA != 0) && (retB != 0)) {
-        printf("[OEMWriteToken]:No token data on device.\n", );
+        printf("[OEMWriteToken]:No token data on device.\n");
         return OEMWriteTokenANoToken(token, len, tokenWithFlagA);
     } else if ((retA == 0) && (retB != 0)) {
         // token area A has data, area B is NULL, write token to B area;
