@@ -43,18 +43,20 @@
 
 #define TOKEN_B_ADDR (TOKEN_A_ADDR + SECTOR_ALIGN_BYTES)
 
-#define TOKEN_Debug 1
+#define TOKEN_DEBUG 1
 
 #define HAL_TOKEN_OK 0
 #define HAL_TOKEN_ERR (-1)
 #define HAL_TOKEN_UNPRESET (-2)
 
+#define FLASH_OPERAT_LEN 4
+#define MALLOC_PARA 350
 // 4 Bytes for token magic number, if data not in {1,2,3,4} order means the token area is not initialled.
 // if token area is initialled, the token magic number's next Byte data is token actual value.
 static const char g_tokenMagicNum[] = {1, 2, 3, 4};
 #define TOKEN_MAGIC_NUM_SIZE (sizeof(g_tokenMagicNum) / sizeof(g_tokenMagicNum[0]))
 
-#if TOKEN_Debug
+#if TOKEN_DEBUG
 #define TOKEN_LOG(...) printf(__VA_ARGS__)
 #else
 #define TOKEN_LOG(...)
@@ -64,8 +66,8 @@ static const char g_tokenMagicNum[] = {1, 2, 3, 4};
 static int32_t flashRead(uint32_t addr, uint32_t size, uint8_t *buffer)
 {
     uint32_t len = 0;
-    if ((size % 4) != 0) {
-        len = size / 4 * 4 + 4;
+    if ((size % FLASH_OPERAT_LEN) != 0) {
+        len = size / FLASH_OPERAT_LEN * FLASH_OPERAT_LEN + FLASH_OPERAT_LEN;
     } else {
         len = size;
     }
@@ -75,8 +77,8 @@ static int32_t flashRead(uint32_t addr, uint32_t size, uint8_t *buffer)
 static int32_t flashWrite(uint32_t addr, uint32_t size, uint8_t *buffer)
 {
     uint32_t len = 0;
-    if ((size % 4) != 0) {
-        len = size / 4 * 4 + 4;
+    if ((size % FLASH_OPERAT_LEN) != 0) {
+        len = size / FLASH_OPERAT_LEN * FLASH_OPERAT_LEN + FLASH_OPERAT_LEN;
     } else {
         len = size;
     }
@@ -123,7 +125,7 @@ static int32_t ReadTokenWithFlag(uint32_t start, char* result, uint32_t len)
     if (len < TOKEN_WITH_FLAG_SIZE) {
         return HAL_TOKEN_ERR;
     }
-    char *buf = hi_malloc(350, buffLen);
+    char *buf = hi_malloc(MALLOC_PARA, buffLen);
     if (buf == NULL) {
         return HAL_TOKEN_ERR;
     }
@@ -131,7 +133,7 @@ static int32_t ReadTokenWithFlag(uint32_t start, char* result, uint32_t len)
     (void)memset_s(buf, buffLen, 0, buffLen);
     if (FlashReadTokenRawData(start, buf, buffLen) != 0) {
         printf("[ReadTokenWithFlag]:Read flash token area failed.\n");
-        hi_free(350, buf);
+        hi_free(MALLOC_PARA, buf);
         return HAL_TOKEN_ERR;
     }
 
@@ -146,11 +148,13 @@ static int32_t ReadTokenWithFlag(uint32_t start, char* result, uint32_t len)
     // token area is invalid
     if (tokenValid == 0) {
         printf("[ReadTokenWithFlag]:The token area is invalid.\n");
-        hi_free(350, buf);
+        hi_free(MALLOC_PARA, buf);
         return HAL_TOKEN_ERR;
     }
-    (void)memcpy_s(result, TOKEN_WITH_FLAG_SIZE, buf + TOKEN_MAGIC_NUM_SIZE, TOKEN_WITH_FLAG_SIZE);
-    hi_free(350, buf);
+    if (memcpy_s(result, TOKEN_WITH_FLAG_SIZE, buf + TOKEN_MAGIC_NUM_SIZE, TOKEN_WITH_FLAG_SIZE) != 0) {
+        return HAL_TOKEN_ERR;
+    }
+    hi_free(MALLOC_PARA, buf);
     printf("[ReadTokenWithFlag]:Read token success!\n");
     return HAL_TOKEN_OK;
 }
@@ -163,7 +167,9 @@ static int32_t WriteTokenWithFlag(uint32_t start, const char* tokenWithFlag, uin
     for (uint32_t i = 0; i < TOKEN_MAGIC_NUM_SIZE; i++) {
         buf[i] = g_tokenMagicNum[i];
     }
-    (void)memcpy_s(buf + TOKEN_MAGIC_NUM_SIZE, TOKEN_WITH_FLAG_SIZE, tokenWithFlag, TOKEN_WITH_FLAG_SIZE);
+    if (memcpy_s(buf + TOKEN_MAGIC_NUM_SIZE, TOKEN_WITH_FLAG_SIZE, tokenWithFlag, TOKEN_WITH_FLAG_SIZE) != 0) {
+        return HAL_TOKEN_ERR;
+    }
     if (FlashWriteTokenRawData(start, buf, buffLen) != 0) {
         printf("[WriteTokenWithFlag]: Write flash token area failed.\n");
         return HAL_TOKEN_ERR;
@@ -211,22 +217,18 @@ static int32_t OEMReadToken(char* token, uint32_t len)
         return HAL_TOKEN_UNPRESET;
     } else if ((retA == 0) && (retB != 0)) {
         // token area A has data, area B is NULL, return A;
-        (void)memcpy_s(token, len, tokenWithFlagA, len);
-        return HAL_TOKEN_OK;
+        return memcpy_s(token, len, tokenWithFlagA, len);
     } else if ((retA != 0) && (retB == 0)) {
         // token area B has data, area A is NULL, return B;
-        (void)memcpy_s(token, len, tokenWithFlagB, len);
-        return HAL_TOKEN_OK;
+        return memcpy_s(token, len, tokenWithFlagB, len);
     } else {
         // token area A and B both have data, return area which flag is larger than the other one.
         uint32_t flagA = GetTokenFlag(tokenWithFlagA);
         uint32_t flagB = GetTokenFlag(tokenWithFlagB);
         if (flagA > flagB) {
-            (void)memcpy_s(token, len, tokenWithFlagA, len);
-            return HAL_TOKEN_OK;
+            return memcpy_s(token, len, tokenWithFlagA, len);
         } else {
-            (void)memcpy_s(token, len, tokenWithFlagB, len);
-            return HAL_TOKEN_OK;
+            return memcpy_s(token, len, tokenWithFlagB, len);
         }
     }
 }

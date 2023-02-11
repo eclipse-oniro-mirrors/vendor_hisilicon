@@ -233,7 +233,9 @@ static int32_t ReadTokenWithFlag(const char* path, const char* fileName, char* T
         free(buf);
         return HAL_TOKEN_ERR;
     }
-    (void)memcpy_s(TokenWithFlag, TOKEN_WITH_FLAG_SIZE, buf + TOKEN_MAGIC_NUM_SIZE, TOKEN_WITH_FLAG_SIZE);
+    if (memcpy_s(TokenWithFlag, TOKEN_WITH_FLAG_SIZE, buf + TOKEN_MAGIC_NUM_SIZE, TOKEN_WITH_FLAG_SIZE) != 0) {
+        return HAL_TOKEN_ERR;
+    }
     free(buf);
     return HAL_TOKEN_OK;
 }
@@ -247,7 +249,9 @@ static int32_t WriteTokenWithFlag(const char* path, const char* fileName, const 
     for (uint32_t i = 0; i < TOKEN_MAGIC_NUM_SIZE; i++) {
         buf[i] = g_tokenMagicNum[i];
     }
-    (void)memcpy_s(buf + TOKEN_MAGIC_NUM_SIZE, TOKEN_WITH_FLAG_SIZE, TokenWithFlag, TOKEN_WITH_FLAG_SIZE);
+    if (memcpy_s(buf + TOKEN_MAGIC_NUM_SIZE, TOKEN_WITH_FLAG_SIZE, TokenWithFlag, TOKEN_WITH_FLAG_SIZE) != 0) {
+        return HAL_TOKEN_ERR;
+    }
     if (WriteTokenRawData(path, fileName, buf, len) != 0) {
         return HAL_TOKEN_ERR;
     }
@@ -283,22 +287,18 @@ static int32_t OEMReadToken(char* token, uint32_t len)
         return HAL_TOKEN_UNPRESET;
     } else if ((retA == 0) && (retB != 0)) {
         // token area A has data, area B is NULL, return A;
-        (void)memcpy_s(token, len, tokenWithFlagA, len);
-        return HAL_TOKEN_OK;
+        return memcpy_s(token, len, tokenWithFlagA, len);
     } else if ((retA != 0) && (retB == 0)) {
         // token area B has data, area A is NULL, return B;
-        (void)memcpy_s(token, len, tokenWithFlagB, len);
-        return HAL_TOKEN_OK;
+        return memcpy_s(token, len, tokenWithFlagB, len);
     } else {
         // token area A and B both have data, return area which flag is larger than the other one.
         uint32_t flagA = GetTokenFlag(tokenWithFlagA);
         uint32_t flagB = GetTokenFlag(tokenWithFlagB);
         if (flagA > flagB) {
-            (void)memcpy_s(token, len, tokenWithFlagA, len);
-            return HAL_TOKEN_OK;
+            return memcpy_s(token, len, tokenWithFlagA, len);
         } else {
-            (void)memcpy_s(token, len, tokenWithFlagB, len);
-            return HAL_TOKEN_OK;
+            return memcpy_s(token, len, tokenWithFlagB, len);
         }
     }
     return HAL_TOKEN_OK;
@@ -316,7 +316,7 @@ static int32_t OEMWriteTokenANoToken(const char* token, uint32_t len, char* toke
         printf("[OEMWriteTokenANoToken]:Flash write token memcpy failed.\n");
         return HAL_TOKEN_ERR;
     }
-        if (WriteTokenWithFlag(TOKEN_FILE_PATH, TOKEN_A_FILE_NAME, tokenWithFlagA, TOKEN_WITH_FLAG_SIZE) != 0) {
+    if (WriteTokenWithFlag(TOKEN_FILE_PATH, TOKEN_A_FILE_NAME, tokenWithFlagA, TOKEN_WITH_FLAG_SIZE) != 0) {
         printf("[OEMWriteTokenANoToken]:Flash write token area A failed.\n");
         return HAL_TOKEN_ERR;
     }
@@ -338,7 +338,7 @@ static int32_t OEMWriteTokenB(const char* token, uint32_t len, char* tokenWithFl
         printf("[OEMWriteTokenB]:Flash write token memcpy failed.\n");
         return HAL_TOKEN_ERR;
     }
-        if (WriteTokenWithFlag(TOKEN_FILE_PATH, TOKEN_B_FILE_NAME, tokenWithFlagB, TOKEN_WITH_FLAG_SIZE) != 0) {
+    if (WriteTokenWithFlag(TOKEN_FILE_PATH, TOKEN_B_FILE_NAME, tokenWithFlagB, TOKEN_WITH_FLAG_SIZE) != 0) {
         printf("[OEMWriteTokenB]:Flash write token area B failed.\n");
         return HAL_TOKEN_ERR;
     }
