@@ -21,5 +21,10 @@ shared_library("haltoken_shared") {
     "//base/startup/init/interfaces/hals",
     "//commonlibrary/utils_lite/include",
   ]
+  include_dirs += [
+    "//base/hiviewdfx/hilog_lite/interfaces/native/kits",
+    "//third_party/bounds_checking_function/include/",
+    "//test/xts/device_attest_lite/services/core/include/utils",
+  ]
   deps = []
 }
