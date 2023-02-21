@@ -93,7 +93,6 @@
         "subsystem": "graphic",
         "components": [
           { "component": "graphic_utils", "features":[] },
-          { "component": "graphic_hals", "features":[] },
           { "component": "ui", "features":[ "enable_graphic_font = true" ] },
           { "component": "surface", "features":[] },
           { "component": "wms", "features":[] }
