@@ -67,7 +67,6 @@
         "subsystem": "communication",
         "components": [
           { "component": "dsoftbus", "features":[] },
-          { "component": "ipc", "features":[] },
           { "component": "wpa_supplicant", "features":[] },
           { "component": "wifi", "features":[] },
           { "component": "dhcp", "features":[] }
@@ -135,15 +134,11 @@
       {
         "subsystem": "global",
         "components": [
-          { "component": "global_cust", "features":[] }
         ]
       },
       {
         "subsystem": "xts",
         "components": [
-          { "component": "developer_test", "features":[] },
-          { "component": "xts_acts", "features":[] },
-          { "component": "xts_tools", "features":[] },
           { "component": "device_attest_lite", "features":[] }
         ]
       },
@@ -156,7 +151,6 @@
       {
         "subsystem": "distributeddatamgr",
         "components": [
-          { "component": "objectstore", "features":[] }
         ]
       }
     ],
