@@ -67,7 +67,6 @@
         "subsystem": "communication",
         "components": [
           { "component": "dsoftbus", "features":[] },
-          { "component": "ipc", "features":[] },
           { "component": "wpa_supplicant", "features":[] },
           { "component": "wifi", "features":[] },
           { "component": "dhcp", "features":[] }
@@ -94,7 +93,6 @@
         "subsystem": "graphic",
         "components": [
           { "component": "graphic_utils", "features":[] },
-          { "component": "graphic_hals", "features":[] },
           { "component": "ui", "features":[ "enable_graphic_font = true" ] },
           { "component": "surface", "features":[] },
           { "component": "wms", "features":[] }
@@ -135,7 +133,6 @@
       {
         "subsystem": "global",
         "components": [
-          { "component": "global_cust", "features":[] }
         ]
       },
       {
@@ -156,7 +153,6 @@
       {
         "subsystem": "distributeddatamgr",
         "components": [
-          { "component": "objectstore", "features":[] }
         ]
       }
     ],
