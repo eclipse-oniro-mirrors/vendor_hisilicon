@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2020-2021 Huawei Device Co., Ltd.
+# Copyright (c) 2020-2023 Huawei Device Co., Ltd.
 #
 # This software is licensed under the terms of the GNU General Public
 # License version 2, as published by the Free Software Foundation, and
@@ -15,6 +15,10 @@
 ccflags-$(CONFIG_DRIVERS_HDF_TEST) +=  -I$(srctree)/include/hdf \
     -I$(srctree)/include/hdf/osal \
     -I$(srctree)/include/hdf/utils \
+    -I$(srctree)/drivers/hdf/inner_api/osal/shared \
+    -I$(srctree)/drivers/hdf/inner_api/host/shared \
+    -I$(srctree)/drivers/hdf/inner_api/utils \
+    -I$(srctree)/drivers/hdf/inner_api/core \
     -I$(srctree)/drivers/hdf/khdf/osal/include \
     -I$(srctree)/drivers/hdf/framework/utils/include
 

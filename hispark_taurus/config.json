@@ -21,7 +21,6 @@
         "subsystem": "applications",
         "components": [
           { "component": "camera_sample_app", "features":[] },
-          { "component": "camera_sample_ai", "features":[] },
           { "component": "camera_screensaver_app", "features":[] }
         ]
       },
@@ -58,15 +57,13 @@
           { "component": "camera_lite", "features":[] },
           { "component": "media_lite", "features":[] },
           { "component": "audio_manager_lite", "features":[] },
-          { "component": "media_service", "features":[] },
-          { "component": "histreamer", "features":[ "multimedia_histreamer_enable_plugin_hdi_adapter = true"] }
+          { "component": "media_service", "features":[] }
         ]
       },
       {
         "subsystem": "graphic",
         "components": [
           { "component": "graphic_utils", "features":[] },
-          { "component": "graphic_hals", "features":[] },
           { "component": "ui", "features":[ "enable_graphic_font = true" ] },
           { "component": "surface", "features":[] },
           { "component": "wms", "features":[] }
@@ -121,7 +118,6 @@
           { "component": "drivers_peripheral_wlan", "features":[] },
           { "component": "drivers_peripheral_vibrator", "features":[] },
           { "component": "drivers_peripheral_usb", "features":[] },
-          { "component": "camera_device_driver", "features":[] },
           { "component": "drivers_peripheral_audio", "features":[] },
           { "component": "drivers_peripheral_light", "features":[] }
         ]

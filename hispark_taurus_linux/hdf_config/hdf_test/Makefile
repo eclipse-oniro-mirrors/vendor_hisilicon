@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Huawei Device Co., Ltd.
+# Copyright (c) 2020-2023 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -14,6 +14,10 @@
 ccflags-$(CONFIG_DRIVERS_HDF_TEST) +=  -I$(srctree)/include/hdf \
     -I$(srctree)/include/hdf/osal \
     -I$(srctree)/include/hdf/utils \
+    -I$(srctree)/drivers/hdf/inner_api/osal/shared \
+    -I$(srctree)/drivers/hdf/inner_api/host/shared \
+    -I$(srctree)/drivers/hdf/inner_api/utils \
+    -I$(srctree)/drivers/hdf/inner_api/core \
     -I$(srctree)/drivers/hdf/khdf/osal/include \
     -I$(srctree)/drivers/hdf/framework/utils/include
 
