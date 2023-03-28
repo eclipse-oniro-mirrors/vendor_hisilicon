@@ -38,7 +38,7 @@
           { "component": "huks", "features":
             [
               "huks_config_file = \"hks_config_small.h\"",
-              "huks_uid_trust_list_define = \"{ 0, 1, 2}\""
+              "huks_uid_trust_list_define = \"{}\""
             ]
           }
         ]

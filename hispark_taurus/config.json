@@ -46,7 +46,8 @@
           { "component": "device_auth", "features":[] },
           { "component": "huks", "features":
             [
-              "huks_config_file = \"hks_config_small.h\""
+              "huks_config_file = \"hks_config_small.h\"",
+              "huks_uid_trust_list_define = \"{}\""
             ]
           }
         ]
