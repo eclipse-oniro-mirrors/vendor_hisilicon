@@ -1,0 +1,15 @@
+{
+    "effects":[
+        {
+            "name":"mock_effect",
+            "library":"libmock_effect_lib",
+            "effectId":"aaaabbbb-8888-9999-6666-aabbccdd9966ff"
+        }
+    ],
+    "libraries":[
+        {
+            "name":"libmock_effect_lib",
+            "path":"libmock_effect_lib"
+        }
+    ]
+}

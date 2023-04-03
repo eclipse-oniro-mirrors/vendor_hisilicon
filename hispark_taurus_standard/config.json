@@ -19,6 +19,14 @@
           "features": []
         }
       ]
-    }
+    },
+    {
+      "subsystem": "security",
+      "components": [
+        {
+          "component": "certificate_manager"
+        }
+      ]
+    }    
   ]
 }

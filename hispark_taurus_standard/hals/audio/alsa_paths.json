@@ -1,0 +1,98 @@
+{
+    "hdf_audio_codec_primary_dev0": [
+        {
+            "deep-buffer-playback": [
+                {
+                    "headphones": [
+                        {
+                            "name": "Playback Path",
+                            "value": 2
+                        }
+                    ],
+                    "Speaker": [
+                        {
+                            "name": "Playback Path",
+                            "value": 3
+                        }
+                    ],
+                    "mic": [
+                        {
+                            "name": "Capture MIC Path",
+                            "value": 1
+                        }
+                    ]
+                }
+            ],
+            "low-latency-communication": [
+                {
+                    "Speaker": [
+                        {
+                            "name": "Playback Path",
+                            "value": 2
+                        }
+                    ],
+                    "headphones": [
+                        {
+                            "name": "Playback Path",
+                            "value": 3
+                        }
+                    ],
+                    "mic": [
+                        {
+                            "name": "Capture MIC Path",
+                            "value": 1
+                        }
+                    ]
+                }
+            ],
+            "ringtone-playback": [
+                {
+                    "Speaker": [
+                        {
+                            "name": "Playback Path",
+                            "value": 10
+                        }
+                    ]
+                }
+            ],
+			"voice-call": [
+				{
+					"Speaker": [
+						{
+							"name": "Playback Path",
+                            "value": 7
+						}
+					],
+					"Headphones": [
+						{
+							"name": "Playback Path",
+                            "value": 8
+						}
+					],
+					"MIC": [
+						{
+							"name": "Capture MIC Path",
+                            "value": 1
+						}
+					]				
+				}
+            ],
+            "low-latency-noirq-playback": [
+				{
+					"Speaker": [
+						{
+							"name": "Playback Path",
+                            "value": 2
+						}
+					],
+					"Headphones": [
+						{
+							 "name": "Playback Path",
+                             "value": 3
+						}					
+					]
+				}
+            ]
+        }
+    ]
+}
