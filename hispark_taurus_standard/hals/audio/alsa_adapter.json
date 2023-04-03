@@ -1,0 +1,32 @@
+{
+    "adapters": [
+        {
+            "name": "primary",
+            "cardId": "",
+            "daiId": "",
+            "simple_mixer_ctl_volume": {
+                "playback": [
+                    {
+                        "name": "DACL"
+                    },
+                    {
+                        "name": "DACR"
+                    }
+                ],
+                "capture": [
+                    {
+                        "name": "DACL"
+                    },
+                    {
+                        "name": "DACR"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "hdmi",
+            "cardId": "",
+            "daiId": ""
+        }
+    ]
+}

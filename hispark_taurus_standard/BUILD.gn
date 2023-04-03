@@ -1,0 +1,5 @@
+# Copyright (C) 2023 Hisilicon (Shanghai) Technologies Co., Ltd. All rights reserved.
+
+group("hispark_taurus_standard") {
+  deps = [ "preinstall-config:preinstall-config" ]
+}
