@@ -942,6 +942,14 @@
         {
           "component": "distributed_screen",
           "features": []
+        },
+        {
+          "component": "distributed_audio",
+          "features": []
+        },
+        {
+          "component": "distributed_input",
+          "features": []
         }
       ]
     },
