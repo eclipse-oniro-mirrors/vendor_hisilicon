@@ -15,7 +15,7 @@ root {
                 channelNum = 2;
                 driver_channel0_name = "/sys/bus/iio/devices/iio:device0/in_voltage0-voltage0_raw";
                 driver_channel1_name = "/sys/bus/iio/devices/iio:device0/in_voltage1-voltage0_raw";
-                deviceNum = 2;
+                deviceNum = 14;
             }
         }
     }

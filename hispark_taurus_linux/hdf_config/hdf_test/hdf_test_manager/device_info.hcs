@@ -41,6 +41,14 @@ root {
                 }
             }
             device_platform_adc_test :: device {
+                adc_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 56;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "virtual_adc_driver";
+                    deviceMatchAttr = "virtual_adc_driver";
+                }
                 adc_tester :: deviceNode {
                     policy = 2;
                     priority = 110;
@@ -52,6 +60,15 @@ root {
                 }
             }
             device_platform_spi_test :: device {
+                spi_virtual :: deviceNode {
+                    policy = 2;
+                    priority = 50;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "virtual_spi_driver";
+                    serviceName = "HDF_PLATFORM_SPI_255";
+                    deviceMatchAttr = "virtual_spi";
+                }
                 spi_test :: deviceNode {
                     policy = 2;
                     priority = 100;
@@ -107,6 +124,14 @@ root {
                 }
             }
             device_platform_pwm_test :: device {
+                pwm_virtual :: deviceNode {
+                    policy = 2;
+                    priority = 56;
+                    permission = 0644;
+                    moduleName = "virtual_pwm_driver";
+                    serviceName = "HDF_PLATFORM_PWM_10";
+                    deviceMatchAttr = "virtual_pwm";
+                }
                 pwm_test :: deviceNode {
                     policy = 2;
                     priority = 110;
@@ -129,6 +154,14 @@ root {
                 }
             }
             device_platform_watchdog_test :: device {
+                virtual_watchdog :: deviceNode {
+                    policy = 2;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "virtual_watchdog_driver";
+                    serviceName = "HDF_PLATFORM_WATCHDOG_7";
+                    deviceMatchAttr = "virtual_watchdog";
+                }
                 watchdog_test :: deviceNode {
                     policy = 2;
                     priority = 110;

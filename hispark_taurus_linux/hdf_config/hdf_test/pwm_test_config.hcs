@@ -2,10 +2,14 @@ root {
     pwm_test {
         module = "pwm_test";
         match_attr = "PWM_TEST";
-        num = 0;
+        num = 10;
         period = 999;
         duty = 333;
         polarity = 0;
         status = 1;
+    }
+    virtual_test {
+        match_attr = "virtual_pwm";
+        num = 10;
     }
 }
