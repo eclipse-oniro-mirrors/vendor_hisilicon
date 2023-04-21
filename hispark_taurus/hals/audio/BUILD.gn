@@ -1,0 +1,12 @@
+# Copyright (C) 2023 Hisilicon (Shanghai) Technologies Co., Ltd. All rights reserved.
+
+import("//build/lite/config/component/lite_component.gni")
+
+copy("hdf_audio_path_json") {
+  sources = [ "audio_paths.json" ]
+  outputs = [ "${root_out_dir}/etc/audio_paths.json" ]
+}
+
+group("hdf_audio_config") {
+  deps = [ ":hdf_audio_path_json" ]
+}
