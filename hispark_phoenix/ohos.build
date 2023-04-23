@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "product_hispark_phoenix": {
+      "module_list": [
+        "//vendor/hisilicon/hispark_phoenix/hdf_config/uhdf:hdf_config"
+      ]
+    }
+  },
+  "subsystem": "product_hisilicon"
+}
