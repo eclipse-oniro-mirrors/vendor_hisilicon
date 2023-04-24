@@ -484,9 +484,9 @@
         {
           "component": "drivers_peripheral_audio",
           "features": [
-            "drivers_peripheral_audio_user_mode=true",
-            "drivers_peripheral_audio_full_test_suite=true",
-            "drivers_peripheral_audio_policy_config=false"
+            "drivers_peripheral_audio_feature_user_mode=true",
+            "drivers_peripheral_audio_feature_full_test_suite=true",
+            "drivers_peripheral_audio_feature_policy_config=false"
           ]
         },
         {

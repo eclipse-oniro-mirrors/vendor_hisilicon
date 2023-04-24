@@ -1,10 +1,14 @@
 # Copyright (C) 2023 Hisilicon (Shanghai) Technologies Co., Ltd. All rights reserved.
 
-import("//build/lite/config/component/lite_component.gni")
+import("//build/ohos.gni")
 
-copy("hdf_audio_path_json") {
-  sources = [ "audio_paths.json" ]
-  outputs = [ "${root_out_dir}/etc/audio_paths.json" ]
+ohos_prebuilt_etc("hdf_audio_path_json") {
+  source = "audio_paths.json"
+
+  relative_install_dir = "hdfconfig"
+  install_images = [ chipset_base_dir ]
+  subsystem_name = "hdf"
+  part_name = "product_hispark_taurus_standard"
 }
 
 group("hdf_audio_config") {
