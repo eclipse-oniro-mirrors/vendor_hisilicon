@@ -1,14 +1,14 @@
 # HiSpark Pegasus <a name="ZH-CN_TOPIC_0000001130275863"></a>
 
-- [HiSpark Pegasus <a name="ZH-CN_TOPIC_0000001130275863"></a>](#hispark-pegasus-)
-  - [Introduction <a name="section469617221261"></a>](#introduction-)
-  - [Constraints <a name="section12212842173518"></a>](#constraints-)
-  - [Hi3861V100 Experiment Development Guide<a name="ZH-CN_TOPIC_0000001130176841"></a>](#hi3861v100-experiment-development-guide)
-  - [Hi3861V100 Hardware Introduction<a name="section11660541593"></a>](#hi3861v100-hardware-introduction)
-  - [Development environment setup <a name="section11660541593"></a>](#development-environment-setup-)
-  - [WiFi_IoT basic control experiment <a name="section11660541593"></a>](#wifi_iot-basic-control-experiment-)
-  - [Appendix <a name="section11660541593"></a>](#appendix-)
-  - [Related repositories <a name="section641143415335"></a>](#related-repositories-)
+- [HiSpark Pegasus ](#hispark-pegasus-)
+  - [Introduction ](#introduction-)
+  - [Constraints ](#constraints-)
+  - [Hi3861V100 Experiment Development Guide](#hi3861v100-experiment-development-guide)
+  - [Hi3861V100 Hardware Introduction](#hi3861v100-hardware-introduction)
+  - [Development environment setup ](#development-environment-setup-)
+  - [WiFi\_IoT basic control experiment ](#wifi_iot-basic-control-experiment-)
+  - [Appendix ](#appendix-)
+  - [Related repositories ](#related-repositories-)
 
 ## Introduction <a name="section469617221261"></a>
 
@@ -24,7 +24,7 @@ Preface: Before learning the experiment, please learn some theoretical knowledge
 
 ## Hi3861V100 Hardware Introduction<a name="section11660541593"></a>
 
-- [Hi3861V100 Hardware Introduction](http://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-introduction-hi3861.md)
+- [Hi3861V100 Hardware Introduction](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-appendix-hi3861.md)
 
 ## Development environment setup <a name="section11660541593"></a>
 
@@ -34,19 +34,18 @@ Preface: Before learning the experiment, please learn some theoretical knowledge
      - [Open project/source code](https://device.harmonyos.com/cn/docs/documentation/guide/open_project-0000001071680043)
      - [Compile the source code of Hi3861V100 development board](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861v100-compile- 0000001192526021)
      - [Hi3861V100 development board programming](https://device.harmonyos.com/cn/docs/documentation/guide/ide-hi3861-upload-0000001051668683)
-     - [Run the first program Hello world](http://gitee.com/openharmony/docs/blob/master/en-us/device-dev/quick-start/quickstart-lite-steps-hi3861-helloworld.md )
+     - [Run the first program Hello world](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-ide-3861-helloworld.md )
 - The second way (hb way):
-     - [Source code acquisition](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-sourcecode-acquire.md)
-     - [Build Hi3861V100 development environment](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps-hi3861-setting.md)
-     - [Compile source code of Hi3861V100 development board](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps -hi3861-building.md)
-     - [Hi3861V100 development board burning](http://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps-hi3861-burn.md)
-     - [Run the first program Hello world](http://gitee.com/openharmony/docs/blob/master/en-us/device-dev/quick-start/quickstart-lite-steps-hi3861-helloworld.md )
-     - [Environmental Setup FAQ](http://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/quickstart-lite-steps-hi3861-faqs.md)
+     - [Source code acquisition](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-pkg-sourcecode.md)
+     - [Build Hi3861V100 development environment](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-pkg-3861-build.md)
+     - [Compile source code of Hi3861V100 development board](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-pkg-3861-build.md)
+     - [Hi3861V100 development board burning](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-ide-3861-build.md)
+     - [Run the first program Hello world](https://gitee.com/openharmony/docs/blob/master/en/device-dev/quick-start/quickstart-ide-3861-helloworld.md )
 
 
 ## WiFi_IoT basic control experiment <a name="section11660541593"></a>
 
-- [led experiment](https://gitee.com/openharmony/docs/blob/master/en-us/device-dev/guide/device-wlan-led-control.md)
+- [led experiment](https://gitee.com/openharmony/docs/blob/master/en/device-dev/guide/device-wlan-led-control.md)
 
 ## Appendix <a name="section11660541593"></a>
 
