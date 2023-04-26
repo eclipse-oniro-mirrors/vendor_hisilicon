@@ -11,6 +11,18 @@ ohos_prebuilt_etc("hdf_audio_path_json") {
   part_name = "product_hispark_taurus_standard"
 }
 
+ohos_prebuilt_etc("audio_policy_config") {
+  source = "config/audio_policy_config.xml"
+
+  relative_install_dir = "audio"
+  install_images = [ chipset_base_dir ]
+  subsystem_name = "hdf"
+  part_name = "product_hispark_taurus_standard"
+}
+
 group("hdf_audio_config") {
-  deps = [ ":hdf_audio_path_json" ]
+  deps = [
+    ":audio_policy_config",
+    ":hdf_audio_path_json",
+  ]
 }
