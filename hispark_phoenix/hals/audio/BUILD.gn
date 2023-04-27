@@ -15,10 +15,12 @@ import("//build/ohos.gni")
 
 ohos_prebuilt_etc("audio_policy_config") {
   source = "config/audio_policy_config.xml"
-  subsystem_name = "product_hisilicon_hispark_phoenix"
+
   relative_install_dir = "audio"
   install_images = [ chipset_base_dir ]
-  part_name = "product_hisilicon_hispark_phoenix"
+
+  subsystem_name = "product_hisilicon"
+  part_name = "product_hispark_phoenix"
 }
 
 group("hdf_audio_config") {
