@@ -14,3 +14,8 @@ ohos_prebuilt_etc("hdf_audio_path_json") {
 group("hdf_audio_config") {
   deps = [ ":hdf_audio_path_json" ]
 }
+
+group("hdi_service_st") {
+  testonly = true
+  deps = [ "//drivers/peripheral/audio/test/systemtest/hdi_service/hispark_taurus_standard:hdi_service_hardwaredependence" ]
+}
