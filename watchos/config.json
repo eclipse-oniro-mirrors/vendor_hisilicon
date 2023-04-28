@@ -182,7 +182,7 @@
         "components": [
           { "component": "i18n_standard", "features":[] },
           { "component": "resource_management", "features":[] },
-          { "component": "systemres", "features":[] },
+          { "component": "system_resources", "features":[] },
           { "component": "cust_lite", "features":[] }
         ]
       },
