@@ -118,7 +118,10 @@
           { "component": "drivers_peripheral_input", "features":[] },
           { "component": "drivers_peripheral_display", "features":[] },
           { "component": "thermal_device_driver", "features":[] },
-          { "component": "drivers_peripheral_wlan", "features":[] },
+          { "component": "drivers_peripheral_wlan", "features":[
+            "drivers_peripheral_wlan_feature_enable_HDF_NL80211 = true",
+            "drivers_peripheral_wlan_feature_enable_HDF_UT = true" ] 
+          },
           { "component": "drivers_peripheral_thermal", "features":[] },
           { "component": "wlan_device_driver", "features":[] },
           { "component": "drivers_peripheral_sensor", "features":[] },
