@@ -13,7 +13,8 @@
       {
         "subsystem": "arkui",
         "components": [
-          { "component": "ace_engine_lite", "features":[ "" ] }
+          { "component": "ace_engine_lite", "features":[ "" ] },
+          { "component": "ui_lite", "features":[ "enable_graphic_font = true" ] }
         ]
       },
       {
@@ -93,10 +94,14 @@
       {
         "subsystem": "graphic",
         "components": [
-          { "component": "graphic_utils", "features":[] },
-          { "component": "ui", "features":[ "enable_graphic_font = true" ] },
-          { "component": "surface", "features":[] },
-          { "component": "wms", "features":[] }
+          { "component": "graphic_utils_lite", "features":[] },
+          { "component": "surface_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "window",
+        "components": [
+          { "component": "window_manager_lite", "features":[] }
         ]
       },
       {

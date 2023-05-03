@@ -54,8 +54,8 @@
       {
         "subsystem": "graphic",
         "components": [
-          { "component": "graphic_utils", "features":[] },
-          { "component": "surface", "features":[] }
+          { "component": "graphic_utils_lite", "features":[] },
+          { "component": "surface_lite", "features":[] }
         ]
       },
       {

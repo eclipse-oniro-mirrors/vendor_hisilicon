@@ -21,6 +21,15 @@
       ]
     },
     {
+      "subsystem": "arkui",
+      "components": [
+        {
+          "component": "ui_lite",
+          "features": []
+        }
+      ]
+    },
+    {
       "subsystem": "security",
       "components": [
         {
