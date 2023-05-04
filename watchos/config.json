@@ -60,7 +60,10 @@
         "components": [
           { "component": "multimedia_histreamer", "features":[] },
           { "component": "multimedia_player_framework", "features":[] },
-          { "component": "audio_framework", "features":[] },
+          { "component": "audio_framework", "features":[
+            "audio_framework_feature_dtmf_tone = true",
+            "audio_framework_feature_opensl_es = true"
+          ] },
           { "component": "multimedia_image_framework", "features":[] },
           { "component": "multimedia_camera_framework", "features":[] },
           { "component": "media_library", "features":[] }
