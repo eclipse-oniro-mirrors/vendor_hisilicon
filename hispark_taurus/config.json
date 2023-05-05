@@ -115,7 +115,9 @@
         "components": [
           { "component": "hdf_core", "features":[] },
           { "component": "drivers_peripheral_display", "features":[] },
-          { "component": "drivers_peripheral_input", "features":[] },
+          { "component": "drivers_peripheral_input", "features":[
+            "drivers_peripheral_input_feature_lite_support_test = true"
+          ] },
           { "component": "drivers_peripheral_sensor", "features":[] },
           { "component": "drivers_peripheral_wlan", "features":[] },
           { "component": "drivers_peripheral_vibrator", "features":[] },
