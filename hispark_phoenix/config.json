@@ -594,6 +594,14 @@
           "features": []
         },
         {
+          "component": "drivers_peripheral_distributed_audio",
+          "features": []
+        },
+        {
+          "component": "drivers_interface_distributed_audio",
+          "features": []
+        },
+        {
           "component": "drivers_peripheral_location_agnss",
           "features": []
         },
