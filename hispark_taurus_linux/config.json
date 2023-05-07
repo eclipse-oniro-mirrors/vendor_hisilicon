@@ -87,9 +87,13 @@
           { "component": "drivers_peripheral_input", "features":[
             "drivers_peripheral_input_feature_lite_support_test = true"
           ] },
-          { "component": "drivers_peripheral_sensor", "features":[] },
+          { "component": "drivers_peripheral_sensor", "features":[
+            "drivers_peripheral_sensor_feature_lite_support_test = true"
+          ] },
           { "component": "drivers_peripheral_wlan", "features":[] },
-          { "component": "drivers_peripheral_vibrator", "features":[] }
+          { "component": "drivers_peripheral_vibrator", "features":[
+            "drivers_peripheral_vibrator_feature_lite_support_test = true"
+          ] }
         ]
       },
       {
