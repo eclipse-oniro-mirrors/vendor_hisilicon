@@ -2,7 +2,8 @@
   "parts": {
     "product_ipcamera_hispark_taurus_linux": {
       "module_list": [
-        "//vendor/hisilicon/hispark_taurus_linux:hispark_taurus_linux"
+        "//vendor/hisilicon/hispark_taurus_linux:hispark_taurus_linux",
+        "//vendor/hisilicon/hispark_taurus_linux/hals/audio:hdf_audio_config"
       ]
     }
   },

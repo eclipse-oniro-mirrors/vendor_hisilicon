@@ -2,7 +2,8 @@
   "parts": {
     "product_hispark_phoenix": {
       "module_list": [
-        "//vendor/hisilicon/hispark_phoenix/hdf_config/uhdf:hdf_config"
+        "//vendor/hisilicon/hispark_phoenix/hdf_config/uhdf:hdf_config",
+        "//vendor/hisilicon/hispark_phoenix/hals/audio:hdf_audio_config"
       ]
     }
   },
