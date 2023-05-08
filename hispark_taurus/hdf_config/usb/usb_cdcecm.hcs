@@ -1,5 +1,21 @@
 root {
     module = "usbfn";
+    acm_device_config {
+        match_attr = "usbfn_cdcacm_driver";
+        udc_name = "100e0000.hidwc3_0";
+    }
+    ecm_device_config {
+        match_attr = "usbfn_cdcecm_driver";
+        udc_name = "100e0000.hidwc3_0";
+    }
+    mtp_device_config {
+        match_attr = "usbfn_mtp_interface_driver";
+        udc_name = "100e0000.hidwc3_0";
+    }
+    usb_device_config {
+        match_attr = "usb_device_interface_driver";
+        port_file_path = "/sys/kernel/debug/usb/100e0000.hidwc3_0/mode";
+    }
     usbfn_config {
         match_attr = "usbfn_driver";
         use_hcs = 1;
