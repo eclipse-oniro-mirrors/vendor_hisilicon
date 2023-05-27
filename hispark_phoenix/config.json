@@ -756,7 +756,7 @@
       "subsystem": "multimedia",
       "components": [
         {
-          "component": "multimedia_histreamer",
+          "component": "histreamer",
           "features": []
         },
         {

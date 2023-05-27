@@ -58,7 +58,7 @@
       {
         "subsystem": "multimedia",
         "components": [
-          { "component": "multimedia_histreamer", "features":[] },
+          { "component": "histreamer", "features":[] },
           { "component": "player_framework", "features":[] },
           { "component": "audio_framework", "features":[
             "audio_framework_feature_dtmf_tone = true",
