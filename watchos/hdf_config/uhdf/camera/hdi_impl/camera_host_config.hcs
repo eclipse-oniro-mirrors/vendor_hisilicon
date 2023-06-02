@@ -1,5 +1,8 @@
 root {
     module="sample";
+    vdiLibList = [
+        "libcamera_host_vdi_impl_1.0.z.so"
+    ];
     camera_host_config {
         match_attr = "camera_host_interface";
         template ability {
