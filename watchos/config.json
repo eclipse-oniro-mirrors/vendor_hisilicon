@@ -34,8 +34,6 @@
           { "component": "hisysevent_native", "features":[] },
           { "component": "hiappevent_native", "features":[] },
           { "component": "hiappevent_js", "features":[] },
-          { "component": "hichecker_native", "features":[] },
-          { "component": "hichecker_js", "features":[] },
           { "component": "hichecker", "features":[] },
           { "component": "hidumper", "features":[] },
           { "component": "hiview", "features":[] },
