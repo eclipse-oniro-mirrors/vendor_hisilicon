@@ -32,8 +32,7 @@
           { "component": "hilog_native", "features":[] },
           { "component": "hilog_service", "features":[] },
           { "component": "hisysevent_native", "features":[] },
-          { "component": "hiappevent_native", "features":[] },
-          { "component": "hiappevent_js", "features":[] },
+          { "component": "hiappevent", "features":[] },
           { "component": "hichecker", "features":[] },
           { "component": "hidumper", "features":[] },
           { "component": "hiview", "features":[] },
@@ -64,7 +63,7 @@
             "audio_framework_feature_opensl_es = true"
           ] },
           { "component": "multimedia_image_framework", "features":[] },
-          { "component": "multimedia_camera_framework", "features":[] },
+          { "component": "camera_framework", "features":[] },
           { "component": "media_library", "features":[] }
         ]
       },
