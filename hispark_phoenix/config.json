@@ -206,11 +206,7 @@
           "features": []
         },
         {
-          "component": "hiappevent_native",
-          "features": []
-        },
-        {
-          "component": "hiappevent_js",
+          "component": "hiappevent",
           "features": []
         },
         {
