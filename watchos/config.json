@@ -31,6 +31,7 @@
           { "component": "hiviewdfx_hilog_native", "features":[] },
           { "component": "hilog_native", "features":[] },
           { "component": "hilog_service", "features":[] },
+          { "component": "hilog", "features":[] },
           { "component": "hisysevent_native", "features":[] },
           { "component": "hiappevent", "features":[] },
           { "component": "hichecker_native", "features":[] },
