@@ -214,11 +214,7 @@
           "features": []
         },
         {
-          "component": "hichecker_native",
-          "features": []
-        },
-        {
-          "component": "hichecker_js",
+          "component": "hichecker",
           "features": []
         },
         {
