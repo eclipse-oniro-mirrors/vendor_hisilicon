@@ -33,6 +33,7 @@
           { "component": "hilog_service", "features":[] },
           { "component": "hilog", "features":[] },
           { "component": "hisysevent_native", "features":[] },
+          { "component": "hisysevent", "features":[] },
           { "component": "hiappevent", "features":[] },
           { "component": "hichecker_native", "features":[] },
           { "component": "hichecker_js", "features":[] },
@@ -40,6 +41,7 @@
           { "component": "hiview", "features":[] },
           { "component": "faultloggerd", "features":[] },
           { "component": "hitrace_native", "features":[] },
+          { "component": "hitrace", "features":[] },
           { "component": "hicollie_native", "features":[] }
         ]
       },
