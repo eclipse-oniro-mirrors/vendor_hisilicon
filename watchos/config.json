@@ -41,7 +41,7 @@
           { "component": "faultloggerd", "features":[] },
           { "component": "hitrace_native", "features":[] },
           { "component": "hitrace", "features":[] },
-          { "component": "hicollie_native", "features":[] }
+          { "component": "hicollie", "features":[] }
         ]
       },
       {
