@@ -65,7 +65,7 @@
             "audio_framework_feature_dtmf_tone = true",
             "audio_framework_feature_opensl_es = true"
           ] },
-          { "component": "multimedia_image_framework", "features":[] },
+          { "component": "image_framework", "features":[] },
           { "component": "camera_framework", "features":[] },
           { "component": "media_library", "features":[] }
         ]
