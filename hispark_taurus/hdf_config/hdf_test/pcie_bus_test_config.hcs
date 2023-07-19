@@ -1,0 +1,8 @@
+root {
+    pcie_bus_config {
+        pcie_bus_controller_tester {
+            match_attr = "PCIE_BUS_TEST";
+            busNum = 0;
+        }
+    }
+}
