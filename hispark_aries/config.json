@@ -111,7 +111,7 @@
         "components": [
           { "component": "developer_test", "features":[] },
           { "component": "acts", "features":[] },
-          { "component": "xts_tools", "features":[] }
+          { "component": "tools", "features":[] }
         ]
       },
       {
