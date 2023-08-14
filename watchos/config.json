@@ -83,7 +83,6 @@
         "subsystem": "communication",
         "components": [
           { "component": "ipc", "features":[] },
-          { "component": "ipc_js", "features":[] },
           { "component": "net_manager", "features":[] },
           { "component": "netmanager_base", "features":[] },
           { "component": "netmanager_ext", "features":[] },
