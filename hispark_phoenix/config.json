@@ -756,7 +756,7 @@
           "features": []
         },
         {
-          "component": "multimedia_image_framework",
+          "component": "image_framework",
           "features": []
         },
         {
@@ -910,11 +910,11 @@
           "features": []
         },
         {
-          "component": "xts_hats",
+          "component": "hats",
           "features": []
         },
         {
-          "component": "xts_dcts",
+          "component": "dcts",
           "features": []
         }
       ]
