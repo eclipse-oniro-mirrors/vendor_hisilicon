@@ -109,12 +109,12 @@
       ]
     },
     {
-      "subsystem": "common",
+      "subsystem": "build",
       "components": [
         {
-          "component": "common",
+          "component": "build_framework",
           "features": [
-            "common_feature_verify = true"
+            "build_framework_feature_verify = true"
           ]
         }
       ]
