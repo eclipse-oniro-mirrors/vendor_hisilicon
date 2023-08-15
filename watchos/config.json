@@ -191,7 +191,7 @@
       {
         "subsystem": "xts",
         "components": [
-          { "component": "xts_acts", "features":[] },
+          { "component": "acts", "features":[] },
           { "component": "hats", "features":[] }
         ]
       },
