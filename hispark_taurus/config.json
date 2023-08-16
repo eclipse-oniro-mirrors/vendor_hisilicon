@@ -104,8 +104,7 @@
       {
         "subsystem": "communication",
         "components": [
-          { "component": "dsoftbus", "features":[] },
-          { "component": "wpa_supplicant", "features":[] }
+          { "component": "dsoftbus", "features":[] }
         ]
       },
       {
