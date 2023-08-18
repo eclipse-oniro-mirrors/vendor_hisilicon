@@ -79,12 +79,6 @@
         ]
       },
       {
-        "subsystem": "communication",
-        "components": [
-          { "component": "wpa_supplicant", "features":[] }
-        ]
-      },
-      {
         "subsystem": "hdf",
         "components": [
           { "component": "hdf_core", "features":[ "hdf_core_platform_rtc_test_support = true" ] },
