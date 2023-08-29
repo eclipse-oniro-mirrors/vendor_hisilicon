@@ -337,10 +337,6 @@
           "features": []
         },
         {
-          "component": "ipc_js",
-          "features": []
-        },
-        {
           "component": "net_manager",
           "features": []
         },
