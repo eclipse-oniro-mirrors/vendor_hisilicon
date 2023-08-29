@@ -149,7 +149,6 @@
       {
         "subsystem": "xts",
         "components": [
-          { "component": "developer_test", "features":[] },
           { "component": "acts", "features":[] },
           { "component": "tools", "features":[] },
           { "component": "device_attest_lite", "features":[] }

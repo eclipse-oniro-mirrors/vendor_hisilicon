@@ -245,10 +245,10 @@
       ]
     },
     {
-      "subsystem": "developertest",
+      "subsystem": "testfwk",
       "components": [
         {
-          "component": "developertest",
+          "component": "developer_test",
           "features": []
         }
       ]

@@ -240,9 +240,9 @@
         ]
       },
       {
-        "subsystem": "developertest",
+        "subsystem": "testfwk",
         "components": [
-          { "component": "developertest", "features":[]}
+          { "component": "developer_test", "features":[]}
         ]
       },
       {
