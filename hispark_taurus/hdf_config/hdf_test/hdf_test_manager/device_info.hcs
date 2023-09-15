@@ -194,6 +194,17 @@ root {
                     deviceMatchAttr = "PCIE_TEST";
                 }
             }
+            device_platform_pcie_bus_test :: device {
+                pcie_bus_tester :: deviceNode {
+                    policy = 2;
+                    priority = 109;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PCIE_BUS_TEST";
+                    serviceName = "PCIE_BUS_TEST";
+                    deviceMatchAttr = "PCIE_BUS_TEST";
+                }
+            }
             device_platform_adc_test :: device {
                 adc_virtual :: deviceNode {
                     policy = 0;
