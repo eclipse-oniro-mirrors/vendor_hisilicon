@@ -47,7 +47,7 @@
       {
         "subsystem": "multimedia",
         "components": [
-          { "component": "media_service", "features":[] },
+          { "component": "media_lite", "features":[] },
           { "component": "histreamer", "features":[] }
         ]
       },
