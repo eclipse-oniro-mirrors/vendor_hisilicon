@@ -58,8 +58,7 @@
         "components": [
           { "component": "camera_lite", "features":[] },
           { "component": "media_lite", "features":[] },
-          { "component": "audio_lite", "features":[] },
-          { "component": "media_service", "features":[] }
+          { "component": "audio_lite", "features":[] }
         ]
       },
       {
