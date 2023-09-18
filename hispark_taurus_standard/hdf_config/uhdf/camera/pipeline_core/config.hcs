@@ -5,18 +5,18 @@
         template node_spec {
             name = "";
             status = "";
-            stream_type = "";
+            streamType = "";
             template port_spec {
                 name = "";
-                peer_port_name = "";
-                peer_port_node_name = "";
+                peerPortName = "";
+                peerPortNodeName = "";
                 direction = 0;
                 width = 0;
                 height = 0;
                 format = 0;
                 usage = 0x10000000000000;
-                need_allocation = 0;
-                buffer_count = 0;
+                needAllocation = 0;
+                bufferCount = 0;
             }
         }
     }
@@ -27,8 +27,8 @@
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vi#0";
                 direction = 1;
                 width = 0;
                 height = 0;
@@ -40,14 +40,14 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "sensor#0";
+                peerPortName = "out0";
+                peerPortNodeName = "sensor#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vpss#0";
                 direction = 1;
             }
         }
@@ -56,25 +56,25 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vi#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vo#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vo#0";
                 direction = 1;
             }
         }
         vo :: node_spec {
             name = "vo#0";
             status = "new";
-            stream_type = "preview";
+            streamType = "preview";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vpss#0";
                 direction = 0;
             }
         }
@@ -86,8 +86,8 @@
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vi#0";
                 direction = 1;
                 width = 0;
                 height = 0;
@@ -99,14 +99,14 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "sensor#0";
+                peerPortName = "out0";
+                peerPortNodeName = "sensor#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vpss#0";
                 direction = 1;
             }
         }
@@ -115,14 +115,14 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vi#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "ipp#0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
                 direction = 1;
             }
         }
@@ -131,25 +131,25 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vpss#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "sink#0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
                 direction = 1;
             }
         }
         sink :: node_spec {
             name = "sink#0";
             status = "new";
-            stream_type = "snapshot";
+            streamType = "snapshot";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "ipp#0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
                 direction = 0;
             }
         }
@@ -161,8 +161,8 @@
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vi#0";
                 direction = 1;
                 width = 0;
                 height = 0;
@@ -174,14 +174,14 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "sensor#0";
+                peerPortName = "out0";
+                peerPortNodeName = "sensor#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vpss#0";
                 direction = 1;
             }
         }
@@ -190,20 +190,20 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vi#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vo#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vo#0";
                 direction = 1;
             }
             out_port_1 :: port_spec {
                 name = "out1";
-                peer_port_name = "in0";
-                peer_port_node_name = "ipp#0";
+                peerPortName = "in0";
+                peerPortNodeName = "ipp#0";
                 direction = 1;
             }
         }
@@ -212,36 +212,36 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out1";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "out1";
+                peerPortNodeName = "vpss#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "sink#0";
+                peerPortName = "in0";
+                peerPortNodeName = "sink#0";
                 direction = 1;
             }
         }
         vo :: node_spec {
             name = "vo#0";
             status = "new";
-            stream_type = "preview";
+            streamType = "preview";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vpss#0";
                 direction = 0;
             }
         }
         sink :: node_spec {
             name = "sink#0";
             status = "new";
-            stream_type = "snapshot";
+            streamType = "snapshot";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "ipp#0";
+                peerPortName = "out0";
+                peerPortNodeName = "ipp#0";
                 direction = 0;
             }
         }
@@ -253,8 +253,8 @@
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vi#0";
                 direction = 1;
                 width = 0;
                 height = 0;
@@ -266,14 +266,14 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "sensor#0";
+                peerPortName = "out0";
+                peerPortNodeName = "sensor#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vpss#0";
                 direction = 1;
             }
         }
@@ -282,42 +282,42 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vi#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vo#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vo#0";
                 direction = 1;
             }
             out_port_1 :: port_spec {
                 name = "out1";
-                peer_port_name = "in0";
-                peer_port_node_name = "venc#0";
+                peerPortName = "in0";
+                peerPortNodeName = "venc#0";
                 direction = 1;
             }
         }
         vo :: node_spec {
             name = "vo#0";
             status = "new";
-            stream_type = "preview";
+            streamType = "preview";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vpss#0";
                 direction = 0;
             }
         }
         venc :: node_spec {
             name = "venc#0";
             status = "new";
-            stream_type = "video";
+            streamType = "video";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out1";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "out1";
+                peerPortNodeName = "vpss#0";
                 direction = 0;
             }
         }
@@ -329,8 +329,8 @@
             status = "new";
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vi#0";
                 direction = 1;
                 width = 0;
                 height = 0;
@@ -342,14 +342,14 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "sensor#0";
+                peerPortName = "out0";
+                peerPortNodeName = "sensor#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vpss#0";
                 direction = 1;
             }
         }
@@ -358,42 +358,42 @@
             status = "new";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vi#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vi#0";
                 direction = 0;
             }
             out_port_0 :: port_spec {
                 name = "out0";
-                peer_port_name = "in0";
-                peer_port_node_name = "vo#0";
+                peerPortName = "in0";
+                peerPortNodeName = "vo#0";
                 direction = 1;
             }
             out_port_1 :: port_spec {
                 name = "out1";
-                peer_port_name = "in0";
-                peer_port_node_name = "vo#1";
+                peerPortName = "in0";
+                peerPortNodeName = "vo#1";
                 direction = 1;
             }
         }
         vo :: node_spec {
             name = "vo#0";
             status = "new";
-            stream_type = "preview";
+            streamType = "preview";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out0";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "out0";
+                peerPortNodeName = "vpss#0";
                 direction = 0;
             }
         }
         vo_preview :: node_spec {
             name = "vo#1";
             status = "new";
-            stream_type = "preview";
+            streamType = "preview";
             in_port_0 :: port_spec {
                 name = "in0";
-                peer_port_name = "out1";
-                peer_port_node_name = "vpss#0";
+                peerPortName = "out1";
+                peerPortNodeName = "vpss#0";
                 direction = 0;
             }
         }
