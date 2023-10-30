@@ -56,7 +56,7 @@
       {
         "subsystem": "multimedia",
         "components": [
-          { "component": "camera_lite", "features":[] },
+          { "component": "camera_lite", "features":[ "enable_multimedia_camera_lite = true" ] },
           { "component": "media_lite", "features":[] },
           { "component": "audio_lite", "features":[] }
         ]
