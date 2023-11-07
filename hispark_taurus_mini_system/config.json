@@ -13,7 +13,7 @@
       {
         "subsystem": "startup",
         "components": [
-          { "component": "init_lite", "features":
+          { "component": "init", "features":
             [
               "enable_ohos_startup_init_feature_begetctl_liteos = true"
             ]
