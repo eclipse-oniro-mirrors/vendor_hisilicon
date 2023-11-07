@@ -336,9 +336,9 @@
         ]
       },
       {
-        "subsystem": "settingsnapi",
+        "subsystem": "applications",
         "components": [
-          { "component": "settings_standard", "features":[]}
+          { "component": "settings", "features":[]}
         ]
       },
       {
