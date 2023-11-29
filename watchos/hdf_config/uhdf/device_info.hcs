@@ -115,12 +115,22 @@
         wlan :: host {
             hostName = "wifi_host";
             priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "NET_ADMIN", "NET_RAW"];
+            gid = ["wifi_host", "wifi_group"];
             wifi_c_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
                     priority = 100;
                     moduleName = "libwifi_hdi_c_device.z.so";
                     serviceName = "wlan_interface_service";
+                }
+            }
+            wpa_supplicant_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libwpa_hdi_c_device.z.so";
+                    serviceName = "wpa_interface_service";
                 }
             }
         }
