@@ -170,6 +170,14 @@
                     serviceName = "wpa_interface_service";
                 }
             }
+            hostapd_device :: device {
+                device0 :: deviceNode {
+                    policy = 2;
+                    priority = 100;
+                    moduleName = "libhostapd_hdi_c_device.z.so";
+                    serviceName = "hostapd_interface_service";
+                }
+            }
         }
         audio :: host {
             hostName = "audio_host";
