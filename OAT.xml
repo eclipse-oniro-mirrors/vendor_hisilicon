@@ -84,6 +84,8 @@
             <filefilter name="readmeOpenSourcefileNamePolicyFilter" desc="Filters for README.OpenSource file policies">
             </filefilter>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
+                <filteritem type="filename" name="*.a|*.so|*.bin|*.png" desc="Temp files"/>
+                <filteritem type="filename" name="*.img|*.gif" desc="prebuilt boot images"/>
             </filefilter>
         </filefilterlist>
     </oatconfig>
