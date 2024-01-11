@@ -5,6 +5,7 @@
     "ohos_version": "OpenHarmony 3.1",
     "device_company": "hisilicon",
     "device_build_path": "device/board/hisilicon/hispark_pegasus",
+    "inherit":["productdefine/common/base/mini_system.json"],
     "board": "hispark_pegasus",
     "kernel_type": "liteos_m",
     "kernel_is_prebuilt": true,
