@@ -59,7 +59,7 @@ static const PermissionDef g_permissions[] = {
     {"ohos.permission.WRITE_MEDIA_VIDEO",     USER_GRANT,    NOT_RESTRICTED,    CAP_NOT_BINDED},
 };
 
-static unsigned char *GetCId(void)
+static unsigned char *GetCId()
 {
     int mallocSize = sizeof(unsigned char) * CID_LENGTH;
     unsigned char *cid = (unsigned char *)malloc(mallocSize);
@@ -131,19 +131,14 @@ PermissionDef* HalGetPermissionList(unsigned int *length)
     return (PermissionDef*)g_permissions;
 }
 
-const char *HalGetPermissionPath(void)
+const char *HalGetPermissionPath()
 {
     return P_DIR;
 }
 
-int HalGetMaxPermissionSize(void)
+int HalGetMaxPermissionSize()
 {
     return PERM_MAX;
-}
-
-int HalAccess(const char *pathname)
-{
-    return access(pathname, F_OK);
 }
 
 void* HalMalloc(unsigned int size)
@@ -151,7 +146,7 @@ void* HalMalloc(unsigned int size)
     if (size == 0) {
         return NULL;
     }
-    return NULL;
+    return malloc(size);
 }
 
 void HalFree(void *ptr)
@@ -161,12 +156,17 @@ void HalFree(void *ptr)
     }
 }
 
-void HalMutexLock(void)
+int HalAccess(const char *pathname)
+{
+    return access(pathname, F_OK);
+}
+
+void HalMutexLock()
 {
     pthread_mutex_lock(&g_mutex);
 }
 
-void HalMutexUnlock(void)
+void HalMutexUnlock()
 {
     pthread_mutex_unlock(&g_mutex);
 }
@@ -193,6 +193,15 @@ bool HalIsValidPath(const char *path)
     if (path == NULL) {
         return false;
     }
+    char resolvedPath[PATH_MAX + 1] = {0x0};
+    if (strlen(path) > PATH_MAX || NULL == realpath(path, resolvedPath)) {
+        return false;
+    }
+    struct stat buf;
+    stat(path, &buf);
+    if (S_IFDIR & buf.st_mode) {
+        resolvedPath[strlen(resolvedPath)] = '/';
+    }
 
-    return true;
+    return (strncmp(resolvedPath, P_DIR, strlen(P_DIR)) == 0);
 }
