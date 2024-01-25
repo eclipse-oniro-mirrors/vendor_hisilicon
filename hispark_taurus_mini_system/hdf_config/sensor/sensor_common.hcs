@@ -11,6 +11,8 @@ root {
             maxRange = 8;
             accuracy = 0;
             power = 0;
+            minDelay = 0; // nanosecond
+            maxDelay = 0; // nanosecond
         }
 
         template sensorBusInfo {

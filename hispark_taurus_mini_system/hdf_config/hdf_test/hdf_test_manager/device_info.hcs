@@ -52,6 +52,15 @@ root {
                 }
             }
             device_platform_spi_test :: device {
+                spi_virtual :: deviceNode {
+                    policy = 2;
+                    priority = 50;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "virtual_spi_driver";
+                    serviceName = "HDF_PLATFORM_SPI_255";
+                    deviceMatchAttr = "virtual_spi";
+                }
                 spi_test :: deviceNode {
                     policy = 2;
                     priority = 100;
@@ -74,6 +83,13 @@ root {
                 }
             }
             device_platform_pin_test :: device {
+                pin_virtual :: deviceNode {
+                    policy = 2;
+                    priority = 56;
+                    permission = 0644;
+                    moduleName = "virtual_pin_driver";
+                    deviceMatchAttr = "virtual_pin";
+                }
                 pin_tester :: deviceNode {
                     policy = 2;
                     priority = 101;
@@ -129,6 +145,14 @@ root {
                 }
             }
             device_platform_pwm_test :: device {
+                pwm_virtual :: deviceNode {
+                    policy = 2;
+                    priority = 56;
+                    permission = 0644;
+                    moduleName = "virtual_pwm_driver";
+                    serviceName = "HDF_PLATFORM_PWM_10";
+                    deviceMatchAttr = "virtual_pwm";
+                }
                 pwm_test :: deviceNode {
                     policy = 2;
                     priority = 110;
@@ -161,7 +185,7 @@ root {
                     deviceMatchAttr = "PCIE_VIRTUAL";
                 }
                 pcie_tester :: deviceNode {
-                    policy = 1;
+                    policy = 2;
                     priority = 100;
                     preload = 0;
                     permission = 0644;
@@ -170,7 +194,26 @@ root {
                     deviceMatchAttr = "PCIE_TEST";
                 }
             }
+            device_platform_pcie_bus_test :: device {
+                pcie_bus_tester :: deviceNode {
+                    policy = 2;
+                    priority = 109;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "PLATFORM_PCIE_BUS_TEST";
+                    serviceName = "PCIE_BUS_TEST";
+                    deviceMatchAttr = "PCIE_BUS_TEST";
+                }
+            }
             device_platform_adc_test :: device {
+                adc_virtual :: deviceNode {
+                    policy = 0;
+                    priority = 56;
+                    preload = 0;
+                    permission = 0644;
+                    moduleName = "virtual_adc_driver";
+                    deviceMatchAttr = "virtual_adc_driver";
+                }
                 adc_tester :: deviceNode {
                     policy = 2;
                     priority = 110;
@@ -231,6 +274,14 @@ root {
                  }
             }
             device_platform_watchdog_test :: device {
+                virtual_watchdog :: deviceNode {
+                    policy = 2;
+                    priority = 55;
+                    permission = 0644;
+                    moduleName = "virtual_watchdog_driver";
+                    serviceName = "HDF_PLATFORM_WATCHDOG_7";
+                    deviceMatchAttr = "virtual_watchdog";
+                }
                 watchdog_tester :: deviceNode {
                     policy = 2;
                     priority = 105;

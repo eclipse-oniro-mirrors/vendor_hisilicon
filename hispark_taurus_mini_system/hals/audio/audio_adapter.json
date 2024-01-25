@@ -1,0 +1,73 @@
+{
+    "adapterNum": 5,
+    "adapters": [{
+        "name": "primary",
+        "portnum": 2,
+        "port": [{
+            "dir": "PORT_OUT",
+            "id": 0,
+            "name": "AOP"
+        },
+        {
+            "dir": "PORT_IN",
+            "id": 0,
+            "name": "AIP"
+        }]
+    },
+    {
+        "name": "primary",
+        "portnum": 3,
+        "port": [{
+            "dir": "PORT_OUT",
+            "id": 0,
+            "name": "AOP"
+        },
+        {
+            "dir": "PORT_IN",
+            "id": 0,
+            "name": "AIP"
+        },
+        {
+            "dir": "PORT_OUT_IN",
+            "id": 0,
+            "name": "AIOP"
+        }]
+    },
+    {
+        "name": "primary_ext",
+        "portnum": 1,
+        "port": [{
+            "dir": "PORT_OUT",
+            "id": 1,
+            "name": "AOP"
+        }]
+    },
+    {
+        "name": "usb",
+        "portnum": 3,
+        "port": [{
+            "dir": "PORT_OUT",
+            "id": 21,
+            "name": "AOP"
+        },
+        {
+            "dir": "PORT_IN",
+            "id": 21,
+            "name": "AIP"
+        },
+        {
+            "dir": "PORT_OUT_IN",
+            "id": 21,
+            "name": "AIOP"
+        }]
+    },
+    {
+        "name": "a2dp",
+        "portnum": 1,
+        "port": [{
+            "dir": "PORT_OUT",
+            "id": 31,
+            "name": "AOP"
+        }]
+    }]
+}
