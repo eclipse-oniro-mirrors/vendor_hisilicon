@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright (c) 2021-2022 Huawei Device Co., Ltd.
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<audioPolicyConfiguration xmlns:xi="http://www.w3.org/2001/XInclude" version="1.0">
+    <adapters>
+        <adapter name="primary">
+            <devices>
+                <device name="Speaker" type="DEVICE_TYPE_SPEAKER" role="output"/>
+                <device name="Built-In Mic" type="DEVICE_TYPE_MIC" role="input"/>
+                <device name="Wired Headset" type="DEVICE_TYPE_WIRED_HEADSET" role="output,input"/>
+                <device name="Wired Headphones" type="DEVICE_TYPE_WIRED_HEADPHONES" role="output"/>
+            </devices>
+            <modules>
+                <sink name="primary out" role="output" fixed_latency="1" render_in_idle_state="1">
+                    <configs>
+                        <config name="preload" valu="true"/>
+                        <config name="maxinstances" valu="128"/>
+                    </configs>
+                    <profiles>
+                        <profile rate="44100" channels="2" format="s16le" buffer_size="3528"/>
+                    </profiles>
+                    <devices>
+                        <device name="Speaker"/>
+                        <device name="Wired Headset"/>
+                        <device name="Wired Headphones"/>
+                    </devices>
+                </sink>
+                <source name="primary in" role="input">
+                    <configs>
+                        <config name="maxinstances" valu="16"/>
+                    </configs>
+                    <profiles>
+                        <profile rate="44100" channels="2" format="s16le" buffer_size="3528"/>
+                    </profiles>
+                    <devices>
+                        <device name="Built-In Mic"/>
+                        <device name="Wired Headset"/>
+                    </devices>
+                </source>
+            </modules>
+        </adapter>
+        <adapter name="a2dp">
+            <devices>
+                <device name="Bt A2dp" type="DEVICE_TYPE_BLUETOOTH_A2DP" role="output"/>
+            </devices>
+            <modules>
+                <sink name="a2dp out" role="output">
+                    <configs>
+                        <config name="maxinstances" valu="128"/>
+                    </configs>
+                    <profiles>
+                        <profile rate="48000" channels="2" format="s16le" buffer_size="3840"/>
+                        <profile rate="44100" channels="2" format="s16le" buffer_size="3528"/>
+                        <profile rate="96000" channels="2" format="s24le" buffer_size="11520"/>
+                    </profiles>
+                    <devices>
+                        <device name="Bt A2dp"/>
+                    </devices>
+                </sink>
+            </modules>
+        </adapter>
+        <adapter name="remote">
+            <devices>
+                <device name="Remote Sink" type="DEVICE_TYPE_SPEAKER" role="output"/>
+                <device name="Remote Source" type="DEVICE_TYPE_MIC" role="input"/>
+            </devices>
+            <modules>
+                <sink name="remote out" role="output" profile="dynamic">
+                    <configs>
+                        <config name="maxinstances" valu="128"/>
+                    </configs>
+                    <devices>
+                        <device name="Remote Sink"/>
+                    </devices>
+                </sink>
+                <source name="remote in" role="input" profile="dynamic">
+                    <configs>
+                        <config name="maxinstances" valu="16"/>
+                    </configs>
+                    <devices>
+                        <device name="Remote Source"/>
+                    </devices>
+                </source>
+            </modules>
+        </adapter>
+        <adapter name="file">
+            <devices>
+                <device name="File Sink" type="DEVICE_TYPE_FILE_SINK" role="output"/>
+                <device name="File Source" type="DEVICE_TYPE_FILE_SOURCE" role="input"/>
+            </devices>
+            <modules>
+                <sink name="file out" role="output">
+                    <configs>
+                        <config name="maxinstances" valu="128"/>
+                    </configs>
+                    <profiles>
+                        <profile rate="48000" channels="8" format="s16le" buffer_size="15360"/>
+                    </profiles>
+                    <devices>
+                        <device name="File Sink"/>
+                    </devices>
+                </sink>
+                <source name="file in" role="input">
+                    <configs>
+                        <config name="maxinstances" valu="16"/>
+                    </configs>
+                    <profiles>
+                        <profile rate="48000" channels="6" format="s16le" buffer_size="11520"/>
+                    </profiles>
+                    <devices>
+                        <device name="File Source"/>
+                    </devices>
+                </source>
+            </modules>
+        </adapter>
+    </adapters>
+
+    <volumeGroups>
+        <groups>
+            <group name ="volume_group">
+                <sink name ="primary out"/>
+            </group>
+        </groups>
+    </volumeGroups>
+
+    <interruptGroups>
+        <groups>
+            <group name ="interrupt_group">
+                <sink name ="primary out"/>
+            </group>
+        </groups>
+    </interruptGroups>
+
+    <extends>
+        <updateRouteSupport>false</updateRouteSupport>
+        <audioLatency>50</audioLatency>
+    </extends>
+</audioPolicyConfiguration>
