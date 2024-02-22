@@ -21,6 +21,17 @@ ohos_prebuilt_etc("audio_policy_config") {
   part_name = "product_ipcamera_hispark_taurus_linux"
 }
 
+ohos_prebuilt_etc("audio_policy_config_new") {
+  source = "config/audio_policy_config_new.xml"
+  subsystem_name = "product_ipcamera_hispark_taurus_linux"
+  relative_install_dir = "audio"
+  install_images = [ chipset_base_dir ]
+  part_name = "product_ipcamera_hispark_taurus_linux"
+}
+
 group("hdf_audio_config") {
-  deps = [ ":audio_policy_config" ]
+  deps = [
+    ":audio_policy_config",
+    ":audio_policy_config_new",
+  ]
 }
