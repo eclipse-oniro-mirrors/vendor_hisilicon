@@ -138,17 +138,35 @@
                     serviceName = "wlan_interface_service";
                 }
             }
-            wpa_supplicant_device :: device {
+        }
+        wpa :: host {
+            hostName = "wpa_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "NET_ADMIN", "NET_RAW"];
+            initconfig = ["\"permission\" : [\"ohos.permission.ACCESS_CERT_MANAGER\"]", "\"secon\" : \"u:r:wifi_host:s0\""];
+            uid = "wifi";
+            gid = ["wifi", "wifi_group", "wifi_host"];
+            wpa_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
+                    preload = 2;
                     priority = 100;
                     moduleName = "libwpa_hdi_c_device.z.so";
                     serviceName = "wpa_interface_service";
                 }
             }
-            hostapd_device :: device {
+        }
+        hostapd :: host {
+            hostName = "hostapd_host";
+            priority = 50;
+            caps = ["DAC_OVERRIDE", "DAC_READ_SEARCH", "NET_ADMIN", "NET_RAW"];
+            initconfig = ["\"secon\" : \"u:r:wifi_host:s0\""];
+            uid = "wifi";
+            gid = ["wifi", "wifi_group", "wifi_host"];
+            wpa_device :: device {
                 device0 :: deviceNode {
                     policy = 2;
+                    preload = 2;
                     priority = 100;
                     moduleName = "libhostapd_hdi_c_device.z.so";
                     serviceName = "hostapd_interface_service";
