@@ -113,7 +113,7 @@
       {
         "subsystem": "ability",
         "components": [
-          { "component": "ability_lite", "features":[ "enable_ohos_appexecfwk_feature_ability = true" ] },
+          { "component": "ability_lite", "features":[ "ability_lite_enable_ohos_appexecfwk_feature_ability = true" ] },
           { "component": "dmsfwk_lite", "features":[] }
         ]
       },
