@@ -43,12 +43,19 @@
           { "component": "device_auth", "features":[] },
           { "component": "huks", "features":
             [
-              "disable_huks_binary = false",
-              "disable_authenticate = false",
               "huks_use_lite_storage = true",
               "huks_use_hardware_root_key = true",
-              "huks_config_file = \"hks_config_lite.h\"",
-              "ohos_security_huks_mbedtls_porting_path = \"//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party/mbedtls\""
+              "huks_config_file = \"hks_config_lite.h\""
+            ]
+          }
+        ]
+      },
+      {
+        "subsystem": "thirdparty",
+        "components": [
+          { "component": "mbedtls", "features":
+            [
+              "mbedtls_porting_path = \"//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party/mbedtls\""
             ]
           }
         ]
