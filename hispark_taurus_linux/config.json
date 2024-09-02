@@ -14,7 +14,7 @@
         "subsystem": "arkui",
         "components": [
           { "component": "ace_engine_lite", "features":[ "" ] },
-          { "component": "ui_lite", "features":[ "enable_graphic_font = true" ] }
+          { "component": "ui_lite", "features":[ "ui_lite_enable_graphic_font_config = true" ] }
         ]
       },
       {
