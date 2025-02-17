@@ -71,7 +71,8 @@
         "components": [
           { "component": "dsoftbus", "features":[] },
           { "component": "wifi", "features":[] },
-          { "component": "dhcp", "features":[] }
+          { "component": "dhcp", "features":[] },
+          { "component": "ipc", "features":[] }
         ]
       },
       {
