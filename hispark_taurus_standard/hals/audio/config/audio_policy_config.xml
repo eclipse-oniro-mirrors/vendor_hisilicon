@@ -12,24 +12,28 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<audioPolicyConfiguration xmlns:xi="http://www.w3.org/2001/XInclude" version="1.0">
+<audioPolicyConfiguration xmlns:xi="http://www.w3.org/2001/XInclude" version="2.0">
     <adapters>
         <adapter name="primary" supportSelectScene="0">
             <pipes>
                 <pipe name="primary_output" role="output">
                     <paProp lib="libmodule-hdi-sink.z.so" role="sink" fixed_latency="1" render_in_idle_state="1" moduleName="Speaker"/>
                     <streamProps>
-                        <streamProp format="s16le" sampleRates="44100" channelLayout="CH_LAYOUT_STEREO" bufferSize="4096"/>
+                        <streamProp format="s16le" sampleRates="44100" channelLayout="CH_LAYOUT_STEREO" bufferSize="4096" supportDevices="Speaker_Out, Wired_Headset_Out, Wired_Headphones_Out"/>
                     </streamProps>
                     <attributes>
                         <attribute name="preload" value="true"/>
+                        <attribute name="flag" value="AUDIO_OUTPUT_FLAG_NORMAL"/>
                     </attributes>
                 </pipe>
                 <pipe name="primary_input" role="input">
                     <paProp lib="libmodule-hdi-source.z.so" role="source" moduleName="Built_in_mic"/>
                     <streamProps>
-                        <streamProp format="s16le" sampleRates="44100" channelLayout="CH_LAYOUT_STEREO" bufferSize="8192"/>
+                        <streamProp format="s16le" sampleRates="44100" channelLayout="CH_LAYOUT_STEREO" bufferSize="8192" supportDevices="Builtin_Mic_In, Wired_Headset_In"/>
                     </streamProps>
+                    <attributes>
+                        <attribute name="flag" value="AUDIO_INPUT_FLAG_NORMAL"/>
+                    </attributes>
                 </pipe>
             </pipes>
             <devices>
@@ -45,10 +49,13 @@
                 <pipe name="a2dp_output" role="output">
                     <paProp lib="libmodule-hdi-sink.z.so" role="sink" moduleName="Bt_Speaker"/>
                     <streamProps>
-                        <streamProp format="s16le" sampleRates="48000" channelLayout="CH_LAYOUT_STEREO" buffer_size="3840"/>
-                        <streamProp format="s16le" sampleRates="44100" channelLayout="CH_LAYOUT_STEREO" buffer_size="3528"/>
-                        <streamProp format="s24le" sampleRates="96000" channelLayout="CH_LAYOUT_STEREO" buffer_size="11520"/>
+                        <streamProp format="s16le" sampleRates="48000" channelLayout="CH_LAYOUT_STEREO" buffer_size="3840" supportDevices="Bt_A2dp_Out"/>
+                        <streamProp format="s16le" sampleRates="44100" channelLayout="CH_LAYOUT_STEREO" buffer_size="3528" supportDevices="Bt_A2dp_Out"/>
+                        <streamProp format="s24le" sampleRates="96000" channelLayout="CH_LAYOUT_STEREO" buffer_size="11520" supportDevices="Bt_A2dp_Out"/>
                     </streamProps>
+                    <attributes>
+                        <attribute name="flag" value="AUDIO_OUTPUT_FLAG_NORMAL"/>
+                    </attributes>
                 </pipe>
             </pipes>
             <devices>
@@ -60,14 +67,20 @@
                 <pipe name="distributed_output" role="output">
                     <paProp lib="libmodule-hdi-sink.z.so" role="sink" moduleName="Speaker"/>
                     <streamProps>
-                        <streamProp format="s16le" sampleRates="48000" channelLayout="CH_LAYOUT_STEREO"/>
+                        <streamProp format="s16le" sampleRates="48000" channelLayout="CH_LAYOUT_STEREO" bufferSize="3840" supportDevices="Distributed_Out"/>
                     </streamProps>
+                    <attributes>
+                        <attribute name="flag" value="AUDIO_OUTPUT_FLAG_NORMAL"/>
+                    </attributes>
                 </pipe>
                 <pipe name="distributed_input" role="input">
                     <paProp lib="libmodule-hdi-source.z.so" role="source" moduleName="Built_in_mic"/>            
                     <streamProps>
-                        <streamProp format="s16le" sampleRates="48000" channelLayout="CH_LAYOUT_STEREO"/>
+                        <streamProp format="s16le" sampleRates="48000" channelLayout="CH_LAYOUT_STEREO" bufferSize="3840" supportDevices="Distributed_In"/>
                     </streamProps>
+                    <attributes>
+                        <attribute name="flag" value="AUDIO_INPUT_FLAG_NORMAL"/>
+                    </attributes>
                 </pipe>
             </pipes>
             <devices>
@@ -94,6 +107,8 @@
         <defaultOutput adapter="primary" pipe="primary_output" device="Speaker"/>
         <commonConfigs>
             <attribute name="updateRouteSupport" value="false"/>
+            <attribute name="maxRendereres" value="128"/>
+            <attribute name="maxCapturers" value="16"/>
         </commonConfigs>
         <paConfigs>
             <!-- audioLatency is no need any more after ipc, keeping it here just in case.-->
@@ -101,14 +116,5 @@
             <!-- sinkLatency is no need any more after ipc, keeping it here just in case.-->
             <attribute name="sinkLatency" value="40"/>
         </paConfigs>
-        <maxConcurrentInstances>
-            <output>
-                <attribute name="normal" flag="AUDIO_FLAG_NORMAL" value="128"/>
-            </output>
-            <!-- Actually, max input concurrent instances is also influenced by audio focus.-->
-            <input>
-                <attribute name="normal" flag="AUDIO_FLAG_NORMAL" value="16"/>
-            </input>
-        </maxConcurrentInstances>
     </globalConfigs>
 </audioPolicyConfiguration>
