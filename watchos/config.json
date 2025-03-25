@@ -140,7 +140,8 @@
       {
         "subsystem": "graphic",
         "components": [
-          { "component": "graphic_2d", "features":[] }
+          { "component": "graphic_2d", "features":[] },
+          { "component": "graphics_effect", "features":[] }
         ]
       },
       {
