@@ -674,10 +674,6 @@
           ]
         },
         {
-          "component": "graphics_effect",
-          "features": []
-        },
-        {
           "component": "graphic_chipsetsdk",
           "features": []
         }
