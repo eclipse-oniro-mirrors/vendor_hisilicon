@@ -166,6 +166,12 @@
         "subsystem": "distributeddatamgr",
         "components": [
         ]
+      },
+      {
+        "subsystem": "arkcompiler",
+        "components": [
+          { "component": "ets_frontend", "features":[] }
+        ]
       }
     ],
     "third_party_dir": "//third_party",
