@@ -159,7 +159,9 @@
       {
         "subsystem": "distributedhardware",
         "components": [
-          { "component": "device_manager", "features":[] }
+          { "component": "device_manager",
+            "features": [ "device_manager_enable_ets_frontend = false" ]
+          }
         ]
       },
       {
