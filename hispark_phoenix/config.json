@@ -436,6 +436,14 @@
           "features": []
         },
         {
+          "component": "drivers_tools", 
+          "features":[]
+        },
+        {
+          "component": "drivers_adapter",
+          "features":[]
+        },
+        {
           "component": "drivers_peripheral_bluetooth",
           "features": []
         },

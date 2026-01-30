@@ -118,6 +118,8 @@
         "subsystem": "hdf",
         "components": [
           { "component": "hdf_core", "features":[ "hdf_core_platform_test_support = true" ] },
+          { "component": "drivers_tools", "features":[] },
+          { "component": "drivers_adapter", "features":[] },
           { "component": "drivers_peripheral_display", "features":[] },
           { "component": "drivers_peripheral_input", "features":[
             "drivers_peripheral_input_feature_lite_support_test = true"
