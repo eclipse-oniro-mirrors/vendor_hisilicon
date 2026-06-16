@@ -1,0 +1,14 @@
+root {
+    module = "gpio";
+    gpio_config {
+        gpio_controller_tester {
+            match_attr = "GPIO_TEST";
+            testNameOne = "GPIO10_3";
+            testNameTwo = "GPIO10_4";
+            gpio = 83;
+            gpioTestTwo = 84;
+            gpioIrq = 83;
+            testUserApi = 1;
+        }
+    }
+}

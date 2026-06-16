@@ -2,5 +2,7 @@ ipcamera_hi3518ev300_liteos
 ipcamera_hi3516dv300_liteos
 wifiiot
 *.cmd
-*.[oad]
+*.[oa]
 *.hcb
+modules.order
+.hdf_hcs_hex.o.d

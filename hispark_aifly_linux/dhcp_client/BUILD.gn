@@ -1,0 +1,53 @@
+# Copyright (c) 2025 HiSilicon (Shanghai) Technologies Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#     http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+if (defined(ohos_lite)) {
+    import("//build/lite/config/component/lite_component.gni")
+
+    if (ohos_kernel_type == "liteos_a" || ohos_kernel_type == "linux") {
+        lite_component("dhcp_client_lite") {
+            features = [ ":dhcp_client_mgr" ]
+        }
+        # feature: dhcp_client_mgr
+        executable("dhcp_client_mgr") {
+            cflags = [ "-Wall" ]
+            cflags_cc = cflags
+
+            sources = [
+                "dhcp_client_main.c",
+            ]
+
+            include_dirs = [
+                "//commonlibrary/utils_lite/include",
+                "//commonlibrary/c_utils/base/include",
+                "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
+                "//foundation/communication/dhcp/services/dhcp_client/include"
+            ]
+
+            ldflags = [
+                "-lstdc++",
+                "-Wl,-Map=dhcp_client_mgr.map",
+            ]
+
+            deps = [
+                "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
+                "//foundation/communication/dhcp/services/dhcp_client:dhcp_client",
+                "//foundation/systemabilitymgr/samgr_lite/samgr:samgr",
+                "//foundation/communication/ipc/interfaces/innerkits/c/ipc:ipc_single"
+            ]
+
+            external_deps = [ "bounds_checking_function:libsec_shared" ]
+
+            defines = [
+                "DEBUG_SERVICES_SAFWK_LITE"
+            ]
+        }
+    }
+}

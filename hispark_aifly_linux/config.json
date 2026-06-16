@@ -1,0 +1,157 @@
+{
+  "product_name": "ipcamera_hispark_aifly_linux",
+  "version": "3.0",
+  "type": "small",
+  "ohos_version": "OpenHarmony 5.1",
+  "device_company": "hisilicon",
+  "device_build_path": "device/board/hisilicon/hispark_aifly",
+  "board": "hispark_aifly",
+  "kernel_type": "linux",
+  "kernel_version": "6.6",
+  "target_cpu": "arm64",
+  "subsystems": [
+    {
+      "subsystem": "systemabilitymgr",
+      "components": [
+        { "component": "samgr_lite", "features":["ability_lite_enable_ohos_appexecfwk_feature_ability = true"] },
+        { "component": "safwk_lite", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "hiviewdfx",
+      "components": [
+        { "component": "hilog_lite", "features":[] },
+        { "component": "faultloggerd", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "security",
+      "components": [
+        { "component": "permission_lite", "features":[] },
+        { "component": "appverify", "features":[] },
+        { "component": "device_auth", "features":[] },
+        { "component": "huks", "features":
+          [
+            "huks_config_file = \"hks_config_small.h\"",
+            "huks_uid_trust_list_define = \"{}\"",
+            "huks_enable_hisilicon_cipher_in_small=true"
+          ]
+        }
+      ]
+    },
+    {
+      "subsystem": "startup",
+      "components": [
+        { "component": "bootstrap_lite", "features":[] },
+        { "component": "init", "features":["init_feature_begetctl_liteos=true"] },
+        { "component": "appspawn", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "device_hispark_aifly",
+      "components": [
+        { "component": "device_hispark_aifly", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "hdf",
+      "components": [
+        { "component": "hdf_core", "features":[ "hdf_core_platform_test_support = true" ] },
+        { "component": "drivers_peripheral_display", "features":[] },
+        { "component": "drivers_peripheral_input", "features":[
+          "drivers_peripheral_input_feature_lite_support_test = true"
+        ] }
+      ]
+    },
+    {
+      "subsystem": "ability",
+      "components": [
+        { "component": "ability_lite", "features":[ "ability_lite_enable_ohos_appexecfwk_feature_ability = true" ] },
+        { "component": "dmsfwk_lite", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "bundlemanager",
+      "components": [
+        { "component": "bundle_framework_lite", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "developtools",
+      "components": [
+        { "component": "syscap_codec", "features":[] },
+        { "component": "hdc" }
+      ]
+    },
+    {
+      "subsystem": "xts",
+      "components": [
+        { "component": "acts", "features":[] },
+        { "component": "tools", "features":[] },
+        { "component": "device_attest_lite", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "communication",
+      "components": [
+        { "component": "dhcp", "features":[] },
+        { "component": "ipc", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "arkui",
+      "components": [
+        { "component": "ace_engine_lite", "features":[ "" ] },
+        { "component": "ui_lite", "features":[ "ui_lite_enable_graphic_font_config = true" ] }
+      ]
+    },
+    {
+      "subsystem": "graphic",
+      "components": [
+        {
+            "component": "graphic_utils_lite",
+            "features":[
+              "graphic_utils_lite_enable_drm_display_hal = true"
+            ]
+        },
+        { "component": "surface_lite", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "window",
+      "components": [
+        { "component": "window_manager_lite", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "multimedia",
+      "components": [
+        { "component": "camera_lite", "features":[] },
+        { "component": "media_lite", "features":[] },
+        { "component": "audio_lite", "features":[] },
+        { "component": "media_service", "features":[] }
+      ]
+    },
+    {
+      "subsystem": "powermgr",
+      "components": [
+        { "component": "powermgr_lite", "features":[ "enable_screensaver = true" ] }
+      ]
+    },
+    {
+      "subsystem": "applications",
+      "components": [
+        { "component": "camera_sample_app", "features":[] },
+        { "component": "camera_screensaver_app", "features":[] }
+      ]
+    },{
+      "subsystem": "thirdparty",
+      "components": [
+        { "component": "libuv", "features":[] },
+        { "component": "mindspore", "features":[] }
+      ]
+    }
+  ],
+  "third_party_dir": "//third_party",
+  "product_adapter_dir": "//vendor/hisilicon/hispark_aifly_linux/hals"
+}

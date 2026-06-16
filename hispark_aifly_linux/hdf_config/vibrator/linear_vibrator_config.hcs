@@ -1,0 +1,21 @@
+root {
+    linearVibratorConfig {
+        boardConfig {
+            match_attr = "hdf_linear_vibrator_driver";
+            VibratorBusConfig {
+                busType = 1;    // 0:i2c 1:gpio
+                busNum = 31;
+            }
+            VibratorChipConfig {
+                isSupportIntensity = 0;    /* setting intensity capability. 1 indicates support,
+                                            0 indicates not support. */
+                isSupportFrequency = 0;    /* setting frequency capability. 1 indicates support,
+                                            0 indicates not support. */
+                intensityMaxValue = 0;    // Max intensity
+                intensityMinValue = 0;    // Min intensity
+                frequencyMaxValue = 0;    // Max frequency
+                frequencyMinValue = 0;    // Min frequency
+            }
+        }
+    }
+}

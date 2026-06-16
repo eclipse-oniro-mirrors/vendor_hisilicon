@@ -1,0 +1,16 @@
+root {
+    platform {
+        watchdog_config {
+            template watchdog_device {
+                serviceName = "HDF_PLATFORM_WATCHDOG_0";
+                match_attr = "";
+                id = 0;
+            }
+
+            device_0x12050000 :: watchdog_device {
+                id = 0;
+                match_attr = "hisilicon_hi35xx_watchdog_0";
+            }
+        }
+    }
+}
