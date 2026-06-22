@@ -1,0 +1,7 @@
+# Copyright (c) 2026 Huawei Device Co., Ltd. All rights reserved.
+
+group("hispark_pegasus_minimal") {
+    deps=[
+        "wraps:huksWrap",
+    ]
+}
