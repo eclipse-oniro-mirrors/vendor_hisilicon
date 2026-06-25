@@ -1,0 +1,30 @@
+root {
+    platform {
+        spi_config {
+            template spi_controller {
+                serviceName = "";
+                match_attr = "";
+                busNum = 0;
+                numCs = 0;
+            }
+
+            controller_0x120c0000 :: spi_controller {
+                busNum = 0;
+                numCs = 1;
+                match_attr = "hisilicon_hi35xx_spi_0";
+            }
+
+            controller_0x120c1000 :: spi_controller {
+                match_attr = "hisilicon_hi35xx_spi_1";
+                busNum = 1;
+                numCs = 2;
+            }
+
+            controller_0x120c2000 :: spi_controller {
+                match_attr = "hisilicon_hi35xx_spi_2";
+                busNum = 2;
+                numCs = 1;
+            }
+        }
+    }
+}

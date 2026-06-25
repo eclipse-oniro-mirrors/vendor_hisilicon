@@ -1,0 +1,175 @@
+{
+    "product_name": "ipcamera_hispark_taurus_linux_ex",
+    "version": "3.0",
+    "type": "small",
+    "ohos_version": "OpenHarmony 1.0",
+    "device_company": "hisilicon",
+    "device_build_path": "device/board/hisilicon/hispark_taurus",
+    "board": "hispark_taurus",
+    "api_version": 8,
+    "kernel_type": "linux",
+    "kernel_version": "5.10",
+    "subsystems": [
+      {
+        "subsystem": "arkui",
+        "components": [
+          { "component": "ace_engine_lite", "features":[ "" ] },
+          { "component": "ui_lite", "features":[ "ui_lite_enable_graphic_font_config = true" ] }
+        ]
+      },
+      {
+        "subsystem": "systemabilitymgr",
+        "components": [
+          { "component": "samgr_lite", "features":[] },
+          { "component": "safwk_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hilog_lite", "features":[] },
+          { "component": "faultloggerd", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "security",
+        "components": [
+          { "component": "permission_lite", "features":[] },
+          { "component": "device_auth", "features":[] },
+          { "component": "huks", "features":
+            [
+              "huks_config_file = \"hks_config_small.h\"",
+              "huks_uid_trust_list_define = \"{}\""
+            ]
+          }
+        ]
+      },
+      {
+        "subsystem": "multimedia",
+        "components": [
+          { "component": "camera_lite", "features":[] },
+          { "component": "media_lite", "features":[] },
+          { "component": "media_foundation", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "bootstrap_lite", "features":[] },
+          { "component": "init", "features":["init_feature_begetctl_liteos=true"] },
+          { "component": "appspawn", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "kernel",
+        "components": [
+          { "component": "linux", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "communication",
+        "components": [
+          { "component": "dsoftbus", "features":[] },
+          { "component": "wifi", "features":[] },
+          { "component": "dhcp", "features":[] },
+          { "component": "ipc", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "updater",
+        "components": [
+          { "component": "sys_installer_lite", "features": [] }
+        ]
+      },
+      {
+        "subsystem": "hdf",
+        "components": [
+          { "component": "hdf_core", "features":[ "hdf_core_platform_test_support = true" ] },
+          { "component": "drivers_tools", "features":[] },
+          { "component": "drivers_devhost", "features":[] },
+          { "component": "drivers_peripheral_display", "features":[] },
+          { "component": "drivers_peripheral_input", "features":[
+            "drivers_peripheral_input_feature_lite_support_test = true"
+          ] },
+          { "component": "drivers_peripheral_sensor", "features":[
+            "drivers_peripheral_sensor_feature_lite_support_test = true"
+          ] },
+          { "component": "drivers_peripheral_wlan", "features":[] },
+          { "component": "drivers_peripheral_vibrator", "features":[
+            "drivers_peripheral_vibrator_feature_lite_support_test = true"
+          ] }
+        ]
+      },
+      {
+        "subsystem": "graphic",
+        "components": [
+          { "component": "graphic_utils_lite", "features":[] },
+          { "component": "surface_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "window",
+        "components": [
+          { "component": "window_manager_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "ability",
+        "components": [
+          { "component": "ability_lite", "features":[ "ability_lite_enable_ohos_appexecfwk_feature_ability = true" ] },
+          { "component": "dmsfwk_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "bundlemanager",
+        "components": [
+          { "component": "bundle_framework_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "powermgr",
+        "components": [
+          { "component": "powermgr_lite", "features":[ "enable_screensaver = true" ] }
+        ]
+      },
+      {
+        "subsystem": "applications",
+        "components": [
+          { "component": "camera_sample_app", "features":[] },
+          { "component": "camera_screensaver_app", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "developtools",
+        "components": [
+          { "component": "syscap_codec", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "global",
+        "components": [
+        ]
+      },
+      {
+        "subsystem": "xts",
+        "components": [
+          { "component": "acts", "features":[] },
+          { "component": "tools", "features":[] },
+          { "component": "device_attest_lite", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributedhardware",
+        "components": [
+          { "component": "device_manager", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributeddatamgr",
+        "components": [
+        ]
+      }
+    ],
+    "third_party_dir": "//third_party",
+    "product_adapter_dir": "//vendor/hisilicon/hispark_taurus_linux_ex/hals"
+  }
