@@ -1,0 +1,68 @@
+#include "../sensor_common.hcs"
+root {
+    als_bh1745_chip_config : sensorConfig {
+        match_attr = "hdf_sensor_als_bh1745_driver";
+        sensorInfo :: sensorDeviceInfo {
+            sensorName = "als";
+            vendorName = "rohm_bh1745"; // max string length is 16 bytes
+            sensorTypeId = 5; // enum SensorTypeTag
+            sensorId = 5; // user define sensor id
+            power = 230;
+        }
+        sensorBusConfig :: sensorBusInfo {
+            busType = 0; // 0:i2c 1:spi
+            busNum = 6;
+            busAddr = 0x38;
+            regWidth = 1; // 1byte
+        }
+        sensorIdAttr :: sensorIdInfo {
+            chipName = "bh1745";
+            chipIdRegister = 0x92;
+            chipIdValue = 0xE0;
+        }
+        sensorRegConfig {
+            /*  regAddr: register address
+                value: config register value
+                len: size of value
+                mask: mask of value
+                delay: config register delay time (ms)
+                opsType: enum SensorOpsType 0-none 1-read 2-write 3-read_check 4-update_bit
+                calType: enum SensorBitCalType 0-none 1-set 2-revert 3-xor 4-left shift 5-right shift
+                shiftNum: shift bits
+                debug: 0-no debug 1-debug
+                save: 0-no save 1-save
+            */
+            /* regAddr, value, mask, len, delay, opsType, calType, shiftNum, debug, save */
+            initSeqConfig = [
+                0x40,    0xc0, 0xff,   1,     5,       2,       0,        0,     0,    0,
+                0x42,    0x90, 0xff,   1,     5,       2,       0,        0,     0,    0,
+                0x44,    0x02, 0xff,   1,     5,       2,       0,        0,     0,    0,
+                0x41,    0x01, 0xff,   1,     5,       2,       0,        0,     0,    0
+            ];
+            enableSeqConfig = [
+                0x42,    0x10, 0x10,   1,     5,       4,       0,        0,     0,    0,
+                0x44,    0x02, 0xff,   1,     5,       2,       0,        0,     0,    0
+            ];
+            disableSeqConfig = [
+                0x42,    0x00, 0x10,   1,     5,       4,       0,        0,     0,    0
+            ];
+        }
+
+        extendAlsRegConfig {
+            /* regAddr, value, mask, len, delay, opsType, calType, shiftNum, debug, save */
+            time = [
+                0x41,    0x00, 0x07,   1,     5,       0,       1,        0,     0,    0,  //160msec
+                0x41,    0x01, 0x07,   1,     5,       0,       1,        0,     0,    0,  //320msec
+                0x41,    0x02, 0x07,   1,     5,       0,       1,        0,     0,    0,  //640msec
+                0x41,    0x03, 0x07,   1,     5,       0,       1,        0,     0,    0,  //1280msec
+                0x41,    0x04, 0x07,   1,     5,       0,       1,        0,     0,    0,  //2560msec
+                0x41,    0x05, 0x07,   1,     5,       0,       1,        0,     0,    0,   //5120msec
+            ];
+            gain = [
+                0x42,    0x00, 0x03,   1,     5,       0,       1,        0,     0,    0,  //1X
+                0x42,    0x01, 0x03,   1,     5,       0,       1,        0,     0,    0,  //2X
+                0x42,    0x02, 0x03,   1,     5,       0,       1,        0,     0,    0   //16X
+            ];
+        }
+    }
+}
