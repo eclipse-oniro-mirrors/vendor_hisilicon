@@ -121,7 +121,7 @@
       source: faultlogger.conf
       link_name:  ${fs_dir}/system/etc/faultlogger.conf
   fs_make_cmd:
-    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 96
+    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 200
 -
   fs_dir_name: userfs
   fs_dirs:
@@ -132,11 +132,11 @@
       source_dir: data
       target_dir: data
   fs_make_cmd:
-    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4
+    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 50
 -
   fs_dir_name: userdata
   fs_make_cmd:
-    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 10
+    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 100
 -
   fs_attr:
     dmverity_enable:
