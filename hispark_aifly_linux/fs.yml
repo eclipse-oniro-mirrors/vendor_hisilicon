@@ -15,6 +15,13 @@
         - checksum
       is_strip: TRUE
     -
+      source_dir: dev_tools/bin
+      target_dir: usr/bin
+      ignore_files:
+        - sample_auto_ui
+        - sample_ui
+        - sample_window
+    -
       source_dir: libs
       target_dir: lib
       ignore_files:
@@ -132,7 +139,7 @@
       source_dir: data
       target_dir: data
   fs_make_cmd:
-    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 50
+    - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 100
 -
   fs_dir_name: userdata
   fs_make_cmd:
