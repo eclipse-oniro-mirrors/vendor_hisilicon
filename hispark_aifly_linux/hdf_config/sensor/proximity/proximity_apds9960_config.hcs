@@ -1,0 +1,48 @@
+#include "../sensor_common.hcs"
+root {
+    proximity_apds9960_chip_config : sensorConfig {
+        match_attr = "hdf_sensor_proximity_adps9960_driver";
+        sensorInfo :: sensorDeviceInfo {
+            sensorName = "proximity";
+            vendorName = "adps9960"; // max string length is 16 bytes
+            sensorTypeId = 12; // enum SensorTypeTag
+            sensorId = 12; // user define sensor id
+            power = 230;
+        }
+        sensorBusConfig :: sensorBusInfo {
+            busType = 0; // 0:i2c 1:spi
+            busNum = 6;
+            busAddr = 0x39;
+            regWidth = 1; // 1byte
+        }
+        sensorIdAttr :: sensorIdInfo {
+            chipName = "adps9960";
+            chipIdRegister = 0x92;
+            chipIdValue = 0xAB;
+        }
+        sensorRegConfig {
+            /*  regAddr: register address
+                value: config register value
+                len: size of value
+                mask: mask of value
+                delay: config register delay time (ms)
+                opsType: enum SensorOpsType 0-none 1-read 2-write 3-read_check 4-update_bit
+                calType: enum SensorBitCalType 0-none 1-set 2-revert 3-xor 4-left shift 5-right shift
+                shiftNum: shift bits
+                debug: 0-no debug 1-debug
+                save: 0-no save 1-save
+            */
+            /* regAddr, value, mask, len, delay, opsType, calType, shiftNum, debug, save */
+            initSeqConfig = [
+                0x80,    0x05, 0xff,   1,     5,       2,       0,        0,     0,    0,
+                0x8f,    0x00, 0xff,   1,     5,       2,       0,        0,     0,    0
+            ];
+            enableSeqConfig = [
+                0x80,    0x05, 0xff,   1,     5,       2,       0,        0,     0,    0
+            ];
+            disableSeqConfig = [
+                0x80,    0x00, 0xff,   1,     5,       2,       0,        0,     0,    0
+            ];
+        }
+    }
+}

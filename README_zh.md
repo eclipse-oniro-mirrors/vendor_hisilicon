@@ -7,6 +7,7 @@
 ## 目录
 ```
 /vendor/hisilicon
+├── hispark_aifly_linux            # hispark_aifly 小型系统的Linux相关配置
 ├── hispark_aries                  # hispark_aries相关配置
 ├── hispark_pegasus                # hispark_pegasus相关配置和demo
 ├── hispark_pegasus_mini_system    # hispark_pegasus最小系统相关配置

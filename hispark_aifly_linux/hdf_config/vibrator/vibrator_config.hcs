@@ -1,0 +1,24 @@
+root {
+    vibratorConfig {
+        boardConfig {
+            match_attr = "hdf_vibrator_driver";
+            vibratorAttr {
+                /* 0:rotor 1:linear */
+                deviceType = 1;
+                supportPreset = 1;
+            }
+            vibratorHapticConfig {
+                haptic_clock_timer {
+                    effectName = "haptic.clock.timer";
+                    type = 1; // 0 means built-in, 1 time series
+                    seq = [600, 600, 200, 600]; // time seq
+                }
+                haptic_default_effect {
+                    effectName = "haptic.default.effect";
+                    type = 0;
+                    seq = [0, 3, 800, 1];
+                }
+            }
+        }
+    }
+}
