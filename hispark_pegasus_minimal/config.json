@@ -37,7 +37,13 @@
       {
         "subsystem": "systemabilitymgr",
         "components": [
-          { "component": "samgr_lite", "features":[] }
+          { "component": "samgr_lite", "features":[
+            "enable_ohos_systemabilitymgr_samgr_lite_broadcast = false",
+            "enable_ohos_systemabilitymgr_samgr_lite_system_capability = false",
+            "config_ohos_systemabilitymgr_samgr_lite_shared_task_size = 2048",
+            "enable_ohos_systemabilitymgr_samgr_lite_specified_task = false",
+            "enable_ohos_systemabilitymgr_samgr_lite_no_task = false"
+          ] }
         ]
       },
       {
@@ -65,7 +71,13 @@
       {
        "subsystem": "xts",
        "components": [
-         { "component": "acts", "features":[]},
+         { "component": "acts", "features":[
+            "enable_ohos_test_xts_acts_use_thirdparty_lwip = false",
+            "enable_ohos_test_xts_acts_use_samgr_lite_broadcast = false",
+            "enable_ohos_test_xts_acts_use_samgr_lite_debug = false",
+            "enable_ohos_test_xts_acts_use_samgr_lite_taskpool_notask = false",
+            "enable_ohos_test_xts_acts_use_samgr_lite_taskpool_specifiedtask = false"
+         ] },
          { "component": "tools", "features":[] }
         ]
       },
