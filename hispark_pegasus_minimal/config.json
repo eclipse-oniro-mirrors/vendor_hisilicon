@@ -30,8 +30,9 @@
       {
         "subsystem": "hiviewdfx",
         "components": [
-          { "component": "hilog_lite", "features":[] },
-          { "component": "hievent_lite", "features":[] }
+          { "component": "hilog_lite", "features":["hilog_lite_mini = true"] },
+          { "component": "hievent_lite", "features":["hievent_lite_mini = true"] },
+          { "component": "hiview_lite", "features":["hiview_lite_mini = true"] }
         ]
       },
       {
