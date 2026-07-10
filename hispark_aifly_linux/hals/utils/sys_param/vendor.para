@@ -38,3 +38,5 @@ const.product.cpu.abilist=****
 const.product.software.version="1.0.0"
 
 const.product.firstapiversion=1
+
+const.product.devicetype=smartVision
