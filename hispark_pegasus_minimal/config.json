@@ -86,7 +86,12 @@
             "enable_ohos_test_xts_acts_use_samgr_lite_taskpool_notask = false",
             "enable_ohos_test_xts_acts_use_samgr_lite_taskpool_specifiedtask = false",
             "acts_lite_deviceinfo_merge = true", 
-            "acts_lite_param_value_len_max_48 = true"
+            "acts_lite_param_value_len_max_48 = true",
+            "hctest_rodata_opt = true",
+            "xts_overlay = true",
+            "hctest_task_stack_size = 2048",
+            "hctest_task_queue_size = 1",
+            "hctest_task_type = SHARED_TASK"
          ] },
          { "component": "tools", "features":[] }
         ]
