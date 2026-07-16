@@ -11,13 +11,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+declare_args() {
+    bss_reservation_size = 0
+}
+
 static_library("huksWrap") {
     sources = [
         "huks_wrap.c",
+        "bss_reservation.c",
     ]
 
     include_dirs = [
         "./",
         "//device/soc/hisilicon/hi3861v100/sdk_liteos/include",
+        "//commonlibrary/utils_lite/include",
     ]
+    cflags = [ "-DCONFIG_BSS_RESERVATION_SIZE=${bss_reservation_size}" ]
 }
