@@ -1,0 +1,108 @@
+{
+    "product_name": "wifiiot_hispark_pegasus_minimal",
+    "type": "mini",
+    "version": "3.0",
+    "ohos_version": "OpenHarmony 1.0",
+    "device_company": "hisilicon",
+    "device_build_path": "device/board/hisilicon/hispark_pegasus",
+    "board": "hispark_pegasus",
+    "kernel_type": "liteos_m",
+    "kernel_is_prebuilt": true,
+    "kernel_version": "",
+    "subsystems": [
+      {
+        "subsystem": "product_wifiiot_hispark_pegasus_minimal",
+        "components": [
+          {
+            "component": "product_wifiiot_hispark_pegasus_minimal",
+            "features": [
+              "enable_oh_device_lite_auth=false"
+            ]
+          }
+        ]
+      },
+      {
+        "subsystem": "iothardware",
+        "components": [
+          { "component": "peripheral", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "hiviewdfx",
+        "components": [
+          { "component": "hilog_lite", "features":["hilog_lite_mini = true"] },
+          { "component": "hievent_lite", "features":["hievent_lite_mini = true"] },
+          { "component": "hiview_lite", "features":["hiview_lite_mini = true"] }
+        ]
+      },
+      {
+        "subsystem": "systemabilitymgr",
+        "components": [
+          { "component": "samgr_lite", "features":[
+            "enable_ohos_systemabilitymgr_samgr_lite_broadcast = false",
+            "enable_ohos_systemabilitymgr_samgr_lite_system_capability = false",
+            "config_ohos_systemabilitymgr_samgr_lite_shared_task_size = 2048",
+            "enable_ohos_systemabilitymgr_samgr_lite_specified_task = false",
+            "enable_ohos_systemabilitymgr_samgr_lite_no_task = false"
+          ] }
+        ]
+      },
+      {
+        "subsystem": "thirdparty",
+        "components": [
+          { "component": "mbedtls", "features":
+            [
+              "mbedtls_porting_path = \"//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party/mbedtls\""
+            ]
+          }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "bootstrap_lite", "features":[
+            "bootstrap_lite_enable_bootstrap_service = false"
+          ] },
+          { "component": "init", "features":
+            [
+              "init_feature_begetctl_liteos = true",
+              "init_lite_use_thirdparty_mbedtls = true",
+              "init_lite_memory_size = 8192",
+              "init_lite_param_const_value_len_max = 256",
+              "init_lite_param_value_len_max = 48",
+              "init_lite_param_name_len_max = 48",
+              "init_lite_persist_all = false"
+            ]
+          }
+        ]
+      },
+      {
+       "subsystem": "xts",
+       "components": [
+         { "component": "acts", "features":[
+            "enable_ohos_test_xts_acts_use_thirdparty_lwip = false",
+            "enable_ohos_test_xts_acts_use_samgr_lite_broadcast = false",
+            "enable_ohos_test_xts_acts_use_samgr_lite_debug = false",
+            "enable_ohos_test_xts_acts_use_samgr_lite_taskpool_notask = false",
+            "enable_ohos_test_xts_acts_use_samgr_lite_taskpool_specifiedtask = false",
+            "acts_lite_deviceinfo_merge = true", 
+            "acts_lite_param_value_len_max_48 = true",
+            "hctest_rodata_opt = true",
+            "xts_overlay = true",
+            "hctest_task_stack_size = 2048",
+            "hctest_task_queue_size = 1",
+            "hctest_task_type = SHARED_TASK"
+         ] },
+         { "component": "tools", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "commonlibrary",
+        "components": [
+          { "component": "utils_lite", "features":[ "utils_lite_feature_file = true" ] }
+        ]
+      }
+    ],
+    "third_party_dir": "//device/soc/hisilicon/hi3861v100/sdk_liteos/third_party",
+    "product_adapter_dir": "//vendor/hisilicon/hispark_pegasus_mini/hals"
+  }
