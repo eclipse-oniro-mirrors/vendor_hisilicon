@@ -241,10 +241,6 @@
         {
           "component": "memory_utils",
           "features": []
-        },
-        {
-          "component": "qrcode_generator",
-          "features": []
         }
       ]
     },
