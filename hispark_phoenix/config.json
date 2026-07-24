@@ -241,6 +241,10 @@
         {
           "component": "memory_utils",
           "features": []
+        },
+        {
+          "component": "qrcode_generator",
+          "features": []
         }
       ]
     },
@@ -903,12 +907,6 @@
         {
           "component": "wpa_supplicant",
           "features": []
-        },
-        {
-          "component": "qrcodegen",
-          "features": [
-            "qrcodegen_feature_ace_engine_qrcode_able = true"
-          ]
         }
       ]
     },

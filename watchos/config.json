@@ -98,7 +98,8 @@
         "components": [
           { "component": "c_utils", "features": [] },
           { "component": "ets_utils", "features":[] },
-          { "component": "memory_utils", "features":[] }
+          { "component": "memory_utils", "features":[] },
+          { "component": "qrcode_generator", "features":[] }
         ]
       },
       {
@@ -188,17 +189,6 @@
           { "component": "resource_management", "features":[] },
           { "component": "system_resources", "features":[] },
           { "component": "cust_lite", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "thirdparty",
-        "components": [
-          {
-            "component": "qrcodegen",
-            "features": [
-              "qrcodegen_feature_ace_engine_qrcode_able = true"
-            ]
-          }
         ]
       },
       {
