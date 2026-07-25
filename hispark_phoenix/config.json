@@ -903,12 +903,6 @@
         {
           "component": "wpa_supplicant",
           "features": []
-        },
-        {
-          "component": "qrcodegen",
-          "features": [
-            "qrcodegen_feature_ace_engine_qrcode_able = true"
-          ]
         }
       ]
     },
