@@ -113,7 +113,8 @@
         {
             "component": "graphic_utils_lite",
             "features":[
-              "graphic_utils_lite_enable_drm_display_hal = true"
+              "graphic_utils_lite_enable_drm_display_hal = false",
+              "graphic_utils_lite_display_type = \"mipi\""
             ]
         },
         { "component": "surface_lite", "features":[] }

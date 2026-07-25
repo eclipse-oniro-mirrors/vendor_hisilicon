@@ -7,27 +7,27 @@ root {
                     inputAttr {
                         /* 0:touch 1:key 2:keyboard 3:mouse 4:button 5:crown 6:encoder */
                         inputType = 0;
-                        solutionX = 800;
-                        solutionY = 1280;
+                        solutionX = 1024;
+                        solutionY = 600;
                         devName = "main_touch";
                     }
 
-// Hi3516DV300-Runhe  gt911--5p5 & 4p0
+// Hi3403V100-Runhe  gt911--5p5 & 4p0
                     busConfig {
                         // 0:i2c 1:spi
                         busType = 0;
                         busNum = 0;
-                        clkGpio = 86;
-                        dataGpio = 87;
-                        i2cClkIomux = [0x114f0048, 0x403];
-                        i2cDataIomux = [0x114f004c, 0x403];
+                        clkGpio = 93;
+                        dataGpio = 92;
+                        i2cClkIomux = [0x102F0140, 0x1101];
+                        i2cDataIomux = [0x102F013C, 0x1101];
                     }
 
                     pinConfig {
-                        rstGpio = 85;
-                        intGpio = 84;
-                        rstRegCfg = [0x102F0110, 0x101];
-                        intRegCfg = [0x102F010C, 0x101];
+                        rstGpio = 82;
+                        intGpio = 85;
+                        rstRegCfg = [0x102F0104, 0x1101];
+                        intRegCfg = [0x102F0110, 0x1101];
                     }
 
 // Hi3516DV300-Ruishi gt911--7p0
@@ -122,7 +122,8 @@ root {
                     chip0 :: touchChip {
                         match_attr = "zsj_gt911_5p5";
                         chipInfo = "ZIDN45100";  // 4-ProjectName, 2-TP IC, 3-TP Module
-                        chipVersion = 0; //parse point by TypeA
+                        deviceAddr = 0x14;
+                        chipVersion = 3; // direct pass-through, x=GT_X, y=GT_Y
                     }
 
                     chip1 :: touchChip {
