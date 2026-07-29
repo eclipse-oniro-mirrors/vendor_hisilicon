@@ -81,8 +81,7 @@
     {
       "subsystem": "developtools",
       "components": [
-        { "component": "syscap_codec", "features":[] },
-        { "component": "hdc" }
+        { "component": "syscap_codec", "features":[] }
       ]
     },
     {
