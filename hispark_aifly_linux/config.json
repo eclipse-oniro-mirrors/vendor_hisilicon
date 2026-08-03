@@ -2,8 +2,8 @@
   "product_name": "ipcamera_hispark_aifly_linux",
   "version": "3.0",
   "type": "small",
-  "ohos_version": "OpenHarmony 5.1",
-  "api_version": 18,
+  "ohos_version": "OpenHarmony 6.1",
+  "api_version": 23,
   "manufacturer_id": 1,
   "device_company": "hisilicon",
   "device_build_path": "device/board/hisilicon/hispark_aifly",
@@ -83,8 +83,7 @@
     {
       "subsystem": "developtools",
       "components": [
-        { "component": "syscap_codec", "features":[] },
-        { "component": "hdc" }
+        { "component": "syscap_codec", "features":[] }
       ]
     },
     {
