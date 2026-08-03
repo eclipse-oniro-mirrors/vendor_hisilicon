@@ -52,7 +52,9 @@
     {
       "subsystem": "device_hispark_aifly",
       "components": [
-        { "component": "device_hispark_aifly", "features":[] }
+        { "component": "device_hispark_aifly", "features":[
+          "device_hispark_aifly_display_type = \"mipi\""
+        ] }
       ]
     },
     {
@@ -113,7 +115,7 @@
         {
             "component": "graphic_utils_lite",
             "features":[
-              "graphic_utils_lite_enable_drm_display_hal = true"
+              "graphic_utils_lite_enable_drm_display_hal = false"
             ]
         },
         { "component": "surface_lite", "features":[] }

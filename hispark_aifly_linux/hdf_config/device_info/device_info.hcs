@@ -205,6 +205,7 @@
                device0 :: deviceNode {
                    policy = 0;
                    priority = 150;
+                   preload = 0;
                    permission = 0644;
                    moduleName = "HDF_MIPI_TX";
                    serviceName = "HDF_MIPI_TX";
@@ -249,11 +250,13 @@
                     serviceName = "hdf_disp";
                 }
             }
-            device_hi35xx_disp :: device {
+            device_hi3403_disp :: device {
                 device0 :: deviceNode {
                     policy = 0;
-                    priority = 120;
-                    moduleName = "HI351XX_DISP";
+                    priority = 160;
+                    preload = 0;
+                    moduleName = "HI3403_DISP";
+                    serviceName = "HI3403_DISP";
                 }
             }
             device_lcd :: device {
@@ -261,7 +264,9 @@
                     policy = 0;
                     priority = 100;
                     preload = 0;
-                    moduleName = "LCD_ICN9700";
+                    moduleName = "LITE_LCDKIT";
+                    serviceName = "LITE_LCDKIT";
+                    deviceMatchAttr = "hdf_lcdkit_driver";
                 }
             }
             device_pwm_bl :: device {
