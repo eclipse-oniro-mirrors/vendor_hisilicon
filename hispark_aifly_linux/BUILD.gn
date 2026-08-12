@@ -15,5 +15,6 @@ group("hispark_aifly_linux") {
     "init_configs",
     "init_configs:init_fstab",
     "init_configs:init_initd",
+    "init_configs/ws73:ws73",
   ]
 }
