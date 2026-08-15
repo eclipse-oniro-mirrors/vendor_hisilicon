@@ -69,7 +69,7 @@
       {
         "subsystem": "communication",
         "components": [
-          { "component": "dsoftbus", "features":[] },
+          { "component": "dsoftbus", "features":["dsoftbus_feature_trans_udp_stream=true"] },
           { "component": "wifi", "features":[] },
           { "component": "dhcp", "features":[] },
           { "component": "ipc", "features":[] }
