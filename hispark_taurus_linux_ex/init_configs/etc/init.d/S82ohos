@@ -1,0 +1,19 @@
+#! /bin/sh
+
+echo "ohos_service_start"
+mknod /dev/hilog c 245 1
+chmod 666 /dev/hilog
+mknod /dev/hwlog_exception   c 241 1
+chmod 666 /dev/hwlog_exception
+cd /ko
+./load3516dv300_user -i sensor0 imx335
+chmod 666 /dev/hi_irq
+chmod 666 /dev/hi_proc
+chmod 666 /dev/hi_tde
+chmod 666 /dev/hdmi
+chmod 666 /dev/mmz_userdev
+chmod 777 /dev/i2c-0
+chmod 666 /dev/sys
+chmod 777 /dev/hi_mipi
+chmod 777 /dev/mem
+chmod 666 /dev/vodev

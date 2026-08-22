@@ -1,0 +1,31 @@
+#!/bin/sh
+
+ipaddr=
+bootp=
+gateway=
+netmask=
+hostname=
+netdev=
+autoconf=
+
+echo "      IP: $ipaddr"
+echo "   BOOTP: $bootp"
+echo " GATEWAY: $gateway"
+echo " NETMASK: $netmask"
+echo "HOSTNAME: $hostname"
+echo "  NETDEV: $netdev"
+echo "AUTOCONF: $autoconf"
+
+if [ x$ipaddr == x- ] ; then
+	# use DHCP
+	:
+else
+	cmd="ifconfig $netdev $ipaddr"
+	[ x$netmask != x- ] && cmd="$cmd netmask $netmask"
+	eval $cmd
+	[ x$gateway != x- ] && route add default gw $gateway
+fi
+
+ifconfig lo 127.0.0.1 up
+ifconfig wlan0 up
+
