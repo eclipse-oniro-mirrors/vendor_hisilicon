@@ -69,7 +69,15 @@
       {
         "subsystem": "communication",
         "components": [
-          { "component": "dsoftbus", "features":["dsoftbus_feature_trans_udp_stream=true"] },
+          { "component": "dsoftbus", "features":[
+            "dsoftbus_feature_trans_udp_stream=true",
+            "dsoftbus_feature_lnn_ble=false",
+            "dsoftbus_feature_lnn_d2d_auth=false",
+            "dsoftbus_feature_lnn_usb_ncm=false",
+            "dsoftbus_feature_lnn_auth_ext=false",
+            "dsoftbus_feature_lnn_net_builder_ext=false",
+            "dsoftbus_feature_lnn_ledger_ext=false"
+          ]},
           { "component": "wifi", "features":[] },
           { "component": "dhcp", "features":[] },
           { "component": "ipc", "features":[] }
