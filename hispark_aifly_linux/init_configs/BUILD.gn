@@ -16,11 +16,6 @@ copy("init_configs") {
   outputs = [ "$root_out_dir/etc/init.cfg" ]
 }
 
-copy("init_hdc") {
-  sources = [ "hdc/init_hdc" ]
-  outputs = [ "$root_out_dir/bin/init_hdc" ]
-}
-
 copy("init_initd") {
   sources = [
     "etc/init.d/S00devs",

@@ -127,6 +127,9 @@
     -
       source: faultlogger.conf
       link_name:  ${fs_dir}/system/etc/faultlogger.conf
+    -
+      source: libprotobuf-c.so
+      link_name: ${fs_dir}/usr/lib/libprotobuf-c.so.1
   fs_make_cmd:
     - ${root_path}/build/lite/make_rootfs/rootfsimg_linux.sh ${fs_dir} ext4 200
 -
