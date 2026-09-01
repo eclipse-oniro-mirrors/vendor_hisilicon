@@ -1,0 +1,23 @@
+root {
+    spi_test {
+        module = "spi_test";
+        match_attr = "SPI_TEST";
+        bus = 255;
+        cs = 0;
+        len = 8;
+        wbuf = [0xa1, 0xb2, 0xc3, 0xd4, 0xe5, 0xf6, 0x78, 0x90];
+    }
+    spi_virtual {
+        module = "virtual_spi";
+        match_attr = "virtual_spi";
+        transferMode = 0;
+        busNum = 255;
+        bitsPerWord = 8;
+        mode = 19;
+        maxSpeedHz = 3000000;
+        speed = 2000000;
+        fifoSize = 256;
+        numCs = 1;
+        waterline = 8;
+    }
+}
