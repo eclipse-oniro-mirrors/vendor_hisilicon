@@ -88,6 +88,10 @@
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
                 <filteritem type="filename" name="*.a|*.so|*.bin|*.png" desc="Temp files"/>
                 <filteritem type="filename" name="*.img|*.gif" desc="prebuilt boot images"/>
+                <filteritem type="filepath" name="hispark_aifly_linux/init_configs/ws73/ble_client_sample" desc="ble_client_sample"/>
+                <filteritem type="filepath" name="hispark_aifly_linux/init_configs/ws73/ble_server_sample" desc="ble_server_sample"/>
+                <filteritem type="filepath" name="hispark_aifly_linux/init_configs/ws73/sle_client_sample" desc="sle_client_sample"/>
+                <filteritem type="filepath" name="hispark_aifly_linux/init_configs/ws73/sle_server_sample" desc="sle_server_sample"/>
             </filefilter>
         </filefilterlist>
     </oatconfig>
