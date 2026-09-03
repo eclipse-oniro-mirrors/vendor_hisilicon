@@ -71,12 +71,24 @@
         "components": [
           { "component": "dsoftbus", "features":[
             "dsoftbus_feature_trans_udp_stream=true",
+            "dsoftbus_feature_disc_usb=false",
+            "dsoftbus_feature_disc_nfc=false",
+            "dsoftbus_feature_disc_virlink=false",
+            "dsoftbus_feature_conn_general=false",
+            "dsoftbus_feature_conn_br=false",
+            "dsoftbus_feature_conn_ble=false",
             "dsoftbus_feature_lnn_ble=false",
             "dsoftbus_feature_lnn_d2d_auth=false",
             "dsoftbus_feature_lnn_usb_ncm=false",
             "dsoftbus_feature_lnn_auth_ext=false",
             "dsoftbus_feature_lnn_net_builder_ext=false",
-            "dsoftbus_feature_lnn_ledger_ext=false"
+            "dsoftbus_feature_lnn_lane_small=true",
+            "dsoftbus_feature_lnn_ledger_ext=false",
+            "dsoftbus_feature_trans_udp_file=false",
+            "dsoftbus_feature_trans_proxy_file=false",
+            "dsoftbus_feature_trans_file=false",
+            "dsoftbus_feature_trans_proxy_channel=false",
+            "dsoftbus_feature_dfile=false"
           ]},
           { "component": "wifi", "features":[] },
           { "component": "dhcp", "features":[] },
