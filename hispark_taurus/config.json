@@ -103,7 +103,11 @@
       {
         "subsystem": "communication",
         "components": [
-          { "component": "dsoftbus", "features":[] },
+          { "component": "dsoftbus", "features":[
+            "dsoftbus_feature_conn_general=false",
+            "dsoftbus_feature_conn_br=false",
+            "dsoftbus_feature_conn_ble=false"
+          ]},
           { "component": "ipc", "features":[] }
         ]
       },
