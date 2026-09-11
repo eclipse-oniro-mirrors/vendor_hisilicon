@@ -129,7 +129,8 @@
           {
             "component": "graphic_utils_lite",
             "features": [
-              "graphic_utils_lite_enable_component_gradient_config = true"
+              "graphic_utils_lite_enable_component_gradient_config = true",
+              "graphic_utils_lite_enable_svg_component_config = true"
             ]
           },
           { "component": "surface_lite", "features":[] }
