@@ -81,7 +81,7 @@
             "dsoftbus_feature_disc_usb=false",
             "dsoftbus_feature_disc_nfc=false",
             "dsoftbus_feature_disc_virlink=false",
-            "dsoftbus_feature_disc_coap_custdata",
+            "dsoftbus_feature_disc_coap_custdata=true",
             "dsoftbus_feature_conn_general=false",
             "dsoftbus_feature_conn_br=false",
             "dsoftbus_feature_conn_ble=false",
