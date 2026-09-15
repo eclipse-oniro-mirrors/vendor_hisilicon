@@ -164,7 +164,13 @@
       {
         "subsystem": "applications",
         "components": [
-          { "component": "camera_sample_app", "features":[] },
+          {
+            "component": "camera_sample_app",
+            "features": [
+              "camera_sample_app_enable_graphic = true",
+              "camera_sample_app_enable_talm = true"
+            ]
+          },
           { "component": "camera_screensaver_app", "features":[] }
         ]
       },
