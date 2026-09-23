@@ -87,7 +87,6 @@
             "dsoftbus_feature_lnn_ledger_ext=false",
             "dsoftbus_feature_trans_udp_file=false",
             "dsoftbus_feature_trans_proxy_file=false",
-            "dsoftbus_feature_trans_file=false",
             "dsoftbus_feature_trans_proxy_channel=false",
             "dsoftbus_feature_dfile=false"
           ]},
