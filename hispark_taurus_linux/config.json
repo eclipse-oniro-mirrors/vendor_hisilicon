@@ -83,7 +83,7 @@
             "dsoftbus_feature_lnn_usb_ncm=false",
             "dsoftbus_feature_lnn_auth_ext=false",
             "dsoftbus_feature_lnn_net_builder_ext=false",
-            "dsoftbus_feature_lnn_lane_small=true",
+            "dsoftbus_feature_lnn_lane_simplicity=true",
             "dsoftbus_feature_lnn_ledger_ext=false",
             "dsoftbus_feature_trans_udp_file=false",
             "dsoftbus_feature_trans_proxy_file=false",
