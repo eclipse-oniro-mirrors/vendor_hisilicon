@@ -178,8 +178,7 @@
       {
         "subsystem": "powermgr",
         "components": [
-          { "component": "powermgr_lite", "features":[ "enable_screensaver = true" ] },
-          { "component": "battery_lite", "features":[ "enable_screensaver = true" ] }
+          { "component": "powermgr_lite", "features":[ "enable_screensaver = true" ] }
         ]
       }
     ],
