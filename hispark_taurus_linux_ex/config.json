@@ -13,8 +13,32 @@
       {
         "subsystem": "arkui",
         "components": [
-          { "component": "ace_engine_lite", "features":[ "" ] },
-          { "component": "ui_lite", "features":[ "ui_lite_enable_graphic_font_config = true" ] }
+          {
+            "component": "ace_engine_lite",
+            "features": [
+              "ace_engine_lite_feature_page_transition_effect = true",
+              "ace_engine_lite_enable_animation_capability = true",
+              "ace_engine_lite_enable_element_transition_capability = true",
+              "ace_engine_lite_enable_flex_layout_config = true",
+              "ace_engine_lite_enable_svg_component_config = true",
+              "ace_engine_lite_enable_gradient_capability = true"
+            ]
+          },
+          {
+            "component": "ui_lite",
+            "features": [
+              "ui_lite_enable_graphic_font_config = true",
+              "ui_lite_enable_scroller_indicator_style_adapt = true",
+              "ui_lite_enable_button_animation_touch_extend_config = true",
+              "ui_lite_enable_animation_capability = true",
+              "ui_lite_enable_switch_config = true",
+              "ui_lite_enable_element_transition_capability = true",
+              "ui_lite_enable_flex_layout_config = true",
+              "ui_lite_enable_slider_config = true",
+              "ui_lite_enable_svg_component_config = true",
+              "ui_lite_enable_gradient_capability = true"
+            ]
+          }
         ]
       },
       {
@@ -103,7 +127,13 @@
       {
         "subsystem": "graphic",
         "components": [
-          { "component": "graphic_utils_lite", "features":[] },
+          {
+            "component": "graphic_utils_lite",
+            "features": [
+              "graphic_utils_lite_enable_component_gradient_config = true",
+              "graphic_utils_lite_enable_svg_component_config = true"
+            ]
+          },
           { "component": "surface_lite", "features":[] }
         ]
       },
@@ -135,7 +165,13 @@
       {
         "subsystem": "applications",
         "components": [
-          { "component": "camera_sample_app", "features":[] },
+          {
+            "component": "camera_sample_app",
+            "features": [
+              "camera_sample_app_enable_graphic = true",
+              "camera_sample_app_enable_talm = true"
+            ]
+          },
           { "component": "camera_screensaver_app", "features":[] }
         ]
       },
