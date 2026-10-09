@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<Partition_Info>
+    <Part Sel="0" PartitionName="fastboot" FlashType="emmc" FileSystem="none" Start="0" Length="1M" SelectFile=""/>
+    <Part Sel="0" PartitionName="ohos_image" FlashType="emmc" FileSystem="none" Start="1M" Length="9M" SelectFile=""/>
+    <Part Sel="1" PartitionName="rootfs" FlashType="emmc" FileSystem="ext3/4" Start="10M" Length="100M" SelectFile=""/>
+    <Part Sel="0" PartitionName="userfs" FlashType="emmc" FileSystem="ext3/4" Start="110M" Length="50M" SelectFile=""/>
+    <Part Sel="0" PartitionName="userdata" FlashType="emmc" FileSystem="ext3/4" Start="160M" Length="1024M" SelectFile=""/>
+</Partition_Info>
