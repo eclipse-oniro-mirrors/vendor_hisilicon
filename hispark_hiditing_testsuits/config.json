@@ -1,0 +1,23 @@
+{
+  "product_name": "hispark_hiditing_testsuits",
+  "type": "mini",
+  "version": "3.0",
+  "ohos_version": "OpenHarmony 1.0",
+  "device_company": "hisilicon",
+  "device_build_path": "device/board/hisilicon/hispark_hiditing",
+  "board": "hispark_hiditing",
+  "kernel_type": "liteos_m",
+  "kernel_version": "3.0.0",
+  "subsystems": [
+     {
+        "subsystem": "kernel",
+        "components": [
+          {
+            "component": "liteos_m", "features":[]
+          }
+        ]
+     }
+  ],
+  "third_party_dir": "//device/soc/hisilicon/hi3322/sdk/open_source",
+  "product_adapter_dir": "//vendor/hisilicon/hispark_hiditing_testsuits/hals"
+}

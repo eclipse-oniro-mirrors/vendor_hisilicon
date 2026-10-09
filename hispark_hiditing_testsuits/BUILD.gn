@@ -1,0 +1,5 @@
+# Copyright (C) 2026 Hisilicon (Shanghai) Technologies Co., Ltd. All rights reserved.
+
+group("hispark_hiditing_testsuits") {
+  deps = [ "//device/board/hisilicon/hispark_hiditing:pack_fwpkg" ]
+}

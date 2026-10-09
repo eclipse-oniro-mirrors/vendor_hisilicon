@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "product_hispark_hiditing": {
+      "module_list": [
+        "//vendor/hisilicon/hispark_hiditing:hispark_hiditing"
+      ]
+    }
+  },
+  "subsystem": "product_hispark_hiditing"
+}
