@@ -210,7 +210,7 @@
       {
         "subsystem": "xts",
         "components": [
-          { "component": "acts", "features":[ "acts_graphic_flex_enable = true" ] },
+          { "component": "acts", "features":[] },
           { "component": "tools", "features":[] },
           { "component": "device_attest_lite", "features":[] }
         ]
