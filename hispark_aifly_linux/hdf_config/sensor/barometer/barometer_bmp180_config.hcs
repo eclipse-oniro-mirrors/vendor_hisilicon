@@ -1,0 +1,45 @@
+#include "../sensor_common.hcs"
+root {
+        barometer_bmp180_chip_config : sensorConfig {
+            match_attr = "hdf_sensor_barometer_bmp180_driver";
+            sensorInfo :: sensorDeviceInfo {
+                sensorName = "barometer";
+                vendorName = "borsh_bmp180"; // max string length is 16 bytes
+                sensorTypeId = 8; // enum SensorTypeTag
+                sensorId = 8; // user define sensor id
+                power = 650;
+            }
+            sensorBusConfig :: sensorBusInfo {
+                busType = 0; // 0:i2c 1:spi
+                busNum = 6;
+                busAddr = 0x77;
+                regWidth = 1; // 1byte
+            }
+            sensorIdAttr :: sensorIdInfo  {
+                chipName = "bmp180";
+                chipIdRegister = 0xD0;
+                chipIdValue = 0x55;
+            }
+             sensorRegConfig {
+                /*  regAddr: register address
+                    value: config register value
+                    len: size of value
+                    mask: mask of value
+                    delay: config register delay time (ms)
+                    opsType: enum SensorOpsType 0-none 1-read 2-write 3-read_check 4-update_bit
+                    calType: enum SensorBitCalType 0-none 1-set 2-revert 3-xor 4-left shift 5-right shift
+                    shiftNum: shift bits
+                    debug: 0-no debug 1-debug
+                    save: 0-no save 1-save
+                */
+                /* regAddr, value, mask, len, delay, opsType, calType, shiftNum, debug, save */
+                initSeqConfig = [
+                    0xE0,    0xb6, 0xff,   1,     5,       2,       0,        0,     0,    0,
+                ];
+                enableSeqConfig = [];
+                disableSeqConfig = [
+                    0xE0,    0xb6, 0xff,   1,     5,       2,       0,        0,     0,    0
+                ];
+            }
+        }
+}

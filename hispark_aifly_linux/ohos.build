@@ -1,0 +1,12 @@
+{
+  "parts": {
+    "product_ipcamera_hispark_aifly_linux": {
+      "module_list": [
+        "//vendor/hisilicon/hispark_aifly_linux:hispark_aifly_linux",
+        "//vendor/hisilicon/hispark_aifly_linux/hals/audio:hdf_audio_config",
+        "//vendor/hisilicon/hispark_aifly_linux/dhcp_client:dhcp_client_lite"
+      ]
+    }
+  },
+  "subsystem": "product_ipcamera_hispark_aifly_linux"
+}

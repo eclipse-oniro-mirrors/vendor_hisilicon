@@ -1,0 +1,19 @@
+root {
+    module = "rtc";
+    rtc_config {
+        match_attr = "RTC_TEST";
+        time = 60;
+        maxYear = 2222;
+        year = 2020;
+        month = 8;
+        day = 8;
+        hour = 8;
+        minute = 8;
+        second = 8;
+        frequency = 32768;
+        userValue = 0x8;
+        userMaxIndex = 8;
+        waitTimeSecond = 3;
+        writeWaitMillisecond = 30;
+    }
+}

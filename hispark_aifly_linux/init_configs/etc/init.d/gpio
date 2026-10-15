@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo 72 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio72/direction
+echo 1 > /sys/class/gpio/gpio72/value
