@@ -11,4 +11,7 @@ chmod 666 /dev/mmz_userdev
 chmod 777 /dev/i2c-0
 chmod 666 /dev/sys
 chmod 777 /dev/mem
+chmod 666 /dev/ot_tde
+chmod 666 /dev/ot_proc
+
 /etc/init.d/gpio &
