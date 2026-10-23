@@ -32,3 +32,8 @@ copy("init_fstab") {
   sources = [ "etc/fstab" ]
   outputs = [ "$root_out_dir/etc/{{source_file_part}}" ]
 }
+
+copy("vendor_ueventd_config") {
+  sources = [ "etc/ueventd.config" ]
+  outputs = [ "$root_out_dir/vendor/etc/ueventd.config" ]
+}
