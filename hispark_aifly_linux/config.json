@@ -151,7 +151,6 @@
     },{
       "subsystem": "thirdparty",
       "components": [
-        { "component": "libuv", "features":[] },
         { "component": "mindspore", "features":[] }
       ]
     }
