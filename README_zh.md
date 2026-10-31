@@ -22,7 +22,7 @@
 
 ## 使用方法
 
-[海思开发板使用说明](https://gitee.com/openharmony/device_board_hisilicon)
+[海思开发板使用说明](https://gitcode.com/openharmony/device_board_hisilicon)
 
 
 ## 许可说明
@@ -32,8 +32,8 @@
 
 ## 相关仓
 
-[device_board_hisilicon](https://gitee.com/openharmony/device_board_hisilicon)
+[device_board_hisilicon](https://gitcode.com/openharmony/device_board_hisilicon)
 
-[device_soc_hisilicon](https://gitee.com/openharmony/device_soc_hisilicon/tree/master)
+[device_soc_hisilicon](https://gitcode.com/openharmony/device_soc_hisilicon/tree/master)
 
-[third_party_u-boot](https://gitee.com/openharmony/third_party_u-boot)
+[third_party_u-boot](https://gitcode.com/openharmony/third_party_u-boot)
