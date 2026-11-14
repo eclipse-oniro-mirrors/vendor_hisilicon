@@ -85,11 +85,11 @@
             "dsoftbus_feature_conn_general=false",
             "dsoftbus_feature_conn_br=false",
             "dsoftbus_feature_conn_ble=false",
-            "dsoftbus_feature_trans_udp_file=false",
+            "dsoftbus_feature_trans_udp_file=true",
             "dsoftbus_feature_trans_proxy_file=false",
-            "dsoftbus_feature_trans_file=false",
+            "dsoftbus_feature_trans_file=true",
             "dsoftbus_feature_trans_proxy_channel=false",
-            "dsoftbus_feature_dfile=false"
+            "dsoftbus_feature_dfile=true"
           ]},
           { "component": "wifi", "features":[] },
           { "component": "dhcp", "features":[] },
