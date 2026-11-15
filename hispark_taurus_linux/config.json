@@ -87,7 +87,6 @@
             "dsoftbus_feature_conn_ble=false",
             "dsoftbus_feature_trans_udp_file=true",
             "dsoftbus_feature_trans_proxy_file=false",
-            "dsoftbus_feature_trans_file=true",
             "dsoftbus_feature_trans_proxy_channel=false",
             "dsoftbus_feature_dfile=true"
           ]},
